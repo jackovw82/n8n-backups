@@ -1,0 +1,25 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-07-28T09:26:14.175Z",
+  "id": "fKciQiN8HpOuSvbG",
+  "meta": null,
+  "name": "copy client final selection to google drive folder and share",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-28T09:26:26.494Z",
+      "updatedAt": "2024-07-28T09:26:26.494Z",
+      "id": "VspQ3UK3kbnrh9Dz",
+      "name": "photography"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-07-28T09:26:28.000Z",
+  "versionId": "f8e9282e-887d-4bfc-b034-88150fcdff2f"
+}

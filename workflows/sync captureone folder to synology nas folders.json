@@ -1,0 +1,25 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-07-28T09:24:37.830Z",
+  "id": "arC316Nv3uzaig8X",
+  "meta": null,
+  "name": "sync captureone folder to synology nas folders",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-28T09:26:26.494Z",
+      "updatedAt": "2024-07-28T09:26:26.494Z",
+      "id": "VspQ3UK3kbnrh9Dz",
+      "name": "photography"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-07-28T09:26:41.000Z",
+  "versionId": "43b98321-a244-412e-8e53-f9e8a7c68362"
+}

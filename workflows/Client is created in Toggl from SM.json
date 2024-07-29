@@ -1,0 +1,31 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-07-24T17:20:48.198Z",
+  "id": "GHGviKamRzTs1wag",
+  "meta": null,
+  "name": "Client is created in Toggl from SM",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-24T17:18:57.002Z",
+      "updatedAt": "2024-07-24T17:18:57.002Z",
+      "id": "Ka3uRnFaDJ9a4Rg0",
+      "name": "toggl"
+    },
+    {
+      "createdAt": "2024-07-24T17:19:02.136Z",
+      "updatedAt": "2024-07-24T17:19:02.136Z",
+      "id": "RW5RBtQ8bU6iwv8s",
+      "name": "smartsuite"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-07-24T17:20:48.198Z",
+  "versionId": "037492c8-57b9-413f-899f-b9f66875971d"
+}

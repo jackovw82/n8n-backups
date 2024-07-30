@@ -651,10 +651,10 @@
           "conditions": [
             {
               "id": "f3c0600b-1546-4815-a01e-852b62f1abd4",
-              "leftValue": "\"{{ $json.stop }}\"",
+              "leftValue": "=\"{{ $json.stop }}\"",
               "rightValue": "",
               "operator": {
-                "type": "dateTime",
+                "type": "string",
                 "operation": "notEmpty",
                 "singleValue": true
               }
@@ -684,6 +684,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-29T21:58:39.000Z",
-  "versionId": "7f757052-48f7-4ef3-aab6-dabd05d16355"
+  "updatedAt": "2024-07-30T07:01:42.000Z",
+  "versionId": "2d9d1c2a-c5df-4172-bee1-5396784a87d9"
 }

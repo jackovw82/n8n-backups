@@ -82,7 +82,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "lookup SMCliient",
             "type": "main",
             "index": 0
           }
@@ -203,7 +203,7 @@
         ]
       ]
     },
-    "HTTP Request": {
+    "lookup SMCliient": {
       "main": [
         [
           {
@@ -636,7 +636,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"sf698fb364\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"sf698fb364\",\n       \"comparison\": \"is_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n}   ",
+        "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"sf698fb364\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"sf698fb364\",\n       \"comparison\": \"is\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n}   ",
         "options": {}
       },
       "id": "903477dc-5d65-4253-ae94-eb7f4ea7c2e4",
@@ -668,6 +668,88 @@
     },
     {
       "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7bae4cdb-e441-48c8-8c0b-37d282e8bcaa",
+              "name": "record_id",
+              "value": "={{ $json.items[0].id }}",
+              "type": "string"
+            },
+            {
+              "id": "3ae977a8-3ab7-4570-8487-4e9a124c56fd",
+              "name": "id",
+              "value": "={{ $('Remove Duplicates').item.json.id }}",
+              "type": "number"
+            },
+            {
+              "id": "416e681b-48b9-4704-9808-931bf9e9bc76",
+              "name": "workspace_id",
+              "value": "={{ $('Remove Duplicates').item.json.workspace_id }}",
+              "type": "number"
+            },
+            {
+              "id": "56a887bf-c0be-4c2a-96ec-fc368836ba29",
+              "name": "client_id",
+              "value": "={{ $('Remove Duplicates').item.json.client_id }}",
+              "type": "number"
+            },
+            {
+              "id": "09edce2a-cbdf-4e5f-bb28-03b32fecfe83",
+              "name": "name",
+              "value": "={{ $('Remove Duplicates').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "013f122d-4b0a-49e2-b519-aed7f4d32cd9",
+              "name": "is_private",
+              "value": "={{ $('Remove Duplicates').item.json.is_private }}",
+              "type": "boolean"
+            },
+            {
+              "id": "2ebe596f-05ee-415e-ac3f-8acfd599fb3f",
+              "name": "active",
+              "value": "={{ $('Remove Duplicates').item.json.active }}",
+              "type": "boolean"
+            },
+            {
+              "id": "e55add26-57a0-4a5e-9a46-8a43c677f979",
+              "name": "at",
+              "value": "={{ $('Remove Duplicates').item.json.at }}",
+              "type": "string"
+            },
+            {
+              "id": "4ad848f8-c95f-4341-b61b-734a6fc2dbd8",
+              "name": "server_deleted_at",
+              "value": "={{ $('Remove Duplicates').item.json.server_deleted_at }}",
+              "type": "string"
+            },
+            {
+              "id": "1960a8a7-c61a-40c1-88d8-77e286c631b2",
+              "name": "actual_hours",
+              "value": "={{ $('Remove Duplicates').item.json.actual_hours }}",
+              "type": "number"
+            },
+            {
+              "id": "832a6a1f-2765-45ea-97e5-1e5a605591ce",
+              "name": "actual_seconds",
+              "value": "={{ $('Remove Duplicates').item.json.actual_seconds }}",
+              "type": "number"
+            },
+            {
+              "id": "f51cb229-b0d8-4604-9cb7-ca4b2bde3e03",
+              "name": "status",
+              "value": "={{ $('Remove Duplicates').item.json.status }}",
+              "type": "string"
+            },
+            {
+              "id": "69a33ab3-2374-4c89-8adb-4a0e5f1e599d",
+              "name": "start_date",
+              "value": "={{ $('Remove Duplicates').item.json.start_date }}",
+              "type": "string"
+            }
+          ]
+        },
         "options": {}
       },
       "id": "f926ab5b-b0fc-426d-bef5-c27c2af4e384",
@@ -688,7 +770,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3240,
+        3260,
         580
       ]
     },
@@ -826,7 +908,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://app.smartsuite.com/api/v1/applications/65b0c1654050e485a501517d/records/list/",
+        "url": "https://app.smartsuite.com/api/v1/applications/657c055059b633d6009e1e42/records/list/",
         "sendQuery": true,
         "queryParameters": {
           "parameters": [
@@ -855,16 +937,16 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "{\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"s9c89ee2fe\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"sf698fb364\",\n       \"comparison\": \"is_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n} ",
+        "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"s9c89ee2fe\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"s9c89ee2fe\",\n       \"comparison\": \"is\",\n       \"value\": {{ $json.id }}\n      }\n    ]\n  }\n} ",
         "options": {}
       },
-      "id": "74bf5a25-4ac3-454b-9a80-3ec534e8e598",
-      "name": "HTTP Request",
+      "id": "e6e6ea50-45c1-4518-b493-41f8fb267625",
+      "name": "lookup SMCliient",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3040,
-        580
+        3060,
+        560
       ]
     }
   ],
@@ -878,6 +960,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-30T12:00:02.000Z",
-  "versionId": "a57e051c-8d90-4fa5-a8ad-781ecf27a778"
+  "updatedAt": "2024-07-30T15:59:25.000Z",
+  "versionId": "d2f3ed87-335b-434d-9975-7f62865a6fda"
 }

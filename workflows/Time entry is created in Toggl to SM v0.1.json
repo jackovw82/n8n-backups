@@ -34,27 +34,11 @@
         ]
       ]
     },
-    "Edit Fields": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          },
-          {
-            "node": "lookup_toggl_project",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Check if the TimeEntry exist": {
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "Pass 1",
             "type": "main",
             "index": 0
           }
@@ -65,12 +49,7 @@
       "main": [
         [
           {
-            "node": "Slack",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Mattermost",
+            "node": "Aggregate",
             "type": "main",
             "index": 0
           }
@@ -103,7 +82,7 @@
       "main": [
         [
           {
-            "node": "Merge",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -130,9 +109,9 @@
             "index": 0
           },
           {
-            "node": "Merge",
+            "node": "Lookup SM Project",
             "type": "main",
-            "index": 2
+            "index": 0
           }
         ]
       ]
@@ -158,6 +137,82 @@
           }
         ]
       ]
+    },
+    "Lookup SM Project": {
+      "main": [
+        [
+          {
+            "node": "Pass 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pass 2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Pass  3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pass 1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "lookup_toggl_project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Pass  3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-07-24T15:59:29.024Z",
@@ -174,7 +229,7 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        1480,
+        1260,
         700
       ]
     },
@@ -190,7 +245,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1720,
+        1500,
         700
       ],
       "credentials": {
@@ -207,8 +262,434 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        2140,
+        1920,
         700
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "363fa242-074d-4c44-808d-1ee4056ce5ad",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        4580,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "channelId": "jpqr5pw497dxf8kirt96t4ar5r",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "id": "9f1fac66-3f94-4388-97e3-7436b528e056",
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "typeVersion": 1,
+      "position": [
+        4580,
+        820
+      ],
+      "credentials": {
+        "mattermostApi": {
+          "id": "VGOFEEFurY7VTUJP",
+          "name": "Mattermost account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "3"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"sac94990b3\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"sac94990b3\",\n       \"comparison\": \"is_not_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n}  ",
+        "options": {}
+      },
+      "id": "0ae41d55-845e-4a8f-8817-a53844787a65",
+      "name": "Check if the TimeEntry exist",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2120,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.name }} - {{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"ready_for_review\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.project_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"saf4ce5701\": \"{{ $json.task_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\"\n}\n",
+        "options": {}
+      },
+      "id": "ced9d65b-3f1c-40f6-bd89-e24ec69e4cfb",
+      "name": "Create timeEntry in SM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4080,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Reference Toggl",
+        "height": 541.0123448220287,
+        "width": 1349.2597151998602
+      },
+      "id": "a7bb7ad1-6bda-4d3f-8b59-018d7b92f9fd",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## SmartSuite",
+        "height": 329.3037901061815,
+        "width": 278.75835396816683
+      },
+      "id": "53c913c9-0173-4b55-b1f0-f5a955442617",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3980,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Toggle Tiem Entries",
+        "height": 308.71737923375906
+      },
+      "id": "9828c4f5-bda3-41aa-8daa-d23f212c373e",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.track.toggl.com/api/v9/workspaces/{{ $json.workspace_id }}/clients",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Basic amFja29Ab2NvZGUzNjAuY29tOkFHWV9ucWcqenh2M2FteDNtd2U="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b3d88ab4-b279-4450-8437-03ea24da5541",
+      "name": "lookup_toggl_client",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2580,
+        580
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "bVbx51fQToa3mOMj",
+          "name": "Toggle credentials"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.track.toggl.com/api/v9/workspaces/{{ $json.workspace_id }}/projects/{{ $json.project_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Basic amFja29Ab2NvZGUzNjAuY29tOkFHWV9ucWcqenh2M2FteDNtd2U="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "98450567-4590-4750-91e3-fc1f4351b801",
+      "name": "lookup_toggl_project",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2580,
+        820
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "bVbx51fQToa3mOMj",
+          "name": "Toggle credentials"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "72a690fe-5300-4a8a-81a5-ecad768785d5",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "={{ $('Remove Duplicates').item.json.client_id }}",
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d2dcaaf9-5e17-48d6-90b0-f33857959283",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2780,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "72a690fe-5300-4a8a-81a5-ecad768785d5",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "={{ $('Pass 1').item.json.project_id }}",
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "757e2b7b-fabe-4a3e-a86a-af097d72c96d",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2780,
+        820
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "1133bd8f-601c-4e9a-8ef4-47990abc03e6",
+      "name": "Remove Duplicates",
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 1.1,
+      "position": [
+        3000,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "numberInputs": 3,
+        "query": "with \n  client_ref as\n  (\n  select * from input1\n  )\n  SELECT \n      client_ref.id as client_id, \n      client_ref.name as client_name,\n      client_ref.wid as client_wid,\n      client_ref.archived as client_archived, \n      client_ref.at as client_created_at,\n      client_ref.creator_id as client_created_id,\n      a.id as time_entry_id,\n      a.*,\n      b.id as project_id, \n      b.name as project_name, \n      b.*\n  FROM input2 a, \n      input3 b\n         inner join client_ref on client_ref.id = b.client_id\nWHERE a.project_id = b.id"
+      },
+      "id": "75adc39f-3947-4488-a8f7-e90f53f02fe6",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3660,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "f3c0600b-1546-4815-a01e-852b62f1abd4",
+              "leftValue": "=\"{{ $json.stop }}\"",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0749669b-4d6f-4eba-841c-1f1c04aa1f1d",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1720,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/65b0c1654050e485a501517d/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "3"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"sf698fb364\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"sf698fb364\",\n       \"comparison\": \"is_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n}   ",
+        "options": {}
+      },
+      "id": "903477dc-5d65-4253-ae94-eb7f4ea7c2e4",
+      "name": "Lookup SM Project",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3200,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "cf7d937a-9797-4c62-8c0d-b37214b77d56",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        4340,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f926ab5b-b0fc-426d-bef5-c27c2af4e384",
+      "name": "Pass 2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3420,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "31e10849-bee0-4c43-b0ca-978c283e7d53",
+      "name": "Pass  3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3240,
+        580
       ]
     },
     {
@@ -334,45 +815,18 @@
         "options": {}
       },
       "id": "9af03add-d876-481f-a6c8-67371f8dc1a2",
-      "name": "Edit Fields",
+      "name": "Pass 1",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2560,
+        2340,
         700
       ]
     },
     {
       "parameters": {
-        "otherOptions": {}
-      },
-      "id": "363fa242-074d-4c44-808d-1ee4056ce5ad",
-      "name": "Slack",
-      "type": "n8n-nodes-base.slack",
-      "typeVersion": 2.2,
-      "position": [
-        4000,
-        580
-      ]
-    },
-    {
-      "parameters": {
-        "attachments": [],
-        "otherOptions": {}
-      },
-      "id": "9f1fac66-3f94-4388-97e3-7436b528e056",
-      "name": "Mattermost",
-      "type": "n8n-nodes-base.mattermost",
-      "typeVersion": 1,
-      "position": [
-        4000,
-        800
-      ]
-    },
-    {
-      "parameters": {
         "method": "POST",
-        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/list/",
+        "url": "https://app.smartsuite.com/api/v1/applications/65b0c1654050e485a501517d/records/list/",
         "sendQuery": true,
         "queryParameters": {
           "parameters": [
@@ -401,276 +855,16 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"sac94990b3\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"sac94990b3\",\n       \"comparison\": \"is_not_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n}  ",
+        "jsonBody": "{\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"s9c89ee2fe\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"sf698fb364\",\n       \"comparison\": \"is_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n} ",
         "options": {}
       },
-      "id": "0ae41d55-845e-4a8f-8817-a53844787a65",
-      "name": "Check if the TimeEntry exist",
+      "id": "74bf5a25-4ac3-454b-9a80-3ec534e8e598",
+      "name": "HTTP Request",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2340,
-        700
-      ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
-            },
-            {
-              "name": "ACCOUNT-ID",
-              "value": "swexdc6g"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.name }} - {{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"ready_for_review\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.project_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"saf4ce5701\": \"{{ $json.task_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\"\n}\n",
-        "options": {}
-      },
-      "id": "ced9d65b-3f1c-40f6-bd89-e24ec69e4cfb",
-      "name": "Create timeEntry in SM",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        3740,
-        700
-      ]
-    },
-    {
-      "parameters": {
-        "content": "## Reference Toggl",
-        "height": 541.0123448220287,
-        "width": 1079.1712659636287
-      },
-      "id": "a7bb7ad1-6bda-4d3f-8b59-018d7b92f9fd",
-      "name": "Sticky Note",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        2500,
-        500
-      ]
-    },
-    {
-      "parameters": {
-        "content": "## SmartSuite",
-        "height": 329.3037901061815,
-        "width": 278.75835396816683
-      },
-      "id": "53c913c9-0173-4b55-b1f0-f5a955442617",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        3660,
-        600
-      ]
-    },
-    {
-      "parameters": {
-        "content": "## Toggle Tiem Entries",
-        "height": 308.71737923375906
-      },
-      "id": "9828c4f5-bda3-41aa-8daa-d23f212c373e",
-      "name": "Sticky Note2",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        1640,
-        600
-      ]
-    },
-    {
-      "parameters": {
-        "url": "=https://api.track.toggl.com/api/v9/workspaces/{{ $json.workspace_id }}/clients",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBasicAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "authorization",
-              "value": "Basic amFja29Ab2NvZGUzNjAuY29tOkFHWV9ucWcqenh2M2FteDNtd2U="
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "b3d88ab4-b279-4450-8437-03ea24da5541",
-      "name": "lookup_toggl_client",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        2800,
+        3040,
         580
-      ],
-      "credentials": {
-        "httpBasicAuth": {
-          "id": "bVbx51fQToa3mOMj",
-          "name": "Toggle credentials"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "=https://api.track.toggl.com/api/v9/workspaces/{{ $json.workspace_id }}/projects/{{ $json.project_id }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBasicAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "authorization",
-              "value": "Basic amFja29Ab2NvZGUzNjAuY29tOkFHWV9ucWcqenh2M2FteDNtd2U="
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "98450567-4590-4750-91e3-fc1f4351b801",
-      "name": "lookup_toggl_project",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        2800,
-        800
-      ],
-      "credentials": {
-        "httpBasicAuth": {
-          "id": "bVbx51fQToa3mOMj",
-          "name": "Toggle credentials"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "72a690fe-5300-4a8a-81a5-ecad768785d5",
-              "leftValue": "={{ $json.id }}",
-              "rightValue": "={{ $('Remove Duplicates').item.json.client_id }}",
-              "operator": {
-                "type": "number",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "d2dcaaf9-5e17-48d6-90b0-f33857959283",
-      "name": "If1",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        3000,
-        580
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "72a690fe-5300-4a8a-81a5-ecad768785d5",
-              "leftValue": "={{ $json.id }}",
-              "rightValue": "={{ $('Check TimeEntry').item.json.project_id }}",
-              "operator": {
-                "type": "number",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "757e2b7b-fabe-4a3e-a86a-af097d72c96d",
-      "name": "If2",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        3020,
-        800
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "1133bd8f-601c-4e9a-8ef4-47990abc03e6",
-      "name": "Remove Duplicates",
-      "type": "n8n-nodes-base.removeDuplicates",
-      "typeVersion": 1.1,
-      "position": [
-        3240,
-        780
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "combineBySql",
-        "numberInputs": 3,
-        "query": "with \n  client_ref as\n  (\n  select * from input1\n  )\n  SELECT \n      client_ref.id as client_id, \n      client_ref.name as client_name,\n      client_ref.wid as client_wid,\n      client_ref.archived as client_archived, \n      client_ref.at as client_created_at,\n      client_ref.creator_id as client_created_id,\n      a.id as time_entry_id,\n      a.*,\n      b.id as project_id, \n      b.name as project_name, \n      b.*\n  FROM input2 a, \n      input3 b\n         inner join client_ref on client_ref.id = b.client_id\nWHERE a.project_id = b.id"
-      },
-      "id": "75adc39f-3947-4488-a8f7-e90f53f02fe6",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        3440,
-        700
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "f3c0600b-1546-4815-a01e-852b62f1abd4",
-              "leftValue": "=\"{{ $json.stop }}\"",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "0749669b-4d6f-4eba-841c-1f1c04aa1f1d",
-      "name": "Filter",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2,
-      "position": [
-        1940,
-        700
       ]
     }
   ],
@@ -684,6 +878,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-30T07:01:42.000Z",
-  "versionId": "2d9d1c2a-c5df-4172-bee1-5396784a87d9"
+  "updatedAt": "2024-07-30T12:00:02.000Z",
+  "versionId": "a57e051c-8d90-4fa5-a8ad-781ecf27a778"
 }

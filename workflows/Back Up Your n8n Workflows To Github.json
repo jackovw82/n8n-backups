@@ -429,7 +429,7 @@
       "parameters": {
         "content": "## Save the data\nUsing the switch node we work out what to do based on the previous status,  If it is the same we do nothing, If it is different we update the file in Github and if it is new we create a new file. After this is done we loop back to the Split in Batches node (OneAtAtTime) to start the process again.",
         "height": 693.9283333333326,
-        "width": 666.4416666666662
+        "width": 865.6062638135663
       },
       "id": "cc2c5992-4fec-4374-be41-a6f92149f3ba",
       "name": "Note3",
@@ -494,6 +494,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-29T20:28:34.000Z",
-  "versionId": "f462621a-4d1a-46ce-82c3-8d38350ceaee"
+  "updatedAt": "2024-07-30T11:49:03.000Z",
+  "versionId": "b8d7041c-0fe8-4e1c-9c55-fd996fcad8ad"
 }

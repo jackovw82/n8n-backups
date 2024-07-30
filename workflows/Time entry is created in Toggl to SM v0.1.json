@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Check for stop time populated",
+            "node": "Filter",
             "type": "main",
             "index": 0
           }
@@ -38,7 +38,12 @@
       "main": [
         [
           {
-            "node": "Check TimeEntry",
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "lookup_toggl_project",
             "type": "main",
             "index": 0
           }
@@ -143,29 +148,13 @@
         ]
       ]
     },
-    "Check for stop time populated": {
+    "Filter": {
       "main": [
         [
           {
             "node": "Limit",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Check TimeEntry": {
-      "main": [
-        [
-          {
-            "node": "lookup_toggl_project",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
           }
         ]
       ]
@@ -185,8 +174,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        900,
-        740
+        1480,
+        700
       ]
     },
     {
@@ -201,8 +190,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1140,
-        740
+        1720,
+        700
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -218,8 +207,8 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        1620,
-        720
+        2140,
+        700
       ]
     },
     {
@@ -349,8 +338,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2040,
-        720
+        2560,
+        700
       ]
     },
     {
@@ -362,8 +351,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        4080,
-        589
+        4000,
+        580
       ]
     },
     {
@@ -376,8 +365,8 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        4080,
-        809
+        4000,
+        800
       ]
     },
     {
@@ -412,7 +401,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"sac94990b3\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"eq\",\n    \"fields\": [\n      {\n        \"comparison\": \"compare\",\n        \"field\": \"status\",\n        \"value\": \"active\"\n      }\n    ]\n  }\n} ",
+        "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"sac94990b3\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"sac94990b3\",\n       \"comparison\": \"is_not_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n}  ",
         "options": {}
       },
       "id": "0ae41d55-845e-4a8f-8817-a53844787a65",
@@ -420,8 +409,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1820,
-        720
+        2340,
+        700
       ]
     },
     {
@@ -451,7 +440,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3760,
+        3740,
         700
       ]
     },
@@ -495,8 +484,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1060,
-        640
+        1640,
+        600
       ]
     },
     {
@@ -520,7 +509,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2740,
+        2800,
         580
       ],
       "credentials": {
@@ -551,7 +540,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2740,
+        2800,
         800
       ],
       "credentials": {
@@ -589,7 +578,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        2940,
+        3000,
         580
       ]
     },
@@ -621,7 +610,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        2960,
+        3020,
         800
       ]
     },
@@ -632,7 +621,7 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        3180,
+        3240,
         780
       ]
     },
@@ -647,7 +636,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        3420,
+        3440,
         700
       ]
     },
@@ -661,8 +650,8 @@
           },
           "conditions": [
             {
-              "id": "e4c25fa0-e46c-4667-8cb6-a9b88d6c5285",
-              "leftValue": "={{ $json.stop }}",
+              "id": "f3c0600b-1546-4815-a01e-852b62f1abd4",
+              "leftValue": "\"{{ $json.stop }}\"",
               "rightValue": "",
               "operator": {
                 "type": "dateTime",
@@ -675,45 +664,13 @@
         },
         "options": {}
       },
-      "id": "d69957e4-4aa1-4b63-9b95-a4edee31c829",
-      "name": "Check for stop time populated",
-      "type": "n8n-nodes-base.if",
+      "id": "0749669b-4d6f-4eba-841c-1f1c04aa1f1d",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        1360,
-        740
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "b3a2f349-5690-4d14-8e92-b9f0bbdcb612",
-              "leftValue": "={{ $('Check if the TimeEntry exist').item.json.items[0].sac94990b3 }}",
-              "rightValue": "='{{ $json.id }}'",
-              "operator": {
-                "type": "string",
-                "operation": "notContains"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "0f0bd58a-131f-46b8-b6ae-d47d26de8aef",
-      "name": "Check TimeEntry",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        2260,
-        720
+        1940,
+        700
       ]
     }
   ],
@@ -727,6 +684,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-29T18:15:06.000Z",
-  "versionId": "6cec64b1-73ee-4d1c-8e6f-05a5d9dd8c33"
+  "updatedAt": "2024-07-29T21:58:39.000Z",
+  "versionId": "7f757052-48f7-4ef3-aab6-dabd05d16355"
 }

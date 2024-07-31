@@ -8,6 +8,11 @@
             "node": "GET TimeEntries",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Check if the TimeEntry exist",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -27,18 +32,7 @@
       "main": [
         [
           {
-            "node": "Check if the TimeEntry exist",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Check if the TimeEntry exist": {
-      "main": [
-        [
-          {
-            "node": "If3",
+            "node": "Pass 1",
             "type": "main",
             "index": 0
           }
@@ -60,7 +54,7 @@
       "main": [
         [
           {
-            "node": "If2",
+            "node": "Remove Duplicates",
             "type": "main",
             "index": 0
           }
@@ -72,17 +66,6 @@
         [
           {
             "node": "lookup SMCliient",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If2": {
-      "main": [
-        [
-          {
-            "node": "Remove Duplicates",
             "type": "main",
             "index": 0
           }
@@ -138,22 +121,6 @@
         ]
       ]
     },
-    "Pass 1": {
-      "main": [
-        [
-          {
-            "node": "lookup_toggl_project",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
     "lookup SMCliient": {
       "main": [
         [
@@ -170,35 +137,6 @@
         [
           {
             "node": "Limit",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If3": {
-      "main": [
-        [
-          {
-            "node": "Pass 1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Pass ",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "CreatetimeEntryinSM",
             "type": "main",
             "index": 0
           }
@@ -242,6 +180,55 @@
           }
         ]
       ]
+    },
+    "Pass 1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Check if the TimeEntry exist": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "CreatetimeEntryinSM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "lookup_toggl_project",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-07-24T15:59:29.024Z",
@@ -258,8 +245,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        840,
-        720
+        960,
+        560
       ]
     },
     {
@@ -274,8 +261,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1100,
-        720
+        1220,
+        560
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -293,8 +280,8 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        1560,
-        700
+        1660,
+        540
       ]
     },
     {
@@ -315,8 +302,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        4440,
-        400
+        4325,
+        420
       ],
       "credentials": {
         "slackOAuth2Api": {
@@ -337,8 +324,8 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        4440,
-        620
+        4325,
+        640
       ],
       "credentials": {
         "mattermostApi": {
@@ -360,7 +347,7 @@
             },
             {
               "name": "limit",
-              "value": "3"
+              "value": "25"
             }
           ]
         },
@@ -384,23 +371,23 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1760,
-        700
+        1560,
+        320
       ]
     },
     {
       "parameters": {
         "content": "## Reference Toggl",
         "height": 541.0123448220287,
-        "width": 1447.3936059714647
+        "width": 1351.8556390170552
       },
       "id": "a7bb7ad1-6bda-4d3f-8b59-018d7b92f9fd",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2400,
-        300
+        2380,
+        320
       ]
     },
     {
@@ -414,22 +401,22 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3920,
-        400
+        3805,
+        420
       ]
     },
     {
       "parameters": {
         "content": "## Toggle Tiem Entries",
-        "height": 308.71737923375906
+        "height": 263.20454016568175
       },
       "id": "9828c4f5-bda3-41aa-8daa-d23f212c373e",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1040,
-        620
+        1140,
+        480
       ]
     },
     {
@@ -453,8 +440,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2640,
-        380
+        2520,
+        400
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -484,8 +471,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2640,
-        620
+        2520,
+        640
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -505,8 +492,8 @@
           "conditions": [
             {
               "id": "72a690fe-5300-4a8a-81a5-ecad768785d5",
-              "leftValue": "={{ $json.id }}",
-              "rightValue": "={{ $('Remove Duplicates').item.json.client_id }}",
+              "leftValue": "={{ $('Remove Duplicates').item.json.id }}",
+              "rightValue": "={{ $json.id }}",
               "operator": {
                 "type": "number",
                 "operation": "equals"
@@ -522,40 +509,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        2840,
-        380
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "72a690fe-5300-4a8a-81a5-ecad768785d5",
-              "leftValue": "={{ $json.id }}",
-              "rightValue": "={{ $('Pass 1').item.json.project_id }}",
-              "operator": {
-                "type": "number",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "757e2b7b-fabe-4a3e-a86a-af097d72c96d",
-      "name": "If2",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        2840,
-        620
+        2720,
+        400
       ]
     },
     {
@@ -565,8 +520,8 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        3060,
-        620
+        2720,
+        640
       ]
     },
     {
@@ -609,8 +564,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3260,
-        620
+        2980,
+        640
       ]
     },
     {
@@ -704,8 +659,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3480,
-        620
+        3220,
+        640
       ]
     },
     {
@@ -763,139 +718,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3320,
-        360
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "2c8db968-dba9-487e-8662-fc865f0f05a5",
-              "name": "id",
-              "value": "={{ $('GET TimeEntries').item.json.id }}",
-              "type": "number"
-            },
-            {
-              "id": "b825be1f-16b0-4fa0-b4ba-e6d83ebdab2f",
-              "name": "workspace_id",
-              "value": "={{ $('GET TimeEntries').item.json.workspace_id }}",
-              "type": "number"
-            },
-            {
-              "id": "154f13dc-8367-4f2d-a6b6-959d4c5fc648",
-              "name": "project_id",
-              "value": "={{ $('GET TimeEntries').item.json.project_id }}",
-              "type": "number"
-            },
-            {
-              "id": "99ba0edc-f09e-4bf9-a610-ed5ab097e939",
-              "name": "task_id",
-              "value": "={{ $('GET TimeEntries').item.json.task_id }}",
-              "type": "string"
-            },
-            {
-              "id": "1221fcae-d5a7-40c4-882b-79066ab82757",
-              "name": "billable",
-              "value": "={{ $('GET TimeEntries').item.json.billable }}",
-              "type": "boolean"
-            },
-            {
-              "id": "52aa66fb-1854-4792-ae60-5b7070636752",
-              "name": "start",
-              "value": "={{ $('GET TimeEntries').item.json.start }}",
-              "type": "string"
-            },
-            {
-              "id": "169c3904-afab-4f60-a80b-dae7e6599053",
-              "name": "stop",
-              "value": "={{ $('GET TimeEntries').item.json.stop }}",
-              "type": "string"
-            },
-            {
-              "id": "bb7f3acf-18a5-45f3-9fbf-911c291f7986",
-              "name": "duration",
-              "value": "={{ $('GET TimeEntries').item.json.duration }}",
-              "type": "number"
-            },
-            {
-              "id": "7435e15d-3236-494e-9ae9-41f3989d92a7",
-              "name": "description",
-              "value": "={{ $('GET TimeEntries').item.json.description }}",
-              "type": "string"
-            },
-            {
-              "id": "13f9e772-1d73-4926-873f-3f2529d0bf4a",
-              "name": "tags",
-              "value": "={{ $('GET TimeEntries').item.json.tags }}",
-              "type": "array"
-            },
-            {
-              "id": "1b4620a4-f35a-4347-9a55-cf6fe8674893",
-              "name": "tag_ids",
-              "value": "={{ $('GET TimeEntries').item.json.tag_ids }}",
-              "type": "array"
-            },
-            {
-              "id": "5be470b4-9dd5-4af9-8bde-5f1ab2b0b52e",
-              "name": "duronly",
-              "value": "={{ $('GET TimeEntries').item.json.duronly }}",
-              "type": "boolean"
-            },
-            {
-              "id": "2b07c69d-4131-4543-b468-bff6bf2e5c33",
-              "name": "at",
-              "value": "={{ $('GET TimeEntries').item.json.at }}",
-              "type": "string"
-            },
-            {
-              "id": "8edae5f5-ea5a-449f-8e62-4e1763fa74d7",
-              "name": "server_deleted_at",
-              "value": "={{ $('GET TimeEntries').item.json.server_deleted_at }}",
-              "type": "string"
-            },
-            {
-              "id": "3bacbcc3-2064-4673-b435-f936e79e5af6",
-              "name": "user_id",
-              "value": "={{ $('GET TimeEntries').item.json.user_id }}",
-              "type": "number"
-            },
-            {
-              "id": "833f0e4c-3bcd-4aca-b56c-896c4dcb5f57",
-              "name": "uid",
-              "value": "={{ $('GET TimeEntries').item.json.uid }}",
-              "type": "number"
-            },
-            {
-              "id": "21c49490-3190-4e23-b3c2-e09fba0bf4f0",
-              "name": "wid",
-              "value": "={{ $('GET TimeEntries').item.json.wid }}",
-              "type": "number"
-            },
-            {
-              "id": "eb2aaeca-f608-4400-a880-98e1ac3efa2f",
-              "name": "pid",
-              "value": "={{ $('GET TimeEntries').item.json.pid }}",
-              "type": "number"
-            },
-            {
-              "id": "34488200-d3e8-4d0d-9bd6-f5237a62b014",
-              "name": "permissions",
-              "value": "={{ $('GET TimeEntries').item.json.permissions }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "9af03add-d876-481f-a6c8-67371f8dc1a2",
-      "name": "Pass 1",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2260,
-        500
+        3205,
+        380
       ]
     },
     {
@@ -938,8 +762,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3100,
-        360
+        2985,
+        380
       ]
     },
     {
@@ -971,65 +795,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        1340,
-        720
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "95c6fdd4-dccf-4c75-9bf2-bba4b36239ec",
-              "leftValue": "=\"{{ $('Limit').item.json.id }}\"",
-              "rightValue": "=\"{{ $json.items[0].sac94990b3 }}\"",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              }
-            },
-            {
-              "id": "3f5f9a63-f834-45fb-b319-3dd4f0d59164",
-              "leftValue": "\"{{ $('Limit').item.json.id }}\"",
-              "rightValue": "\"{{ $json.items[0].sac94990b3 }}\"",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "or"
-        },
-        "options": {}
-      },
-      "id": "7e970396-661b-47c6-ad0c-13d27afc1547",
-      "name": "If3",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        2000,
-        700
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "combineBySql",
-        "numberInputs": 3,
-        "query": "with \n  client_ref as\n  (\n  select * from input1\n  )\n  SELECT \n      client_ref.id as client_id, \n      client_ref.name as client_name,\n      client_ref.wid as client_wid,\n      client_ref.archived as client_archived, \n      client_ref.at as client_created_at,\n      client_ref.creator_id as client_created_id,\n      client_ref.record_id as client_record_id,\n      a.id as time_entry_id,\n      a.*,\n      b.record_id as proj_record_id,\n      b.id as project_id, \n      b.name as project_name, \n      b.*\n  FROM input2 a, \n      input3 b\n         inner join client_ref on client_ref.id = b.client_id\nWHERE a.project_id = b.id"
-      },
-      "id": "75adc39f-3947-4488-a8f7-e90f53f02fe6",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        3700,
-        500
+        1420,
+        560
       ]
     },
     {
@@ -1043,7 +810,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1,
       "position": [
-        2500,
+        2400,
         900
       ],
       "disabled": true
@@ -1175,7 +942,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2280,
+        2220,
         900
       ],
       "disabled": true
@@ -1207,8 +974,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3980,
-        500
+        3865,
+        520
       ]
     },
     {
@@ -1248,8 +1015,168 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        4220,
-        500
+        4105,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "edac2a69-922b-4ae6-b446-77135538cd30",
+              "name": "id",
+              "value": "={{ $('Limit').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "6a4f893e-935d-40e1-9d47-42f447baf48f",
+              "name": "workspace_id",
+              "value": "={{ $('Limit').item.json.workspace_id }}",
+              "type": "string"
+            },
+            {
+              "id": "2434288c-8868-4d9c-974e-5a4d52264ffc",
+              "name": "project_id",
+              "value": "={{ $('Limit').item.json.project_id }}",
+              "type": "string"
+            },
+            {
+              "id": "b3321c6c-53b4-4cab-b7cd-ac8631e015b1",
+              "name": "billable",
+              "value": "={{ $json.billable }}",
+              "type": "boolean"
+            },
+            {
+              "id": "d9735093-d7e2-4f68-a91c-71e6b8eb502d",
+              "name": "start",
+              "value": "={{ $json.start }}",
+              "type": "string"
+            },
+            {
+              "id": "22cb8c7e-cf8c-4f47-a0a8-7a545b4d2eb8",
+              "name": "stop",
+              "value": "={{ $json.stop }}",
+              "type": "string"
+            },
+            {
+              "id": "6f7675da-ae62-46ea-bd96-03ebc3e4c1c2",
+              "name": "duration",
+              "value": "={{ $json.duration }}",
+              "type": "number"
+            },
+            {
+              "id": "fae21602-5447-4d3c-aec7-30d0279c5f8a",
+              "name": "duration",
+              "value": "={{ $json.duration }}",
+              "type": "number"
+            },
+            {
+              "id": "06fbe186-6946-4005-8b83-e6f250972aa4",
+              "name": "description",
+              "value": "={{ $json.description }}",
+              "type": "string"
+            },
+            {
+              "id": "d56eea09-b6eb-4d31-93d7-61aef5e017b9",
+              "name": "tags",
+              "value": "={{ $json.tags }}",
+              "type": "array"
+            },
+            {
+              "id": "d92ac077-7fae-409b-8ab3-74448c420a5e",
+              "name": "tag_ids",
+              "value": "={{ $json.tag_ids }}",
+              "type": "array"
+            },
+            {
+              "id": "0c178e35-c7c7-45e2-844d-f933f2d88a43",
+              "name": "duronly",
+              "value": "={{ $json.duronly }}",
+              "type": "boolean"
+            },
+            {
+              "id": "5064f29c-a084-4f86-9161-ef846ab352eb",
+              "name": "at",
+              "value": "={{ $json.at }}",
+              "type": "string"
+            },
+            {
+              "id": "c477e6cd-f2d7-4be1-a916-cbe6664fdb95",
+              "name": "server_deleted_at",
+              "value": "={{ $json.server_deleted_at }}",
+              "type": "string"
+            },
+            {
+              "id": "22140dac-6e84-4075-b049-430506352e6e",
+              "name": "user_id",
+              "value": "={{ $json.user_id }}",
+              "type": "number"
+            },
+            {
+              "id": "ac6cee6f-5f0b-4e18-b06f-0045f27d5127",
+              "name": "uid",
+              "value": "={{ $json.uid }}",
+              "type": "number"
+            },
+            {
+              "id": "1ccc3d98-f005-458a-8a81-b329760126ce",
+              "name": "wid",
+              "value": "={{ $json.wid }}",
+              "type": "number"
+            },
+            {
+              "id": "d76eb227-9508-43ea-9443-97f4d8e5ec9d",
+              "name": "pid",
+              "value": "={{ $json.pid }}",
+              "type": "number"
+            },
+            {
+              "id": "d7e495dd-1775-4e45-9c5e-0a746ec1a4b9",
+              "name": "permissions",
+              "value": "={{ $json.permissions }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d99a0d34-49b0-49a6-8958-87d246070cf8",
+      "name": "Pass 1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1880,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "numberInputs": 3,
+        "query": "with \n  client_ref as\n  (\n  select * from input1\n  )\n  SELECT \n      client_ref.id as client_id, \n      client_ref.name as client_name,\n      client_ref.wid as client_wid,\n      client_ref.archived as client_archived, \n      client_ref.at as client_created_at,\n      client_ref.creator_id as client_created_id,\n      client_ref.record_id as client_record_id,\n      a.id as time_entry_id,\n      a.*,\n      b.record_id as proj_record_id,\n      b.id as project_id, \n      b.name as project_name, \n      b.*\n  FROM input2 a, \n      input3 b\n         inner join client_ref on client_ref.id = b.client_id\nWHERE a.project_id = b.id"
+      },
+      "id": "75adc39f-3947-4488-a8f7-e90f53f02fe6",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3585,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "query": "with \n  time_entry_exist AS\n  (\n   select sac94990b3 from input1  \n  )\nSELECT id, workspace_id, project_id, billable, start, stop, duration, description, tags, tag_ids, duronly, at, server_deleted_at, user_id, uid, wid, pid, permissions\nFROM input2\n    left join time_entry_exist on input2.id <>  time_entry_exist.sac94990b3"
+      },
+      "id": "6a0f238d-3ee3-4e70-aa1e-aab41d6ec970",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2160,
+        520
       ]
     }
   ],
@@ -1263,6 +1190,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-31T16:00:03.000Z",
-  "versionId": "3bfd094b-be86-417b-b8cd-42ec2d253315"
+  "updatedAt": "2024-07-31T19:59:30.000Z",
+  "versionId": "d2560561-8263-4a28-a57a-5d4e0572c694"
 }

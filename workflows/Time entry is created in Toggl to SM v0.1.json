@@ -180,14 +180,14 @@
       "main": [
         [
           {
-            "node": "Pass ",
+            "node": "Pass 1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Pass 1",
+            "node": "Pass ",
             "type": "main",
             "index": 0
           }
@@ -216,7 +216,18 @@
         ]
       ]
     },
-    "aggregate records to teams chats": {
+    "CreatetimeEntryinSM": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
       "main": [
         [
           {
@@ -226,17 +237,6 @@
           },
           {
             "node": "Mattermost",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "CreatetimeEntryinSM": {
-      "main": [
-        [
-          {
-            "node": "aggregate records to teams chats",
             "type": "main",
             "index": 0
           }
@@ -299,6 +299,15 @@
     },
     {
       "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C07BLFDL917",
+          "mode": "list",
+          "cachedResultName": "toggl-time-captured"
+        },
+        "text": "=Hi Team,\n\nNew time entries are ready for review. Here are the details:\nDate: {{ $json.s2e7d2b64e[0] }}\nTitle: {{ $json.title[0] }}\nProject & Activities: {{ $json.text[0] }}\nClient: {{ $json.s388b58221[0] }}\nActual Hours: {{ $json.se6d1375cc[0] }}\nBillable Hours: {{ $json.s6e80240de[0] }} \nStatus: {{ $json.status[0].value }}  \n\nPlease review these entries at your earliest convenience.\nThank you!",
         "otherOptions": {}
       },
       "id": "363fa242-074d-4c44-808d-1ee4056ce5ad",
@@ -306,14 +315,20 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        4360,
-        780
+        4440,
+        400
       ],
-      "disabled": true
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "x77Xb6YhugsdNMWc",
+          "name": "Slack account 2"
+        }
+      }
     },
     {
       "parameters": {
         "channelId": "jpqr5pw497dxf8kirt96t4ar5r",
+        "message": "=Hi Team,\n\nNew time entries are ready for review. Here are the details:\nDate: {{ $json.s2e7d2b64e[0] }}\nTitle: {{ $json.title[0] }}\nProject & Activities: {{ $json.text[0] }}\nClient: {{ $json.s388b58221[0] }}\nActual Hours: {{ $json.se6d1375cc[0] }}\nBillable Hours: {{ $json.s6e80240de[0] }} \nStatus: {{ $json.status[0].value }}  \n\nPlease review these entries at your earliest convenience.\nThank you!       ",
         "attachments": [],
         "otherOptions": {}
       },
@@ -322,16 +337,15 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        4360,
-        1000
+        4440,
+        620
       ],
       "credentials": {
         "mattermostApi": {
           "id": "VGOFEEFurY7VTUJP",
           "name": "Mattermost account"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -385,23 +399,23 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2340,
-        680
+        2400,
+        300
       ]
     },
     {
       "parameters": {
         "content": "## SmartSuite",
         "height": 329.3037901061815,
-        "width": 278.75835396816683
+        "width": 228.1849366795202
       },
       "id": "53c913c9-0173-4b55-b1f0-f5a955442617",
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3840,
-        780
+        3920,
+        400
       ]
     },
     {
@@ -439,8 +453,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2580,
-        760
+        2640,
+        380
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -470,8 +484,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2580,
-        1000
+        2640,
+        620
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -508,8 +522,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        2780,
-        760
+        2840,
+        380
       ]
     },
     {
@@ -540,8 +554,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        2780,
-        1000
+        2840,
+        620
       ]
     },
     {
@@ -551,8 +565,8 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        3000,
-        1000
+        3060,
+        620
       ]
     },
     {
@@ -595,8 +609,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3200,
-        1000
+        3260,
+        620
       ]
     },
     {
@@ -690,8 +704,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3420,
-        1000
+        3480,
+        620
       ]
     },
     {
@@ -749,8 +763,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3260,
-        740
+        3320,
+        360
       ]
     },
     {
@@ -880,8 +894,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2200,
-        880
+        2260,
+        500
       ]
     },
     {
@@ -924,8 +938,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3040,
-        740
+        3100,
+        360
       ]
     },
     {
@@ -978,9 +992,19 @@
                 "type": "string",
                 "operation": "notEquals"
               }
+            },
+            {
+              "id": "3f5f9a63-f834-45fb-b319-3dd4f0d59164",
+              "leftValue": "\"{{ $('Limit').item.json.id }}\"",
+              "rightValue": "\"{{ $json.items[0].sac94990b3 }}\"",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
             }
           ],
-          "combinator": "and"
+          "combinator": "or"
         },
         "options": {}
       },
@@ -1004,8 +1028,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        3640,
-        880
+        3700,
+        500
       ]
     },
     {
@@ -1019,22 +1043,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1,
       "position": [
-        2460,
-        520
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"functionCode\": `\n        // Get the items from the previous node\n        const items = $node[\"CreatetimeEntryinSM\"].json;\n        \n        // Initialize an array to hold the content\n        let aggregatedContent = \"\";\n        \n        // Loop through each item and concatenate the content\n        items.forEach(item => {\n          const date = item.json[\"s2e7d2b64e\"];\n          const title = item.json[\"title\"];\n          const projectCode = item.json[\"sf7335e6da\"];\n          const hours = item.json[\"se6d1375cc\"];\n          const description = item.json[\"description\"].data.content[0].content[0].text;\n          \n          // Construct the aggregated content\n          aggregatedContent += \\`Date: \\${date}\\\\nTitle: \\${title}\\\\nProject Code: \\${projectCode}\\\\nHours: \\${hours}\\\\nDescription: \\${description}\\\\n\\\\n\\`;\n        });\n        \n        // Return a single item with the aggregated content\n        return [{ json: { aggregatedContent: aggregatedContent } }];\n        `\n      },\n      \"name\": \"Aggregate Content\",\n      \"type\": \"n8n-nodes-base.function\",\n      \"typeVersion\": 1,\n      \"position\": [\n        450,\n        300\n      ]\n    }\n  ]\n}\n"
-      },
-      "id": "d463b713-2882-4c39-a824-aaa0ec467f7b",
-      "name": "aggregate records to teams chats",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        4140,
-        880
-      ]
+        2500,
+        900
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1163,8 +1175,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2240,
-        520
+        2280,
+        900
       ],
       "disabled": true
     },
@@ -1195,8 +1207,49 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3920,
-        880
+        3980,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "title"
+            },
+            {
+              "fieldToAggregate": "sf7335e6da"
+            },
+            {
+              "fieldToAggregate": "status"
+            },
+            {
+              "fieldToAggregate": "s2e7d2b64e"
+            },
+            {
+              "fieldToAggregate": "se6d1375cc"
+            },
+            {
+              "fieldToAggregate": "s6e80240de"
+            },
+            {
+              "fieldToAggregate": "s388b58221"
+            },
+            {
+              "fieldToAggregate": "description.data.content[0].content[0].text"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "723c32ad-141c-4782-ade5-b4b85e7f8717",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        4220,
+        500
       ]
     }
   ],
@@ -1210,6 +1263,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-31T10:56:29.000Z",
-  "versionId": "b154dd30-ac4f-401b-8fcf-f25313ff8980"
+  "updatedAt": "2024-07-31T16:00:03.000Z",
+  "versionId": "3bfd094b-be86-417b-b8cd-42ec2d253315"
 }

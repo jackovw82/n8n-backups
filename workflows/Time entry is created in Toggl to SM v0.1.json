@@ -268,7 +268,7 @@
     },
     {
       "parameters": {
-        "maxItems": 2
+        "maxItems": 5
       },
       "id": "c7dfdebb-9e92-405a-bcd9-24f30c7fbc0a",
       "name": "Limit",
@@ -1019,11 +1019,11 @@
           "conditions": [
             {
               "id": "95c6fdd4-dccf-4c75-9bf2-bba4b36239ec",
-              "leftValue": "={{ $('Limit').item.json.id }}",
+              "leftValue": "=\"{{ $('Limit').item.json.id }}\"",
               "rightValue": "={{ $json.items[0].sac94990b3 }}",
               "operator": {
-                "type": "number",
-                "operation": "notEquals"
+                "type": "string",
+                "operation": "equals"
               }
             }
           ],
@@ -1051,6 +1051,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-30T20:00:49.000Z",
-  "versionId": "ec2686f9-0c97-45f1-bf9d-4fc204b84f6f"
+  "updatedAt": "2024-07-30T21:29:32.000Z",
+  "versionId": "1276527f-88e8-4fa2-b910-267f54ec5b62"
 }

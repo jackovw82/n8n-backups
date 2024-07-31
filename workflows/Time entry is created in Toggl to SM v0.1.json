@@ -45,17 +45,6 @@
         ]
       ]
     },
-    "Create timeEntry in SM": {
-      "main": [
-        [
-          {
-            "node": "Aggregate",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "lookup_toggl_client": {
       "main": [
         [
@@ -127,22 +116,6 @@
         ]
       ]
     },
-    "Aggregate": {
-      "main": [
-        [
-          {
-            "node": "Slack",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Mattermost",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Pass 2": {
       "main": [
         [
@@ -192,17 +165,6 @@
         ]
       ]
     },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "Create timeEntry in SM",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "If": {
       "main": [
         [
@@ -218,7 +180,63 @@
       "main": [
         [
           {
+            "node": "Pass ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
             "node": "Pass 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "CreatetimeEntryinSM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pass ": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "aggregate records to teams chats": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreatetimeEntryinSM": {
+      "main": [
+        [
+          {
+            "node": "aggregate records to teams chats",
             "type": "main",
             "index": 0
           }
@@ -268,7 +286,7 @@
     },
     {
       "parameters": {
-        "maxItems": 5
+        "maxItems": 3
       },
       "id": "c7dfdebb-9e92-405a-bcd9-24f30c7fbc0a",
       "name": "Limit",
@@ -288,8 +306,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        4500,
-        600
+        4360,
+        780
       ],
       "disabled": true
     },
@@ -304,8 +322,8 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        4500,
-        820
+        4360,
+        1000
       ],
       "credentials": {
         "mattermostApi": {
@@ -358,48 +376,17 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
-            },
-            {
-              "name": "ACCOUNT-ID",
-              "value": "swexdc6g"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.name }} - {{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"ready_for_review\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.project_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"saf4ce5701\": \"{{ $json.task_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.proj_record_id }}\",\n  \"s4621e0408\": \"{{ $json.client_record_id }}\"\n}\n ",
-        "options": {}
-      },
-      "id": "ced9d65b-3f1c-40f6-bd89-e24ec69e4cfb",
-      "name": "Create timeEntry in SM",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        4000,
-        700
-      ]
-    },
-    {
-      "parameters": {
         "content": "## Reference Toggl",
         "height": 541.0123448220287,
-        "width": 1349.2597151998602
+        "width": 1447.3936059714647
       },
       "id": "a7bb7ad1-6bda-4d3f-8b59-018d7b92f9fd",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2480,
-        500
+        2340,
+        680
       ]
     },
     {
@@ -413,8 +400,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3900,
-        600
+        3840,
+        780
       ]
     },
     {
@@ -453,7 +440,7 @@
       "typeVersion": 4.2,
       "position": [
         2580,
-        580
+        760
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -484,7 +471,7 @@
       "typeVersion": 4.2,
       "position": [
         2580,
-        820
+        1000
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -522,7 +509,7 @@
       "typeVersion": 2,
       "position": [
         2780,
-        580
+        760
       ]
     },
     {
@@ -554,7 +541,7 @@
       "typeVersion": 2,
       "position": [
         2780,
-        820
+        1000
       ]
     },
     {
@@ -565,7 +552,7 @@
       "typeVersion": 1.1,
       "position": [
         3000,
-        820
+        1000
       ]
     },
     {
@@ -609,27 +596,8 @@
       "typeVersion": 4.2,
       "position": [
         3200,
-        820
+        1000
       ]
-    },
-    {
-      "parameters": {
-        "fieldsToAggregate": {
-          "fieldToAggregate": [
-            {}
-          ]
-        },
-        "options": {}
-      },
-      "id": "cf7d937a-9797-4c62-8c0d-b37214b77d56",
-      "name": "Aggregate",
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        4260,
-        700
-      ],
-      "disabled": true
     },
     {
       "parameters": {
@@ -723,7 +691,7 @@
       "typeVersion": 3.4,
       "position": [
         3420,
-        820
+        1000
       ]
     },
     {
@@ -782,7 +750,7 @@
       "typeVersion": 3.4,
       "position": [
         3260,
-        560
+        740
       ]
     },
     {
@@ -912,8 +880,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2260,
-        700
+        2200,
+        880
       ]
     },
     {
@@ -957,22 +925,7 @@
       "typeVersion": 4.2,
       "position": [
         3040,
-        560
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "combineBySql",
-        "numberInputs": 3,
-        "query": "with \n  client_ref as\n  (\n  select * from input1\n  )\n  SELECT \n      client_ref.id as client_id, \n      client_ref.name as client_name,\n      client_ref.wid as client_wid,\n      client_ref.archived as client_archived, \n      client_ref.at as client_created_at,\n      client_ref.creator_id as client_created_id,\n      client_ref.record_id as client_record_id,\n      a.id as time_entry_id,\n      a.*,\n      b.record_id as proj_record_id,\n      b.id as project_id, \n      b.name as project_name, \n      b.*\n  FROM input2 a, \n      input3 b\n         inner join client_ref on client_ref.id = b.client_id\nWHERE a.project_id = b.id"
-      },
-      "id": "75adc39f-3947-4488-a8f7-e90f53f02fe6",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        3660,
-        700
+        740
       ]
     },
     {
@@ -1020,10 +973,10 @@
             {
               "id": "95c6fdd4-dccf-4c75-9bf2-bba4b36239ec",
               "leftValue": "=\"{{ $('Limit').item.json.id }}\"",
-              "rightValue": "={{ $json.items[0].sac94990b3 }}",
+              "rightValue": "=\"{{ $json.items[0].sac94990b3 }}\"",
               "operator": {
                 "type": "string",
-                "operation": "equals"
+                "operation": "notEquals"
               }
             }
           ],
@@ -1039,6 +992,212 @@
         2000,
         700
       ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "numberInputs": 3,
+        "query": "with \n  client_ref as\n  (\n  select * from input1\n  )\n  SELECT \n      client_ref.id as client_id, \n      client_ref.name as client_name,\n      client_ref.wid as client_wid,\n      client_ref.archived as client_archived, \n      client_ref.at as client_created_at,\n      client_ref.creator_id as client_created_id,\n      client_ref.record_id as client_record_id,\n      a.id as time_entry_id,\n      a.*,\n      b.record_id as proj_record_id,\n      b.id as project_id, \n      b.name as project_name, \n      b.*\n  FROM input2 a, \n      input3 b\n         inner join client_ref on client_ref.id = b.client_id\nWHERE a.project_id = b.id"
+      },
+      "id": "75adc39f-3947-4488-a8f7-e90f53f02fe6",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3640,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "source": "url",
+        "workflowUrl": "https://n8n.jackovanwyk.com:5678/workflow/tRI0HtjF7MElSZKz",
+        "options": {}
+      },
+      "id": "3c93c9a8-2cb9-4b1c-83e9-4f10dcb3bf6d",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        2460,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"functionCode\": `\n        // Get the items from the previous node\n        const items = $node[\"CreatetimeEntryinSM\"].json;\n        \n        // Initialize an array to hold the content\n        let aggregatedContent = \"\";\n        \n        // Loop through each item and concatenate the content\n        items.forEach(item => {\n          const date = item.json[\"s2e7d2b64e\"];\n          const title = item.json[\"title\"];\n          const projectCode = item.json[\"sf7335e6da\"];\n          const hours = item.json[\"se6d1375cc\"];\n          const description = item.json[\"description\"].data.content[0].content[0].text;\n          \n          // Construct the aggregated content\n          aggregatedContent += \\`Date: \\${date}\\\\nTitle: \\${title}\\\\nProject Code: \\${projectCode}\\\\nHours: \\${hours}\\\\nDescription: \\${description}\\\\n\\\\n\\`;\n        });\n        \n        // Return a single item with the aggregated content\n        return [{ json: { aggregatedContent: aggregatedContent } }];\n        `\n      },\n      \"name\": \"Aggregate Content\",\n      \"type\": \"n8n-nodes-base.function\",\n      \"typeVersion\": 1,\n      \"position\": [\n        450,\n        300\n      ]\n    }\n  ]\n}\n"
+      },
+      "id": "d463b713-2882-4c39-a824-aaa0ec467f7b",
+      "name": "aggregate records to teams chats",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4140,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2c8db968-dba9-487e-8662-fc865f0f05a5",
+              "name": "id",
+              "value": "={{ $('GET TimeEntries').item.json.id }}",
+              "type": "number"
+            },
+            {
+              "id": "b825be1f-16b0-4fa0-b4ba-e6d83ebdab2f",
+              "name": "workspace_id",
+              "value": "={{ $('GET TimeEntries').item.json.workspace_id }}",
+              "type": "number"
+            },
+            {
+              "id": "154f13dc-8367-4f2d-a6b6-959d4c5fc648",
+              "name": "project_id",
+              "value": "={{ $('GET TimeEntries').item.json.project_id }}",
+              "type": "number"
+            },
+            {
+              "id": "99ba0edc-f09e-4bf9-a610-ed5ab097e939",
+              "name": "task_id",
+              "value": "={{ $('GET TimeEntries').item.json.task_id }}",
+              "type": "string"
+            },
+            {
+              "id": "1221fcae-d5a7-40c4-882b-79066ab82757",
+              "name": "billable",
+              "value": "={{ $('GET TimeEntries').item.json.billable }}",
+              "type": "boolean"
+            },
+            {
+              "id": "52aa66fb-1854-4792-ae60-5b7070636752",
+              "name": "start",
+              "value": "={{ $('GET TimeEntries').item.json.start }}",
+              "type": "string"
+            },
+            {
+              "id": "169c3904-afab-4f60-a80b-dae7e6599053",
+              "name": "stop",
+              "value": "={{ $('GET TimeEntries').item.json.stop }}",
+              "type": "string"
+            },
+            {
+              "id": "bb7f3acf-18a5-45f3-9fbf-911c291f7986",
+              "name": "duration",
+              "value": "={{ $('GET TimeEntries').item.json.duration }}",
+              "type": "number"
+            },
+            {
+              "id": "7435e15d-3236-494e-9ae9-41f3989d92a7",
+              "name": "description",
+              "value": "={{ $('GET TimeEntries').item.json.description }}",
+              "type": "string"
+            },
+            {
+              "id": "13f9e772-1d73-4926-873f-3f2529d0bf4a",
+              "name": "tags",
+              "value": "={{ $('GET TimeEntries').item.json.tags }}",
+              "type": "array"
+            },
+            {
+              "id": "1b4620a4-f35a-4347-9a55-cf6fe8674893",
+              "name": "tag_ids",
+              "value": "={{ $('GET TimeEntries').item.json.tag_ids }}",
+              "type": "array"
+            },
+            {
+              "id": "5be470b4-9dd5-4af9-8bde-5f1ab2b0b52e",
+              "name": "duronly",
+              "value": "={{ $('GET TimeEntries').item.json.duronly }}",
+              "type": "boolean"
+            },
+            {
+              "id": "2b07c69d-4131-4543-b468-bff6bf2e5c33",
+              "name": "at",
+              "value": "={{ $('GET TimeEntries').item.json.at }}",
+              "type": "string"
+            },
+            {
+              "id": "8edae5f5-ea5a-449f-8e62-4e1763fa74d7",
+              "name": "server_deleted_at",
+              "value": "={{ $('GET TimeEntries').item.json.server_deleted_at }}",
+              "type": "string"
+            },
+            {
+              "id": "3bacbcc3-2064-4673-b435-f936e79e5af6",
+              "name": "user_id",
+              "value": "={{ $('GET TimeEntries').item.json.user_id }}",
+              "type": "number"
+            },
+            {
+              "id": "833f0e4c-3bcd-4aca-b56c-896c4dcb5f57",
+              "name": "uid",
+              "value": "={{ $('GET TimeEntries').item.json.uid }}",
+              "type": "number"
+            },
+            {
+              "id": "21c49490-3190-4e23-b3c2-e09fba0bf4f0",
+              "name": "wid",
+              "value": "={{ $('GET TimeEntries').item.json.wid }}",
+              "type": "number"
+            },
+            {
+              "id": "eb2aaeca-f608-4400-a880-98e1ac3efa2f",
+              "name": "pid",
+              "value": "={{ $('GET TimeEntries').item.json.pid }}",
+              "type": "number"
+            },
+            {
+              "id": "34488200-d3e8-4d0d-9bd6-f5237a62b014",
+              "name": "permissions",
+              "value": "={{ $('GET TimeEntries').item.json.permissions }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "54227438-d7d0-4905-adb1-72aba4336482",
+      "name": "Pass ",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2240,
+        520
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.name }} - {{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"ready_for_review\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.project_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"saf4ce5701\": \"{{ $json.task_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.proj_record_id }}\",\n  \"s4621e0408\": \"{{ $json.client_record_id }}\"\n}\n ",
+        "options": {}
+      },
+      "id": "ced9d65b-3f1c-40f6-bd89-e24ec69e4cfb",
+      "name": "CreatetimeEntryinSM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3920,
+        880
+      ]
     }
   ],
   "pinData": {},
@@ -1051,6 +1210,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-30T21:29:32.000Z",
-  "versionId": "1276527f-88e8-4fa2-b910-267f54ec5b62"
+  "updatedAt": "2024-07-31T10:56:29.000Z",
+  "versionId": "b154dd30-ac4f-401b-8fcf-f25313ff8980"
 }

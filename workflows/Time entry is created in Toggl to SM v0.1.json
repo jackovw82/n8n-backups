@@ -43,7 +43,7 @@
       "main": [
         [
           {
-            "node": "If1",
+            "node": "Filter",
             "type": "main",
             "index": 0
           }
@@ -55,17 +55,6 @@
         [
           {
             "node": "Remove Duplicates",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If1": {
-      "main": [
-        [
-          {
-            "node": "lookup SMCliient",
             "type": "main",
             "index": 0
           }
@@ -95,17 +84,6 @@
             "node": "Pass 2",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Pass 2": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 2
           }
         ]
       ]
@@ -203,11 +181,11 @@
         ]
       ]
     },
-    "Merge": {
+    "Filter": {
       "main": [
         [
           {
-            "node": "CreatetimeEntryinSM",
+            "node": "lookup SMCliient",
             "type": "main",
             "index": 0
           }
@@ -226,6 +204,28 @@
             "node": "Merge",
             "type": "main",
             "index": 1
+          }
+        ]
+      ]
+    },
+    "Pass 2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "CreatetimeEntryinSM",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -302,7 +302,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        4325,
+        4240,
         420
       ],
       "credentials": {
@@ -324,7 +324,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        4325,
+        4240,
         640
       ],
       "credentials": {
@@ -379,7 +379,7 @@
       "parameters": {
         "content": "## Reference Toggl",
         "height": 541.0123448220287,
-        "width": 1351.8556390170552
+        "width": 1280.4274511006197
       },
       "id": "a7bb7ad1-6bda-4d3f-8b59-018d7b92f9fd",
       "name": "Sticky Note",
@@ -401,7 +401,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3805,
+        3720,
         420
       ]
     },
@@ -480,38 +480,6 @@
           "name": "Toggle credentials"
         }
       }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "72a690fe-5300-4a8a-81a5-ecad768785d5",
-              "leftValue": "={{ $('Remove Duplicates').item.json.id }}",
-              "rightValue": "={{ $json.id }}",
-              "operator": {
-                "type": "number",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "d2dcaaf9-5e17-48d6-90b0-f33857959283",
-      "name": "If1",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        2720,
-        400
-      ]
     },
     {
       "parameters": {},
@@ -674,40 +642,46 @@
               "type": "string"
             },
             {
-              "id": "58c8010a-e889-4d7b-a3e8-fc2f07075f2c",
+              "id": "9ba084b6-2aa1-45e3-8ef3-db751dd9eb08",
               "name": "id",
-              "value": "={{ $('If1').item.json.id }}",
+              "value": "={{ $('Filter').item.json.id }}",
               "type": "number"
             },
             {
-              "id": "0d28fa75-dc41-4923-8847-e18d489eac19",
+              "id": "ec7a38f9-7fa2-41bd-91b8-7d5d621f2769",
               "name": "wid",
-              "value": "={{ $('If1').item.json.wid }}",
+              "value": "={{ $('Filter').item.json.wid }}",
               "type": "number"
             },
             {
-              "id": "5b381b19-8891-46c4-a616-591f4626dc80",
+              "id": "e6c4bf93-40fb-463b-90c5-bb3c0c901561",
               "name": "archived",
-              "value": "={{ $('If1').item.json.archived }}",
+              "value": "={{ $('Filter').item.json.archived }}",
               "type": "boolean"
             },
             {
-              "id": "ce84e29f-987f-45aa-89b8-046c6f0d9db8",
+              "id": "cb0fdb03-4504-4c4f-8ed8-c07ec9893db2",
               "name": "name",
-              "value": "={{ $('If1').item.json.name }}",
+              "value": "={{ $('Filter').item.json.name }}",
               "type": "string"
             },
             {
-              "id": "2b6fb491-a6f8-4dec-bfcf-10daa3563a1f",
+              "id": "06881ab8-0210-452d-a273-ffa0db490338",
               "name": "at",
-              "value": "={{ $('If1').item.json.at }}",
+              "value": "={{ $('Filter').item.json.at }}",
               "type": "string"
             },
             {
-              "id": "f99e8599-1708-4ec7-815b-0d7b8a8d0900",
+              "id": "55f0bf3b-884a-4018-9f4c-e6ecb2267616",
               "name": "creator_id",
-              "value": "={{ $('If1').item.json.creator_id }}",
+              "value": "={{ $('Filter').item.json.creator_id }}",
               "type": "number"
+            },
+            {
+              "id": "0d0b9a1f-fda1-4a20-b8cc-e2847e2ac910",
+              "name": "permissions",
+              "value": "={{ $('Filter').item.json.permissions }}",
+              "type": "string"
             }
           ]
         },
@@ -718,8 +692,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3205,
-        380
+        3220,
+        400
       ]
     },
     {
@@ -762,8 +736,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2985,
-        380
+        2980,
+        400
       ]
     },
     {
@@ -974,7 +948,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3865,
+        3780,
         520
       ]
     },
@@ -1015,7 +989,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        4105,
+        4020,
         520
       ]
     },
@@ -1152,17 +1126,34 @@
     },
     {
       "parameters": {
-        "mode": "combineBySql",
-        "numberInputs": 3,
-        "query": "with \n  client_ref as\n  (\n  select * from input1\n  )\n  SELECT \n      client_ref.id as client_id, \n      client_ref.name as client_name,\n      client_ref.wid as client_wid,\n      client_ref.archived as client_archived, \n      client_ref.at as client_created_at,\n      client_ref.creator_id as client_created_id,\n      client_ref.record_id as client_record_id,\n      a.id as time_entry_id,\n      a.*,\n      b.record_id as proj_record_id,\n      b.id as project_id, \n      b.name as project_name, \n      b.*\n  FROM input2 a, \n      input3 b\n         inner join client_ref on client_ref.id = b.client_id\nWHERE a.project_id = b.id"
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "08ff3ca5-b4b3-485d-a7f0-995210d56231",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "={{ $('Remove Duplicates').item.json.client_id }}",
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
       },
-      "id": "75adc39f-3947-4488-a8f7-e90f53f02fe6",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
+      "id": "eaa3fa1c-e01b-4ddd-9a6e-cded97727d26",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
       "position": [
-        3585,
-        520
+        2740,
+        400
       ]
     },
     {
@@ -1178,6 +1169,21 @@
         2160,
         520
       ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "numberInputs": 3,
+        "query": "WITH client_ref AS (\n    SELECT * FROM input1\n),\ntime_entry as(\nSELECT \n    client_ref.id AS client_id, \n    client_ref.name AS client_name,\n    client_ref.wid AS client_wid,\n    client_ref.archived AS client_archived, \n    client_ref.at AS client_created_at,\n    client_ref.creator_id AS client_created_id,\n    client_ref.record_id AS client_record_id,\n    a.id AS time_entry_id,\n    b.record_id AS proj_record_id,\n    b.id AS project_id, \n    b.name AS project_name\nFROM input2 a\nINNER JOIN input3 b ON a.project_id = b.id\nINNER JOIN client_ref ON client_ref.id = b.client_id\nWHERE a.project_id = b.id)\nselect client_id from time_entry;"
+      },
+      "id": "19c2032c-f2a1-4487-a654-60738e7d8fff",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3480,
+        520
+      ]
     }
   ],
   "pinData": {},
@@ -1190,6 +1196,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-31T19:59:30.000Z",
-  "versionId": "d2560561-8263-4a28-a57a-5d4e0572c694"
+  "updatedAt": "2024-07-31T21:37:37.000Z",
+  "versionId": "3864d76b-2b9d-4019-a0ae-af180d0d5475"
 }

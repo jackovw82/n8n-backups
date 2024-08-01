@@ -1,0 +1,32 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-07-24T17:17:34.158Z",
+  "id": "tRI0HtjF7MElSZKz",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "SWF001: Time entry is updated in Toggl to SM",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "12f4e52e-9f89-4b9e-9799-d2d700d4843b",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1040,
+        -100
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-01T20:00:17.000Z",
+  "versionId": "5c1521b4-85cc-4308-8e9f-77b10b787ed7"
+}

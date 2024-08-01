@@ -174,7 +174,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        2640,
+        2680,
         560
       ],
       "disabled": true
@@ -190,7 +190,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        2640,
+        2680,
         780
       ],
       "credentials": {
@@ -650,7 +650,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2420,
+        2460,
         660
       ]
     },
@@ -688,6 +688,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-31T10:13:28.000Z",
-  "versionId": "8a299647-ad08-425d-bd10-22d773e19213"
+  "updatedAt": "2024-08-01T07:54:45.000Z",
+  "versionId": "41d8ca48-a24e-4675-a837-4aeb61395ff7"
 }

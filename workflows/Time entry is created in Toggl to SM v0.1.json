@@ -1174,7 +1174,7 @@
       "parameters": {
         "mode": "combineBySql",
         "numberInputs": 3,
-        "query": "WITH client_ref AS (\n    SELECT * FROM input1\n),\ntime_entry as(\nSELECT \n    client_ref.id AS client_id, \n    client_ref.name AS client_name,\n    client_ref.wid AS client_wid,\n    client_ref.archived AS client_archived, \n    client_ref.at AS client_created_at,\n    client_ref.creator_id AS client_created_id,\n    client_ref.record_id AS client_record_id,\n    a.id AS time_entry_id,\n    b.record_id AS proj_record_id,\n    b.id AS project_id, \n    b.name AS project_name\nFROM input2 a\nINNER JOIN input3 b ON a.project_id = b.id\nINNER JOIN client_ref ON client_ref.id = b.client_id\nWHERE a.project_id = b.id)\nselect client_id from time_entry;"
+        "query": "WITH client_ref AS (\n    SELECT * FROM input1\n)\nselect * from client_ref;"
       },
       "id": "19c2032c-f2a1-4487-a654-60738e7d8fff",
       "name": "Merge",
@@ -1196,6 +1196,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-31T21:37:37.000Z",
-  "versionId": "3864d76b-2b9d-4019-a0ae-af180d0d5475"
+  "updatedAt": "2024-08-01T07:11:23.000Z",
+  "versionId": "a8e6fd47-d758-48f1-aadd-c2af79b2f397"
 }

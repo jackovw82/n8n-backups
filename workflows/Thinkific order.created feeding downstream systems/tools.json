@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-01T21:49:09.619Z",
+  "id": "NTH1XqChj2Lx5jzQ",
+  "meta": null,
+  "name": "Thinkific order.created feeding downstream systems/tools",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-01T21:49:09.619Z",
+  "versionId": "b1673fe1-fa10-4bf2-ad2a-a054893a94b0"
+}

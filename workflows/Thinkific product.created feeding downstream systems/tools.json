@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-01T21:55:25.965Z",
+  "id": "j2qFXS6GReltCGkI",
+  "meta": null,
+  "name": "Thinkific product.created feeding downstream systems/tools",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-01T21:55:25.965Z",
+  "versionId": "79bdfff6-8c23-452f-b5c3-a374ccdf21e9"
+}

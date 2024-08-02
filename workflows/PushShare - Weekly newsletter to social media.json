@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-01T20:09:09.021Z",
+  "id": "8bQMPfpyeY99kiRP",
+  "meta": null,
+  "name": "PushShare - Weekly newsletter to social media",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-01T20:09:09.021Z",
+  "versionId": "3a20934e-dd94-45bb-ac6b-a3bd0324a6f3"
+}

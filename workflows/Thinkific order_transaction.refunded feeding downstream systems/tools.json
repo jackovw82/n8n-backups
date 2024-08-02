@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-01T21:50:01.051Z",
+  "id": "kbDTlkE236lp0BxK",
+  "meta": null,
+  "name": "Thinkific order_transaction.refunded feeding downstream systems/tools",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-01T21:50:01.051Z",
+  "versionId": "8f15fd56-12aa-43d3-94f6-8db426f283cf"
+}

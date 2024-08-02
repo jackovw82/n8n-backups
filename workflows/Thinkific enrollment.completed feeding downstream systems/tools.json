@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-01T21:54:27.796Z",
+  "id": "8ggf15rbROY1f4Em",
+  "meta": null,
+  "name": "Thinkific enrollment.completed feeding downstream systems/tools",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-01T21:54:27.796Z",
+  "versionId": "8d08f474-244c-4ce8-9450-f6867a8cbc8a"
+}

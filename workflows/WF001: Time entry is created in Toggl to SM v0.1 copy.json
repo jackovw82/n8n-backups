@@ -241,17 +241,6 @@
         ]
       ]
     },
-    "Merge1": {
-      "main": [
-        [
-          {
-            "node": "Pass ",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Code1": {
       "main": [
         [
@@ -284,6 +273,33 @@
           }
         ]
       ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "GET TimeEntries",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "TimeEntryExist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Pass ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-08-01T21:28:59.957Z",
@@ -300,8 +316,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1260,
-        700
+        -1220,
+        580
       ]
     },
     {
@@ -316,8 +332,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -900,
-        700
+        -860,
+        740
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -328,15 +344,15 @@
     },
     {
       "parameters": {
-        "maxItems": 4
+        "maxItems": 5
       },
       "id": "c35dcc3e-ab4e-49ed-8c58-3c3dffd31971",
       "name": "Limit",
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -460,
-        680
+        -420,
+        720
       ]
     },
     {
@@ -357,8 +373,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        3020,
-        560
+        3024,
+        600
       ],
       "credentials": {
         "slackOAuth2Api": {
@@ -383,8 +399,8 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        3020,
-        760
+        3024,
+        800
       ],
       "credentials": {
         "mattermostApi": {
@@ -397,15 +413,15 @@
       "parameters": {
         "content": "## Reference Toggl",
         "height": 541.0123448220287,
-        "width": 1468.4485804956025
+        "width": 1515.8627092964575
       },
       "id": "f2c8f55e-6ba8-4c21-a757-9976b16b4a06",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        460,
-        460
+        640,
+        500
       ]
     },
     {
@@ -419,8 +435,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2020,
-        580
+        2244,
+        620
       ]
     },
     {
@@ -433,8 +449,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -980,
-        620
+        -940,
+        680
       ]
     },
     {
@@ -458,8 +474,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1080,
-        780
+        1084,
+        820
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -475,8 +491,8 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        880,
-        780
+        884,
+        820
       ]
     },
     {
@@ -519,8 +535,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1320,
-        780
+        1324,
+        820
       ]
     },
     {
@@ -572,8 +588,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1540,
-        780
+        1544,
+        820
       ]
     },
     {
@@ -637,8 +653,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1820,
-        540
+        1824,
+        580
       ]
     },
     {
@@ -681,8 +697,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1640,
-        540
+        1644,
+        580
       ]
     },
     {
@@ -714,8 +730,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -700,
-        700
+        -660,
+        740
       ]
     },
     {
@@ -745,8 +761,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2300,
-        660
+        2304,
+        700
       ]
     },
     {
@@ -786,8 +802,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        2540,
-        660
+        2544,
+        700
       ]
     },
     {
@@ -917,8 +933,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -260,
-        680
+        -220,
+        720
       ]
     },
     {
@@ -949,8 +965,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        1260,
-        540
+        1264,
+        580
       ]
     },
     {
@@ -964,8 +980,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        2020,
-        660
+        2024,
+        700
       ]
     },
     {
@@ -975,8 +991,8 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        1460,
-        540
+        1464,
+        580
       ]
     },
     {
@@ -1004,8 +1020,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        720,
-        780
+        724,
+        820
       ]
     },
     {
@@ -1029,8 +1045,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1060,
-        540
+        1064,
+        580
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -1048,8 +1064,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2760,
-        660
+        2764,
+        700
       ]
     },
     {
@@ -1179,27 +1195,9 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        480,
-        660
+        460,
+        700
       ]
-    },
-    {
-      "parameters": {
-        "mode": "combine",
-        "fieldsToMatchString": "=id,{items[0].sac94990b3}",
-        "joinMode": "keepNonMatches",
-        "outputDataFrom": "input2",
-        "options": {}
-      },
-      "id": "422fc75e-2d07-44e2-8ae8-a33b3f585817",
-      "name": "Merge1",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        220,
-        660
-      ],
-      "notesInFlow": true
     },
     {
       "parameters": {
@@ -1210,20 +1208,20 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -40,
-        680
+        0,
+        720
       ]
     },
     {
       "parameters": {
-        "jsCode": "// Fetch data from input1 (this step would typically be done using HTTP Request or Database nodes)\nconst input1 = $node[\"Fetch input1\"].json; // Replace with the actual node name that fetches data from input1\n\n// Ensure input1 is an array or convert it to an array if it is a single object\nlet input1Array = [];\n\nif (Array.isArray(input1)) {\n  input1Array = input1;\n} else if (input1 !== null && typeof input1 === 'object') {\n  input1Array = [input1];\n} else {\n  throw new Error(\"input1 is neither an array nor an object\");\n}\n\n// Trim fields\nreturn input1Array.map(item => {\n  if (item.s8e3e58cad) {\n    item.s8e3e58cad = item.s8e3e58cad.trim();\n  }\n  return item;\n});\n"
+        "jsCode": "// Fetch data from input1 (this step would typically be done using HTTP Request or Database nodes)\nconst input1 = $node[\"TimeEntryExist\"].json; // Replace with the actual node name that fetches data from input1\n\n// Ensure input1 is an array or convert it to an array if it is a single object\nlet input1Array = [];\n\nif (Array.isArray(input1)) {\n  input1Array = input1;\n} else if (input1 !== null && typeof input1 === 'object') {\n  input1Array = [input1];\n} else {\n  throw new Error(\"input1 is neither an array nor an object\");\n}\n\n// Trim fields\nreturn input1Array.map(item => {\n  if (item.s8e3e58cad) {\n    item.s8e3e58cad = item.s8e3e58cad.trim();\n  }\n  return item;\n});\n"
       },
       "id": "72280dc6-9e6a-4367-b16b-86e71b9c7f03",
       "name": "Code",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -260,
+        -220,
         460
       ]
     },
@@ -1264,9 +1262,54 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -580,
+        -540,
         460
       ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 4
+            }
+          ]
+        }
+      },
+      "id": "b0b1adc2-9315-4101-8fe5-99a3d846628f",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1220,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "advanced": true,
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "items[0].sac94990b3",
+              "field2": "id"
+            }
+          ]
+        },
+        "outputDataFrom": "input2",
+        "options": {}
+      },
+      "id": "422fc75e-2d07-44e2-8ae8-a33b3f585817",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        240,
+        700
+      ],
+      "notesInFlow": true
     }
   ],
   "pinData": {},
@@ -1279,6 +1322,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-03T07:58:46.000Z",
-  "versionId": "e60c1698-b7e7-4b67-ad68-db8a650886a4"
+  "updatedAt": "2024-08-03T09:25:39.000Z",
+  "versionId": "b1951ad6-c7b7-48cb-9582-f96e25a88b1a"
 }

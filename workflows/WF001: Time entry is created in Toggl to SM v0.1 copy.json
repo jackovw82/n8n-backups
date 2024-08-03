@@ -10,7 +10,7 @@
             "index": 0
           },
           {
-            "node": "Check if the TimeEntry exist",
+            "node": "TimeEntryExist",
             "type": "main",
             "index": 0
           }
@@ -33,17 +33,6 @@
         [
           {
             "node": "Pass 1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Check if the TimeEntry exist": {
-      "main": [
-        [
-          {
-            "node": "Merge1",
             "type": "main",
             "index": 0
           }
@@ -158,9 +147,9 @@
       "main": [
         [
           {
-            "node": "Merge1",
+            "node": "Code1",
             "type": "main",
-            "index": 1
+            "index": 0
           }
         ]
       ]
@@ -262,6 +251,39 @@
           }
         ]
       ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TimeEntryExist": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-08-01T21:28:59.957Z",
@@ -335,7 +357,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        2800,
+        3020,
         560
       ],
       "credentials": {
@@ -361,7 +383,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        2800,
+        3020,
         760
       ],
       "credentials": {
@@ -370,47 +392,6 @@
           "name": "Mattermost account"
         }
       }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/list/",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "offet",
-              "value": "0"
-            },
-            {
-              "name": "limit",
-              "value": "25"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
-            },
-            {
-              "name": "ACCOUNT-ID",
-              "value": "swexdc6g"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "afa4dcdf-1d63-4fd3-9f50-3904d90244be",
-      "name": "Check if the TimeEntry exist",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -580,
-        460
-      ]
     },
     {
       "parameters": {
@@ -477,7 +458,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        860,
+        1080,
         780
       ],
       "credentials": {
@@ -494,7 +475,7 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        660,
+        880,
         780
       ]
     },
@@ -538,7 +519,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1100,
+        1320,
         780
       ]
     },
@@ -591,7 +572,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1320,
+        1540,
         780
       ]
     },
@@ -656,7 +637,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1600,
+        1820,
         540
       ]
     },
@@ -700,7 +681,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1420,
+        1640,
         540
       ]
     },
@@ -764,7 +745,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2080,
+        2300,
         660
       ]
     },
@@ -805,7 +786,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        2320,
+        2540,
         660
       ]
     },
@@ -968,7 +949,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        1040,
+        1260,
         540
       ]
     },
@@ -983,7 +964,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        1800,
+        2020,
         660
       ]
     },
@@ -994,7 +975,7 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        1240,
+        1460,
         540
       ]
     },
@@ -1023,7 +1004,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        500,
+        720,
         780
       ]
     },
@@ -1048,7 +1029,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        840,
+        1060,
         540
       ],
       "credentials": {
@@ -1067,7 +1048,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2540,
+        2760,
         660
       ]
     },
@@ -1198,14 +1179,15 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        260,
+        480,
         660
       ]
     },
     {
       "parameters": {
         "mode": "combine",
-        "fieldsToMatchString": "=",
+        "fieldsToMatchString": "=id,{items[0].sac94990b3}",
+        "joinMode": "keepNonMatches",
         "outputDataFrom": "input2",
         "options": {}
       },
@@ -1214,10 +1196,77 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        0,
+        220,
         660
       ],
       "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  item.json.id = item.json.id.trim();\n  return item;\n});"
+      },
+      "id": "ca70fbf0-2c83-419e-b43c-0c95ed55e447",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Fetch data from input1 (this step would typically be done using HTTP Request or Database nodes)\nconst input1 = $node[\"TimeEntryExist\"].json; // Replace with the actual node name that fetches data from input1\n\n// Trim fields\nreturn input1.map(input1 => {\n  if (item.s8e3e58cad) {\n    item.s8e3e58cad = item.s8e3e58cad.trim();\n  }\n  return item;\n});\n"
+      },
+      "id": "72280dc6-9e6a-4367-b16b-86e71b9c7f03",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -260,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "25"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "afa4dcdf-1d63-4fd3-9f50-3904d90244be",
+      "name": "TimeEntryExist",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -580,
+        460
+      ]
     }
   ],
   "pinData": {},
@@ -1230,6 +1279,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-02T12:55:26.000Z",
-  "versionId": "587f280b-897d-4f5c-8ab9-28c450795515"
+  "updatedAt": "2024-08-02T21:59:23.000Z",
+  "versionId": "4eae1110-0bc7-4d39-bb6e-c3673b4795bf"
 }

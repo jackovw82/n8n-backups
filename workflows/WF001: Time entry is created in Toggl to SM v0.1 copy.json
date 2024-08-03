@@ -10,7 +10,7 @@
             "index": 0
           },
           {
-            "node": "TimeEntryExist",
+            "node": "SMTimeEntry",
             "type": "main",
             "index": 0
           }
@@ -252,28 +252,6 @@
         ]
       ]
     },
-    "Code": {
-      "main": [
-        [
-          {
-            "node": "Merge1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "TimeEntryExist": {
-      "main": [
-        [
-          {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Schedule Trigger": {
       "main": [
         [
@@ -283,7 +261,29 @@
             "index": 0
           },
           {
-            "node": "TimeEntryExist",
+            "node": "SMTimeEntry",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SMTimeEntry": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
             "type": "main",
             "index": 0
           }
@@ -1195,7 +1195,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        460,
+        440,
         700
       ]
     },
@@ -1214,15 +1214,22 @@
     },
     {
       "parameters": {
-        "jsCode": "// Fetch data from input1 (this step would typically be done using HTTP Request or Database nodes)\nconst input1 = $node[\"TimeEntryExist\"].json; // Replace with the actual node name that fetches data from input1\n\n// Ensure input1 is an array or convert it to an array if it is a single object\nlet input1Array = [];\n\nif (Array.isArray(input1)) {\n  input1Array = input1;\n} else if (input1 !== null && typeof input1 === 'object') {\n  input1Array = [input1];\n} else {\n  throw new Error(\"input1 is neither an array nor an object\");\n}\n\n// Trim fields\nreturn input1Array.map(item => {\n  if (item.s8e3e58cad) {\n    item.s8e3e58cad = item.s8e3e58cad.trim();\n  }\n  return item;\n});\n"
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 4
+            }
+          ]
+        }
       },
-      "id": "72280dc6-9e6a-4367-b16b-86e71b9c7f03",
-      "name": "Code",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "id": "b0b1adc2-9315-4101-8fe5-99a3d846628f",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
       "position": [
-        -220,
-        460
+        -1220,
+        780
       ]
     },
     {
@@ -1258,47 +1265,31 @@
         "options": {}
       },
       "id": "afa4dcdf-1d63-4fd3-9f50-3904d90244be",
-      "name": "TimeEntryExist",
+      "name": "SMTimeEntry",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -540,
+        -580,
         460
       ]
     },
     {
       "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "hours",
-              "hoursInterval": 4
-            }
-          ]
-        }
+        "jsCode": "const data = $node[\"SMTimeEntry\"].json.items;\n\n// Extract all sac94990b3 values\nconst sac94990b3Values = data.map(item => item.sac94990b3);\n\n// Return the extracted values\nreturn sac94990b3Values.map(value => ({ json: { sac94990b3: value } }));\n"
       },
-      "id": "b0b1adc2-9315-4101-8fe5-99a3d846628f",
-      "name": "Schedule Trigger",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
+      "id": "de6c30ed-5e9f-43ac-b0c5-793a898634fc",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
-        -1220,
-        780
+        -220,
+        460
       ]
     },
     {
       "parameters": {
         "mode": "combine",
-        "advanced": true,
-        "mergeByFields": {
-          "values": [
-            {
-              "field1": "items[0].sac94990b3",
-              "field2": "id"
-            }
-          ]
-        },
-        "outputDataFrom": "input2",
+        "fieldsToMatchString": "sac94990b3, id",
         "options": {}
       },
       "id": "422fc75e-2d07-44e2-8ae8-a33b3f585817",
@@ -1322,6 +1313,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-03T09:25:39.000Z",
-  "versionId": "b1951ad6-c7b7-48cb-9582-f96e25a88b1a"
+  "updatedAt": "2024-08-03T15:43:57.000Z",
+  "versionId": "de93963a-458a-4685-bf05-77d8e3ac49f8"
 }

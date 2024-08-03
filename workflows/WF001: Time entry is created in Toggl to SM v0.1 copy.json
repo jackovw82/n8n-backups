@@ -1216,7 +1216,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Fetch data from input1 (this step would typically be done using HTTP Request or Database nodes)\nconst input1 = $node[\"TimeEntryExist\"].json; // Replace with the actual node name that fetches data from input1\n\n// Trim fields\nreturn input1.map(input1 => {\n  if (item.s8e3e58cad) {\n    item.s8e3e58cad = item.s8e3e58cad.trim();\n  }\n  return item;\n});\n"
+        "jsCode": "// Fetch data from input1 (this step would typically be done using HTTP Request or Database nodes)\nconst input1 = $node[\"Fetch input1\"].json; // Replace with the actual node name that fetches data from input1\n\n// Ensure input1 is an array or convert it to an array if it is a single object\nlet input1Array = [];\n\nif (Array.isArray(input1)) {\n  input1Array = input1;\n} else if (input1 !== null && typeof input1 === 'object') {\n  input1Array = [input1];\n} else {\n  throw new Error(\"input1 is neither an array nor an object\");\n}\n\n// Trim fields\nreturn input1Array.map(item => {\n  if (item.s8e3e58cad) {\n    item.s8e3e58cad = item.s8e3e58cad.trim();\n  }\n  return item;\n});\n"
       },
       "id": "72280dc6-9e6a-4367-b16b-86e71b9c7f03",
       "name": "Code",
@@ -1279,6 +1279,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-02T21:59:23.000Z",
-  "versionId": "4eae1110-0bc7-4d39-bb6e-c3673b4795bf"
+  "updatedAt": "2024-08-03T07:58:46.000Z",
+  "versionId": "e60c1698-b7e7-4b67-ad68-db8a650886a4"
 }

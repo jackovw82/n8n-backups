@@ -1,0 +1,64 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-04T13:19:29.911Z",
+  "id": "V8I9HTOyzaIpkTw4",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Summarise weekly time entries per project",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2676dc98-294c-4dfd-b157-7551e9cb691f",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "sum"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8d092fd2-1947-497c-8922-b88de714ed12",
+      "name": "Summarize",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        580
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-04T13:20:07.000Z",
+  "versionId": "571fe596-83ab-4260-bcec-552515b302d1"
+}

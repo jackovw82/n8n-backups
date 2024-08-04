@@ -28,17 +28,6 @@
         ]
       ]
     },
-    "Limit": {
-      "main": [
-        [
-          {
-            "node": "Pass 1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "lookup_toggl_project": {
       "main": [
         [
@@ -114,7 +103,7 @@
       "main": [
         [
           {
-            "node": "Limit",
+            "node": "Pass 1",
             "type": "main",
             "index": 0
           }
@@ -261,7 +250,7 @@
       "main": [
         [
           {
-            "node": "If1",
+            "node": "Compare Datasets",
             "type": "main",
             "index": 0
           }
@@ -272,9 +261,9 @@
       "main": [
         [
           {
-            "node": "If1",
+            "node": "Compare Datasets",
             "type": "main",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -290,23 +279,14 @@
         ]
       ]
     },
-    "If1": {
+    "Compare Datasets": {
       "main": [
-        [
-          {
-            "node": "No Operation, do nothing",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
+        [],
+        [],
         [
           {
             "node": "Pass ",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Pass 1",
             "type": "main",
             "index": 0
           }
@@ -328,8 +308,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1280,
-        540
+        -1040,
+        620
       ]
     },
     {
@@ -344,8 +324,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -920,
-        700
+        -740,
+        780
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -353,17 +333,6 @@
           "name": "Toggle credentials"
         }
       }
-    },
-    {
-      "parameters": {},
-      "id": "c35dcc3e-ab4e-49ed-8c58-3c3dffd31971",
-      "name": "Limit",
-      "type": "n8n-nodes-base.limit",
-      "typeVersion": 1,
-      "position": [
-        -480,
-        680
-      ]
     },
     {
       "parameters": {
@@ -383,7 +352,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        3184,
+        3240,
         600
       ],
       "credentials": {
@@ -409,7 +378,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        3184,
+        3240,
         800
       ],
       "credentials": {
@@ -423,7 +392,7 @@
       "parameters": {
         "content": "## Reference Toggl",
         "height": 541.0123448220287,
-        "width": 1515.8627092964575
+        "width": 1774.5794222560603
       },
       "id": "f2c8f55e-6ba8-4c21-a757-9976b16b4a06",
       "name": "Sticky Note",
@@ -445,7 +414,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2184,
+        2440,
         620
       ]
     },
@@ -459,8 +428,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1000,
-        640
+        -820,
+        720
       ]
     },
     {
@@ -740,8 +709,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -720,
-        700
+        -480,
+        780
       ]
     },
     {
@@ -771,7 +740,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2464,
+        2500,
         700
       ]
     },
@@ -812,7 +781,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        2704,
+        2760,
         700
       ]
     },
@@ -823,19 +792,19 @@
             {
               "id": "edac2a69-922b-4ae6-b446-77135538cd30",
               "name": "id",
-              "value": "={{ $('Limit').item.json.id }}",
+              "value": "={{ $json.id }}",
               "type": "string"
             },
             {
               "id": "6a4f893e-935d-40e1-9d47-42f447baf48f",
               "name": "workspace_id",
-              "value": "={{ $('Limit').item.json.workspace_id }}",
+              "value": "={{ $json.workspace_id }}",
               "type": "string"
             },
             {
               "id": "2434288c-8868-4d9c-974e-5a4d52264ffc",
               "name": "project_id",
-              "value": "={{ $('Limit').item.json.project_id }}",
+              "value": "={{ $json.project_id }}",
               "type": "string"
             },
             {
@@ -943,8 +912,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -280,
-        680
+        -200,
+        760
       ]
     },
     {
@@ -1059,7 +1028,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2924,
+        2980,
         700
       ]
     },
@@ -1196,7 +1165,6 @@
     },
     {
       "parameters": {
-        "mode": "runOnceForEachItem",
         "jsCode": "return items.map(item => {\n  item.json.id = item.json.id.trim();\n  return item;\n});"
       },
       "id": "ca70fbf0-2c83-419e-b43c-0c95ed55e447",
@@ -1204,8 +1172,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -40,
-        680
+        100,
+        760
       ]
     },
     {
@@ -1224,8 +1192,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -1280,
-        740
+        -1040,
+        820
       ]
     },
     {
@@ -1265,8 +1233,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -560,
-        500
+        -380,
+        580
       ]
     },
     {
@@ -1278,8 +1246,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -240,
-        500
+        -60,
+        580
       ]
     },
     {
@@ -1299,46 +1267,24 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
+        "mergeByFields": {
+          "values": [
             {
-              "id": "d200a7dc-1958-4d4f-8922-9a801b416404",
-              "leftValue": "={{ $json.sac94990b3 }}",
-              "rightValue": "={{ $json.id }}",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
+              "field1": "sac94990b3",
+              "field2": "id"
             }
-          ],
-          "combinator": "and"
+          ]
         },
+        "resolve": "preferInput2",
         "options": {}
       },
-      "id": "6b900cfb-b082-408c-b232-843381e420cc",
-      "name": "If1",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
+      "id": "0d50d6cc-cf56-4f94-9ae5-705c7fec839b",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
       "position": [
-        160,
-        680
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "f8a701b8-7221-40c4-96bb-a94b596f49b6",
-      "name": "No Operation, do nothing",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        400,
-        480
+        340,
+        660
       ]
     }
   ],
@@ -1352,6 +1298,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-04T13:38:05.000Z",
-  "versionId": "002dbe84-2e22-4867-aa63-960803e6841a"
+  "updatedAt": "2024-08-04T19:28:28.000Z",
+  "versionId": "928082a7-8d31-400c-b54a-8cf03e796fac"
 }

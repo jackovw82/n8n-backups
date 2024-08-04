@@ -290,11 +290,22 @@
         ]
       ]
     },
-    "Merge1": {
+    "If1": {
       "main": [
         [
           {
             "node": "Pass ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "If1",
             "type": "main",
             "index": 0
           }
@@ -316,8 +327,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1220,
-        580
+        -1480,
+        640
       ]
     },
     {
@@ -332,8 +343,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -860,
-        740
+        -1120,
+        800
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -351,8 +362,8 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -420,
-        720
+        -680,
+        780
       ]
     },
     {
@@ -449,8 +460,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -940,
-        680
+        -1200,
+        740
       ]
     },
     {
@@ -730,8 +741,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -660,
-        740
+        -920,
+        800
       ]
     },
     {
@@ -933,8 +944,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -220,
-        720
+        -480,
+        780
       ]
     },
     {
@@ -1195,7 +1206,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        440,
+        560,
         700
       ]
     },
@@ -1208,8 +1219,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        0,
-        720
+        -180,
+        780
       ]
     },
     {
@@ -1228,8 +1239,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -1220,
-        780
+        -1480,
+        840
       ]
     },
     {
@@ -1269,8 +1280,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -500,
-        480
+        -760,
+        540
       ]
     },
     {
@@ -1282,24 +1293,61 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -220,
-        480
+        -480,
+        540
       ]
     },
     {
       "parameters": {
-        "mode": "combineBySql",
-        "query": "SELECT  * FROM input2 \n  inner join input1 b on b.sac94990b3 = a.id\n;"
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8189acd5-d145-4702-8d25-cfffd74a317d",
+              "leftValue": "={{ $json.success }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "302f70db-76c9-4e16-8539-56b5e155cca4",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        320,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "sac94990b3, id",
+        "joinMode": "keepNonMatches",
+        "outputDataFrom": "input2",
+        "options": {}
       },
       "id": "422fc75e-2d07-44e2-8ae8-a33b3f585817",
       "name": "Merge1",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        240,
+        80,
         700
       ],
-      "notesInFlow": true
+      "notesInFlow": true,
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -1312,6 +1360,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-03T18:19:42.000Z",
-  "versionId": "7651db3f-0e08-4654-b4f6-2f009116ae0e"
+  "updatedAt": "2024-08-04T11:57:40.000Z",
+  "versionId": "5bae59f1-0416-4546-bbcf-5c6a17f997d9"
 }

@@ -165,17 +165,6 @@
         ]
       ]
     },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "CreatetimeEntryinSM",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Remove Duplicates1": {
       "main": [
         [
@@ -272,7 +261,7 @@
       "main": [
         [
           {
-            "node": "Merge1",
+            "node": "If1",
             "type": "main",
             "index": 0
           }
@@ -283,9 +272,20 @@
       "main": [
         [
           {
-            "node": "Merge1",
+            "node": "If1",
             "type": "main",
-            "index": 1
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "CreatetimeEntryinSM",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -294,18 +294,19 @@
       "main": [
         [
           {
-            "node": "Pass ",
+            "node": "No Operation, do nothing",
             "type": "main",
             "index": 0
           }
-        ]
-      ]
-    },
-    "Merge1": {
-      "main": [
+        ],
         [
           {
-            "node": "If1",
+            "node": "Pass ",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Pass 1",
             "type": "main",
             "index": 0
           }
@@ -327,8 +328,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1480,
-        640
+        -1280,
+        540
       ]
     },
     {
@@ -343,8 +344,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1120,
-        800
+        -920,
+        700
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -354,16 +355,14 @@
       }
     },
     {
-      "parameters": {
-        "maxItems": 5
-      },
+      "parameters": {},
       "id": "c35dcc3e-ab4e-49ed-8c58-3c3dffd31971",
       "name": "Limit",
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -680,
-        780
+        -480,
+        680
       ]
     },
     {
@@ -384,7 +383,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        3024,
+        3184,
         600
       ],
       "credentials": {
@@ -410,7 +409,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        3024,
+        3184,
         800
       ],
       "credentials": {
@@ -431,7 +430,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        640,
+        580,
         500
       ]
     },
@@ -446,7 +445,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2244,
+        2184,
         620
       ]
     },
@@ -460,8 +459,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1200,
-        740
+        -1000,
+        640
       ]
     },
     {
@@ -485,7 +484,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1084,
+        1244,
         820
       ],
       "credentials": {
@@ -502,7 +501,7 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        884,
+        1044,
         820
       ]
     },
@@ -546,7 +545,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1324,
+        1484,
         820
       ]
     },
@@ -599,7 +598,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1544,
+        1704,
         820
       ]
     },
@@ -664,7 +663,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1824,
+        1984,
         580
       ]
     },
@@ -708,7 +707,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1644,
+        1804,
         580
       ]
     },
@@ -741,8 +740,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -920,
-        800
+        -720,
+        700
       ]
     },
     {
@@ -772,7 +771,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2304,
+        2464,
         700
       ]
     },
@@ -813,7 +812,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        2544,
+        2704,
         700
       ]
     },
@@ -944,8 +943,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -480,
-        780
+        -280,
+        680
       ]
     },
     {
@@ -976,23 +975,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        1264,
+        1424,
         580
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "combineBySql",
-        "numberInputs": 3,
-        "query": "WITH \n  client_ref AS \n  (\n  SELECT * FROM input1\n  ),\n  project as \n  (\n  select * from input3\n  ),\n  time_entry  AS\n  (\n  select\n    client_ref.id AS client_id, \n    client_ref.name AS client_name,\n    client_ref.record_id AS client_record_id,\n    project.record_id AS proj_record_id,\n    project.id AS project_id, \n    project.name AS proj_name,\n    input2.id AS time_entry_id,\n    input2.*\n  from input2\n    INNER JOIN project ON project.id = input2.project_id\n    LEFT JOIN client_ref ON client_ref.id = project.client_id\n  )\nselect * from time_entry;"
-      },
-      "id": "765f3a20-fa0d-4773-9915-b9dc9cd2ac96",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        2024,
-        700
       ]
     },
     {
@@ -1002,7 +986,7 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        1464,
+        1624,
         580
       ]
     },
@@ -1031,7 +1015,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        724,
+        884,
         820
       ]
     },
@@ -1056,7 +1040,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1064,
+        1224,
         580
       ],
       "credentials": {
@@ -1075,7 +1059,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2764,
+        2924,
         700
       ]
     },
@@ -1206,12 +1190,13 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        560,
+        640,
         700
       ]
     },
     {
       "parameters": {
+        "mode": "runOnceForEachItem",
         "jsCode": "return items.map(item => {\n  item.json.id = item.json.id.trim();\n  return item;\n});"
       },
       "id": "ca70fbf0-2c83-419e-b43c-0c95ed55e447",
@@ -1219,8 +1204,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -180,
-        780
+        -40,
+        680
       ]
     },
     {
@@ -1239,8 +1224,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -1480,
-        840
+        -1280,
+        740
       ]
     },
     {
@@ -1280,8 +1265,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -760,
-        540
+        -560,
+        500
       ]
     },
     {
@@ -1293,8 +1278,23 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -480,
-        540
+        -240,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "numberInputs": 3,
+        "query": "WITH \n  client_ref AS \n  (\n  SELECT * FROM input1\n  ),\n  project as \n  (\n  select * from input3\n  ),\n  time_entry  AS\n  (\n  select\n    client_ref.id AS client_id, \n    client_ref.name AS client_name,\n    client_ref.record_id AS client_record_id,\n    project.record_id AS proj_record_id,\n    project.id AS project_id, \n    project.name AS proj_name,\n    input2.id AS time_entry_id,\n    input2.*\n  from input2\n    INNER JOIN project ON project.id = input2.project_id\n    LEFT JOIN client_ref ON client_ref.id = project.client_id\n  )\nselect * from time_entry;"
+      },
+      "id": "765f3a20-fa0d-4773-9915-b9dc9cd2ac96",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2180,
+        700
       ]
     },
     {
@@ -1307,9 +1307,9 @@
           },
           "conditions": [
             {
-              "id": "8189acd5-d145-4702-8d25-cfffd74a317d",
-              "leftValue": "={{ $json.success }}",
-              "rightValue": "true",
+              "id": "d200a7dc-1958-4d4f-8922-9a801b416404",
+              "leftValue": "={{ $json.sac94990b3 }}",
+              "rightValue": "={{ $json.id }}",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1321,33 +1321,25 @@
         },
         "options": {}
       },
-      "id": "302f70db-76c9-4e16-8539-56b5e155cca4",
+      "id": "6b900cfb-b082-408c-b232-843381e420cc",
       "name": "If1",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        320,
-        700
+        160,
+        680
       ]
     },
     {
-      "parameters": {
-        "mode": "combine",
-        "fieldsToMatchString": "sac94990b3, id",
-        "joinMode": "keepNonMatches",
-        "outputDataFrom": "input2",
-        "options": {}
-      },
-      "id": "422fc75e-2d07-44e2-8ae8-a33b3f585817",
-      "name": "Merge1",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
+      "parameters": {},
+      "id": "f8a701b8-7221-40c4-96bb-a94b596f49b6",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
       "position": [
-        80,
-        700
-      ],
-      "notesInFlow": true,
-      "disabled": true
+        400,
+        480
+      ]
     }
   ],
   "pinData": {},
@@ -1360,6 +1352,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-04T11:57:40.000Z",
-  "versionId": "5bae59f1-0416-4546-bbcf-5c6a17f997d9"
+  "updatedAt": "2024-08-04T13:38:05.000Z",
+  "versionId": "002dbe84-2e22-4867-aa63-960803e6841a"
 }

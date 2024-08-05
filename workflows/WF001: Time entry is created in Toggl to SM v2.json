@@ -314,7 +314,7 @@
     },
     {
       "parameters": {
-        "url": "https://api.track.toggl.com/api/v9/me/time_entries",
+        "url": "https://api.track.toggl.com/api/v9/me/time_entries?start_date=2024-05-05&end_date=2024-07-22",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpBasicAuth",
         "options": {}
@@ -1298,6 +1298,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-04T19:28:28.000Z",
-  "versionId": "928082a7-8d31-400c-b54a-8cf03e796fac"
+  "updatedAt": "2024-08-05T07:31:45.000Z",
+  "versionId": "a2413bec-efc3-4146-8ba0-d3eb7cda407c"
 }

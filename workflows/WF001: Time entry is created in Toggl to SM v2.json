@@ -314,9 +314,13 @@
     },
     {
       "parameters": {
-        "url": "https://api.track.toggl.com/api/v9/me/time_entries?start_date=2024-05-05&end_date=2024-07-22",
+        "method": "POST",
+        "url": "https://api.track.toggl.com/reports/api/v3/workspace/8524979/search/time_entries",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"start_date\": \"2024-02-01\",\n  \"end_date\": \"2024-02-28\"\n}",
         "options": {}
       },
       "id": "490679ad-b0a1-4374-ae03-4f3f3a5744da",
@@ -695,7 +699,7 @@
               "rightValue": "",
               "operator": {
                 "type": "dateTime",
-                "operation": "notEmpty",
+                "operation": "empty",
                 "singleValue": true
               }
             }
@@ -1286,6 +1290,34 @@
         340,
         660
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.track.toggl.com/reports/api/v3/workspace/{workspace_id}/search/time_entries",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Basic PGVtYWlsPjo8cGFzc3dvcmQ+"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"billable\": \"boolean\",\n  \"client_ids\": [\n    \"integer\"\n  ],\n  \"description\": \"string\",\n  \"end_date\": \"string\",\n  \"enrich_response\": \"boolean\",\n  \"first_id\": \"integer\",\n  \"first_row_number\": \"integer\",\n  \"first_timestamp\": \"integer\",\n  \"group_ids\": [\n    \"integer\"\n  ],\n  \"grouped\": \"boolean\",\n  \"hide_amounts\": \"boolean\",\n  \"max_duration_seconds\": \"integer\",\n  \"min_duration_seconds\": \"integer\",\n  \"order_by\": \"string\",\n  \"order_dir\": \"string\",\n  \"page_size\": \"integer\",\n  \"postedFields\": [\n    \"string\"\n  ],\n  \"project_ids\": [\n    \"integer\"\n  ],\n  \"rounding\": \"integer\",\n  \"rounding_minutes\": \"integer\",\n  \"startTime\": \"string\",\n  \"start_date\": \"string\",\n  \"tag_ids\": [\n    \"integer\"\n  ],\n  \"task_ids\": [\n    \"integer\"\n  ],\n  \"time_entry_ids\": [\n    \"integer\"\n  ],\n  \"user_ids\": [\n    \"integer\"\n  ]\n}",
+        "options": {}
+      },
+      "id": "4401a394-eaf6-45bd-9ff3-2c18974d4645",
+      "name": "GET TimeEntries1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -740,
+        1020
+      ],
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -1298,6 +1330,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-05T07:31:45.000Z",
-  "versionId": "a2413bec-efc3-4146-8ba0-d3eb7cda407c"
+  "updatedAt": "2024-08-05T10:04:57.000Z",
+  "versionId": "0567c351-7e5f-40cd-8312-884f864493a3"
 }

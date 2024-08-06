@@ -310,7 +310,7 @@
         ],
         [
           {
-            "node": "Replace Me",
+            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -322,6 +322,17 @@
         [
           {
             "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
             "type": "main",
             "index": 0
           }
@@ -365,7 +376,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        3780,
+        4080,
         580
       ],
       "credentials": {
@@ -391,7 +402,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        3780,
+        4080,
         780
       ],
       "credentials": {
@@ -427,7 +438,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2800,
+        3100,
         620
       ]
     },
@@ -753,7 +764,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3080,
+        3380,
         680
       ]
     },
@@ -794,7 +805,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        3300,
+        3600,
         680
       ]
     },
@@ -1041,7 +1052,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3520,
+        3820,
         680
       ]
     },
@@ -1354,7 +1365,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2820,
+        3120,
         720
       ]
     },
@@ -1371,6 +1382,18 @@
         940,
         1100
       ]
+    },
+    {
+      "parameters": {},
+      "id": "57fee1bb-8f09-42d5-be62-4895710dcfd4",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2840,
+        720
+      ],
+      "webhookId": "13b7776c-15be-413c-9388-d227f09df643"
     }
   ],
   "pinData": {},
@@ -1383,12 +1406,12 @@
   "staticData": {
     "node:Schedule Trigger": {
       "recurrencyRules": [
-        14
+        18
       ]
     }
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-08-06T10:26:35.000Z",
-  "versionId": "27f83678-68b5-4375-aa5b-de8786a1e2cc"
+  "updatedAt": "2024-08-06T13:44:26.000Z",
+  "versionId": "1b7a228d-0758-48b1-b084-12e5a9010086"
 }

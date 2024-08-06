@@ -310,7 +310,7 @@
         ],
         [
           {
-            "node": "Wait",
+            "node": "Replace Me",
             "type": "main",
             "index": 0
           }
@@ -321,7 +321,7 @@
       "main": [
         [
           {
-            "node": "Loop Over Items",
+            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -332,7 +332,7 @@
       "main": [
         [
           {
-            "node": "Replace Me",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -376,7 +376,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        4080,
+        3900,
         580
       ],
       "credentials": {
@@ -402,7 +402,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        4080,
+        3900,
         780
       ],
       "credentials": {
@@ -438,8 +438,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3100,
-        620
+        3140,
+        600
       ]
     },
     {
@@ -757,14 +757,21 @@
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"in_progress\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.proj_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.proj_record_id }}\",\n  \"s4621e0408\": \"{{ $json.client_record_id }}\"\n}",
-        "options": {}
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 5,
+              "batchInterval": 120
+            }
+          }
+        }
       },
       "id": "3753ed8a-9c62-49d5-84d9-bd824174d194",
       "name": "CreatetimeEntryinSM",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3380,
+        3200,
         680
       ]
     },
@@ -805,7 +812,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        3600,
+        3420,
         680
       ]
     },
@@ -1052,7 +1059,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3820,
+        3640,
         680
       ]
     },
@@ -1206,7 +1213,7 @@
           "interval": [
             {
               "field": "hours",
-              "hoursInterval": 4
+              "hoursInterval": 2
             }
           ]
         }
@@ -1347,6 +1354,7 @@
     },
     {
       "parameters": {
+        "batchSize": 5,
         "options": {}
       },
       "id": "f1c486d5-d1e5-4461-a38c-38c12d2ef797",
@@ -1365,8 +1373,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        3120,
-        720
+        2900,
+        780
       ]
     },
     {
@@ -1384,16 +1392,18 @@
       ]
     },
     {
-      "parameters": {},
-      "id": "57fee1bb-8f09-42d5-be62-4895710dcfd4",
+      "parameters": {
+        "amount": 60
+      },
+      "id": "9038ca33-d9c1-4381-aceb-1595f8363c45",
       "name": "Wait",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2840,
-        720
+        3160,
+        980
       ],
-      "webhookId": "13b7776c-15be-413c-9388-d227f09df643"
+      "webhookId": "a6729ed2-d564-4df9-86e3-3efc184408d7"
     }
   ],
   "pinData": {},
@@ -1406,12 +1416,12 @@
   "staticData": {
     "node:Schedule Trigger": {
       "recurrencyRules": [
-        18
+        22
       ]
     }
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-08-06T13:44:26.000Z",
-  "versionId": "1b7a228d-0758-48b1-b084-12e5a9010086"
+  "updatedAt": "2024-08-06T17:36:35.000Z",
+  "versionId": "13c6d1d7-5413-4f2d-8218-1f9b443646ef"
 }

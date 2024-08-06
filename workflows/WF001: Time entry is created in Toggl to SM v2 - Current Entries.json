@@ -343,7 +343,7 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -700,
+        -600,
         600
       ]
     },
@@ -405,14 +405,14 @@
       "parameters": {
         "content": "## Reference Toggl",
         "height": 541.0123448220287,
-        "width": 1774.5794222560603
+        "width": 1600.355323922164
       },
       "id": "f2c8f55e-6ba8-4c21-a757-9976b16b4a06",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        760,
+        946.470282315159,
         500
       ]
     },
@@ -441,7 +441,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -480,
+        -380,
         700
       ]
     },
@@ -466,7 +466,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1440,
+        1680,
         820
       ],
       "credentials": {
@@ -483,7 +483,7 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        1240,
+        1480,
         820
       ]
     },
@@ -527,7 +527,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1680,
+        1920,
         820
       ]
     },
@@ -580,7 +580,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1900,
+        2140,
         820
       ]
     },
@@ -722,7 +722,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -180,
+        -80,
         800
       ]
     },
@@ -925,7 +925,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        80,
+        180,
         780
       ]
     },
@@ -997,7 +997,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1080,
+        1220,
         820
       ]
     },
@@ -1172,7 +1172,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        836,
+        1040,
         700
       ]
     },
@@ -1185,7 +1185,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        380,
+        480,
         780
       ]
     },
@@ -1205,7 +1205,7 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -700,
+        -600,
         800
       ]
     },
@@ -1246,7 +1246,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        0,
+        100,
         600
       ]
     },
@@ -1283,7 +1283,7 @@
       "type": "n8n-nodes-base.compareDatasets",
       "typeVersion": 2.3,
       "position": [
-        620,
+        700,
         680
       ]
     },
@@ -1308,7 +1308,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -420,
+        -320,
         800
       ],
       "credentials": {
@@ -1330,7 +1330,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        280,
+        380,
         600
       ]
     },
@@ -1383,12 +1383,12 @@
   "staticData": {
     "node:Schedule Trigger": {
       "recurrencyRules": [
-        10
+        14
       ]
     }
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-08-05T21:10:42.000Z",
-  "versionId": "63472320-d5a4-454f-b440-1af92c9b2272"
+  "updatedAt": "2024-08-06T10:26:35.000Z",
+  "versionId": "27f83678-68b5-4375-aa5b-de8786a1e2cc"
 }

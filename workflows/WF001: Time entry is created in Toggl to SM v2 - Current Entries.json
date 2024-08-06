@@ -1368,8 +1368,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1,
       "position": [
-        880,
-        1080
+        940,
+        1100
       ]
     }
   ],
@@ -1383,12 +1383,12 @@
   "staticData": {
     "node:Schedule Trigger": {
       "recurrencyRules": [
-        22
+        2
       ]
     }
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-08-05T19:10:23.000Z",
-  "versionId": "5c957f5d-edfe-484a-9a7f-7ebaf654132e"
+  "updatedAt": "2024-08-05T21:10:42.000Z",
+  "versionId": "63472320-d5a4-454f-b440-1af92c9b2272"
 }

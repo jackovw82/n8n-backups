@@ -1416,7 +1416,7 @@
   "staticData": {
     "node:Schedule Trigger": {
       "recurrencyRules": [
-        6
+        10
       ]
     }
   },

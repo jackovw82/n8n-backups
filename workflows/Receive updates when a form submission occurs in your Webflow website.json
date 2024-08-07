@@ -1,0 +1,36 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-06T20:47:27.993Z",
+  "id": "hdUQWCV6x24mv0UW",
+  "meta": {
+    "templateId": "651"
+  },
+  "name": "Receive updates when a form submission occurs in your Webflow website",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "site": "5f4e2d2bbdf69039816428f7"
+      },
+      "name": "Webflow Trigger",
+      "type": "n8n-nodes-base.webflowTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "ce934229-1396-4920-8bfe-10579aa6f9dd",
+      "typeVersion": 1,
+      "id": "5741dffa-692e-4a15-a9cb-89c3de80eb9a"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-06T20:47:27.993Z",
+  "versionId": "db2c30b6-7283-4844-8bac-da05405d21af"
+}

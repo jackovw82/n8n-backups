@@ -1,0 +1,358 @@
+{
+  "active": false,
+  "connections": {
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Publish on LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download image": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Format the post": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Filter the table for the day's post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publish on LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Update post status in notion database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate the Notion blocks": {
+      "main": [
+        [
+          {
+            "node": "Format the post",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Download image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch the content on the page": {
+      "main": [
+        [
+          {
+            "node": "Aggregate the Notion blocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter the table for the day's post": {
+      "main": [
+        [
+          {
+            "node": "Fetch the content on the page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-06T20:08:45.187Z",
+  "id": "3FaYwwvdXLRwnoz1",
+  "meta": {
+    "templateId": "2273"
+  },
+  "name": "Automated Workflow for Daily LinkedIn Posts Using Notion",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "d922cf0c-f1c2-40ff-927c-d0d3e2fb7f27",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1760,
+        580
+      ],
+      "typeVersion": 2.1
+    },
+    {
+      "parameters": {
+        "content": "## Start the flow every day at the same time",
+        "height": 141.4092845296238,
+        "color": 4
+      },
+      "id": "8c5f68d8-f11d-4b37-b0d8-3abd1b681b56",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        400,
+        560
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Fetch the day's post from my Notion database",
+        "height": 382.294335406698,
+        "width": 367.12018536439575,
+        "color": 6
+      },
+      "id": "d10de4f3-6e90-474f-bd68-25aae2037b7b",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        860,
+        432.5835468325357
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Process and format the post",
+        "height": 380.3367219655605,
+        "width": 627.4768047417825,
+        "color": 6
+      },
+      "id": "a63bcc85-ec8b-424f-a53c-e4c07db3c7c8",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1262.6949426092506,
+        433.81962236044654
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 15
+            }
+          ]
+        }
+      },
+      "id": "d7c0f13c-ebbe-4000-bd8f-d1180d65d02a",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        680,
+        580
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "f09dc21b-1070-4d5a-bf7f-a9ab3dbb69fb",
+          "cachedResultUrl": "https://www.notion.so/f09dc21b10704d5abf7fa9ab3dbb69fb",
+          "cachedResultName": "Postagens"
+        },
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Date|date",
+              "condition": "equals",
+              "date": "={{ $today.format(\"yyyy/mM/dd\") }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7bebcb2d-1642-48ce-a511-bb0f561ca5cf",
+      "name": "Filter the table for the day's post",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        900,
+        580
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "={{ $json.url }}"
+        },
+        "returnAll": true
+      },
+      "id": "ee61bc59-164b-45b4-8b49-57cdba7d298b",
+      "name": "Fetch the content on the page",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        1100,
+        580
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "content"
+            },
+            {
+              "fieldToAggregate": "image.file.url"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "52d1ffef-11e8-4635-bbb8-05e915034379",
+      "name": "Aggregate the Notion blocks",
+      "type": "n8n-nodes-base.aggregate",
+      "position": [
+        1300,
+        580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": "const notionData = items[0].json.content;\n\nlet formattedText = notionData[0] \n\nfor (let i = 1; i < notionData.length; i++) {\n    if (notionData[i].startsWith('-')) {\n        formattedText += '\\n\\n' + notionData[i];\n    } else {\n        formattedText += '\\n' + notionData[i];\n    }\n}\n\nreturn [{ formattedText: formattedText }];\n"
+      },
+      "id": "8617c530-382b-402b-9c0b-aeb4df2bb920",
+      "name": "Format the post",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1520,
+        480
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url[0] }}",
+        "options": {}
+      },
+      "id": "0f226cfe-eb31-469a-8e7c-a21192adbd4c",
+      "name": "Download image",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1520,
+        680
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "person": "CcS-_lLyzG",
+        "text": "={{ $json.formattedText }}",
+        "shareMediaCategory": "IMAGE",
+        "additionalFields": {}
+      },
+      "id": "81a1e39c-c7ea-4635-84fc-a8ae05cfd8f3",
+      "name": "Publish on LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "position": [
+        1980,
+        580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "={{ $('Filter the table for the day\\'s post').item.json.url }}"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Status|select",
+              "selectValue": "Published"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "61b92eb8-1bf8-4e57-9e07-1a39e457ecfb",
+      "name": "Update post status in notion database",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        2240,
+        580
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "content": "## 1. Setup\nSet up your Notion and LinkedIn credentials.\nAttention to the LinkedIn credential: to post on your personal or company profile, you need to have a company page assigned to your profile. After that, you can choose where you want to post.",
+        "height": 137.6834217043934,
+        "width": 567.6073693795047,
+        "color": 3
+      },
+      "id": "397f3772-bb2b-4e58-99f8-2b62cc514b7a",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-06T20:08:45.187Z",
+  "versionId": "1875ca90-cb80-4572-9c49-b9668d5d4176"
+}

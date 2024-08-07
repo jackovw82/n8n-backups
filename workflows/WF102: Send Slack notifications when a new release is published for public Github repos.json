@@ -1,0 +1,204 @@
+{
+  "active": false,
+  "connections": {
+    "RepoConfig": {
+      "main": [
+        [
+          {
+            "node": "Fetch Github Repo Releases",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Daily Trigger": {
+      "main": [
+        [
+          {
+            "node": "RepoConfig",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wether Release is new": {
+      "main": [
+        [
+          {
+            "node": "Send Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Github Repo Releases": {
+      "main": [
+        [
+          {
+            "node": "Wether Release is new",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-07T18:22:42.339Z",
+  "id": "UEujYQnHk1rbq5x7",
+  "meta": {
+    "templateId": "2353",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "WF102: Send Slack notifications when a new release is published for public Github repos",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/{{ $json[\"github-org\"] }}/{{ $json[\"github-repo\"] }}/releases/latest",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "options": {}
+      },
+      "id": "8a36e8d4-a3bf-44e1-894a-db00bad99151",
+      "name": "Fetch Github Repo Releases",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        880,
+        240
+      ],
+      "typeVersion": 4.2,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "4803248b-3ff7-4994-a105-3d8ef68bd45d",
+      "name": "Daily Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    \"github-org\": \"n8n-io\",\n    \"github-repo\": \"n8n\"\n  },\n  {\n    \"github-org\": \"home-assistant\",\n    \"github-repo\": \"core\"\n  }\n];"
+      },
+      "id": "0b2122d7-18cf-49b8-b10e-a8132df8ceb9",
+      "name": "RepoConfig",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        620,
+        240
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "content": "### Setup repos here to check releases for.\n\nAdd a new json object to the array setting the org and repo, these will be used by the following nodes",
+        "height": 278,
+        "width": 269
+      },
+      "id": "60918b67-76bb-4c9e-bc84-845d59fced76",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        540,
+        100
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### Setup Slack notification\n\nUpdate this node to customise your Slack notification",
+        "height": 254
+      },
+      "id": "66fbb663-cd52-471c-be8b-4175f754d02d",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1300,
+        120
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "014670a7-6f9e-466c-a403-24ad4e230dff",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              },
+              "leftValue": "={{ $json.published_at.toDateTime() }}",
+              "rightValue": "={{ DateTime.utc().minus(1, 'days') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9b04cdd2-e369-4862-b376-9945e93c0aaf",
+      "name": "Wether Release is new",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1080,
+        240
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "text": "=:tada: New release for *{{ $('RepoConfig').item.json[\"github-repo\"] }}* - {{ $('Fetch Github Repo Releases').item.json[\"name\"] }}\n\n{{ $json.body.slice(0, 500) }}\n\n{{ $('Fetch Github Repo Releases').item.json[\"url\"] }}",
+        "otherOptions": {
+          "mrkdwn": true
+        }
+      },
+      "id": "4ad55bb4-89d2-4f1d-bcb5-fe60aa4f8c79",
+      "name": "Send Message",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1380,
+        220
+      ],
+      "typeVersion": 2.2,
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "x77Xb6YhugsdNMWc",
+          "name": "Slack account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-07T18:58:36.000Z",
+  "versionId": "510b3877-52db-44de-b02f-89f5fe75ec0a"
+}

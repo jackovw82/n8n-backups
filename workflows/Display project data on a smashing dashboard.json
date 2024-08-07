@@ -1,0 +1,804 @@
+{
+  "active": false,
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "Dashboard Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub": {
+      "main": [
+        [
+          {
+            "node": "Massage GitHub Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Massage npm Data": {
+      "main": [
+        [
+          {
+            "node": "npm Maintenance",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "npm Quality",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "npm Popularity",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "npm Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve npm Data": {
+      "main": [
+        [
+          {
+            "node": "Massage npm Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Massage Docker Data": {
+      "main": [
+        [
+          {
+            "node": "Docker Stars",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Docker Pulls",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Massage GitHub Data": {
+      "main": [
+        [
+          {
+            "node": "GitHub Stars",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "GitHub Watchers",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "GitHub Forks",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "GitHub Open Issues ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve Docker Data": {
+      "main": [
+        [
+          {
+            "node": "Massage Docker Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dashboard Configuration": {
+      "main": [
+        [
+          {
+            "node": "GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Massage Product Hunt Data": {
+      "main": [
+        [
+          {
+            "node": "Product Hunt Rating",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Product Hunt Reviews",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Product Hunt Votes",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Product Hunt Comments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve Product Hunt Data": {
+      "main": [
+        [
+          {
+            "node": "Massage Product Hunt Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-07T18:31:29.690Z",
+  "id": "RAQH2P5QOcLzsodX",
+  "meta": {
+    "templateId": "693",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Display project data on a smashing dashboard",
+  "nodes": [
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "5004f254-e16d-463d-9530-b59b5f69aaa6"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "dashboardHostname",
+              "value": "http://192.168.0.14:8080"
+            },
+            {
+              "name": "dashboardAuthToken",
+              "value": "n8n-rocks!"
+            },
+            {
+              "name": "product_hunt_post_id",
+              "value": "170391"
+            },
+            {
+              "name": "npm_package",
+              "value": "n8n"
+            },
+            {
+              "name": "docker_name",
+              "value": "n8nio"
+            },
+            {
+              "name": "docker_repository",
+              "value": "n8n"
+            },
+            {
+              "name": "github_owner",
+              "value": "n8n-io"
+            },
+            {
+              "name": "github_repo",
+              "value": "n8n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Dashboard Configuration",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        660,
+        240
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "a1a9bf89-42f8-46c2-89c0-d9e93068fd56",
+      "notes": "Update project settings"
+    },
+    {
+      "parameters": {
+        "url": "=https://hub.docker.com/v2/repositories/{{$node[\"Dashboard Configuration\"].json[\"docker_name\"]}}/{{$node[\"Dashboard Configuration\"].json[\"docker_repository\"]}}",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "User-Agent",
+              "value": "n8n"
+            }
+          ]
+        },
+        "queryParametersUi": {
+          "parameter": []
+        }
+      },
+      "name": "Retrieve Docker Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        930,
+        360
+      ],
+      "typeVersion": 1,
+      "id": "45c39e56-1972-4440-aa40-1a9472e4e1c2"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/docker_pulls",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "current",
+              "value": "={{$node[\"Massage Docker Data\"].json[\"pull_count\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "Docker Pulls",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1300,
+        280
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "9fa37884-bf51-426d-b1c4-0349720182e5"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/docker_stars",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "current",
+              "value": "={{$node[\"Massage Docker Data\"].json[\"star_count\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "Docker Stars",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1300,
+        460
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "c9d6835c-21c9-4b2a-8d25-5da4bb3bcc2f"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.npms.io/v2/package/{{$node[\"Dashboard Configuration\"].json[\"npm_package\"]}}",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "User-Agent",
+              "value": "n8n"
+            }
+          ]
+        }
+      },
+      "name": "Retrieve npm Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        920,
+        110
+      ],
+      "typeVersion": 1,
+      "id": "ea125994-8f45-49a0-aa05-74f70adc8e8f"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/github_watchers",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "current",
+              "value": "={{$node[\"Massage GitHub Data\"].json[\"subscribers_count\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "GitHub Watchers",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1490,
+        700
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "5d32ab20-4d8f-4be4-afc3-5cfac2bc9267"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/github_forks",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "current",
+              "value": "={{$node[\"Massage GitHub Data\"].json[\"forks_count\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "GitHub Forks",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1490,
+        860
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "6bd4a078-6493-417d-b23b-b259466ff56f"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/github_open_issues",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "current",
+              "value": "={{$node[\"Massage GitHub Data\"].json[\"open_issues_count\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "GitHub Open Issues ",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1290,
+        920
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "0b6877cf-6c39-4c1e-bdc7-1016fa10f9a2"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/github_stars",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "current",
+              "value": "={{$node[\"Massage GitHub Data\"].json[\"stargazers_count\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "GitHub Stars",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1290,
+        620
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "fd0341ec-3ad1-442f-a87c-39a24f99f132"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/npm_maintenance",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "value",
+              "value": "={{$node[\"Massage npm Data\"].json[\"score\"][\"detail\"][\"maintenance\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "npm Maintenance",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1500,
+        -30
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "c8479371-38a6-4cd1-b956-7af64dc955ef"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/npm_popularity",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "value",
+              "value": "={{$node[\"Massage npm Data\"].json[\"score\"][\"detail\"][\"popularity\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "npm Popularity",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1700,
+        60
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "cf188c9b-43fa-41ce-ad31-2bd88fc97182"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/npm_quality",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "value",
+              "value": "={{$node[\"Massage npm Data\"].json[\"score\"][\"detail\"][\"quality\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "npm Quality",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1700,
+        210
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "e9e3c4c0-6a20-457b-8462-0b1d1e121ae6"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/npm_final",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "value",
+              "value": "={{$node[\"Massage npm Data\"].json[\"score\"][\"final\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "npm Final",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1500,
+        250
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "840e0506-0f34-43ed-95d6-c9beded76113"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/prod_hunt_rating",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "value",
+              "value": "={{$node[\"Retrieve Product Hunt Data\"].json[\"data\"][\"post\"][\"reviewsRating\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "Product Hunt Rating",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1300,
+        -450
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "8197766e-7057-484e-be3e-bcf3b64496f2"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/prod_hunt_reviews",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "current",
+              "value": "={{$node[\"Massage Product Hunt Data\"].json[\"data\"][\"post\"][\"reviewsCount\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "Product Hunt Reviews",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1500,
+        -350
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "ce4dd650-a0a8-49ce-9756-82741b7f741a"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/prod_hunt_votes",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "current",
+              "value": "={{$node[\"Massage Product Hunt Data\"].json[\"data\"][\"post\"][\"votesCount\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "Product Hunt Votes",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1500,
+        -200
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "9c570327-c5e1-4498-a6fd-689851c6596d"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "={{$node[\"Dashboard Configuration\"].json[\"dashboardHostname\"]}}/widgets/prod_hunt_comments",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "auth_token",
+              "value": "={{$node[\"Dashboard Configuration\"].json[\"dashboardAuthToken\"]}}"
+            },
+            {
+              "name": "current",
+              "value": "={{$node[\"Massage Product Hunt Data\"].json[\"data\"][\"post\"][\"commentsCount\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "Product Hunt Comments",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1300,
+        -150
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "232d3c76-7401-49b2-89b9-de01e3232bce"
+    },
+    {
+      "parameters": {
+        "resource": "repository",
+        "operation": "get",
+        "owner": "={{$node[\"Dashboard Configuration\"].json[\"github_owner\"]}}",
+        "repository": "={{$node[\"Dashboard Configuration\"].json[\"github_repo\"]}}"
+      },
+      "name": "GitHub",
+      "type": "n8n-nodes-base.github",
+      "position": [
+        920,
+        770
+      ],
+      "typeVersion": 1,
+      "id": "a37cf9d9-cff8-4220-91b5-3c31eb344199",
+      "credentials": {
+        "githubApi": {
+          "id": "7txefx36DPZl9bxI",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://api.producthunt.com/v2/api/graphql",
+        "options": {},
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "User-Agent",
+              "value": "n8n"
+            },
+            {
+              "name": "authorization",
+              "value": "Bearer <Enter Product Hunt token here>"
+            }
+          ]
+        },
+        "queryParametersUi": {
+          "parameter": [
+            {
+              "name": "query",
+              "value": "={\n  post(id: {{$node[\"Dashboard Configuration\"].json[\"product_hunt_post_id\"]}}) {\n    commentsCount\n    votesCount\n    reviewsCount\n    reviewsRating\n    name\n  }\n}"
+            }
+          ]
+        }
+      },
+      "name": "Retrieve Product Hunt Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        920,
+        -300
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "2b397fb9-8afd-4a97-ba6c-680f6bc95792",
+      "disabled": true,
+      "notes": "Update authorization token"
+    },
+    {
+      "parameters": {
+        "functionCode": "items[0].json.score.detail.maintenance = parseFloat(items[0].json.score.detail.maintenance.toFixed(2));\nitems[0].json.score.detail.popularity= parseFloat(items[0].json.score.detail.popularity.toFixed(2));\nitems[0].json.score.detail.quality= parseFloat(items[0].json.score.detail.quality.toFixed(2));\nitems[0].json.score.final= parseFloat(items[0].json.score.final.toFixed(2));\n\nreturn items;"
+      },
+      "name": "Massage npm Data",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        1110,
+        110
+      ],
+      "typeVersion": 1,
+      "id": "9dcf96f2-6c2a-4fd0-b3ec-5a941beb588c"
+    },
+    {
+      "parameters": {
+        "functionCode": "items[0].json.data.post.commentsCount = items[0].json.data.post.commentsCount.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\nitems[0].json.data.post.votesCount= items[0].json.data.post.votesCount.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\nitems[0].json.data.post.reviewsCount= items[0].json.data.post.reviewsCount.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\n\nreturn items;\n"
+      },
+      "name": "Massage Product Hunt Data",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        1110,
+        -300
+      ],
+      "typeVersion": 1,
+      "id": "966155f8-d128-49c4-b831-74be185eaac7"
+    },
+    {
+      "parameters": {
+        "functionCode": "items[0].json.star_count = items[0].json.star_count.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\nitems[0].json.pull_count = items[0].json.pull_count.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\n\nreturn items;\n"
+      },
+      "name": "Massage Docker Data",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        1130,
+        360
+      ],
+      "typeVersion": 1,
+      "id": "45cff4d5-4d38-47c1-b68e-6a0570d27282"
+    },
+    {
+      "parameters": {
+        "functionCode": "items[0].json.stargazers_count = items[0].json.stargazers_count.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\nitems[0].json.subscribers_count = items[0].json.subscribers_count.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\nitems[0].json.forks_count = items[0].json.forks_count.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\nitems[0].json.open_issues_count = items[0].json.open_issues_count.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\");\n\nreturn items;"
+      },
+      "name": "Massage GitHub Data",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        1120,
+        770
+      ],
+      "typeVersion": 1,
+      "id": "c1eb887a-f44b-450e-bc74-9ba0e6459117"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-07T18:44:19.000Z",
+  "versionId": "95c32332-9a13-48dd-9867-b08bf27343ac"
+}

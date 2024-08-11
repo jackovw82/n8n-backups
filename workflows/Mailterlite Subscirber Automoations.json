@@ -17,8 +17,8 @@
       "type": "n8n-nodes-base.mailerLiteTrigger",
       "typeVersion": 1,
       "position": [
-        340,
-        320
+        -340,
+        220
       ],
       "webhookId": "52c2d945-921e-434b-9dd5-f43453c83627",
       "credentials": {
@@ -37,8 +37,8 @@
       "type": "n8n-nodes-base.mailerLiteTrigger",
       "typeVersion": 1,
       "position": [
-        340,
-        580
+        -340,
+        480
       ],
       "webhookId": "52c2d945-921e-434b-9dd5-f43453c83627",
       "credentials": {
@@ -54,8 +54,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T11:42:13.000Z",
-  "versionId": "db1230a3-6dfd-44b0-9aba-55d99d80fcb6"
+  "updatedAt": "2024-08-11T19:05:43.000Z",
+  "versionId": "4e2615ea-e26a-452c-8222-f5f3d7aeb55a"
 }

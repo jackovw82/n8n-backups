@@ -27,46 +27,6 @@
           "name": "Mailer Lite account"
         }
       }
-    },
-    {
-      "parameters": {
-        "event": "subscriber.bounced"
-      },
-      "id": "2ffc0fb1-692e-4d69-baf4-ce8059c46196",
-      "name": "Mailerlite Subscriber Bounched",
-      "type": "n8n-nodes-base.mailerLiteTrigger",
-      "typeVersion": 1,
-      "position": [
-        540,
-        700
-      ],
-      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
-      "credentials": {
-        "mailerLiteApi": {
-          "id": "q085m3G8l78bm7wE",
-          "name": "Mailer Lite account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "event": "subscriber.complaint"
-      },
-      "id": "8488bf4f-d0ca-48de-b039-0adefa4270ca",
-      "name": "Mailerlite Subscriber  Complained",
-      "type": "n8n-nodes-base.mailerLiteTrigger",
-      "typeVersion": 1,
-      "position": [
-        540,
-        900
-      ],
-      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
-      "credentials": {
-        "mailerLiteApi": {
-          "id": "q085m3G8l78bm7wE",
-          "name": "Mailer Lite account"
-        }
-      }
     }
   ],
   "pinData": {},
@@ -74,8 +34,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T11:40:14.000Z",
-  "versionId": "f78e9033-6120-4c54-bbc1-baff82596c96"
+  "updatedAt": "2024-08-11T19:05:52.000Z",
+  "versionId": "0e2f4247-87e0-4aed-9357-6f3290c86726"
 }

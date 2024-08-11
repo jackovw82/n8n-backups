@@ -1,0 +1,164 @@
+{
+  "active": false,
+  "connections": {
+    "Get Image": {
+      "main": [
+        [
+          {
+            "node": "Extract Information",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Receipt": {
+      "main": [
+        [
+          {
+            "node": "Get Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Information": {
+      "main": [
+        [
+          {
+            "node": "Store Information",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Information": {
+      "main": [
+        [
+          {
+            "node": "Set Information",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:38:22.803Z",
+  "id": "cWBKbBBDYzElrFvm",
+  "meta": {
+    "templateId": "741"
+  },
+  "name": "Extract infromation from a receipt and store it in Airtable",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Get Receipt",
+      "type": "n8n-nodes-base.typeformTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "b51cc683-1ef6-412f-9885-91e65f151cc0",
+      "typeVersion": 1,
+      "id": "c589436a-b7b4-4ffc-83bc-aa2ae86072cf"
+    },
+    {
+      "parameters": {
+        "url": "={{$node[\"Get Receipt\"].json[\"Upload receipt\"]}}",
+        "responseFormat": "file",
+        "options": {}
+      },
+      "name": "Get Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "e5cc637d-01b9-4aeb-b3f3-3f0353d555f5"
+    },
+    {
+      "parameters": {},
+      "name": "Extract Information",
+      "type": "n8n-nodes-base.mindee",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "24e75481-61fe-41a2-a000-a414998ff896"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "Amount",
+              "value": "={{$node[\"Extract Information\"].json[\"total\"]}}"
+            }
+          ],
+          "string": [
+            {
+              "name": "Merchant",
+              "value": "={{$node[\"Extract Information\"].json[\"merchant\"]}}"
+            },
+            {
+              "name": "Date",
+              "value": "={{$node[\"Extract Information\"].json[\"date\"]}}"
+            },
+            {
+              "name": "Time",
+              "value": "={{$node[\"Extract Information\"].json[\"time\"]}}"
+            },
+            {
+              "name": "Receipt URL",
+              "value": "={{$node[\"Get Receipt\"].json[\"Upload receipt\"]}}"
+            },
+            {
+              "name": "Category",
+              "value": "={{$node[\"Extract Information\"].json[\"category\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set Information",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        980,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "35760a27-bc70-4b66-8dff-307be40431e3"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "application": "",
+        "table": "Expenses",
+        "options": {}
+      },
+      "name": "Store Information",
+      "type": "n8n-nodes-base.airtable",
+      "position": [
+        1180,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "3a8972da-7bfd-413c-8c71-ed33491514f3"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:38:22.803Z",
+  "versionId": "f29edd58-f3f2-4942-8ae3-f951c7d256b3"
+}

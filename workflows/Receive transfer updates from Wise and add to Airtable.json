@@ -1,0 +1,134 @@
+{
+  "active": false,
+  "connections": {
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wise": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wise Trigger": {
+      "main": [
+        [
+          {
+            "node": "Wise",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T20:40:13.438Z",
+  "id": "sn5uJ16Fwx1tV1na",
+  "meta": {
+    "templateId": "993"
+  },
+  "name": "Receive transfer updates from Wise and add to Airtable",
+  "nodes": [
+    {
+      "parameters": {
+        "profileId": 16138858,
+        "event": "tranferStateChange"
+      },
+      "name": "Wise Trigger",
+      "type": "n8n-nodes-base.wiseTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "df8c0c06-7d40-4e57-aaff-60f458e6997c",
+      "typeVersion": 1,
+      "id": "eca2917b-8301-4a80-ba2d-21939b701e68"
+    },
+    {
+      "parameters": {
+        "resource": "transfer",
+        "transferId": "={{$json[\"data\"][\"resource\"][\"id\"]}}"
+      },
+      "name": "Wise",
+      "type": "n8n-nodes-base.wise",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "a70f4434-de7c-4f6c-8621-988a79186297"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Transfer ID",
+              "value": "={{$json[\"id\"]}}"
+            },
+            {
+              "name": "Date",
+              "value": "={{$json[\"created\"]}}"
+            },
+            {
+              "name": "Reference",
+              "value": "={{$json[\"reference\"]}}"
+            },
+            {
+              "name": "Amount",
+              "value": "={{$json[\"sourceValue\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "5821f20e-783a-400f-a7d0-014a38da1bd2"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "application": "",
+        "table": "Table 1",
+        "options": {}
+      },
+      "name": "Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "position": [
+        980,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "37a09477-3af2-4465-a691-9dcda6f5e156"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T20:40:13.438Z",
+  "versionId": "42916174-48ac-4e0f-b237-44c6ba155aaa"
+}

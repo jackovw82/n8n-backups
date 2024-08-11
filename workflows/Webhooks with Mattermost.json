@@ -1,0 +1,93 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:41:48.666Z",
+  "id": "Wym1bx7bLDbPVnVn",
+  "meta": {
+    "templateId": "351"
+  },
+  "name": "Webhooks with Mattermost",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "webhook",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "8f4c9ec7-c7c5-4b53-8699-691bf345ebbf"
+    },
+    {
+      "parameters": {
+        "url": "https://www.thecocktaildb.com/api/json/v1/1/random.php",
+        "options": {}
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        610,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "8ba44cfd-b402-4c80-b6a4-493d13df6ee5"
+    },
+    {
+      "parameters": {
+        "channelId": "={{$node[\"Webhook\"].json[\"body\"][\"channel_id\"]}}",
+        "message": "=Why not try {{$node[\"HTTP Request\"].json[\"drinks\"][0][\"strDrink\"]}}?\n{{$node[\"HTTP Request\"].json[\"drinks\"][0][\"strInstructions\"]}} Serve in {{$node[\"HTTP Request\"].json[\"drinks\"][0][\"strGlass\"]}}.",
+        "attachments": [
+          {
+            "image_url": "={{$node[\"HTTP Request\"].json[\"drinks\"][0][\"strDrinkThumb\"]}}"
+          }
+        ],
+        "otherOptions": {}
+      },
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        810,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "39c48d4c-6ccb-48f8-bdfa-5e9a5797c88c"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:41:48.666Z",
+  "versionId": "dd2ca145-4533-4366-8a58-2e4a5c98d654"
+}

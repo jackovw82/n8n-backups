@@ -1,0 +1,142 @@
+{
+  "active": false,
+  "connections": {
+    "On schedule": {
+      "main": [
+        [
+          {
+            "node": "Get all tasks with specific label",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add to Notion database": {
+      "main": [
+        [
+          {
+            "node": "Replace label on task",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all tasks with specific label": {
+      "main": [
+        [
+          {
+            "node": "Add to Notion database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:23:12.201Z",
+  "id": "6u1BqutHsYs6I7IJ",
+  "meta": {
+    "templateId": "1778"
+  },
+  "name": "Sync tasks automatically from Todoist to Notion",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds"
+            }
+          ]
+        }
+      },
+      "id": "0122196d-e051-4154-9e39-3ddbfe26858f",
+      "name": "On schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "getAll",
+        "filters": {
+          "labelId": "send-to-notion"
+        }
+      },
+      "id": "1a15e1cc-cdd5-4a49-aa7a-a0779f858e69",
+      "name": "Get all tasks with specific label",
+      "type": "n8n-nodes-base.todoist",
+      "position": [
+        600,
+        240
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "5a98bd24-dd2b-41a3-b7e2-3b8a9ee21d41",
+          "cachedResultUrl": "https://www.notion.so/5a98bd24dd2b41a3b7e23b8a9ee21d41",
+          "cachedResultName": "My Todoist Tasks"
+        },
+        "title": "={{ $json.content }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Todoist ID|number",
+              "numberValue": "={{ parseInt($json.id) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "35b13f4a-da38-4d63-9fbf-7c36c97cbc11",
+      "name": "Add to Notion database",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        820,
+        240
+      ],
+      "typeVersion": 2.1
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "update",
+        "taskId": "={{ $('Get all tasks with specific label').item.json.id }}",
+        "updateFields": {
+          "description": "=Notion Link:  {{ $json.url }}\n\n{{ $('Get all tasks with specific label').item.json.description }}",
+          "labels": [
+            "sent"
+          ]
+        }
+      },
+      "id": "f3144751-28b0-48e1-9331-f25f55a5ddf6",
+      "name": "Replace label on task",
+      "type": "n8n-nodes-base.todoist",
+      "position": [
+        1040,
+        240
+      ],
+      "typeVersion": 2
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:23:12.201Z",
+  "versionId": "fc098bc1-d2f6-4b1b-9801-cc9f5fb789db"
+}

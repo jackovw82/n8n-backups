@@ -1,0 +1,84 @@
+{
+  "active": false,
+  "connections": {
+    "Create Domain Item": {
+      "main": [
+        [
+          {
+            "node": "Get DNS records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Create Domain Item",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-10T09:14:48.972Z",
+  "id": "frTKPPRuwott6XCC",
+  "meta": {
+    "templateId": "862"
+  },
+  "name": "Get DNS entries of any domain with uProc",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "da94d46e-8a05-48af-8a0e-54515f3be47f"
+    },
+    {
+      "parameters": {
+        "functionCode": "item.domain = \"n8n.io\";\nreturn item;"
+      },
+      "name": "Create Domain Item",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        590,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "95f1d510-9377-492b-98f0-6f345e91b0b7"
+    },
+    {
+      "parameters": {
+        "group": "internet",
+        "tool": "getDomainRecords",
+        "domain": "= {{$node[\"Create Domain Item\"].json[\"domain\"]}}",
+        "additionalOptions": {}
+      },
+      "name": "Get DNS records",
+      "type": "n8n-nodes-base.uproc",
+      "position": [
+        790,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "d604aef5-4399-4345-824b-40171a3221af"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-10T09:14:48.972Z",
+  "versionId": "f48ca0d0-0ffb-493d-9a31-20118ebd61ac"
+}

@@ -1,0 +1,119 @@
+{
+  "active": false,
+  "connections": {
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MailerLite Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-11T10:11:08.528Z",
+  "id": "U5nhbnynrVSTh5h9",
+  "meta": {
+    "templateId": "759"
+  },
+  "name": "Receive updates when a subscriber is added to a group in MailerLite",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        800,
+        180
+      ],
+      "typeVersion": 1,
+      "id": "9fe35713-ceda-4e9d-9cee-2de12e05f51a",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "event": "subscriber.add_to_group"
+      },
+      "name": "MailerLite Trigger",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "position": [
+        800,
+        -60
+      ],
+      "webhookId": "dd15d919-18b3-4af7-a5c9-c4583cdda9f5",
+      "typeVersion": 1,
+      "id": "4164e3db-ff07-4ed2-b13b-ab0fc31f4e70"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Name",
+              "value": "={{$node[\"MailerLite Trigger\"].json[\"data\"][\"subscriber\"][\"name\"]}}"
+            },
+            {
+              "name": "Email",
+              "value": "={{$node[\"MailerLite Trigger\"].json[\"data\"][\"subscriber\"][\"email\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1000,
+        -60
+      ],
+      "typeVersion": 1,
+      "id": "cc043529-2673-4140-8364-bcbfa8dd4294"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "application": "",
+        "table": "Data",
+        "options": {}
+      },
+      "name": "Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "position": [
+        1200,
+        -60
+      ],
+      "typeVersion": 1,
+      "id": "60754135-cc11-4421-873d-8447b7893fbb"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T10:11:08.528Z",
+  "versionId": "0a9c133a-5798-42a9-8aeb-3442330d9cbb"
+}

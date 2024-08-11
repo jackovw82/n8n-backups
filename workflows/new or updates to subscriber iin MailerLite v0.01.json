@@ -1,0 +1,850 @@
+{
+  "active": false,
+  "connections": {
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Lookup subscriber in SM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MailerLite Trigger3": {
+      "main": [
+        [
+          {
+            "node": "Set3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lookup subscriber in SM": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create new subscriber in SM1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create new subscriber in SM1": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Create new subscriber in SM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create new subscriber in SM": {
+      "main": [
+        [
+          {
+            "node": "Slack1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Create new subscriber in SM2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create new subscriber in SM2": {
+      "main": [
+        [
+          {
+            "node": "Slack2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Create new subscriber in SM3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create new subscriber in SM3": {
+      "main": [
+        [
+          {
+            "node": "Slack3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create new Subscriber": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Updated subscriber": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Subscriber Unsubscribed": {
+      "main": [
+        [
+          {
+            "node": "Set2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-11T10:11:08.528Z",
+  "id": "U5nhbnynrVSTh5h9",
+  "meta": {
+    "templateId": "759",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "new or updates to subscriber iin MailerLite v0.01",
+  "nodes": [
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Name",
+              "value": "={{$node[\"Create new Subscriber\"].json[\"data\"][\"subscriber\"][\"name\"]}}"
+            },
+            {
+              "name": "Email",
+              "value": "={{$node[\"Create new Subscriber\"].json[\"data\"][\"subscriber\"][\"email\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        520,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "cc043529-2673-4140-8364-bcbfa8dd4294"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Name",
+              "value": "={{$node[\"Updated subscriber\"].json[\"data\"][\"subscriber\"][\"name\"]}}"
+            },
+            {
+              "name": "Email",
+              "value": "={{$node[\"Updated subscriber\"].json[\"data\"][\"subscriber\"][\"email\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        520,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "5bd15f5d-a58c-483e-855b-d52999e91cab"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f1839118-1b5c-413b-a8ff-71b5fe26b71a",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        740,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Name",
+              "value": "={{$node[\"Subscriber Unsubscribed\"].json[\"data\"][\"subscriber\"][\"name\"]}}"
+            },
+            {
+              "name": "Email",
+              "value": "={{$node[\"Subscriber Unsubscribed\"].json[\"data\"][\"subscriber\"][\"email\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set2",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        520,
+        720
+      ],
+      "typeVersion": 1,
+      "id": "d590a415-a1c1-4fe7-b267-1b2282b06a13"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "7523cdc6-c6f3-44b2-83b5-4d069df669b0",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        740,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "event": "subscriber.create"
+      },
+      "name": "MailerLite Trigger3",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "position": [
+        300,
+        1180
+      ],
+      "webhookId": "dd15d919-18b3-4af7-a5c9-c4583cdda9f5",
+      "typeVersion": 1,
+      "id": "9ad950df-3f64-424d-b2b6-0c05fc695b02",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Name",
+              "value": "={{$node[\"MailerLite Trigger3\"].json[\"data\"][\"subscriber\"][\"name\"]}}"
+            },
+            {
+              "name": "Email",
+              "value": "={{$node[\"MailerLite Trigger3\"].json[\"data\"][\"subscriber\"][\"email\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set3",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        500,
+        1180
+      ],
+      "typeVersion": 1,
+      "id": "609bf95b-1e61-46ac-99a9-64c6fb796625"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c177c371-7f53-4078-91ee-29a1eb3373b3",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Update MailerLite Subscriber\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/sticky-notes/)",
+        "height": 123.7607839254035,
+        "width": 309.8899167152933
+      },
+      "id": "92677c49-fe72-41f5-ad0c-e1dffe5c4d33",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Existing MailerLite Subscriber Updated\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/sticky-notes/)",
+        "height": 123.7607839254035,
+        "width": 294.35882411189465
+      },
+      "id": "f233b857-1a30-4912-bf33-545498e720a4",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -54.35882411189465,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Unsubscribed MailerLite Subscriber\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/sticky-notes/)",
+        "height": 123.7607839254035,
+        "width": 294.35882411189476
+      },
+      "id": "e8028ddc-5323-4cfc-93da-a35f65069b8c",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -54.35882411189476,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## New MailerLite Subscriber\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/sticky-notes/)",
+        "height": 123.7607839254035,
+        "width": 268.4736697728971
+      },
+      "id": "f408ac02-4b94-4a9a-919f-1b0b9f8041f5",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -48.4736697728971,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b24a84ac-d083-470a-bf4b-a833abfbe267",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        960,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4f34976b-42ba-40f0-a91e-4d119bec93cb",
+      "name": "Lookup subscriber in SM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        740,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "ebb63453-97c5-457e-aec3-38365ba74888",
+      "name": "Create new subscriber in SM1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        -200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "a33d8221-8c93-461a-9231-05977be20744",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "f14e94e0-ee48-4c5d-a326-22d77e164bd6",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1460,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "id": "82afd674-c1a1-4167-8d1c-33f6fe60b726",
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "318fc541-7d42-46a6-b81d-0ec21b372855",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        960,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "27fb0d6a-c214-425b-b07e-5447cf16192a",
+      "name": "Create new subscriber in SM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3eccae8a-e9fe-45f8-9982-9af88edc5cc3",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "fde257f7-8662-42ff-84e0-5f77fa06f677",
+      "name": "Slack1",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1460,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "id": "89d83b49-64a5-4e9f-98f1-2f965ceb41c6",
+      "name": "Mattermost1",
+      "type": "n8n-nodes-base.mattermost",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "7dcfaf7d-7834-4512-ac89-1ac7686fecd6",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        960,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "cb91e91a-69c1-459b-948c-5ac7b7a14c84",
+      "name": "Create new subscriber in SM2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        600
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e15b1d52-0c4e-4e1d-ad56-73a34f8be17a",
+      "name": "No Operation, do nothing2",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "ee4768e0-1499-42e4-a8a3-28838e591735",
+      "name": "Slack2",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1460,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "id": "a7746c2f-d608-462b-a7bc-8d9d94264aae",
+      "name": "Mattermost2",
+      "type": "n8n-nodes-base.mattermost",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f83c9b58-5544-4f3a-b84d-ac7f080cca3f",
+      "name": "If3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        960,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "6d98359a-f07c-46c7-be8f-edd04c903d4a",
+      "name": "Create new subscriber in SM3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        1060
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "379f777e-c494-47fd-b9cb-638bd5a6cd41",
+      "name": "No Operation, do nothing3",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "363cf065-9163-48d4-9df9-c63700298051",
+      "name": "Slack3",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1460,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "id": "86e438bd-3051-43e9-bfed-724ee5e9630e",
+      "name": "Mattermost3",
+      "type": "n8n-nodes-base.mattermost",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "event": "subscriber.update"
+      },
+      "name": "Create new Subscriber",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "position": [
+        320,
+        -80
+      ],
+      "webhookId": "dd15d919-18b3-4af7-a5c9-c4583cdda9f5",
+      "typeVersion": 1,
+      "id": "4164e3db-ff07-4ed2-b13b-ab0fc31f4e70",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.update"
+      },
+      "name": "Updated subscriber",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "position": [
+        320,
+        320
+      ],
+      "webhookId": "dd15d919-18b3-4af7-a5c9-c4583cdda9f5",
+      "typeVersion": 1,
+      "id": "1e443e8e-f278-48e3-8982-4e4a5ebf9cd8",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.unsubscribe"
+      },
+      "name": "Subscriber Unsubscribed",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "position": [
+        320,
+        720
+      ],
+      "webhookId": "dd15d919-18b3-4af7-a5c9-c4583cdda9f5",
+      "typeVersion": 1,
+      "id": "67f72698-b03a-4bd3-a15e-85d7d015f7a6",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T18:53:21.000Z",
+  "versionId": "fc2513ee-8cbe-4988-9403-7e7b1d218513"
+}

@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "If": {
       "main": [
@@ -145,12 +145,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-05T17:24:59.330Z",
-  "id": "zWwJtHyVU8tXYhKu",
-  "meta": {
-    "templateId": "2301",
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-09T18:35:51.757Z",
+  "id": "4QvBN9woKPkq98Bf",
+  "meta": null,
   "name": "WF050: Check if workflows contain build-in nodes that are not of the latest version",
   "nodes": [
     {
@@ -170,7 +167,7 @@
       "typeVersion": 4.2,
       "credentials": {
         "n8nApi": {
-          "id": "QyYOrTgwNcy7NvMO",
+          "id": "rfE3jH4GYHa5JHIJ",
           "name": "n8n account"
         }
       }
@@ -311,7 +308,7 @@
       "typeVersion": 1,
       "credentials": {
         "n8nApi": {
-          "id": "QyYOrTgwNcy7NvMO",
+          "id": "rfE3jH4GYHa5JHIJ",
           "name": "n8n account"
         }
       }
@@ -531,7 +528,7 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
@@ -541,7 +538,7 @@
     }
   },
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2024-08-05T18:37:20.000Z",
-  "versionId": "9360521a-caea-4095-a82f-e52394d5c00b"
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T18:35:51.757Z",
+  "versionId": "0663a088-9cc7-46af-ace3-7c90ec45b099"
 }

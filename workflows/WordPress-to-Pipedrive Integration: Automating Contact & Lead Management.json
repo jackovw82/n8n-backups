@@ -286,8 +286,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T08:33:42.907Z",
-  "versionId": "b590d77d-aee2-47c4-84c8-0e51c225cdef"
+  "updatedAt": "2024-08-11T09:20:07.000Z",
+  "versionId": "d7530c76-dd0f-46aa-a6bb-8c43574e776b"
 }

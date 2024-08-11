@@ -30,46 +30,6 @@
     },
     {
       "parameters": {
-        "event": "subscriber.create"
-      },
-      "id": "4ec8c2f3-85ae-404e-a04c-fab63d8da2c1",
-      "name": "MailerLite Subscriber Created",
-      "type": "n8n-nodes-base.mailerLiteTrigger",
-      "typeVersion": 1,
-      "position": [
-        480,
-        520
-      ],
-      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
-      "credentials": {
-        "mailerLiteApi": {
-          "id": "q085m3G8l78bm7wE",
-          "name": "Mailer Lite account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "event": "subscriber.update"
-      },
-      "id": "7f0e1d66-62a4-4baa-8da0-fb44f2cb1659",
-      "name": "MailerLite Subscriber Updated",
-      "type": "n8n-nodes-base.mailerLiteTrigger",
-      "typeVersion": 1,
-      "position": [
-        480,
-        720
-      ],
-      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
-      "credentials": {
-        "mailerLiteApi": {
-          "id": "q085m3G8l78bm7wE",
-          "name": "Mailer Lite account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "event": "subscriber.unsubscribe"
       },
       "id": "cb93ea60-1a21-4fff-b31e-d80eb4d5d6b6",
@@ -130,15 +90,35 @@
     },
     {
       "parameters": {
-        "event": "subscriber.remove_from_group"
+        "event": "subscriber.bounced"
       },
-      "id": "74f7d2da-5fbd-4ee4-b95e-3151bdb55af1",
-      "name": "MailerLite Subscriber removed from Group1",
+      "id": "4ec8c2f3-85ae-404e-a04c-fab63d8da2c1",
+      "name": "MailerLite Subscriber Bounched",
       "type": "n8n-nodes-base.mailerLiteTrigger",
       "typeVersion": 1,
       "position": [
         480,
-        1580
+        520
+      ],
+      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.complaint"
+      },
+      "id": "7f0e1d66-62a4-4baa-8da0-fb44f2cb1659",
+      "name": "MailerLite Subscriber Complained",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        480,
+        720
       ],
       "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
       "credentials": {
@@ -163,6 +143,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T18:28:02.000Z",
-  "versionId": "07b09cb2-9429-4ec9-99cc-f70d5421cb12"
+  "updatedAt": "2024-08-11T18:56:22.000Z",
+  "versionId": "a10a6b85-274a-4f84-81e2-c3f947f68455"
 }

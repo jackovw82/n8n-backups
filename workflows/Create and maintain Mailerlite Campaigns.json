@@ -1,0 +1,81 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-11T11:38:03.172Z",
+  "id": "anaHgJ3ilQCQSOpi",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Create and maintain Mailerlite Campaigns",
+  "nodes": [
+    {
+      "parameters": {
+        "event": "campaign.sent"
+      },
+      "id": "54c6156d-39b8-423b-8a91-a133729b7380",
+      "name": "MailerLite Campaign sent",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        540,
+        480
+      ],
+      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.bounced"
+      },
+      "id": "2ffc0fb1-692e-4d69-baf4-ce8059c46196",
+      "name": "Mailerlite Subscriber Bounched",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        540,
+        700
+      ],
+      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.complaint"
+      },
+      "id": "8488bf4f-d0ca-48de-b039-0adefa4270ca",
+      "name": "Mailerlite Subscriber  Complained",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        540,
+        900
+      ],
+      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T11:40:14.000Z",
+  "versionId": "f78e9033-6120-4c54-bbc1-baff82596c96"
+}

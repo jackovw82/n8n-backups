@@ -1,0 +1,62 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-10T09:17:20.408Z",
+  "id": "lTX8zHHyngOZRPIy",
+  "meta": {
+    "templateId": "1326"
+  },
+  "name": "Get a Slack alert when a workflow went wrong 2",
+  "nodes": [
+    {
+      "parameters": {
+        "text": "=🐞 What?!\n*This execution{{$node[\"Error Trigger\"].json[\"workflow\"][\"name\"]}} went wrong*\\nWhy don't you go take a look {{$node[\"Error Trigger\"].json[\"execution\"][\"url\"]}}",
+        "otherOptions": {},
+        "attachments": []
+      },
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "6a8c909f-ec42-4419-8bcf-c9fc5e0f8750"
+    },
+    {
+      "parameters": {},
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "executeOnce": false,
+      "retryOnFail": false,
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "9e8b1210-009a-4ea0-917b-e1a0691525ad"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-10T09:17:20.408Z",
+  "versionId": "d597980d-f853-4afd-85bb-d6a9001e4fc5"
+}

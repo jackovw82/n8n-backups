@@ -175,10 +175,9 @@
       ]
     }
   },
-  "createdAt": "2024-07-24T16:20:28.532Z",
-  "id": "Vpvjzs4SzBGlYA0h",
+  "createdAt": "2024-08-09T18:35:51.811Z",
+  "id": "4nJ1mxvvobMQQHLN",
   "meta": {
-    "templateId": "1534",
     "templateCredsSetupCompleted": true
   },
   "name": "WF100: Back Up Your n8n Workflows To Github",
@@ -215,8 +214,8 @@
       "alwaysOutputData": true,
       "credentials": {
         "githubApi": {
-          "id": "7txefx36DPZl9bxI",
-          "name": "GitHub account"
+          "id": "q6Wg1jCBoypkmslD",
+          "name": "GitHub account 2"
         }
       },
       "continueOnFail": true
@@ -303,8 +302,8 @@
       "typeVersion": 1,
       "credentials": {
         "githubApi": {
-          "id": "7txefx36DPZl9bxI",
-          "name": "GitHub account"
+          "id": "q6Wg1jCBoypkmslD",
+          "name": "GitHub account 2"
         }
       }
     },
@@ -327,8 +326,8 @@
       "typeVersion": 1,
       "credentials": {
         "githubApi": {
-          "id": "7txefx36DPZl9bxI",
-          "name": "GitHub account"
+          "id": "q6Wg1jCBoypkmslD",
+          "name": "GitHub account 2"
         }
       }
     },
@@ -457,7 +456,7 @@
       "typeVersion": 1,
       "credentials": {
         "n8nApi": {
-          "id": "QyYOrTgwNcy7NvMO",
+          "id": "rfE3jH4GYHa5JHIJ",
           "name": "n8n account"
         }
       }
@@ -494,6 +493,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-08-07T18:57:08.000Z",
-  "versionId": "41cec7e9-d30f-4632-97a3-75c43b402e48"
+  "updatedAt": "2024-08-11T07:26:24.000Z",
+  "versionId": "48c2d527-c22e-4763-b17e-a0af718ca105"
 }

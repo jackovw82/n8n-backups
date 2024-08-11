@@ -1,0 +1,229 @@
+{
+  "active": false,
+  "connections": {
+    "Set values": {
+      "main": [
+        [
+          {
+            "node": "create new contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "lead interested": {
+      "main": [
+        [
+          {
+            "node": "update lead stage",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NoOp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Typeform Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set values",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update lead stage": {
+      "main": [
+        [
+          {
+            "node": "send information",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create new contact": {
+      "main": [
+        [
+          {
+            "node": "lead interested",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-11T08:37:56.447Z",
+  "id": "OOBKTjSaFWZX6Q7s",
+  "meta": {
+    "templateId": "1223"
+  },
+  "name": "Capture leads in HubSpot from Typeform",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "contact",
+        "email": "={{$json[\"form_email\"]}}",
+        "additionalFields": {
+          "companyName": "={{$json[\"form_companyname\"]}}",
+          "firstName": "={{$json[\"form_firstname\"]}}",
+          "industry": "={{$json[\"form_department\"]}}",
+          "lastName": "={{$json[\"form_lastname\"]}}"
+        }
+      },
+      "name": "create new contact",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "ed3c3d0e-5db9-46da-a0f5-d46d5b58147c"
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "email": "={{$node[\"create new contact\"].json[\"properties\"][\"email\"][\"value\"]}}",
+        "additionalFields": {
+          "lifeCycleStage": "opportunity"
+        }
+      },
+      "name": "update lead stage",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        1180,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "a955c2b1-2c59-4231-b530-cafc355fb9d9"
+    },
+    {
+      "parameters": {},
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1180,
+        340
+      ],
+      "typeVersion": 1,
+      "id": "912b5815-656c-48eb-ab3a-d733b69813ff"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "form_firstname",
+              "value": "={{$json[\"First up, what's your name?\"]}}"
+            },
+            {
+              "name": "form_lastname",
+              "value": "={{$json[\"And your surname, [field:fda1954c-f7a3-4fd3-a8dc-dcad5160bab5]?\"]}}"
+            },
+            {
+              "name": "form_department",
+              "value": "={{$json[\"And in which department do you work, [field:fda1954c-f7a3-4fd3-a8dc-dcad5160bab5]?\"]}}"
+            },
+            {
+              "name": "form_companyname",
+              "value": "={{$json[\"Great! Now what company are you from?\"]}}"
+            },
+            {
+              "name": "form_email",
+              "value": "={{$json[\"Just a couple more questions left! What's your email address?\"]}}"
+            }
+          ],
+          "boolean": [
+            {
+              "name": "form_interest",
+              "value": "={{$json[\"And are you currently looking to scale your visual content?\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set values",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "d198e547-f09d-4823-98c0-5aeed04702d0"
+    },
+    {
+      "parameters": {
+        "formId": "RPueloJC"
+      },
+      "name": "Typeform Trigger",
+      "type": "n8n-nodes-base.typeformTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "97eb74c8-156c-4329-8679-37b69533f709",
+      "typeVersion": 1,
+      "id": "5cec5fab-ae6e-466a-b1fb-7f591b1dc110"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$node[\"Set values\"].json[\"form_interest\"]}}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "name": "lead interested",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        980,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "7ed1b7e5-4668-4582-a1fc-74b34862dad0"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "subject": "So you're interested in growing your business",
+        "message": "=Hello {{$json[\"properties\"][\"firstname\"][\"value\"]}},\n\nI'm glad to hear you're interested in our services. You can schedule a call with me here: [calendly_link].\nUntil then, check out this presentation about how we can help your business: [presentation_link].\nLooking forward to talking to you!\n\nBest,\nTeam",
+        "toList": [
+          "={{$json[\"properties\"][\"email\"][\"value\"]}}"
+        ],
+        "additionalFields": {}
+      },
+      "name": "send information",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        1380,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "6f786da5-e00e-488a-ad79-0d10e8d29e4a"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T08:37:56.447Z",
+  "versionId": "e3f9eaa1-4c71-4cbd-9bf1-6e041c553c3e"
+}

@@ -1,0 +1,549 @@
+{
+  "active": false,
+  "connections": {
+    "split actions": {
+      "main": [
+        [
+          {
+            "node": "Filter as you like",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Everyday at 3am": {
+      "main": [
+        [
+          {
+            "node": "Ad insights from yesterday",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data column only": {
+      "main": [
+        [
+          {
+            "node": "split actions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter as you like": {
+      "main": [
+        [
+          {
+            "node": "Add rows to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ad insights from yesterday": {
+      "main": [
+        [
+          {
+            "node": "data column only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Ad insights from yesterday",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-11T09:14:13.498Z",
+  "id": "uthSRVLVyB4AxvRG",
+  "meta": {
+    "templateId": "2355"
+  },
+  "name": "Get Meta Ads insights and save them into Google Sheets 2",
+  "nodes": [
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "0bf43d80-2683-4fd7-a963-721c6880fddd",
+      "name": "data column only",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        1520,
+        560
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "actions",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "08744661-02f7-41cd-b63c-26bf2b9420d1",
+      "name": "split actions",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        1720,
+        560
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "2e6ff278-aac2-4fed-af25-6938cb539b93",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.actions.action_type }}",
+              "rightValue": "omni_purchase"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9d05fe84-811a-4d5f-85a4-baad7b3efc53",
+      "name": "Filter as you like",
+      "type": "n8n-nodes-base.filter",
+      "position": [
+        1940,
+        560
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {},
+      "id": "e88f1ccd-3f89-4246-8956-f6a884a70fd3",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        1100,
+        560
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 3
+            }
+          ]
+        }
+      },
+      "id": "9fd557b8-96e9-4546-8978-a49b88589ec2",
+      "name": "Everyday at 3am",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        1100,
+        380
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "content": "# Resources\nHere you find documentation on how to use the Facebook Graph API.\n\n### How to get your Graph API token\n### [🎥 Watch video](https://www.youtube.com/watch?v=bMm58tWxZ-A)\n### [📰 Read Official Guide](https://developers.facebook.com/docs/graph-api/get-started)\n\n### Graph API Explorer\n### [🔍 Open Explorer](https://developers.facebook.com/tools/explorer/?method=GET&path=act_%7BACCOUNT-ID%7D%2Finsights%3Ftime_increment%3D1%26level%3Dad%26limit%3D300%26fields%3Dad_id%2Cspend%2Cimpressions%2Cclicks%2Ccpc%2Ccpm%2Ccpp%2Cctr%2Cobjective%2Creach&version=v20.0)\n\n### API Reference for the Insights endpoint\n### https://developers.facebook.com/docs/marketing-api/insights\n\n### See all ad action types here:\n### https://developers.facebook.com/docs/marketing-api/reference/ads-action-stats/",
+        "height": 541.795438981266,
+        "width": 610.9005248123877,
+        "color": 7
+      },
+      "id": "b37e6333-e1dd-45f1-a38c-6e62ed03d0dc",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### Want to get data from more days?\nUse this node instead \n## 👈",
+        "height": 142.4617580639392,
+        "width": 222.662069330422,
+        "color": 7
+      },
+      "id": "7e92f380-d0c9-44ac-b1ab-449c27ff5600",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1500,
+        840
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### Use this node to choose the actions you want to save in Google Sheets\n\nLikes, page_view, purchases, initiate_checkout...\n## 👇",
+        "height": 187.67682933131675,
+        "width": 244.22280083689145,
+        "color": 7
+      },
+      "id": "6b9f402c-edf4-41db-a109-b9a3d6b80040",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1940,
+        360
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1zZT2inBObMA-RQ3YdK_PDkNr7CQ9W3Q_KurOSDvWA-Y",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zZT2inBObMA-RQ3YdK_PDkNr7CQ9W3Q_KurOSDvWA-Y/edit?usp=drivesdk",
+          "cachedResultName": "Meta insights"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gid=0",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1zZT2inBObMA-RQ3YdK_PDkNr7CQ9W3Q_KurOSDvWA-Y/edit#gid=0",
+          "cachedResultName": "Sheet1"
+        },
+        "columns": {
+          "value": {
+            "cpc": "={{ $json.cpc }}",
+            "cpm": "={{ $json.cpm }}",
+            "cpp": "={{ $json.cpp }}",
+            "ctr": "={{ $json.ctr }}",
+            "date": "={{ $json.date_start }}",
+            "ad_id": "={{ $json.ad_id }}",
+            "reach": "={{ $json.reach }}",
+            "spend": "={{ $json.spend }}",
+            "clicks": "={{ $json.clicks }}",
+            "ad_name": "={{ $json.ad_name }}",
+            "adset_id": "={{ $json.adset_id }}",
+            "objective": "={{ $json.objective }}",
+            "adset_name": "={{ $json.adset_name }}",
+            "action_type": "={{ $json.actions.action_type }}",
+            "campaign_id": "={{ $json.campaign_id }}",
+            "impressions": "={{ $json.impressions }}",
+            "action_value": "={{ $json.actions.value }}",
+            "campaign_name": "={{ $json.campaign_name }}"
+          },
+          "schema": [
+            {
+              "id": "date",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "date",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_id",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "campaign_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "campaign_name",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "campaign_name",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "adset_id",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "adset_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "adset_name",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "adset_name",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ad_id",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "ad_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ad_name",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "ad_name",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "spend",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "spend",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "impressions",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "impressions",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "clicks",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "clicks",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cpc",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "cpc",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cpm",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "cpm",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cpp",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "cpp",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ctr",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "ctr",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "objective",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "objective",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reach",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "reach",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "action_type",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "action_type",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "action_value",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "action_value",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": []
+        },
+        "options": {}
+      },
+      "id": "ee1c8804-f3a2-43e0-adae-83a6e75815c2",
+      "name": "Add rows to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        2180,
+        560
+      ],
+      "typeVersion": 4.4
+    },
+    {
+      "parameters": {
+        "graphApiVersion": "v17.0",
+        "node": "act_67794567456167637",
+        "edge": "insights",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "time_increment",
+                "value": "1"
+              },
+              {
+                "name": "level",
+                "value": "ad"
+              },
+              {
+                "name": "time_range",
+                "value": "={\n  \"since\":\"{{$today.minus({days: 10}).toFormat('yyyy-MM-dd')}}\",\n  \"until\":\"{{$today.toFormat('yyyy-MM-dd')}}\"\n}"
+              },
+              {
+                "name": "fields",
+                "value": "=campaign_id,\ncampaign_name,\nadset_id,\nadset_name,\nad_id,\nad_name,\nspend,\nimpressions,\nclicks,\ncpc,\ncpm,\ncpp,\nctr,\nobjective,\nreach,\nactions"
+              },
+              {
+                "name": "limit",
+                "value": "3000"
+              }
+            ]
+          }
+        }
+      },
+      "id": "58f70554-1c9b-43c6-a9dc-562e03bbd8e6",
+      "name": "Ad insights from any date period",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        1320,
+        880
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "Find your Ad Account ID and replace here in this format:\n\nact_{ACCOUNT_ID}\n\nExample:\nact_39865092752135\n\n## 👇",
+        "height": 232.8086079367765,
+        "width": 208.95674579497393,
+        "color": 7
+      },
+      "id": "f326646a-0210-4094-bcd0-c243e44ee768",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1320,
+        313.9309652052357
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "graphApiVersion": "v17.0",
+        "node": "act_{YOUR_AD_ACCOUNT_ID_HERE}",
+        "edge": "insights",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "time_increment",
+                "value": "1"
+              },
+              {
+                "name": "level",
+                "value": "ad"
+              },
+              {
+                "name": "fields",
+                "value": "=campaign_id,\ncampaign_name,\nadset_id,\nadset_name,\nad_id,\nad_name,\nspend,\nimpressions,\nclicks,\ncpc,\ncpm,\ncpp,\nctr,\nobjective,\nreach,\nactions"
+              },
+              {
+                "name": "limit",
+                "value": "3000"
+              },
+              {
+                "name": "date_preset",
+                "value": "yesterday"
+              }
+            ]
+          }
+        }
+      },
+      "id": "d17cb79b-f8b7-4586-8875-261ed822b39c",
+      "name": "Ad insights from yesterday",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        1320,
+        560
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T09:14:13.498Z",
+  "versionId": "6dbf6f0a-65d8-486c-bdf5-058967289c2c"
+}

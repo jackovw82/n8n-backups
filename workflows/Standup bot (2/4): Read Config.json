@@ -1,0 +1,86 @@
+{
+  "active": false,
+  "connections": {
+    "Read Config File": {
+      "main": [
+        [
+          {
+            "node": "Convert to JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Read Config File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:30:51.316Z",
+  "id": "mUSoHbmlKRyQrHbR",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "templateId": "1473"
+  },
+  "name": "Standup bot (2/4): Read Config",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "b465c37b-50b5-4a22-9255-f0b6e20fa883"
+    },
+    {
+      "parameters": {
+        "filePath": "/home/node/.n8n/standup-bot-config.json",
+        "dataPropertyName": "config"
+      },
+      "name": "Read Config File",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "position": [
+        560,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "557bc520-abf1-4ae3-9628-90b79721e64c"
+    },
+    {
+      "parameters": {
+        "sourceKey": "config",
+        "options": {
+          "encoding": "utf8"
+        }
+      },
+      "name": "Convert to JSON",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "position": [
+        740,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "c700eec4-7cff-4730-aaff-3bf6ecd5cba5"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:30:51.316Z",
+  "versionId": "4618f5b5-9018-4a41-b3c8-825c27bcf8ac"
+}

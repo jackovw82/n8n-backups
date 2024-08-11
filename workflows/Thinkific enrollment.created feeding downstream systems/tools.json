@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T21:54:19.402Z",
-  "id": "8deqTEU8vrHTI1PQ",
+  "createdAt": "2024-08-09T19:56:16.952Z",
+  "id": "3GIXM5LmkF2DwLPJ",
   "meta": null,
   "name": "Thinkific enrollment.created feeding downstream systems/tools",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T21:54:19.402Z",
-  "versionId": "0b6f0ce4-c5ab-4477-8e56-e514fe2e8dc1"
+  "updatedAt": "2024-08-09T19:56:16.952Z",
+  "versionId": "59afe1cd-0c31-4cb0-b0c4-df53b7b2b31b"
 }

@@ -1,0 +1,114 @@
+{
+  "active": false,
+  "connections": {
+    "Mattermost": {
+      "main": [
+        [
+          {
+            "node": "Mattermost1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mattermost1": {
+      "main": [
+        [
+          {
+            "node": "Mattermost2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:37:39.516Z",
+  "id": "lyiqcYb1SLCX8dOD",
+  "meta": {
+    "templateId": "832"
+  },
+  "name": "Create a channel, add a member, and post a message to the channel on Mattermost",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "1259809a-cd51-4518-96d0-2130c0ffc485"
+    },
+    {
+      "parameters": {
+        "resource": "channel",
+        "teamId": "4zhpirmh97fn7jgp7qhyue5a6e",
+        "displayName": "Docs",
+        "channel": "docs"
+      },
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "fc4c19d7-aa2b-492f-a12c-1443d9b167fc"
+    },
+    {
+      "parameters": {
+        "resource": "channel",
+        "operation": "addUser",
+        "channelId": "={{$node[\"Mattermost\"].json[\"id\"]}}",
+        "userId": "5oiy71hukjgd9eprj1o4a3poio"
+      },
+      "name": "Mattermost1",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "b4d4a832-0f19-4c7e-8b9e-5894928ec9f4"
+    },
+    {
+      "parameters": {
+        "channelId": "={{$node[\"Mattermost\"].json[\"id\"]}}",
+        "message": "Hey! Welcome to the channel!",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "name": "Mattermost2",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        980,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "92369de9-1836-43eb-b629-db880627f783"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:37:39.516Z",
+  "versionId": "00586d66-671e-4538-ba3e-0ec6fabe1f0f"
+}

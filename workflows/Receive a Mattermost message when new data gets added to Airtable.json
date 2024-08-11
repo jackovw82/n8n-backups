@@ -1,0 +1,71 @@
+{
+  "active": false,
+  "connections": {
+    "Airtable Trigger": {
+      "main": [
+        [
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:38:08.554Z",
+  "id": "2kuEWQzKDGOLEdQN",
+  "meta": {
+    "templateId": "799"
+  },
+  "name": "Receive a Mattermost message when new data gets added to Airtable",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "baseId": "",
+        "tableId": "Data",
+        "triggerField": "Created",
+        "additionalFields": {}
+      },
+      "name": "Airtable Trigger",
+      "type": "n8n-nodes-base.airtableTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "efea85da-50db-4fbe-98f0-ece11fb27ea2"
+    },
+    {
+      "parameters": {
+        "message": "=New Data was added to Airtable.\nID:{{$node[\"Airtable Trigger\"].json[\"fields\"][\"id\"]}}\nName: {{$node[\"Airtable Trigger\"].json[\"fields\"][\"name\"]}}",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "a29db9c9-04fa-48c9-b160-c8f4b66f4d52"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:38:08.554Z",
+  "versionId": "ae2fe2ae-82be-4946-a732-8a8bc7d97141"
+}

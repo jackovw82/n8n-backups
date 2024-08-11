@@ -160,8 +160,8 @@
       ]
     }
   },
-  "createdAt": "2024-07-24T17:17:34.158Z",
-  "id": "tRI0HtjF7MElSZKz",
+  "createdAt": "2024-08-09T18:35:51.760Z",
+  "id": "lDidcrWn8mZ3wN0c",
   "meta": null,
   "name": "Time entry is updated in Toggl to SM",
   "nodes": [
@@ -681,13 +681,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T07:54:45.000Z",
-  "versionId": "41d8ca48-a24e-4675-a837-4aeb61395ff7"
+  "updatedAt": "2024-08-09T18:35:51.760Z",
+  "versionId": "08e2d565-2685-4287-935c-3c647d334392"
 }

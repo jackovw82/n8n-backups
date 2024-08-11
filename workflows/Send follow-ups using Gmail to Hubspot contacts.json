@@ -1,0 +1,389 @@
+{
+  "active": false,
+  "connections": {
+    "Set email keys": {
+      "main": [
+        [
+          {
+            "node": "Record engagement in HubSpot",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send outreach email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Every day at 9 am": {
+      "main": [
+        [
+          {
+            "node": "Get previously HubSpot contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get previously HubSpot contacts": {
+      "main": [
+        [
+          {
+            "node": "if last contacted before a month",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "if last contacted before a month": {
+      "main": [
+        [
+          {
+            "node": "Get Hubspot Contact to engagement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Hubspot Contact to engagement": {
+      "main": [
+        [
+          {
+            "node": "if there has been only one engagement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "if there has been only one engagement": {
+      "main": [
+        [
+          {
+            "node": "Set email keys",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-11T09:10:51.868Z",
+  "id": "5sQYmnC6r3q1PEwZ",
+  "meta": {
+    "templateId": "2118"
+  },
+  "name": "Send follow-ups using Gmail to Hubspot contacts",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "3a0ba7f4-ac41-49b0-a055-b993c82f2680",
+      "name": "Every day at 9 am",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        460,
+        540
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "content": "## Search for all contacts that last contact date for is known\n\n1. Setup Oauth2 creds using n8n docs\nhttps://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.hubspottrigger/\n\n### Be careful with scopes. Scopes must be exactly as defined in the n8n docs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n### To make this more effective, we sort ascending by last contact date.",
+        "height": 595.2986206729652,
+        "width": 348.2877732355713
+      },
+      "id": "5fa47f36-3206-44b9-965a-0d27b10acc21",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        860,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.to }}",
+        "subject": "={{ $json.subject }}",
+        "message": "={{ $json.html }}",
+        "options": {
+          "appendAttribution": false,
+          "senderName": "Mutasem from n8n"
+        }
+      },
+      "id": "16b6fadf-ff1d-4670-b148-151cfbd242d5",
+      "name": "Send outreach email",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        2160,
+        320
+      ],
+      "typeVersion": 2.1
+    },
+    {
+      "parameters": {
+        "content": "## Record engagement in Hubspot\n\nOnce engagement is added, last contact date is updated and won't show up in search results for another month.\n",
+        "height": 402.1775107197669,
+        "width": 289.74216745960825,
+        "color": 3
+      },
+      "id": "a89ec3bd-7bb0-4dde-a9eb-800842073fc9",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2120,
+        560
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Send followup email using Gmail to Hubspot contacts \n\nFollowing up at the right time is one of the most important parts of sales. This workflow uses Gmail to send outreach emails to Hubspot contacts that have already been contacted only once more than a month ago, and records the engagement in Hubspot. ",
+        "height": 242.51175804432177,
+        "width": 407.25356360335365,
+        "color": 5
+      },
+      "id": "687509ed-4d25-4597-bade-1802348e42c9",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "engagement",
+        "type": "email",
+        "metadata": {
+          "fromEmail": "mutasem@n8n.io",
+          "firstName": "Mutasem",
+          "html": "={{ $json.html }}",
+          "subject": "={{ $json.subject }}",
+          "toEmail": [
+            "={{ $json.to }}"
+          ]
+        },
+        "additionalFields": {
+          "associations": {
+            "contactIds": "={{ $json.id }}"
+          }
+        }
+      },
+      "id": "e66f48c9-0e19-4089-a4a4-d9e87b56898a",
+      "name": "Record engagement in HubSpot",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        2200,
+        760
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "search",
+        "filterGroupsUi": {
+          "filterGroupsValues": [
+            {
+              "filtersUi": {
+                "filterValues": [
+                  {
+                    "propertyName": "notes_last_contacted|datetime",
+                    "operator": "HAS_PROPERTY"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "direction": "ASCENDING",
+          "properties": [
+            "firstname",
+            "lastname",
+            "email",
+            "notes_last_contacted"
+          ],
+          "sortBy": "notes_last_contacted"
+        }
+      },
+      "id": "f90770cf-aa6c-4148-b471-2b28ed978f72",
+      "name": "Get previously HubSpot contacts",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        960,
+        540
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "8d9ad7ef-6e1a-486c-9fac-419ad2660ace",
+              "operator": {
+                "type": "dateTime",
+                "operation": "before"
+              },
+              "leftValue": "={{ $json.properties.notes_last_contacted }}",
+              "rightValue": "={{ DateTime.now().minus({days: 30}) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "751fd345-9fec-4c7c-b20b-1db86ce6df10",
+      "name": "if last contacted before a month",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1240,
+        540
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "url": "=https://api.hubapi.com/crm-associations/v1/associations/{{ $json.id }}/HUBSPOT_DEFINED/9",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api",
+        "options": {}
+      },
+      "id": "52596987-ef7f-4dd7-98e7-6c3aaf6c2853",
+      "name": "Get Hubspot Contact to engagement",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1460,
+        540
+      ],
+      "typeVersion": 4.1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "07c7e29c-eed1-4872-a9f7-b833bb0cafca",
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              },
+              "leftValue": "={{ $json.results.length }}",
+              "rightValue": 1
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fe0bc120-8bee-41fa-a896-3c9ff8cf3a29",
+      "name": "if there has been only one engagement",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1680,
+        540
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f3ecc873-2d60-4f2d-bc40-81f9379c725b",
+              "name": "html",
+              "type": "string",
+              "value": "=Hey {{ $json.properties.firstname }},\n\nJust want to follow up on my previous email, since I have not \n heard from you. Have you had the chance to consider n8n? \n\nCheers,\n\nMutasem"
+            },
+            {
+              "id": "9f4f5b68-984b-415e-a110-a35ded22dd41",
+              "name": "subject",
+              "type": "string",
+              "value": "Follow up on n8n"
+            },
+            {
+              "id": "5362aa67-f3fa-4a6e-b6e8-4c50cc7a3192",
+              "name": "to",
+              "type": "string",
+              "value": "={{ $('Get previously HubSpot contacts').item.json.properties.email }}"
+            },
+            {
+              "id": "5b11e503-868d-4fca-bb44-59bb44d597a8",
+              "name": "id",
+              "type": "string",
+              "value": "={{ $('Get previously HubSpot contacts').item.json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "512909c7-104b-4507-b91e-aa5b5a9410e5",
+      "name": "Set email keys",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1940,
+        540
+      ],
+      "typeVersion": 3.3
+    },
+    {
+      "parameters": {
+        "content": "## Get pervious engagements. Avoid sending follow ups if first eng\n\n### Here we simply follow up if there has only been outreach email before.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n### We could the engagements here and their types and perform more advanced filtering. ",
+        "height": 496.3776986502359,
+        "width": 490.3275896931988,
+        "color": 4
+      },
+      "id": "c0e5472d-5208-4df7-89e8-380c2dab9642",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1420,
+        320
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T09:10:51.868Z",
+  "versionId": "c106f4c6-5960-47ad-9fcc-7498400d1d5d"
+}

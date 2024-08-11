@@ -1,0 +1,128 @@
+{
+  "active": false,
+  "connections": {
+    "Order Updated": {
+      "main": [
+        [
+          {
+            "node": "If Refund and Over 100",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Refund and Over 100": {
+      "main": [
+        [
+          {
+            "node": "Send to Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T20:41:01.180Z",
+  "id": "FWDywmE4yh9vnIuc",
+  "meta": {
+    "templateId": "1460"
+  },
+  "name": "Notify on Slack when refund is registered in WooCommerce",
+  "nodes": [
+    {
+      "parameters": {
+        "event": "order.updated"
+      },
+      "name": "Order Updated",
+      "type": "n8n-nodes-base.wooCommerceTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "f7736be3-e978-4a17-b936-7ce9f8ccdb72",
+      "typeVersion": 1,
+      "id": "a1789fd2-053e-49ea-bac2-df67558e4517"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json[\"total\"]}}",
+              "operation": "largerEqual",
+              "value2": 100
+            }
+          ],
+          "string": [
+            {
+              "value1": "={{$json[\"status\"]}}",
+              "value2": "refunded"
+            }
+          ]
+        }
+      },
+      "name": "If Refund and Over 100",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        600,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "c4c61c4b-3ccc-4a67-82a1-40525615dd5b"
+    },
+    {
+      "parameters": {
+        "channel": "woo-commerce",
+        "text": ":x: A refund has been issued :x:",
+        "otherOptions": {},
+        "attachments": [
+          {
+            "color": "#FF0000",
+            "fields": {
+              "item": [
+                {
+                  "short": true,
+                  "title": "Order ID",
+                  "value": "={{$json[\"id\"]}}"
+                },
+                {
+                  "short": true,
+                  "title": "Status",
+                  "value": "={{$json[\"status\"]}}"
+                },
+                {
+                  "short": true,
+                  "title": "Total",
+                  "value": "={{$json[\"currency_symbol\"]}}{{$json[\"total\"]}}"
+                }
+              ]
+            },
+            "footer": "=*Order updated:* {{$json[\"date_modified\"]}}"
+          }
+        ],
+        "blocksUi": {
+          "blocksValues": []
+        }
+      },
+      "name": "Send to Slack",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        840,
+        220
+      ],
+      "typeVersion": 1,
+      "id": "3a275aff-abf1-469b-90ab-31178e0f81ec"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T20:41:01.180Z",
+  "versionId": "e18718a7-902c-4edd-a6d3-112d05fec165"
+}

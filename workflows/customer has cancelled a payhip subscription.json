@@ -1,18 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T21:35:30.147Z",
-  "id": "gwkJVdDqUP2bn0hP",
+  "createdAt": "2024-08-09T18:35:51.814Z",
+  "id": "RKqD4t1j6FjyeoZ0",
   "meta": null,
   "name": "customer has cancelled a payhip subscription",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T21:35:30.147Z",
-  "versionId": "290791af-7048-4abd-bf97-63bc0caed54f"
+  "updatedAt": "2024-08-09T18:35:51.814Z",
+  "versionId": "8a59129a-f641-4c79-9aca-a79c4ec74bc2"
 }

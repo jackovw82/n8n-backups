@@ -1,0 +1,124 @@
+{
+  "active": false,
+  "connections": {
+    "Wise": {
+      "main": [
+        [
+          {
+            "node": "Wise1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wise1": {
+      "main": [
+        [
+          {
+            "node": "Wise2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wise2": {
+      "main": [
+        [
+          {
+            "node": "Wise3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T20:39:52.766Z",
+  "id": "4igq92BdaEBZu3aQ",
+  "meta": {
+    "templateId": "992"
+  },
+  "name": "Manage transfers automatically in Wise",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "quote",
+        "operation": "create",
+        "profileId": 16138858,
+        "targetAccountId": 147767974,
+        "amount": 500,
+        "sourceCurrency": "EUR",
+        "targetCurrency": "EUR"
+      },
+      "name": "Wise",
+      "type": "n8n-nodes-base.wise",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "9e50a559-1d9c-420e-915f-27d937aa71be"
+    },
+    {
+      "parameters": {
+        "resource": "transfer",
+        "operation": "create",
+        "profileId": 16138858,
+        "quoteId": "={{$json[\"id\"]}}",
+        "targetAccountId": 147767974,
+        "additionalFields": {
+          "reference": "Thank you for the contribution"
+        }
+      },
+      "name": "Wise1",
+      "type": "n8n-nodes-base.wise",
+      "position": [
+        570,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "263cf0a6-5b68-407b-a3e7-36fb1f8417bc"
+    },
+    {
+      "parameters": {
+        "resource": "transfer",
+        "operation": "execute",
+        "profileId": 16138858,
+        "transferId": "={{$json[\"id\"]}}"
+      },
+      "name": "Wise2",
+      "type": "n8n-nodes-base.wise",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "1d8798c7-5e8d-4030-9176-07ca16bf2c73"
+    },
+    {
+      "parameters": {
+        "resource": "transfer",
+        "transferId": "={{$node[\"Wise1\"].json[\"id\"]}}"
+      },
+      "name": "Wise3",
+      "type": "n8n-nodes-base.wise",
+      "position": [
+        980,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "a9f5a600-e015-4f71-a087-251a86049f4f"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T20:39:52.766Z",
+  "versionId": "e4379483-2282-43b2-9839-2a539fbec1ad"
+}

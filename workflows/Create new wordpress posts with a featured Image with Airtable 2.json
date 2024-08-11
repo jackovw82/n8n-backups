@@ -112,11 +112,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-07T16:35:55.319Z",
-  "id": "qMxO64Ylqt9ahrvB",
-  "meta": {
-    "templateId": "2281"
-  },
+  "createdAt": "2024-08-09T18:39:58.898Z",
+  "id": "Z4VLZ9Gor4P1I8kb",
+  "meta": null,
   "name": "Create new wordpress posts with a featured Image with Airtable 2",
   "nodes": [
     {
@@ -640,13 +638,13 @@
       "typeVersion": 1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-07T16:35:55.319Z",
-  "versionId": "1c5bff11-ce94-4a1a-8269-1ae11417839d"
+  "updatedAt": "2024-08-09T18:39:58.898Z",
+  "versionId": "6f8b6f40-91e6-4a64-8e06-49f9a3da0402"
 }

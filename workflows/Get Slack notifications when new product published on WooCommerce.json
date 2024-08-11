@@ -1,0 +1,127 @@
+{
+  "active": false,
+  "connections": {
+    "On product creation": {
+      "main": [
+        [
+          {
+            "node": "If URL has /product/",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If URL has /product/": {
+      "main": [
+        [
+          {
+            "node": "Send message to slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:24:43.692Z",
+  "id": "N65tBXDM4Mf7rygG",
+  "meta": {
+    "templateId": "1765"
+  },
+  "name": "Get Slack notifications when new product published on WooCommerce",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"permalink\"]}}",
+              "operation": "startsWith",
+              "value2": "https://[add-your-url-here]/product/"
+            }
+          ]
+        }
+      },
+      "name": "If URL has /product/",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        560,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "0d4c3449-64e8-48b8-8245-6c22001aea34"
+    },
+    {
+      "parameters": {
+        "channel": "newproducts",
+        "text": ":new: A new product has been added! :new:",
+        "otherOptions": {},
+        "attachments": [
+          {
+            "color": "#66FF00",
+            "fields": {
+              "item": [
+                {
+                  "short": false,
+                  "title": "Name",
+                  "value": "={{$json[\"name\"]}}"
+                },
+                {
+                  "short": true,
+                  "title": "Price",
+                  "value": "={{$json[\"regular_price\"]}}"
+                },
+                {
+                  "short": true,
+                  "title": "Sale Price",
+                  "value": "={{$json[\"sale_price\"]}}"
+                },
+                {
+                  "short": false,
+                  "title": "Link",
+                  "value": "={{$json[\"permalink\"]}}"
+                }
+              ]
+            },
+            "footer": "=Added: {{$json[\"date_created\"]}}"
+          }
+        ],
+        "blocksUi": {
+          "blocksValues": []
+        }
+      },
+      "name": "Send message to slack",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        840,
+        200
+      ],
+      "typeVersion": 1,
+      "id": "df74e51d-2f70-4454-8cb3-db5df4e621cf"
+    },
+    {
+      "parameters": {
+        "event": "product.created"
+      },
+      "name": "On product creation",
+      "type": "n8n-nodes-base.wooCommerceTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "267c4855-6227-4d33-867e-74600097473e",
+      "typeVersion": 1,
+      "id": "05ef046c-939a-48c1-a3eb-dfc4ac34801a"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:24:43.692Z",
+  "versionId": "89631372-590c-4a9a-bcf9-8045bad6cec7"
+}

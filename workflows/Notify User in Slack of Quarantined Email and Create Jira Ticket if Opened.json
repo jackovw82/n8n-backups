@@ -1,0 +1,339 @@
+{
+  "active": false,
+  "connections": {
+    "user found?": {
+      "main": [
+        [
+          {
+            "node": "Found, notify user",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Not Found, Do Nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "has email been opened?": {
+      "main": [
+        [
+          {
+            "node": "Yes, prep flaggedRules table",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "lookup slack user by email": {
+      "main": [
+        [
+          {
+            "node": "user found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Yes, prep flaggedRules table": {
+      "main": [
+        [
+          {
+            "node": "Jira Software",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Sublime Security Alert": {
+      "main": [
+        [
+          {
+            "node": "Get message details in Sublime Security",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get message details in Sublime Security": {
+      "main": [
+        [
+          {
+            "node": "has email been opened?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "lookup slack user by email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-10T09:29:12.713Z",
+  "id": "12LvXabR9qwXdp9R",
+  "meta": {
+    "templateId": "1975"
+  },
+  "name": "Notify User in Slack of Quarantined Email and Create Jira Ticket if Opened",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ !!($json.read_at ?? false) }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "f0bf5f9b-58c5-4dff-95cc-3af378fc49a3",
+      "name": "has email been opened?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1180,
+        915.1531824115386
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "3ea0b887-9caa-477e-b6e4-1d3edf72d11e",
+        "authentication": "headerAuth",
+        "options": {}
+      },
+      "id": "7acb2409-6b67-4500-993f-5beeaecec718",
+      "name": "Receive Sublime Security Alert",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        740,
+        915.1531824115386
+      ],
+      "webhookId": "3ea0b887-9caa-477e-b6e4-1d3edf72d11e",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "=https://api.platform.sublimesecurity.com/v0/messages/{{ $json.body.data.messageId }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "ad876000-e3a4-4f3e-b917-629cc450a15c",
+      "name": "Get message details in Sublime Security",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        940,
+        915.1531824115386
+      ],
+      "typeVersion": 4.1
+    },
+    {
+      "parameters": {
+        "project": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "issueType": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "summary": "=Flagged email has been opened before quarantine | {{ $('Get message details in Sublime Security').item.json.subject }}",
+        "additionalFields": {
+          "description": "=An email has been automatically flagged by Sublime Security and has been quarantined.\nThe recipient has opened the email before the quarantine occurred.\n\n## **Flagged Rules**\n|Name |Severity|Tags|ID|\n|--|--|--|--|\n{{ $json[\"table\"] }}\n\n## **Email information**\n| | |\n|--|--|\n|Email ID|{{ $('Get message details in Sublime Security').item.json[\"id\"] }}|\n|Time Created At|{{ $('Get message details in Sublime Security').item.json[\"created_at\"] }}|\n|Receiving Mailbox Address|{{ $('Get message details in Sublime Security').item.json[\"mailbox\"][\"email\"] }}|\n|Subject line|{{ $('Get message details in Sublime Security').item.json[\"subject\"] }}|\n|Sender Email|{{ $('Get message details in Sublime Security').item.json[\"sender\"][\"email\"] }}|\n|Sender Display Name|{{ $('Get message details in Sublime Security').item.json[\"sender\"][\"display_name\"] }}|\n|Time Read At|{{ $('Get message details in Sublime Security').item.json[\"read_at\"] }}|\n\nTo view the message details and further information, please check the Sublime Security dashboard.\n\nAn email has been sent to {{ $('Get message details in Sublime Security').item.json[\"mailbox\"][\"email\"] }} notifying them that an incoming message has been quarantined."
+        }
+      },
+      "id": "2945cdef-f595-410d-9344-767e8cae3cd6",
+      "name": "Jira Software",
+      "type": "n8n-nodes-base.jira",
+      "position": [
+        1580,
+        775.1531824115386
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "https://slack.com/api/users.lookupByEmail",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "slackApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "={{ $json.mailbox.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9c55d492-0fdd-4edd-995c-b3c5fecd9840",
+      "name": "lookup slack user by email",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1180,
+        335.15318241153864
+      ],
+      "typeVersion": 4.1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ !!($json.user.id ?? false) }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "f1bcb2c7-4ef4-4f9b-a68e-6620ab66b435",
+      "name": "user found?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1380,
+        335.15318241153864
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "![Sublime Security](https://i.imgur.com/DfXJLIw.png)\n# Workflow Overview\n\nThis workflow is initiated by `Sublime Security` whenever an inbound email undergoes scanning and triggers an alert.\n\nIn the event that Sublime Security is set up to automatically quarantine the email, this workflow will make an effort to inform the recipient through Slack. To accomplish this, it will utilize the recipient's mailbox address to search for their corresponding Slack username.\n\nIf the flagged email has already been opened, this workflow will additionally create a Jira ticket to manage the incident.\n\n## **HTTP Request Node Requirements**\n1. Create a rule in Sublime Security which has [auto-quarantine enabled](https://docs.sublimesecurity.com/docs/quarantine).\n2. [Create a webhook](https://docs.sublimesecurity.com/docs/webhooks) in Sublime which will send an alert to the `Receive Sublime Security Alert` node whenever a selected rule is triggered.\n\n## **Credentials**\n- Sublime Security: Find your API key for [Sublime Security](https://docs.sublimesecurity.com/reference/authentication#create-an-api-key) and save it as an n8n credential with Header Auth in the format `Authorization: Bearer YOUR-API-KEY`.\n\n- Slack: Provide credentials for a Slack app that has access to `users:read.email` and `im:write` scopes.\n",
+        "height": 863.9601939404693,
+        "width": 718.6188455173532
+      },
+      "id": "dcca54b8-d09c-45bf-a789-7545103bb7c3",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "![Slack](https://i.imgur.com/iKyMV0N.png)\n## Try to find quarantined email user's slack username \nWith the quarantined email’s details at hand, n8n tries to notify the user via Slack. The message explains the reason for the email’s absence, provides identifying details, and instructs on further action if the user recognizes the email as safe.",
+        "height": 522.7074838611178,
+        "width": 714.4547337311393
+      },
+      "id": "8255a3f7-fcda-4d93-97c3-4d223778014f",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1120,
+        50.33983545149715
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $json.user.id }}"
+        },
+        "text": "=Hello,\nOur security team has detected a potentially malicious email sent to your inbox and have quarantined it undergoing investigation.\n\nFrom: {{ $('Get message details in Sublime Security').item.json[\"sender\"][\"display_name\"] }} | {{ $('Get message details in Sublime Security').item.json[\"sender\"][\"email\"] }}\nSubject: {{ $('Get message details in Sublime Security').item.json[\"subject\"] }}\n\nIf you believe that the email is not malicious and was intended for you, please contact IT, referencing email ID `{{ $('Get message details in Sublime Security').item.json[\"id\"] }}`.\n\nThe email may be restored by IT if it is determined to be safe.\n\nThank you for helping keep the company secure!",
+        "otherOptions": {}
+      },
+      "id": "c149a4b8-4f12-4018-a1dc-dfbed9e081eb",
+      "name": "Found, notify user",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1600,
+        275.15318241153864
+      ],
+      "typeVersion": 2.1
+    },
+    {
+      "parameters": {},
+      "id": "04712fdf-0409-4f9d-bd0b-7e40af9ffade",
+      "name": "Not Found, Do Nothing",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1600,
+        435.15318241153864
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "![Jira](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Jira_%28Software%29_logo.svg/320px-Jira_%28Software%29_logo.svg.png)\n## If user opened email before quarantine, create jira ticket\nIf an email is opened prior to quarantine, n8n automatically creates a Jira ticket for further investigation. This ensures a swift response to potential threats that bypass the initial quarantine measures, highlighting n8n's critical role in incident response workflows.",
+        "height": 516.9144812801944,
+        "width": 718.1630306649816
+      },
+      "id": "c9f8ede6-1886-4779-a4e8-3c32e12d6aae",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1120,
+        585.78948333867
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "a75d35a2-eefa-490c-9a05-9474a1e093fb",
+      "name": "No, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1400,
+        955.1531824115386
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "console.log($(\"Receive Sublime Security Alert\").item.json.body);\n\nconst table = $(\"Receive Sublime Security Alert\")\n  .item.json.body.data.flagged_rules.map(\n    (rule) => `|${rule.name}|${rule.severity}|${rule.tags.join(\",\")}|${rule.id}`\n  )\n  .join(\"\\n\");\n\nconsole.log(table);\n\nreturn {\n  table\n}\n"
+      },
+      "id": "8c44c4fb-ec26-4005-b17b-ac8a9ef79721",
+      "name": "Yes, prep flaggedRules table",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1400,
+        775.1531824115386
+      ],
+      "typeVersion": 2
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-10T09:29:09.046Z",
+      "updatedAt": "2024-08-10T09:29:09.046Z",
+      "id": "LJt7yFpz9iJWVfIS",
+      "name": "OpsSec"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-10T09:29:12.713Z",
+  "versionId": "bb8f1c60-1d26-4ae1-8030-e77e71775724"
+}

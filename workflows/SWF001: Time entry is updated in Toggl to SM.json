@@ -268,11 +268,9 @@
       ]
     }
   },
-  "createdAt": "2024-07-24T17:17:34.158Z",
-  "id": "tRI0HtjF7MElSZKz",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-09T18:35:50.621Z",
+  "id": "SJxevHVvaIVcqfKB",
+  "meta": null,
   "name": "SWF001: Time entry is updated in Toggl to SM",
   "nodes": [
     {
@@ -1036,13 +1034,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-05T21:10:54.000Z",
-  "versionId": "8073a59e-c5a6-4027-8b4c-582ec896e503"
+  "updatedAt": "2024-08-09T18:35:50.621Z",
+  "versionId": "a3551665-32df-4eb3-a75c-3dd820de9681"
 }

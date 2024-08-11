@@ -1,0 +1,66 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Clockify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-10T09:18:37.761Z",
+  "id": "WwMrt0Qa3bltPDIV",
+  "meta": {
+    "templateId": "1487"
+  },
+  "name": "Creates a time tracking project from Syncro to Clockify",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "43d196b0-63c4-440a-aaf6-9d893907cf3c",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "43d196b0-63c4-440a-aaf6-9d893907cf3c",
+      "typeVersion": 1,
+      "id": "d70efbde-0f9c-4f4f-bdda-2357c92fb5c9"
+    },
+    {
+      "parameters": {
+        "workspaceId": "xxx",
+        "name": "=Ticket {{$json[\"body\"][\"attributes\"][\"number\"]}} - {{$json[\"body\"][\"attributes\"][\"customer_business_then_name\"]}} [{{$json[\"body\"][\"attributes\"][\"id\"]}}]",
+        "additionalFields": {}
+      },
+      "name": "Clockify",
+      "type": "n8n-nodes-base.clockify",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "bae2957b-33bf-4f66-9f2e-ec177a585099"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-10T09:18:37.761Z",
+  "versionId": "21979d79-ab48-47a0-83e7-ccecc3b7619b"
+}

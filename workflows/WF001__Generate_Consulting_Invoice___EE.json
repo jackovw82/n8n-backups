@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T20:15:00.772Z",
+  "id": "By8s2jzbIcwWshlq",
+  "meta": null,
+  "name": "WF001__Generate_Consulting_Invoice___EE",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T20:15:00.772Z",
+  "versionId": "a0437039-a925-4cd5-9f26-57efa038ed9a"
+}

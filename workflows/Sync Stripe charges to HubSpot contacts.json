@@ -1,0 +1,648 @@
+{
+  "active": false,
+  "connections": {
+    "Configure": {
+      "main": [
+        [
+          {
+            "node": "Skip field checking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge data": {
+      "main": [
+        [
+          {
+            "node": "Aggregate totals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On schedule": {
+      "main": [
+        [
+          {
+            "node": "Configure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get customer": {
+      "main": [
+        [
+          {
+            "node": "Merge data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all charges": {
+      "main": [
+        [
+          {
+            "node": "If charge has customer",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge data",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "If field exists": {
+      "main": [
+        [
+          {
+            "node": "Get all charges",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create field in HubSpot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate totals": {
+      "main": [
+        [
+          {
+            "node": "Create or update customer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get HubSpot field": {
+      "main": [
+        [
+          {
+            "node": "If field exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Skip field checking": {
+      "main": [
+        [
+          {
+            "node": "Get all charges",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get HubSpot field",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If charge has customer": {
+      "main": [
+        [
+          {
+            "node": "Remove duplicate customers",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Aggregate `amount_captured`",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create field in HubSpot": {
+      "main": [
+        [
+          {
+            "node": "Get all charges",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove duplicate customers": {
+      "main": [
+        [
+          {
+            "node": "Get customer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-11T09:08:50.422Z",
+  "id": "RbMkdrc4e2qppS0A",
+  "meta": {
+    "templateId": "1855"
+  },
+  "name": "Sync Stripe charges to HubSpot contacts",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json[\"customer\"] }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "9be821db-fbc7-4168-962f-26c8382cefbf",
+      "name": "If charge has customer",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "customer",
+        "customerId": "={{ $json[\"customer\"] }}"
+      },
+      "id": "d06bae31-6856-4941-b86c-c611fc9d3da6",
+      "name": "Get customer",
+      "type": "n8n-nodes-base.stripe",
+      "position": [
+        980,
+        280
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "4e0d87bf-084f-4958-b2d3-cf7985f8c901",
+      "name": "On schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -1580,
+        760
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates",
+        "compare": "selectedFields",
+        "fieldsToCompare": {
+          "fields": [
+            {
+              "fieldName": "customer"
+            }
+          ]
+        },
+        "options": {
+          "removeOtherFields": true
+        }
+      },
+      "id": "fb620c92-5e22-4a9c-9320-847442b5e955",
+      "name": "Remove duplicate customers",
+      "type": "n8n-nodes-base.itemLists",
+      "position": [
+        700,
+        280
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "aggregateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "amount_captured"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3ad7554d-24b3-4ee2-8136-6a151bf06c71",
+      "name": "Aggregate `amount_captured`",
+      "type": "n8n-nodes-base.itemLists",
+      "position": [
+        700,
+        -100
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": "// aggregate `amounts_captured` with the customer, taking note \n// that `aggregateAmountsPerContact` is the value in cents\nconst aggregateAmountsPerContact = new Object();\nfor (const item of $input.all()) {\n  if (aggregateAmountsPerContact[item.json.email] == null) {\n    aggregateAmountsPerContact[item.json.email] = 0;\n  }\n  aggregateAmountsPerContact[item.json.email] += item.json.amount_captured;\n}\n\n// parse the data in a way that is usable in future nodes, and\n// converts amounts from cents to dollars\nconst parsed = [];\nfor (const contact of Object.keys(aggregateAmountsPerContact)) {\n    parsed.push({\n        email: contact,\n        amount_captured: aggregateAmountsPerContact[contact] / 100\n    });\n}\n\nreturn parsed;"
+      },
+      "id": "c8448580-40f2-4cf6-87ba-80903555d5a5",
+      "name": "Aggregate totals",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        1640,
+        720
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "contact",
+        "email": "={{$node[\"Aggregate totals\"].json[\"email\"]}}",
+        "additionalFields": {
+          "customPropertiesUi": {
+            "customPropertiesValues": [
+              {
+                "property": "={{$(\"Configure\").first().json[\"contactPropertyId\"]}}",
+                "value": "={{$node[\"Aggregate totals\"].json[\"amount_captured\"]}}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "dedaf89e-84d1-4964-9c87-94beea4adf26",
+      "name": "Create or update customer",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        1960,
+        720
+      ],
+      "notesInFlow": false,
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "id",
+              "field2": "customer"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4c419e90-facc-4a64-83f2-d349264338c6",
+      "name": "Merge data",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1340,
+        720
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "content": "### `Merge data`\nMore specifically, we merge the Stripe data from `Get charges` and `Get customer` nodes. Only the charges with customers on them will continue.",
+        "height": 378.32426823578305,
+        "width": 219.61431588546765
+      },
+      "id": "6a21495f-e567-4b0f-b584-34306bf7fa18",
+      "name": "Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1280,
+        520
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### `Aggregate totals`\nGiven the merged data, we now aggregate the amounts from charges to the customers/contacts.",
+        "height": 379.1631729345614,
+        "width": 218.46574043407196
+      },
+      "id": "7319c8fe-9e55-43d9-a634-3a7884268016",
+      "name": "Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1580,
+        520
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### ``Aggregate `amount_captured` ``\nThis does nothing. It is an alternative way to find the totals of every charge in existence in Stripe. Potentially useful for debugging purposes.",
+        "height": 325.06310253513686,
+        "width": 297.57428772569784
+      },
+      "id": "c24d972b-270d-4467-9352-4ced18e377c0",
+      "name": "Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        600,
+        -240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "charge",
+        "operation": "getAll",
+        "returnAll": true
+      },
+      "id": "43da8885-fac3-4cb7-9f01-c4770cd0b030",
+      "name": "Get all charges",
+      "type": "n8n-nodes-base.stripe",
+      "position": [
+        120,
+        740
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Sync Stripe charges to HubSpot contacts\nThis workflow pushes Stripe charges to HubSpot contacts. It uses the Stripe API to get all charges and the HubSpot API to update the contacts. The workflow will create a new HubSpot property to store the total amount charged. If the property already exists, it will update the property.\n\n### How it works\n1. On a schedule, the first Stripe node gets all charges. The default schedule is once a day at midnight.\n2. Once the charges are returned, the second Stripe node gets extra customer information.\n3. Once the customer information is returned, `Merge data` node will merge the customer information with the charges so that the next node `Aggregate totals` can calculate the total amount charged per contact.\n4. Once we have the total amount charged per contact, the `Create or update customer` node will create a new HubSpot property to store the total amount charged. If the property already exists, it will update the property.\n\n\n\nWorkflow written by [David Sha](https://davidsha.me).",
+        "height": 510.0404950205649,
+        "width": 504
+      },
+      "id": "abfe75f5-c36f-4904-a703-cb8d1d83b686",
+      "name": "Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2140,
+        580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### `Remove duplicate customers`\nEnsures that we do not poll Stripe too many times unnecessarily. If multiple charges have the same customer, we ensure that we do not ask for the same information again.",
+        "height": 339.6783118583311,
+        "width": 298.2919335506821
+      },
+      "id": "67e44a47-18db-48a3-a08e-c4f2afb13a30",
+      "name": "Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        600,
+        120
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "=https://api.hubapi.com/crm/v3/properties/contact/{{$(\"Configure\").first().json[\"contactPropertyId\"]}}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api",
+        "options": {}
+      },
+      "id": "02d46492-f3ba-47fe-ba88-f2baad30fc73",
+      "name": "Get HubSpot field",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -600,
+        900
+      ],
+      "typeVersion": 3,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.hubapi.com/crm/v3/properties/contact",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotOAuth2Api",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{$(\"Configure\").first().json[\"contactPropertyId\"]}}"
+            },
+            {
+              "name": "label",
+              "value": "={{$(\"Configure\").first().json[\"contactPropertyLabelName\"]}}"
+            },
+            {
+              "name": "type",
+              "value": "number"
+            },
+            {
+              "name": "fieldType",
+              "value": "number"
+            },
+            {
+              "name": "groupName",
+              "value": "contactinformation"
+            },
+            {
+              "name": "formField",
+              "value": "false"
+            },
+            {
+              "name": "description",
+              "value": "=The total spend determined by the charges in Stripe. This is a field required for \"{{$workflow.name}}\" n8n workflow."
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "827882c4-5d3f-4cc6-b876-ae575a9a1b36",
+      "name": "Create field in HubSpot",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -200,
+        1020
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "content": "### Create HubSpot field if required\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n_These nodes create a HubSpot field if required.\nIt makes the contact field that this workflow uses \nto store the Stripe information. To disable this \nsection, in `Configure` node change `checkFields`\nto false._",
+        "height": 367.20468504951214,
+        "width": 656.5118956254801
+      },
+      "id": "b4092718-bf35-49b5-aefa-b9900596fcb5",
+      "name": "Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -680,
+        840
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "contactPropertyId",
+              "value": "stripe___total_spend"
+            },
+            {
+              "name": "contactPropertyLabelName",
+              "value": "Stripe - Total Spend"
+            }
+          ],
+          "boolean": [
+            {
+              "name": "checkFields",
+              "value": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6d74e2e3-bd95-4ccb-89c0-3d6f8f1e01f9",
+      "name": "Configure",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -1260,
+        760
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### Configuration\n\n\n\n\n\n\n\n\n\n\n\n\nBy default, this does not need to be updated. \n\n__`contactPropertyId` (required)__: Only change if the specific HubSpot field ID has been taken.\n\n__`contactPropertyLabelName` (required)__: Change if you would like a different display name.\n\n__`checkFields` (required)__: Turn to false if you would like to optimise this workflow, provided this workflow has run once before with this configurable enabled. This will disable the section of this workflow which deals with creating a HubSpot field.",
+        "height": 505.43603897947025,
+        "width": 338.8262165118159
+      },
+      "id": "8a8262bc-0742-4529-9f10-328c338854fe",
+      "name": "Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1380,
+        700
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### `Create or update customer`\nBy default, the only field updated is \"Stripe - Total Spend\". The contact is identified by its email.",
+        "height": 377.58888520886353,
+        "width": 219.86482940052417
+      },
+      "id": "fc640a31-2050-4276-a1f7-8154f61d2729",
+      "name": "Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1900,
+        520
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$node[\"Configure\"].json[\"checkFields\"]}}",
+              "value2": "={{false}}"
+            }
+          ]
+        }
+      },
+      "id": "c91295e6-0306-4f3d-adcf-923fbef1c173",
+      "name": "Skip field checking",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -940,
+        760
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "8f8b5a15-4895-4c5a-b8ba-8592dd754aca",
+      "name": "Do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        700,
+        600
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### `Do nothing`\nThis is useful to know what Stripe charges had no customer assigned.",
+        "height": 247.94509463108915,
+        "width": 298.2919335506821
+      },
+      "id": "b953e439-955c-4046-9000-32cbb3577c27",
+      "name": "Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        600,
+        500
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json[\"error\"][\"httpCode\"] }}",
+              "operation": "notEqual",
+              "value2": "404"
+            }
+          ]
+        }
+      },
+      "id": "ec2116e5-2a4a-4edf-a816-b15c349f23e0",
+      "name": "If field exists",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -400,
+        900
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T09:08:50.422Z",
+  "versionId": "efa7d57d-ee3e-41ec-93ca-fa387d9ead9b"
+}

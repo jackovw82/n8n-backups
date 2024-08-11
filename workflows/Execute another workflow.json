@@ -1,0 +1,59 @@
+{
+  "active": false,
+  "connections": {
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:39:19.446Z",
+  "id": "BfbfoDmOrfImI2fl",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "templateId": "588"
+  },
+  "name": "Execute another workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "f20732d4-321b-4994-802f-d0203a91ef5c"
+    },
+    {
+      "parameters": {
+        "workflowId": "1",
+        "options": {}
+      },
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "position": [
+        570,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "d10693f8-2250-4e7a-8ed3-64588ae8a90a"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:39:19.446Z",
+  "versionId": "af19b4bf-4af6-4d57-9d18-4a8be7fd4769"
+}

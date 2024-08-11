@@ -1,31 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-07-24T17:18:52.314Z",
-  "id": "QdDC5mupRLiPuS3e",
+  "createdAt": "2024-08-09T18:35:48.471Z",
+  "id": "ndB9yg6Y4l1kRFAq",
   "meta": null,
   "name": "Project is created in Toggl from SM",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-07-24T17:18:57.002Z",
-      "updatedAt": "2024-07-24T17:18:57.002Z",
-      "id": "Ka3uRnFaDJ9a4Rg0",
-      "name": "toggl"
-    },
-    {
-      "createdAt": "2024-07-24T17:19:02.136Z",
-      "updatedAt": "2024-07-24T17:19:02.136Z",
-      "id": "RW5RBtQ8bU6iwv8s",
-      "name": "smartsuite"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-24T17:19:03.000Z",
-  "versionId": "18490234-11d8-484e-a9bc-9268accee87e"
+  "updatedAt": "2024-08-09T18:35:48.471Z",
+  "versionId": "1850b64f-46a4-40da-9d98-374091efb554"
 }

@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "n8n": {
       "main": [
@@ -175,12 +175,9 @@
       ]
     }
   },
-  "createdAt": "2024-07-24T16:20:28.532Z",
-  "id": "Vpvjzs4SzBGlYA0h",
-  "meta": {
-    "templateId": "1534",
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-09T18:35:50.475Z",
+  "id": "3rI4OOVmIbWddQZl",
+  "meta": null,
   "name": "Back Up Your n8n Workflows To Github",
   "nodes": [
     {
@@ -457,7 +454,7 @@
       "typeVersion": 1,
       "credentials": {
         "n8nApi": {
-          "id": "QyYOrTgwNcy7NvMO",
+          "id": "rfE3jH4GYHa5JHIJ",
           "name": "n8n account"
         }
       }
@@ -487,13 +484,13 @@
       "typeVersion": 2
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2024-07-30T11:49:03.000Z",
-  "versionId": "b8d7041c-0fe8-4e1c-9c55-fd996fcad8ad"
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T18:35:50.475Z",
+  "versionId": "4161a445-9c3e-438d-894a-36fd6797aae9"
 }

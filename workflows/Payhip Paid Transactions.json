@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T19:48:54.257Z",
+  "id": "RSptyGsQJifzRSmC",
+  "meta": null,
+  "name": "Payhip Paid Transactions",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T19:48:54.257Z",
+  "versionId": "26a403eb-dcc4-4e40-816a-41ae6168eb79"
+}

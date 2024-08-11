@@ -1,0 +1,180 @@
+{
+  "active": false,
+  "connections": {
+    "Greetings": {
+      "main": [
+        [
+          {
+            "node": "Employees in coffee chat channel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Divide into groups": {
+      "main": [
+        [
+          {
+            "node": "Announce groups",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send calendar invites",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Weekly trigger on monday": {
+      "main": [
+        [
+          {
+            "node": "Greetings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Employees in coffee chat channel": {
+      "main": [
+        [
+          {
+            "node": "Divide into groups",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:37:04.725Z",
+  "id": "RnD5MUr09xZ9BCGN",
+  "meta": {
+    "templateId": "853"
+  },
+  "name": "Weekly Coffee Chat (Mattermost Version)",
+  "nodes": [
+    {
+      "parameters": {
+        "functionCode": "const ideal_group_size = 3;\nlet groups = [];\nlet data_as_array = [];\nlet newItems = [];\n\n// Take all the users and add them to an array\nfor (let j = 0; j < items.length; j++) {\n  data_as_array.push({username: items[j].json.username, email: items[j].json.email});\n}\n\n// Fisher-Yates (aka Knuth) Shuffle\nfunction shuffle(array) {\n  var currentIndex = array.length, temporaryValue, randomIndex;\n\n  // While there remain elements to shuffle...\n  while (0 !== currentIndex) {\n\n    // Pick a remaining element...\n    randomIndex = Math.floor(Math.random() * currentIndex);\n    currentIndex -= 1;\n\n    // And swap it with the current element.\n    temporaryValue = array[currentIndex];\n    array[currentIndex] = array[randomIndex];\n    array[randomIndex] = temporaryValue;\n  }\n\n  return array;\n}\n\n// Randomize the sequence of names in the array\ndata_as_array = shuffle(data_as_array);\n\n// Create groups of ideal group size (3)\nfor (let i = 0; i < data_as_array.length; i += ideal_group_size) {\n  groups.push(data_as_array.slice(i, i + ideal_group_size));\n}\n\n// Make sure that no group has just one person. If it does, take\n// one from previous group and add it to that group \nfor (let k = 0; k < groups.length; k++) {\n  if (groups[k].length === 1) {\n    groups[k].push(groups[k-1].shift());\n  }\n}\n\nfor (let l = 0; l < groups.length; l++) {\n    newItems.push({json: {groupsUsername: groups[l].map(a=> a.username), groupsEmail: groups[l].map(b=> b.email)}})\n}\n\nreturn newItems;"
+      },
+      "name": "Divide into groups",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        990,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "5c6807a2-f9c4-435e-899f-0d42dcbb54df"
+    },
+    {
+      "parameters": {
+        "channelId": "Enter Your Channel ID",
+        "message": "👋 Happy Monday\n\nGroups for this week's virtual coffee are:",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "name": "Greetings",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "cb3d5c98-3766-47eb-ae99-becf164193d3"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyWeek",
+              "hour": 10
+            }
+          ]
+        }
+      },
+      "name": "Weekly trigger on monday",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "83695fac-ef77-4e09-b0ee-49f08e2ebb39"
+    },
+    {
+      "parameters": {
+        "channelId": "=",
+        "message": "=☀️ {{$node[\"Divide into groups\"].json[\"groupsUsername\"].join(', ')}}",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "name": "Announce groups",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        1180,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "def97fff-1351-4e8c-a28e-012fcd5df934"
+    },
+    {
+      "parameters": {
+        "resource": "user",
+        "operation": "getAll",
+        "additionalFields": {
+          "inChannel": "={{$node[\"Greetings\"].parameter[\"channelId\"]}}"
+        }
+      },
+      "name": "Employees in coffee chat channel",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "b5c8fb5c-e412-44a9-a46b-430bd04f2faf"
+    },
+    {
+      "parameters": {
+        "calendar": "Enter Your Google Calendar",
+        "start": "2020-12-17T18:08:49.000Z",
+        "end": "2020-12-17T18:38:49.000Z",
+        "additionalFields": {
+          "attendees": [
+            "={{$node[\"Divide into groups\"].json[\"groupsEmail\"].join(',')}}"
+          ],
+          "conferenceDataUi": {
+            "conferenceDataValues": {
+              "conferenceSolution": "hangoutsMeet"
+            }
+          },
+          "guestsCanModify": true,
+          "summary": "n8n coffee catchup"
+        }
+      },
+      "name": "Send calendar invites",
+      "type": "n8n-nodes-base.googleCalendar",
+      "position": [
+        1180,
+        340
+      ],
+      "typeVersion": 1,
+      "id": "c39d00c0-a52a-4105-ae2f-21c50b3f2c61"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:37:04.725Z",
+  "versionId": "af02f5d4-ebd4-41aa-b233-b194a7226e7c"
+}

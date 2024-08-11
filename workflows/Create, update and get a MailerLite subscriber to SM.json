@@ -1,0 +1,168 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-11T11:31:41.710Z",
+  "id": "ffWS1C2bokrvEgYD",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Create, update and get a MailerLite subscriber to SM",
+  "nodes": [
+    {
+      "parameters": {
+        "event": "subscriber.added_through_webform"
+      },
+      "id": "74a5c1e1-2b2c-4913-a87f-480b84a5c043",
+      "name": "MailerLite Subscriber added throught  a webform",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        480,
+        320
+      ],
+      "webhookId": "73f560cc-f47f-4d75-bf1f-7b6571419750",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.create"
+      },
+      "id": "4ec8c2f3-85ae-404e-a04c-fab63d8da2c1",
+      "name": "MailerLite Subscriber Created",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        480,
+        520
+      ],
+      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.update"
+      },
+      "id": "7f0e1d66-62a4-4baa-8da0-fb44f2cb1659",
+      "name": "MailerLite Subscriber Updated",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        480,
+        720
+      ],
+      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.unsubscribe"
+      },
+      "id": "cb93ea60-1a21-4fff-b31e-d80eb4d5d6b6",
+      "name": "MailerLite Subsciber Unsubscribed",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        480,
+        920
+      ],
+      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.add_to_group"
+      },
+      "id": "6ffa1e50-4c06-4771-84ba-6a3e39474315",
+      "name": "MailerLite Subscriber added to Group",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        480,
+        1140
+      ],
+      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.remove_from_group"
+      },
+      "id": "d6e6c6a2-c6df-4205-9459-5c663ad338ec",
+      "name": "MailerLite Subscriber removed from Group",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        480,
+        1360
+      ],
+      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.remove_from_group"
+      },
+      "id": "74f7d2da-5fbd-4ee4-b95e-3151bdb55af1",
+      "name": "MailerLite Subscriber removed from Group1",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        480,
+        1580
+      ],
+      "webhookId": "c54d869c-5782-4e91-b7f9-2f1426187882",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T11:37:33.000Z",
+  "versionId": "ac8d7da5-7822-4637-8ef3-e7c5fa3d4425"
+}

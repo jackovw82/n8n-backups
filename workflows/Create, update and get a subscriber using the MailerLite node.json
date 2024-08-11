@@ -1,0 +1,127 @@
+{
+  "active": false,
+  "connections": {
+    "MailerLite": {
+      "main": [
+        [
+          {
+            "node": "MailerLite1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MailerLite1": {
+      "main": [
+        [
+          {
+            "node": "MailerLite2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "MailerLite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-11T10:10:32.458Z",
+  "id": "Msxq7MGIXOFjEzac",
+  "meta": {
+    "templateId": "751"
+  },
+  "name": "Create, update and get a subscriber using the MailerLite node",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "eec36680-0829-4943-a8ef-4dd79c588ff8"
+    },
+    {
+      "parameters": {
+        "email": "harshil@n8n.io",
+        "additionalFields": {
+          "name": "Harshil"
+        }
+      },
+      "name": "MailerLite",
+      "type": "n8n-nodes-base.mailerLite",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "82d04e99-75ff-4aa0-bdc1-75d6ae1f062a"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "subscriberId": "={{$node[\"MailerLite\"].json[\"email\"]}}",
+        "updateFields": {
+          "customFieldsUi": {
+            "customFieldsValues": [
+              {
+                "fieldId": "city",
+                "value": "Berlin"
+              }
+            ]
+          }
+        }
+      },
+      "name": "MailerLite1",
+      "type": "n8n-nodes-base.mailerLite",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "9e40abce-696b-4ca8-a08a-2664d37863ab"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "subscriberId": "={{$node[\"MailerLite\"].json[\"email\"]}}"
+      },
+      "name": "MailerLite2",
+      "type": "n8n-nodes-base.mailerLite",
+      "position": [
+        980,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "fce6c6af-9095-4221-ae27-7e9c3585a586"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T10:10:32.458Z",
+  "versionId": "dc4caf75-2667-46db-9118-9e7c7f7d6781"
+}

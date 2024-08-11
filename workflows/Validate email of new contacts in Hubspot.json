@@ -1,0 +1,168 @@
+{
+  "active": false,
+  "connections": {
+    "validate the email": {
+      "main": [
+        [
+          {
+            "node": "If email is suspicious",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When contact created": {
+      "main": [
+        [
+          {
+            "node": "Get contact email address",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If email is suspicious": {
+      "main": [
+        [
+          {
+            "node": "Send to Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get contact email address": {
+      "main": [
+        [
+          {
+            "node": "validate the email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:33:16.322Z",
+  "id": "6iiBWjcnflmvmzTK",
+  "meta": {
+    "templateId": "1461"
+  },
+  "name": "Validate email of new contacts in Hubspot",
+  "nodes": [
+    {
+      "parameters": {
+        "eventsUi": {
+          "eventValues": [
+            {}
+          ]
+        },
+        "additionalFields": {}
+      },
+      "name": "When contact created",
+      "type": "n8n-nodes-base.hubspotTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "d24ffb14-1e00-4d4e-b3b8-a812690c40d5",
+      "typeVersion": 1,
+      "id": "7b6922be-4df7-4d7e-9b13-1a715fdde926"
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "get",
+        "contactId": "={{$json[\"contactId\"] ? 151 : 151}}",
+        "additionalFields": {
+          "properties": [
+            "email"
+          ],
+          "propertyMode": "valueOnly"
+        }
+      },
+      "name": "Get contact email address",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        560,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "0f08fb2d-8726-4013-b93a-8a9de0f11d87"
+    },
+    {
+      "parameters": {
+        "resource": "utility",
+        "emailAddress": "={{$json[\"properties\"][\"email\"][\"value\"]}}"
+      },
+      "name": "validate the email",
+      "type": "n8n-nodes-base.oneSimpleApi",
+      "position": [
+        740,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "0ec812ce-03f5-44a4-9d36-eb5630acb59a"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"deliverability\"]}}",
+              "operation": "notEqual",
+              "value2": "GOOD"
+            }
+          ],
+          "boolean": [
+            {
+              "value1": "={{$json[\"is_domain_valid\"]}}"
+            },
+            {
+              "value1": "={{$json[\"is_email_disposable\"]}}",
+              "value2": true
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "name": "If email is suspicious",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        920,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "731eac39-2ad9-431c-aa78-7654f028e190",
+      "notes": "IF\ndeliverability is not good\nOR\nDomain is not valid\nOR\nEmail is Disposable"
+    },
+    {
+      "parameters": {
+        "channel": "#hubspot-alerts",
+        "text": "=:warning: New Contact with Suspicious Email :warning:\n*Name: * {{$node[\"Item Lists\"].json[\"contact\"][\"fields\"][\"core\"][\"firstname\"][\"normalizedValue\"]}} {{$node[\"Item Lists\"].json[\"contact\"][\"fields\"][\"core\"][\"lastname\"][\"normalizedValue\"]}}\n*Email: * {{$node[\"Item Lists\"].json[\"contact\"][\"fields\"][\"core\"][\"email\"][\"normalizedValue\"]}}\n*Creator: * {{$node[\"Item Lists\"].json[\"contact\"][\"createdByUser\"]}}",
+        "otherOptions": {},
+        "attachments": []
+      },
+      "name": "Send to Slack",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1120,
+        220
+      ],
+      "typeVersion": 1,
+      "id": "f95a8e4f-7987-44fd-9013-7a54cec0fb8f"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:33:16.322Z",
+  "versionId": "1c251466-ca2b-43eb-a42c-a1629522d8d3"
+}

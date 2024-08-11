@@ -1,0 +1,84 @@
+{
+  "active": false,
+  "connections": {
+    "Mattermost": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:40:22.771Z",
+  "id": "6FQrL8BYX0zJ5pxZ",
+  "meta": {
+    "templateId": "359"
+  },
+  "name": "Sample error workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "message": "=The workflow named '{{$node[\"Error Trigger\"].json[\"workflow\"][\"name\"]}}' with the ID {{$node[\"Error Trigger\"].json[\"workflow\"][\"id\"]}} has encountered an error.",
+        "options": {}
+      },
+      "name": "Twilio",
+      "type": "n8n-nodes-base.twilio",
+      "position": [
+        830,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "5a64ccb9-0669-430e-b3f5-e6c437fabb7d"
+    },
+    {
+      "parameters": {
+        "message": "=The workflow named '{{$json[\"workflow\"][\"name\"]}}' with the ID {{$json[\"workflow\"][\"id\"]}} has encountered an error. The last node that was executed was {{$json[\"execution\"][\"lastNodeExecuted\"]}}.",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "085647f9-411c-48b7-8329-6c773ab646e8"
+    },
+    {
+      "parameters": {},
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "06eef22f-912a-451d-9d89-46a198ac172e"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:40:22.771Z",
+  "versionId": "003bec05-2b18-42b4-8d37-ea0275c14708"
+}

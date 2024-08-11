@@ -1,0 +1,202 @@
+{
+  "active": false,
+  "connections": {
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cron Once a Day": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar": {
+      "main": [
+        [
+          {
+            "node": "IF Zoom meeting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Zoom meeting": {
+      "main": [
+        [
+          {
+            "node": "Zoom",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:33:47.376Z",
+  "id": "7isBtTDq3D2XhwAx",
+  "meta": {
+    "templateId": "1340"
+  },
+  "name": "Create Zoom meeting link from Google Calendar invite",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "a959012a-b909-4bba-a907-4c305038cede"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "topic": "=Meeting with {{$node[\"IF Zoom meeting\"].json[\"summary\"]}}",
+        "additionalFields": {
+          "duration": "={{(Date.parse($node[\"IF Zoom meeting\"].json[\"end\"][\"dateTime\"])-Date.parse($node[\"IF Zoom meeting\"].json[\"start\"][\"dateTime\"]))/(60*1000)}}",
+          "settings": {},
+          "startTime": "={{$node[\"IF Zoom meeting\"].json[\"start\"][\"dateTime\"]}}",
+          "timeZone": "={{$node[\"IF Zoom meeting\"].json[\"start\"][\"timeZone\"]}}"
+        }
+      },
+      "name": "Zoom",
+      "type": "n8n-nodes-base.zoom",
+      "position": [
+        760,
+        480
+      ],
+      "typeVersion": 1,
+      "id": "aa8ae93b-afc3-43e0-b824-4db3466c9f9d"
+    },
+    {
+      "parameters": {
+        "action": "calculate",
+        "value": "={{new Date().toISOString()}}",
+        "duration": 12,
+        "timeUnit": "hours",
+        "dataPropertyName": "later",
+        "options": {}
+      },
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "position": [
+        580,
+        300
+      ],
+      "typeVersion": 1,
+      "id": "e8a4e542-e6e0-49e8-9b6e-a2939d2bd6b3"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": "REPLACE_WITH_CALENDAR_ID",
+        "options": {
+          "timeMin": "={{new Date(new Date().getTime() + (0 * 60 * 60 * 1000)).toISOString()}}",
+          "timeMax": "={{$node[\"Date & Time\"].json[\"later\"]}}",
+          "singleEvents": true
+        }
+      },
+      "name": "Google Calendar",
+      "type": "n8n-nodes-base.googleCalendar",
+      "position": [
+        730,
+        300
+      ],
+      "typeVersion": 1,
+      "id": "a8b970fa-671b-438f-ba6e-62b5629d5545"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"Google Calendar\"].json[\"transparency\"]}}",
+              "operation": "notContains",
+              "value2": "transparent"
+            },
+            {
+              "value1": "={{$node[\"Google Calendar\"].json[\"summary\"]}}",
+              "operation": "notContains",
+              "value2": "=signal"
+            },
+            {
+              "value1": "{{$node[\"Google Calendar\"].json[\"summary\"]}}",
+              "operation": "notContains",
+              "value2": "minute meeting"
+            },
+            {
+              "value1": "={{$node[\"Google Calendar\"].json[\"summary\"]}}",
+              "operation": "notContains",
+              "value2": "in person"
+            }
+          ],
+          "boolean": []
+        }
+      },
+      "name": "IF Zoom meeting",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        560,
+        500
+      ],
+      "typeVersion": 1,
+      "id": "8ef7a9a2-d3e0-4ead-9469-acedb37b6018",
+      "notes": "filters out:\n- existing Zoom meetings made by Calendly\n- in person zoom meetings\n- signal meetings\n- canceled Calendly meetings (\"transparent\")"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 7
+            }
+          ]
+        }
+      },
+      "name": "Cron Once a Day",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "429232d0-68ee-45ab-8e81-a41531462ea0"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:33:47.376Z",
+  "versionId": "af8ab0e9-65e9-4123-a83b-f9333a388fc2"
+}

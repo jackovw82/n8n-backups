@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T21:53:29.682Z",
-  "id": "xQ2XJtxzTEEDBlX5",
+  "createdAt": "2024-08-09T19:57:07.998Z",
+  "id": "ayoztVZ1QKhle85P",
   "meta": null,
   "name": "Thinkific subscription.unpaid feeding downstream systems/tools",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T21:53:29.682Z",
-  "versionId": "436b2c69-6640-4d30-b75e-402d0a98ef9f"
+  "updatedAt": "2024-08-09T19:57:07.998Z",
+  "versionId": "82f80edd-7f72-4842-ae7e-59ec5830bd6b"
 }

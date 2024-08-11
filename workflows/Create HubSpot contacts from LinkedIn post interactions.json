@@ -1,0 +1,541 @@
+{
+  "active": false,
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "LinkedIn Post Commenters",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "LinkedIn Post Liker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lemlist": {
+      "main": [
+        [
+          {
+            "node": "Phantombuster",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exists ?": {
+      "main": [
+        [
+          {
+            "node": "Set - Update",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set - New",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 30s": {
+      "main": [
+        [
+          {
+            "node": "Get Comments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - New": {
+      "main": [
+        [
+          {
+            "node": "Airtable - Create",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Likers": {
+      "main": [
+        [
+          {
+            "node": "Dropcontact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dropcontact": {
+      "main": [
+        [
+          {
+            "node": "Airtable - List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Comments": {
+      "main": [
+        [
+          {
+            "node": "Dropcontact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Update": {
+      "main": [
+        [
+          {
+            "node": "Airtable - Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Phantombuster": {
+      "main": [
+        [
+          {
+            "node": "Hubspot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable - List": {
+      "main": [
+        [
+          {
+            "node": "Exists ?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable - Create": {
+      "main": [
+        [
+          {
+            "node": "Lemlist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable - Update": {
+      "main": [
+        [
+          {
+            "node": "Lemlist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LinkedIn Post Commenters": {
+      "main": [
+        [
+          {
+            "node": "Wait 30s",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-11T09:07:34.412Z",
+  "id": "QXnH4L5yXcGAQETW",
+  "meta": {
+    "templateId": "1323"
+  },
+  "name": "Create HubSpot contacts from LinkedIn post interactions",
+  "nodes": [
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "312c6eb9-c196-42c7-8f0d-761b46f754e7"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"Airtable - List\"].json[\"fields\"][\"Email\"]}}",
+              "value2": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"email\"][0][\"email\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "Exists ?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1800,
+        220
+      ],
+      "typeVersion": 1,
+      "id": "1bd1ccaf-4d79-4da0-91e5-4a12beb58398"
+    },
+    {
+      "parameters": {
+        "operation": "list",
+        "application": {
+          "__rl": true,
+          "mode": "url",
+          "value": ""
+        },
+        "table": "Contacts",
+        "additionalOptions": {
+          "fields": []
+        }
+      },
+      "name": "Airtable - List",
+      "type": "n8n-nodes-base.airtable",
+      "position": [
+        1600,
+        220
+      ],
+      "typeVersion": 1,
+      "id": "6f4a195c-5454-4d48-af90-81138ba2bae5"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "application": {
+          "__rl": true,
+          "mode": "url",
+          "value": ""
+        },
+        "table": "Contacts",
+        "id": "={{$node[\"Airtable - List\"].json[\"id\"]}}",
+        "updateAllFields": false,
+        "options": {
+          "typecast": true
+        }
+      },
+      "name": "Airtable - Update",
+      "type": "n8n-nodes-base.airtable",
+      "position": [
+        2200,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "a21f4e12-b49e-4929-8cde-c4ed87334d1f"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "application": {
+          "__rl": true,
+          "mode": "url",
+          "value": ""
+        },
+        "table": "Contacts",
+        "options": {
+          "typecast": true
+        }
+      },
+      "name": "Airtable - Create",
+      "type": "n8n-nodes-base.airtable",
+      "position": [
+        2200,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "5113563d-24d4-4d3e-b435-23b9de1d4df9"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "=ID",
+              "value": "={{$node[\"Airtable - List\"].json[\"id\"]}}"
+            },
+            {
+              "name": "Email",
+              "value": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"email\"][0][\"email\"]}}"
+            },
+            {
+              "name": "Phone",
+              "value": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"phone\"]}}"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"linkedin\"]}}"
+            },
+            {
+              "name": "Account",
+              "value": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"company\"]}}"
+            },
+            {
+              "name": "Company website",
+              "value": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"website\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set - Update",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2000,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "900527c5-a21f-40c4-8b05-152f56c48d85"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Name",
+              "value": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"full_name\"]}}"
+            },
+            {
+              "name": "Account",
+              "value": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"company\"]}}"
+            },
+            {
+              "name": "Company website",
+              "value": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"website\"]}}"
+            },
+            {
+              "name": "Email",
+              "value": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"email\"][0][\"email\"]}}"
+            },
+            {
+              "name": "Phone",
+              "value": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"phone\"]}}"
+            },
+            {
+              "name": "LinkedIn",
+              "value": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"linkedin\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set - New",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2000,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "8c26ce73-7d9f-4f6f-9764-a19b83a0641c"
+    },
+    {
+      "parameters": {
+        "resource": "lead",
+        "campaignId": "",
+        "email": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"email\"][0][\"email\"]}}",
+        "additionalFields": {
+          "companyName": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"company\"]}}",
+          "firstName": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"first_name\"]}}",
+          "lastName": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"last_name\"]}}"
+        }
+      },
+      "name": "Lemlist",
+      "type": "n8n-nodes-base.lemlist",
+      "position": [
+        2400,
+        220
+      ],
+      "retryOnFail": false,
+      "typeVersion": 1,
+      "id": "8c48049d-8f2c-45a6-a1fc-af0a0b4d7e26",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "email": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"email\"][0][\"email\"]}}",
+        "additionalFields": {
+          "city": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"siret_city\"]}}",
+          "companyName": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"company\"]}}",
+          "firstName": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"first_name\"]}}",
+          "gender": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"civility\"]}}",
+          "lastName": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"last_name\"]}}",
+          "originalSource": "SOCIAL_MEDIA",
+          "phoneNumber": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"phone\"]}}",
+          "websiteUrl": "={{$node[\"Dropcontact - GET\"].json[\"data\"][0][\"website\"]}}"
+        }
+      },
+      "name": "Hubspot",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        2800,
+        220
+      ],
+      "typeVersion": 1,
+      "id": "81ef7c6d-650a-4d56-b03c-8dc254105ff7"
+    },
+    {
+      "parameters": {
+        "jsonParameters": true,
+        "additionalFields": {
+          "manualLaunch": true
+        }
+      },
+      "name": "LinkedIn Post Commenters",
+      "type": "n8n-nodes-base.phantombuster",
+      "position": [
+        580,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "2ac3c07e-3d85-42c4-9f4a-b5d3c738320f"
+    },
+    {
+      "parameters": {
+        "operation": "getOutput",
+        "additionalFields": {}
+      },
+      "name": "Get Comments",
+      "type": "n8n-nodes-base.phantombuster",
+      "position": [
+        980,
+        140
+      ],
+      "executeOnce": true,
+      "typeVersion": 1,
+      "id": "c6b3802c-5bfa-4b91-9631-1c5c4fe20a84"
+    },
+    {
+      "parameters": {
+        "additionalFields": {
+          "company": "=",
+          "first_name": "=",
+          "last_name": "",
+          "linkedin": "",
+          "website": ""
+        },
+        "options": {}
+      },
+      "name": "Dropcontact",
+      "type": "n8n-nodes-base.dropcontact",
+      "position": [
+        1400,
+        220
+      ],
+      "typeVersion": 1,
+      "id": "4b57efd7-0018-4458-9109-2a0390343116"
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "name": "Phantombuster",
+      "type": "n8n-nodes-base.phantombuster",
+      "position": [
+        2600,
+        220
+      ],
+      "typeVersion": 1,
+      "id": "cacf5079-f4d4-4e3d-abdb-ac95fbbf98f1"
+    },
+    {
+      "parameters": {
+        "jsonParameters": true,
+        "additionalFields": {
+          "manualLaunch": true
+        }
+      },
+      "name": "LinkedIn Post Liker",
+      "type": "n8n-nodes-base.phantombuster",
+      "position": [
+        580,
+        340
+      ],
+      "typeVersion": 1,
+      "id": "bea81f65-834d-4588-afc0-b83e48bda485"
+    },
+    {
+      "parameters": {
+        "operation": "getOutput",
+        "additionalFields": {}
+      },
+      "name": "Get Likers",
+      "type": "n8n-nodes-base.phantombuster",
+      "position": [
+        980,
+        340
+      ],
+      "executeOnce": true,
+      "typeVersion": 1,
+      "id": "041f2dad-8e33-4ce3-abec-c64dc684cd31"
+    },
+    {
+      "parameters": {
+        "amount": 30,
+        "unit": "seconds"
+      },
+      "name": "Wait 30s",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        780,
+        300
+      ],
+      "webhookId": "de87cd0e-ea00-43d8-896c-836494094779",
+      "typeVersion": 1,
+      "id": "5efeb6be-f960-4e93-b15a-b9f1bb544aee"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T09:07:34.412Z",
+  "versionId": "822b8b51-48a3-4a31-924b-bd6c5e1895dd"
+}

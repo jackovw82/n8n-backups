@@ -1,0 +1,181 @@
+{
+  "active": false,
+  "connections": {
+    "Every Morning": {
+      "main": [
+        [
+          {
+            "node": "Get Yesterdays Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get the RSS Feed": {
+      "main": [
+        [
+          {
+            "node": "If it was published after yesterday",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build our message": {
+      "main": [
+        [
+          {
+            "node": "Post to Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Yesterdays Date": {
+      "main": [
+        [
+          {
+            "node": "Get the RSS Feed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If it was published after yesterday": {
+      "main": [
+        [
+          {
+            "node": "Build our message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:31:24.307Z",
+  "id": "nhwHnfXWZDP25mPr",
+  "meta": {
+    "templateId": "1469"
+  },
+  "name": "Post RSS feed items from yesterday to Slack",
+  "nodes": [
+    {
+      "parameters": {
+        "functionCode": "// Create our Slack message\n// This will output a list of RSS items in the following format\n// Title - Description\nlet message = \"*:new: Posts from yesterday :new:*\\n\\n\";\n\n// Loop the input items\nfor (item of items) {\n  message += \"*<\" + item.json.link + \"|\" + item.json.title + \">*\\n\" + item.json.contentSnippet + \"\\n\\n\"; \n}\n\n// Return our message\nreturn [{json: {message}}];"
+      },
+      "name": "Build our message",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "5d0a9572-0451-4711-b158-ba2ce6482a85"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 8
+            }
+          ]
+        }
+      },
+      "name": "Every Morning",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        -400,
+        260
+      ],
+      "typeVersion": 1,
+      "id": "59bc27f8-e1a2-4c24-a1fb-aaeaf6d7b7de"
+    },
+    {
+      "parameters": {
+        "action": "calculate",
+        "value": "={{Date()}}",
+        "operation": "subtract",
+        "duration": 1,
+        "options": {}
+      },
+      "name": "Get Yesterdays Date",
+      "type": "n8n-nodes-base.dateTime",
+      "position": [
+        -220,
+        260
+      ],
+      "typeVersion": 1,
+      "id": "4857714a-6d44-4ada-8f13-5d6848d7d193"
+    },
+    {
+      "parameters": {
+        "url": "https://n8n.io/blog/rss",
+        "options": {}
+      },
+      "name": "Get the RSS Feed",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "position": [
+        -40,
+        260
+      ],
+      "typeVersion": 1,
+      "id": "bd4433f2-1434-459c-a259-bc1c50c62dcb"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "dateTime": [
+            {
+              "value1": "={{$item(0).$node[\"Get Yesterdays Date\"].json.data}}",
+              "operation": "before",
+              "value2": "={{$json[\"pubDate\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "If it was published after yesterday",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        160,
+        260
+      ],
+      "typeVersion": 1,
+      "id": "83c9f7c5-9f33-4ff4-bc1f-77023f261710",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "channel": "#news",
+        "text": "={{$json[\"message\"]}}",
+        "otherOptions": {},
+        "attachments": [],
+        "blocksUi": {
+          "blocksValues": []
+        }
+      },
+      "name": "Post to Slack",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        560,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "94cb067b-8e2a-4bab-a7b7-48cad3f69f1a"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:31:24.307Z",
+  "versionId": "fa264ef4-e909-4ae1-8562-2c3d9dd2c118"
+}

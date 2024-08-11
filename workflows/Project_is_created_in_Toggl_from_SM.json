@@ -1,0 +1,31 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T20:16:14.735Z",
+  "id": "UNgHYkj8ikfm9908",
+  "meta": null,
+  "name": "Project_is_created_in_Toggl_from_SM",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-09T20:15:51.537Z",
+      "updatedAt": "2024-08-09T20:15:51.537Z",
+      "id": "Hpn0OFAE4GfFmMzq",
+      "name": "smartsuite"
+    },
+    {
+      "createdAt": "2024-08-09T20:15:47.444Z",
+      "updatedAt": "2024-08-09T20:15:47.444Z",
+      "id": "Q6Qey3sK2BHXLdYH",
+      "name": "toggl"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T20:16:14.735Z",
+  "versionId": "42759dba-88a6-4820-87ff-307b97a769ba"
+}

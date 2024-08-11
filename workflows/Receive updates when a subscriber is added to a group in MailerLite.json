@@ -36,8 +36,8 @@
       "name": "On clicking 'execute'",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        800,
-        180
+        200,
+        20
       ],
       "typeVersion": 1,
       "id": "9fe35713-ceda-4e9d-9cee-2de12e05f51a",
@@ -50,8 +50,8 @@
       "name": "MailerLite Trigger",
       "type": "n8n-nodes-base.mailerLiteTrigger",
       "position": [
-        800,
-        -60
+        200,
+        -220
       ],
       "webhookId": "dd15d919-18b3-4af7-a5c9-c4583cdda9f5",
       "typeVersion": 1,
@@ -77,8 +77,8 @@
       "name": "Set",
       "type": "n8n-nodes-base.set",
       "position": [
-        1000,
-        -60
+        400,
+        -220
       ],
       "typeVersion": 1,
       "id": "cc043529-2673-4140-8364-bcbfa8dd4294"
@@ -93,8 +93,8 @@
       "name": "Airtable",
       "type": "n8n-nodes-base.airtable",
       "position": [
-        1200,
-        -60
+        600,
+        -220
       ],
       "typeVersion": 1,
       "id": "60754135-cc11-4421-873d-8447b7893fbb"
@@ -114,6 +114,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T10:11:08.528Z",
-  "versionId": "0a9c133a-5798-42a9-8aeb-3442330d9cbb"
+  "updatedAt": "2024-08-11T11:27:34.000Z",
+  "versionId": "c1cc101c-7d0f-4a38-889e-98ac2907c75f"
 }

@@ -95,11 +95,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-06T20:08:45.187Z",
-  "id": "3FaYwwvdXLRwnoz1",
-  "meta": {
-    "templateId": "2273"
-  },
+  "createdAt": "2024-08-09T18:35:50.565Z",
+  "id": "jTcSiWnYftdHHs0n",
+  "meta": null,
   "name": "Automated Workflow for Daily LinkedIn Posts Using Notion",
   "nodes": [
     {
@@ -346,13 +344,13 @@
       "typeVersion": 1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-06T20:08:45.187Z",
-  "versionId": "1875ca90-cb80-4572-9c49-b9668d5d4176"
+  "updatedAt": "2024-08-09T18:35:50.565Z",
+  "versionId": "2ecddf7d-51c8-4e8e-9d82-cffb787be083"
 }

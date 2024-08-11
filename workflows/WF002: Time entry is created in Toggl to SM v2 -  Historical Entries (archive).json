@@ -220,11 +220,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-05T16:21:56.388Z",
-  "id": "ZE9SnLbzFwlrNBX6",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-09T18:35:51.575Z",
+  "id": "j8cT7er2Aml2YlKi",
+  "meta": null,
   "name": "WF002: Time entry is created in Toggl to SM v2 -  Historical Entries (archive)",
   "nodes": [
     {
@@ -914,13 +912,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-05T22:36:33.000Z",
-  "versionId": "dd62bbe6-c989-46ae-b799-89346a7b6270"
+  "updatedAt": "2024-08-09T18:35:51.575Z",
+  "versionId": "cb748d30-cce6-42a8-b5e6-e146111c75ea"
 }

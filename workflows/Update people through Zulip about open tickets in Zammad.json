@@ -1,0 +1,152 @@
+{
+  "active": false,
+  "connections": {
+    "List Tickets": {
+      "main": [
+        [
+          {
+            "node": "Ticket Filtering",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Standup Cron": {
+      "main": [
+        [
+          {
+            "node": "List Tickets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ticket Filtering": {
+      "main": [
+        [
+          {
+            "node": "Notify for Standup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "List Tickets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-10T09:22:09.896Z",
+  "id": "Xas6OeVdTgeqYahG",
+  "meta": {
+    "templateId": "1575"
+  },
+  "name": "Update people through Zulip about open tickets in Zammad",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "682f87a7-a1dd-4aad-8f66-9c9a928376c7"
+    },
+    {
+      "parameters": {
+        "functionCode": "let newTickets = 0\nlet openTickets = 0\nlet pendingReminder = 0\nlet pendingClose = 0\n\nfor (let i = 0; i < items.length; i++) {\n  const ticket = items[i]\n  if (ticket.json.state_id === 1) {\n    newTickets++\n  }\n  if (ticket.json.state_id === 2) {\n    openTickets++\n  }\n  if (ticket.json.state_id === 3) {\n    pendingReminder++\n  }\n  if (ticket.json.state_id === 7) {\n    pendingClose++\n  }\n}\n\nreturn [{\n  json: {\n    \"new\": newTickets,\n    open: openTickets,\n    pendingReminder: pendingReminder,\n    pendingClose: pendingClose\n  }\n}];"
+      },
+      "name": "Ticket Filtering",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        820,
+        360
+      ],
+      "executeOnce": true,
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "a0ed51d2-b8f6-4647-bf0c-3c397f38847c",
+      "notes": "Filter tickets by status."
+    },
+    {
+      "parameters": {
+        "resource": "ticket",
+        "operation": "getAll",
+        "returnAll": true
+      },
+      "name": "List Tickets",
+      "type": "n8n-nodes-base.zammad",
+      "position": [
+        620,
+        360
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "8cf9e9e7-7e9c-4f3a-9808-859dc356929c",
+      "notes": "Get all tickets."
+    },
+    {
+      "parameters": {
+        "operation": "sendStream",
+        "stream": "=customer support",
+        "topic": "=tickets",
+        "content": "=:ticket: Support Tickets Summary:\n* Open: {{$node[\"Ticket Filtering\"].json[\"open\"]}}\n* New:{{$node[\"Ticket Filtering\"].json[\"new\"]}}\n* Pending Close {{$node[\"Ticket Filtering\"].json[\"pendingClose\"]}}\n* Pending Reminder {{$node[\"Ticket Filtering\"].json[\"pendingReminder\"]}}"
+      },
+      "name": "Notify for Standup",
+      "type": "n8n-nodes-base.zulip",
+      "position": [
+        1020,
+        360
+      ],
+      "executeOnce": true,
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "e563d857-0086-4381-bc98-9c9f93043f46",
+      "notes": "Sends a summary to customer support stream."
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "custom",
+              "cronExpression": "0 30 8 * * 1-5"
+            }
+          ]
+        }
+      },
+      "name": "Standup Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        380,
+        460
+      ],
+      "executeOnce": true,
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "dd06728b-35d5-4e09-9865-1017339cca44",
+      "notes": "Daily stand-up open days."
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-10T09:29:58.000Z",
+  "versionId": "1bc7858e-4ff8-4ca3-8334-7dd7b8a413c8"
+}

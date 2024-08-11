@@ -1,31 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-07-24T17:20:48.198Z",
-  "id": "GHGviKamRzTs1wag",
+  "createdAt": "2024-08-09T18:35:48.344Z",
+  "id": "bNXa1YzyJ0XX2bin",
   "meta": null,
   "name": "Client is created in Toggl from SM",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-07-24T17:18:57.002Z",
-      "updatedAt": "2024-07-24T17:18:57.002Z",
-      "id": "Ka3uRnFaDJ9a4Rg0",
-      "name": "toggl"
-    },
-    {
-      "createdAt": "2024-07-24T17:19:02.136Z",
-      "updatedAt": "2024-07-24T17:19:02.136Z",
-      "id": "RW5RBtQ8bU6iwv8s",
-      "name": "smartsuite"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-24T17:20:48.198Z",
-  "versionId": "037492c8-57b9-413f-899f-b9f66875971d"
+  "updatedAt": "2024-08-09T18:35:48.344Z",
+  "versionId": "57f57a72-43b3-4cbf-ac7c-47bf863ffee4"
 }

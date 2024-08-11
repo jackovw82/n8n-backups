@@ -1,0 +1,156 @@
+{
+  "active": false,
+  "connections": {
+    "Webflow": {
+      "main": [
+        [
+          {
+            "node": "Webflow2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webflow2": {
+      "main": [
+        [
+          {
+            "node": "Webflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Webflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:36:00.160Z",
+  "id": "O4RIfmG3KDKNDlIE",
+  "meta": {
+    "templateId": "1048"
+  },
+  "name": "Create, update, and get an item from Webflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "426d745d-4e22-40c3-9e53-661a62e5c546"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "siteId": "601788abebf7aa35c1b038a1",
+        "collectionId": "601788ab33a62ac6a2a0284c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "name",
+              "fieldValue": "n8n"
+            },
+            {
+              "fieldId": "slug",
+              "fieldValue": "n8n"
+            },
+            {
+              "fieldId": "_archived",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "_draft",
+              "fieldValue": "false"
+            }
+          ]
+        }
+      },
+      "name": "Webflow",
+      "type": "n8n-nodes-base.webflow",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "5e948b6f-1783-4d21-9533-00c1beea4e5d"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "siteId": "601788abebf7aa35c1b038a1",
+        "collectionId": "601788ab33a62ac6a2a0284c",
+        "itemId": "={{$json[\"_id\"]}}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "name",
+              "fieldValue": "={{$json[\"name\"]}}"
+            },
+            {
+              "fieldId": "slug",
+              "fieldValue": "={{$json[\"slug\"]}}"
+            },
+            {
+              "fieldId": "_archived",
+              "fieldValue": "={{$json[\"_archived\"]}}"
+            },
+            {
+              "fieldId": "_draft",
+              "fieldValue": "={{$json[\"_draft\"]}}"
+            },
+            {
+              "fieldId": "avatar",
+              "fieldValue": "https://n8n.io/n8n-logo.png"
+            }
+          ]
+        }
+      },
+      "name": "Webflow2",
+      "type": "n8n-nodes-base.webflow",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "e13961b8-0136-4c33-8ec5-ed29d313cd17"
+    },
+    {
+      "parameters": {
+        "siteId": "601788abebf7aa35c1b038a1",
+        "collectionId": "601788ab33a62ac6a2a0284c",
+        "itemId": "={{$json[\"_id\"]}}"
+      },
+      "name": "Webflow1",
+      "type": "n8n-nodes-base.webflow",
+      "position": [
+        980,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "237cb18c-1cc5-446f-b6c2-76c9f2fde65a"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:36:00.160Z",
+  "versionId": "e1a46ce5-49f7-4118-8fe2-77bdfa77b863"
+}

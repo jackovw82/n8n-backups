@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T21:50:01.051Z",
-  "id": "kbDTlkE236lp0BxK",
+  "createdAt": "2024-08-09T19:58:09.770Z",
+  "id": "kvTX576YpnXqvViL",
   "meta": null,
   "name": "Thinkific order_transaction.refunded feeding downstream systems/tools",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T21:50:01.051Z",
-  "versionId": "8f15fd56-12aa-43d3-94f6-8db426f283cf"
+  "updatedAt": "2024-08-09T19:58:09.770Z",
+  "versionId": "a1ee7f4c-2d33-4a0b-bb90-1b718c9f8727"
 }

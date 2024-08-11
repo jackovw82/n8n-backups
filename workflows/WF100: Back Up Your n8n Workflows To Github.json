@@ -152,7 +152,7 @@
         ]
       ]
     },
-    "Every 12 hours": {
+    "On clicking 'execute'": {
       "main": [
         [
           {
@@ -163,7 +163,7 @@
         ]
       ]
     },
-    "On clicking 'execute'": {
+    "Every 2 hours": {
       "main": [
         [
           {
@@ -376,26 +376,6 @@
     },
     {
       "parameters": {
-        "triggerTimes": {
-          "item": [
-            {
-              "mode": "everyX",
-              "value": 4
-            }
-          ]
-        }
-      },
-      "id": "9815a578-3e63-4128-bea5-8301745606b7",
-      "name": "Every 12 hours",
-      "type": "n8n-nodes-base.cron",
-      "position": [
-        880,
-        600
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
         "content": "## Workflow Backups\nThis workflow will automatically backup your workflows to your Github account every 12 hours.\n\n### Setup\nOpen Globals and update the values below\n**repo.owner:** This is your Github username\n**repo.name:** This is the name of your repository\n**repo.path:** This is the folder to use within the repository, If it doesn't exist it will be created.\n\nIf your username was `n8n-io` and your repository was called `n8n-backups` and you wanted the workflows to go into a `workflows` folder you would set:\n\nrepo.owner - n8n-io\nrepo.name - n8n-backups\nrepo.path - workflows",
         "height": 464.79920462713443,
         "width": 389.78906250000017
@@ -484,6 +464,25 @@
         440
       ],
       "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyX"
+            }
+          ]
+        }
+      },
+      "id": "9815a578-3e63-4128-bea5-8301745606b7",
+      "name": "Every 2 hours",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        880,
+        600
+      ],
+      "typeVersion": 1
     }
   ],
   "pinData": {},
@@ -491,8 +490,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-11T07:45:31.937Z",
+      "updatedAt": "2024-08-11T07:45:31.937Z",
+      "id": "Rk6FaRhDhV3biszZ",
+      "name": "IT Ops"
+    }
+  ],
   "triggerCount": 1,
-  "updatedAt": "2024-08-11T07:26:24.000Z",
-  "versionId": "48c2d527-c22e-4763-b17e-a0af718ca105"
+  "updatedAt": "2024-08-11T07:46:43.000Z",
+  "versionId": "f4894a6c-1176-4753-a0e5-2b92a2bfe1ac"
 }

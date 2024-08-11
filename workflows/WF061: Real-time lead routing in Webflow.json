@@ -68,12 +68,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-07T11:47:40.671Z",
-  "id": "BUmo2JKG7uFgv6ey",
-  "meta": {
-    "templateCredsSetupCompleted": true,
-    "templateId": "2033"
-  },
+  "createdAt": "2024-08-09T18:35:51.604Z",
+  "id": "1VNVAC5bVSzIFx3t",
+  "meta": null,
   "name": "WF061: Real-time lead routing in Webflow",
   "nodes": [
     {
@@ -327,13 +324,13 @@
       "typeVersion": 1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-07T11:47:40.671Z",
-  "versionId": "9f974f11-eb3f-423a-bfc4-9f8aeae75415"
+  "updatedAt": "2024-08-09T18:35:51.604Z",
+  "versionId": "6ba3478f-e749-40db-98ee-4b0b05dc1fa4"
 }

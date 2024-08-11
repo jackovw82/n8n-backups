@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T21:49:24.241Z",
-  "id": "xZfHmogWeMD8UUk2",
+  "createdAt": "2024-08-09T19:59:03.540Z",
+  "id": "sz3GpTS0EnBOmBiY",
   "meta": null,
   "name": "Thinkific order_transaction.succeeded feeding downstream systems/tools",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T21:49:24.241Z",
-  "versionId": "fbadaa90-2566-4dc9-b298-f65af79e27a0"
+  "updatedAt": "2024-08-09T19:59:03.540Z",
+  "versionId": "2d55238b-9409-4785-993c-c7375ec1c59c"
 }

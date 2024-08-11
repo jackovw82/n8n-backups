@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T21:55:34.622Z",
-  "id": "PrmRHJ5hOBu3LjlK",
+  "createdAt": "2024-08-09T19:54:31.122Z",
+  "id": "P3u6eBLsciqzaG5J",
   "meta": null,
   "name": "Thinkific product.deleted feeding downstream systems/tools",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T21:55:34.622Z",
-  "versionId": "851c876b-b80b-44d9-9229-a96b85d30759"
+  "updatedAt": "2024-08-09T19:54:31.122Z",
+  "versionId": "3f6e0c1b-85d4-40a0-95e6-405cee46a405"
 }

@@ -1,0 +1,59 @@
+{
+  "active": false,
+  "connections": {
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Xero",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T20:38:25.995Z",
+  "id": "OoPh7JpyiumDS8s0",
+  "meta": {
+    "templateId": "543"
+  },
+  "name": "Get invoices from Xero",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "12a8bb67-9fc6-47e8-b59f-696e58df5d3a"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "organizationId": "ab7e9014-5d01-418f-a64c-dbb6bf5ba2ea",
+        "options": {}
+      },
+      "name": "Xero",
+      "type": "n8n-nodes-base.xero",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "2759cd16-05af-49b7-a66e-c862177327ff"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T20:38:25.995Z",
+  "versionId": "cec54eff-acc1-4c97-ae5d-07e29524c912"
+}

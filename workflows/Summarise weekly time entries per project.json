@@ -13,11 +13,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-04T13:19:29.911Z",
-  "id": "V8I9HTOyzaIpkTw4",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-09T18:35:50.527Z",
+  "id": "EUJaCck035AzNFa9",
+  "meta": null,
   "name": "Summarise weekly time entries per project",
   "nodes": [
     {
@@ -52,13 +50,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-04T13:20:07.000Z",
-  "versionId": "571fe596-83ab-4260-bcec-552515b302d1"
+  "updatedAt": "2024-08-09T18:35:50.527Z",
+  "versionId": "26089509-e23c-4150-803d-dec6c6a37964"
 }

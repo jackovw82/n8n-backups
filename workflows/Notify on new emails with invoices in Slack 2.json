@@ -1,0 +1,220 @@
+{
+  "active": false,
+  "connections": {
+    "If Amount > 1000": {
+      "main": [
+        [
+          {
+            "node": "Send email to finance manager",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send new invoice notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check for new emails": {
+      "main": [
+        [
+          {
+            "node": "If email body contains invoice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract the total amount": {
+      "main": [
+        [
+          {
+            "node": "If Amount > 1000",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email to finance manager": {
+      "main": [
+        [
+          {
+            "node": "Send new invoice notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If email body contains invoice": {
+      "main": [
+        [
+          {
+            "node": "Extract the total amount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:31:56.440Z",
+  "id": "krkmHUPdah5AgTFw",
+  "meta": {
+    "templateId": "1467"
+  },
+  "name": "Notify on new emails with invoices in Slack 2",
+  "nodes": [
+    {
+      "parameters": {
+        "mailbox": "Inbox",
+        "format": "resolved",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "name": "Check for new emails",
+      "type": "n8n-nodes-base.emailReadImap",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "ec340aab-67e0-4676-b1e3-a7674a6cb917"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"text\"].toLowerCase()}}",
+              "operation": "contains",
+              "value2": "invoice"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "name": "If email body contains invoice",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "ef656d2f-02fa-4277-9e2d-2488ebf6abab"
+    },
+    {
+      "parameters": {
+        "resource": "invoice",
+        "binaryPropertyName": "attachment_0",
+        "rawData": true
+      },
+      "name": "Extract the total amount",
+      "type": "n8n-nodes-base.mindee",
+      "position": [
+        780,
+        220
+      ],
+      "typeVersion": 1,
+      "id": "92a04678-c0ec-4e03-8898-1569115b58b7"
+    },
+    {
+      "parameters": {
+        "channel": "team-accounts",
+        "text": ":new: There is a new invoice to pay :new:",
+        "otherOptions": {},
+        "attachments": [
+          {
+            "color": "#FFBF00",
+            "fields": {
+              "item": [
+                {
+                  "short": true,
+                  "title": "Amount",
+                  "value": "={{$node[\"If Amount > 1000\"].json[\"predictions\"][0][\"total_incl\"][\"amount\"]}}"
+                },
+                {
+                  "short": false,
+                  "title": "From",
+                  "value": "={{$node[\"Check for new emails\"].json[\"from\"][\"value\"][0][\"address\"]}}"
+                },
+                {
+                  "short": true,
+                  "title": "Subject",
+                  "value": "={{$node[\"Check for new emails\"].json[\"subject\"]}}"
+                }
+              ]
+            },
+            "footer": "=*Date:* {{$node[\"Check for new emails\"].json[\"date\"]}}"
+          }
+        ],
+        "blocksUi": {
+          "blocksValues": []
+        }
+      },
+      "name": "Send new invoice notification",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1460,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "8bbcedbd-25de-4774-b661-f25a479e3fa9"
+    },
+    {
+      "parameters": {
+        "fromEmail": "n8n@noreply.tld",
+        "toEmail": "finance-manager@company.tld",
+        "subject": "New high value invoice",
+        "text": "Hi,\n\nThere is a new high value invoice to be paid that you may need to approve.\n\n~ n8n workflow",
+        "attachments": "attachment_0",
+        "options": {}
+      },
+      "name": "Send email to finance manager",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        1220,
+        60
+      ],
+      "typeVersion": 1,
+      "id": "1e04b628-58d4-4641-95d7-17fa2d22040b"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json[\"predictions\"][0][\"total_incl\"][\"amount\"]}}",
+              "operation": "larger",
+              "value2": 1000
+            }
+          ]
+        }
+      },
+      "name": "If Amount > 1000",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        960,
+        220
+      ],
+      "typeVersion": 1,
+      "id": "4d19ab60-2451-4e96-a2c0-12e8152feffc"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:31:56.440Z",
+  "versionId": "91c77472-3bff-4899-b57f-ebf80396320c"
+}

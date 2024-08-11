@@ -1,18 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T20:21:38.126Z",
-  "id": "l0totAJoe4jaHpmb",
+  "createdAt": "2024-08-09T18:35:51.776Z",
+  "id": "uO42EBrhNXgIgE98",
   "meta": null,
   "name": "customer cancels , remove from all downsteam systems",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T20:21:38.126Z",
-  "versionId": "d917acee-d310-4c08-adc6-badeb5a1e929"
+  "updatedAt": "2024-08-09T18:35:51.776Z",
+  "versionId": "0e6f1d43-f51d-4c7b-9f9d-557d54e6b856"
 }

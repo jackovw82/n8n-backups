@@ -59,7 +59,7 @@
       "main": [
         [
           {
-            "node": "Set name and content",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -128,19 +128,31 @@
         ]
       ]
     },
-    "n8n - create workflow": {
+    "Edit Fields": {
       "main": [
-        []
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
-    "Workflow name already exists": {
+    "Filter": {
       "main": [
-        []
+        [
+          {
+            "node": "Set name and content",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
-  "createdAt": "2024-08-07T18:48:32.021Z",
-  "id": "FNBLlXfxbMjSucx9",
+  "createdAt": "2024-08-09T18:08:25.942Z",
+  "id": "6QjDmTJRKTVsSk7Y",
   "meta": {
     "templateId": "2289",
     "templateCredsSetupCompleted": true
@@ -209,8 +221,8 @@
       "name": "Workflow name already exists",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        2700,
-        580
+        3060,
+        540
       ],
       "typeVersion": 1
     },
@@ -242,8 +254,8 @@
       "name": "If workflow already exists",
       "type": "n8n-nodes-base.if",
       "position": [
-        2380,
-        400
+        2740,
+        420
       ],
       "typeVersion": 2
     },
@@ -296,8 +308,8 @@
       "typeVersion": 1,
       "credentials": {
         "githubApi": {
-          "id": "7txefx36DPZl9bxI",
-          "name": "GitHub account"
+          "id": "q6Wg1jCBoypkmslD",
+          "name": "GitHub account 2"
         }
       }
     },
@@ -316,7 +328,7 @@
       "typeVersion": 1,
       "credentials": {
         "n8nApi": {
-          "id": "QyYOrTgwNcy7NvMO",
+          "id": "rfE3jH4GYHa5JHIJ",
           "name": "n8n account"
         }
       }
@@ -349,8 +361,8 @@
       "typeVersion": 1,
       "credentials": {
         "githubApi": {
-          "id": "7txefx36DPZl9bxI",
-          "name": "GitHub account"
+          "id": "q6Wg1jCBoypkmslD",
+          "name": "GitHub account 2"
         }
       }
     },
@@ -378,7 +390,7 @@
       "name": "Set name and content",
       "type": "n8n-nodes-base.set",
       "position": [
-        1860,
+        2280,
         300
       ],
       "typeVersion": 3.3
@@ -393,13 +405,13 @@
       "name": "n8n - create workflow",
       "type": "n8n-nodes-base.n8n",
       "position": [
-        2700,
+        3060,
         320
       ],
       "typeVersion": 1,
       "credentials": {
         "n8nApi": {
-          "id": "QyYOrTgwNcy7NvMO",
+          "id": "rfE3jH4GYHa5JHIJ",
           "name": "n8n account"
         }
       }
@@ -408,7 +420,7 @@
       "parameters": {
         "content": "## Get all Github files\n1. List all the files from your repository\n2. Get each file as a JSON. \n3. The content, retrieved as base64, is converted in the \"Set Name and Content\" node\n\n\nThe \"Set Name and Content\" node creates a list of workflows with name and content, in order to compare it with the existing n8n workflows in the workspace.",
         "height": 478.9952882299376,
-        "width": 861.4145066375679,
+        "width": 1274.8354968752042,
         "color": 2
       },
       "id": "b4ce8bdb-8c76-4c10-bf48-3664ec2f924b",
@@ -454,8 +466,8 @@
       "name": "Merge Github and n8n workflows - Keep only non existing workflows based on the name",
       "type": "n8n-nodes-base.merge",
       "position": [
-        2160,
-        400
+        2520,
+        420
       ],
       "typeVersion": 2.1,
       "alwaysOutputData": true
@@ -471,8 +483,8 @@
       "name": "Note2",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2080,
-        580
+        2540,
+        620
       ],
       "typeVersion": 1
     },
@@ -487,8 +499,8 @@
       "name": "Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2560,
-        20
+        3280,
+        340
       ],
       "typeVersion": 1
     },
@@ -510,85 +522,65 @@
     },
     {
       "parameters": {
-        "authentication": "oAuth2",
-        "select": "channel",
-        "channelId": {
-          "__rl": true,
-          "mode": "list",
-          "value": ""
+        "assignments": {
+          "assignments": [
+            {
+              "id": "75b327c9-81c1-4470-9150-18f5a4dc10fd",
+              "name": "name",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "4c51bb33-e38f-496d-af81-0c1739974fd2",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
         },
-        "otherOptions": {}
+        "options": {}
       },
-      "id": "efdb10bf-5bcf-43c7-8e99-5cd7a0b3f090",
-      "name": "Slack",
-      "type": "n8n-nodes-base.slack",
-      "typeVersion": 2.2,
+      "id": "6a29e9b3-f726-47e1-b7df-8a6230bef3d8",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        2960,
-        200
-      ],
-      "credentials": {
-        "slackOAuth2Api": {
-          "id": "x77Xb6YhugsdNMWc",
-          "name": "Slack account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "otherOptions": {}
-      },
-      "id": "2c9b68e7-a886-4af2-be90-56d3f6709f79",
-      "name": "Slack1",
-      "type": "n8n-nodes-base.slack",
-      "typeVersion": 2.2,
-      "position": [
-        2960,
-        500
+        1860,
+        300
       ]
     },
     {
       "parameters": {
-        "channelId": "ck1mkqxgk7b5ujcx1m9g6faoza",
-        "attachments": [],
-        "otherOptions": {}
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8af76bb9-e483-48ce-be43-ad23132c50c5",
+              "leftValue": "={{ $json.content }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
       },
-      "id": "c3f7782e-0620-46d0-acbd-942eb8a6fb65",
-      "name": "Mattermost",
-      "type": "n8n-nodes-base.mattermost",
-      "typeVersion": 1,
+      "id": "7ee85e68-b7fd-4ce5-a0fd-46783d17f1df",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
       "position": [
-        2960,
-        340
-      ],
-      "credentials": {
-        "mattermostApi": {
-          "id": "VGOFEEFurY7VTUJP",
-          "name": "Mattermost account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "channelId": "ck1mkqxgk7b5ujcx1m9g6faoza",
-        "message": "Hi Team,\n\nI hope everyone is doing well!\n\nI wanted to provide an update on our workflow for restored backups:\nRestored Backups:\nIf a backup has been restored, please ensure to verify all elements and functionality before proceeding with any further updates or changes.\nDouble-check that all data, design elements, and integrations are intact and functioning as expected.\n\nIf you encounter any issues or discrepancies, please report them immediately in the #webflow-help channel.\n\nThank you for your attention and diligence in maintaining the quality and integrity of our projects. \nIf you have any questions or need further assistance, don't hesitate to reach out.",
-        "attachments": [],
-        "otherOptions": {}
-      },
-      "id": "36e87e3f-ac2c-4c71-ae94-6874b8dbea8d",
-      "name": "Mattermost1",
-      "type": "n8n-nodes-base.mattermost",
-      "typeVersion": 1,
-      "position": [
-        2960,
-        660
-      ],
-      "credentials": {
-        "mattermostApi": {
-          "id": "VGOFEEFurY7VTUJP",
-          "name": "Mattermost account"
-        }
-      }
+        2060,
+        300
+      ]
     }
   ],
   "pinData": {},
@@ -598,6 +590,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-07T19:00:14.000Z",
-  "versionId": "5f6fd14e-a42b-40fb-b4a9-fb19c4d6996a"
+  "updatedAt": "2024-08-09T18:59:08.000Z",
+  "versionId": "dfa6a05a-b37e-4cd0-97e8-9634a4a247f3"
 }

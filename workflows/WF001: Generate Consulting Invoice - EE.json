@@ -1,18 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T19:51:32.363Z",
-  "id": "vkTUrusGPH0sb3YN",
+  "createdAt": "2024-08-09T18:35:50.603Z",
+  "id": "QvKBRk02qCGPMAdw",
   "meta": null,
   "name": "WF001: Generate Consulting Invoice - EE",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T19:59:49.000Z",
-  "versionId": "a52dbb59-a49c-4dd3-bc01-d7ad0cb8d22b"
+  "updatedAt": "2024-08-09T18:35:50.603Z",
+  "versionId": "8bc3d6bd-893b-4d87-a0ec-ac16ba6d12a9"
 }

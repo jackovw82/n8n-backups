@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T21:55:25.965Z",
-  "id": "j2qFXS6GReltCGkI",
+  "createdAt": "2024-08-09T19:54:44.661Z",
+  "id": "TtkIAeJyNIkjRkUi",
   "meta": null,
   "name": "Thinkific product.created feeding downstream systems/tools",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T21:55:25.965Z",
-  "versionId": "79bdfff6-8c23-452f-b5c3-a374ccdf21e9"
+  "updatedAt": "2024-08-09T19:54:44.661Z",
+  "versionId": "169a072c-e1ce-4919-a0e5-7fc99e9b327d"
 }

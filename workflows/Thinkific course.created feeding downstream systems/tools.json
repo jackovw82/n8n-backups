@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T21:54:50.086Z",
-  "id": "Mz3KjfkiCgKhcTXl",
+  "createdAt": "2024-08-09T19:55:38.721Z",
+  "id": "UBM9ksj1GaVa3afW",
   "meta": null,
   "name": "Thinkific course.created feeding downstream systems/tools",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T21:54:50.086Z",
-  "versionId": "e0b340f1-534a-4512-8326-44726b23a81b"
+  "updatedAt": "2024-08-09T19:55:38.721Z",
+  "versionId": "6519ebee-ae44-4e1b-93c5-e28529da5e92"
 }

@@ -185,11 +185,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-01T21:26:19.120Z",
-  "id": "T7SREvAe7odM7WVL",
-  "meta": {
-    "templateId": "2328"
-  },
+  "createdAt": "2024-08-09T18:35:48.317Z",
+  "id": "I6UXsYITFKej4kf4",
+  "meta": null,
   "name": "Actioning Your Meeting Next Steps using Transcripts and AI",
   "nodes": [
     {
@@ -720,13 +718,13 @@
       "typeVersion": 1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T21:26:19.120Z",
-  "versionId": "c51738ee-4191-433b-989e-2dbeb284fe86"
+  "updatedAt": "2024-08-09T18:35:48.317Z",
+  "versionId": "f8b2a462-fb46-476d-aa66-905b6f89c33b"
 }

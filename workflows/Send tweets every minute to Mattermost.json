@@ -1,0 +1,189 @@
+{
+  "active": false,
+  "connections": {
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Function",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "Twitter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Twitter": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function": {
+      "main": [
+        [
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:36:41.556Z",
+  "id": "VBQVghuf3Uy8XRq0",
+  "meta": {
+    "templateId": "875"
+  },
+  "name": "Send tweets every minute to Mattermost",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "search",
+        "searchText": "n8n_io",
+        "additionalFields": {
+          "resultType": "recent"
+        }
+      },
+      "name": "Twitter",
+      "type": "n8n-nodes-base.twitter",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "3aefc1f1-77b1-4a3b-b718-d6260aec01de"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "eade7c93-8b62-4f25-a9b2-2cf63c13b1a4"
+    },
+    {
+      "parameters": {
+        "functionCode": "const new_items = [];\nconst data = this.getWorkflowStaticData('node');\n\ndata.ids = data.ids || [];\n\nfor (var i=0; i<items.length; i++) {\n  if (data.ids.includes(items[i].json.id)) {\n    break;\n  } else {\n    new_items.push({json: {id: items[i].json.id, url: items[i].json.url, tweet: items[i].json.tweet, username: items[i].json.username, photo: items[i].json.photo, name: items[i].json.name, color: items[i].json.color}});\n  }\n}\n\ndata.ids = items.map(item => item.json.id)\nreturn new_items;\n"
+      },
+      "name": "Function",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        910,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "62aaa944-5ccf-4028-ad21-929ad900883d"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "id",
+              "value": "={{$node[\"Twitter\"].json[\"id\"]}}"
+            }
+          ],
+          "string": [
+            {
+              "name": "url",
+              "value": "=https://twitter.com/{{$node[\"Twitter\"].json[\"user\"][\"screen_name\"]}}/status/{{$node[\"Twitter\"].json[\"id_str\"]}}"
+            },
+            {
+              "name": "tweet",
+              "value": "={{$node[\"Twitter\"].json[\"text\"]}}"
+            },
+            {
+              "name": "username",
+              "value": "={{$node[\"Twitter\"].json[\"user\"][\"screen_name\"]}}"
+            },
+            {
+              "name": "photo",
+              "value": "={{$node[\"Twitter\"].json[\"user\"][\"profile_image_url_https\"]}}"
+            },
+            {
+              "name": "name",
+              "value": "={{$node[\"Twitter\"].json[\"user\"][\"name\"]}}"
+            },
+            {
+              "name": "color",
+              "value": "={{$node[\"Twitter\"].json[\"user\"][\"profile_link_color\"]}}"
+            }
+          ]
+        },
+        "options": {
+          "dotNotation": true
+        }
+      },
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        750,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "fd79343f-a80d-4d11-85c3-2bf532bc4bb5"
+    },
+    {
+      "parameters": {
+        "channelId": "c81pcft85byeipbp3nptbmicah",
+        "message": "={{$node[\"Function\"].json[\"url\"]}}",
+        "attachments": [
+          {
+            "text": "={{$node[\"Function\"].json[\"tweet\"]}}",
+            "color": "=#{{$node[\"Function\"].json[\"color\"]}}",
+            "author_icon": "={{$node[\"Function\"].json[\"photo\"]}}",
+            "author_link": "=https://twitter.com/{{$node[\"Function\"].json[\"username\"]}}",
+            "author_name": "={{$node[\"Function\"].json[\"name\"]}} ({{$node[\"Function\"].json[\"username\"]}})"
+          }
+        ],
+        "otherOptions": {}
+      },
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        1080,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "99a6e421-bca7-4e56-b636-fd1ba2678ff8"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:36:41.556Z",
+  "versionId": "648240d4-8751-4b66-9ee2-5222922b8562"
+}

@@ -1,0 +1,73 @@
+{
+  "active": false,
+  "connections": {
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:34:01.796Z",
+  "id": "Uk7pt4387Nz8xUhv",
+  "meta": {
+    "templateId": "1283"
+  },
+  "name": "Get email notifications for newly uploaded Google Drive files",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": "1HwOAKkkgveLji8vVpW9Xrg1EsBskwMNb",
+        "event": "fileCreated",
+        "options": {}
+      },
+      "name": "Google Drive Trigger",
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "57a08ecc-9806-4081-948b-027975f936a9"
+    },
+    {
+      "parameters": {
+        "fromEmail": "mutedjam@n8n.io",
+        "toEmail": "mutedjam@n8n.io",
+        "subject": "File Update",
+        "text": "=A file in your Google Drive file folder has been created: {{$json[\"name\"]}}",
+        "options": {}
+      },
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "f911a277-4143-4120-b37d-bdaa1819d66d"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:34:01.796Z",
+  "versionId": "7d47d80c-3cb9-4b87-aea6-1e3021baa9e7"
+}

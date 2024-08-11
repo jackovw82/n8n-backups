@@ -68,11 +68,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-06T20:09:46.274Z",
-  "id": "erees9wa7jqUQHzL",
-  "meta": {
-    "templateId": "2322"
-  },
+  "createdAt": "2024-08-09T18:35:50.509Z",
+  "id": "cYp6w0C5ipPWjCkv",
+  "meta": null,
   "name": "Speed Up Social Media Banners With BannerBear.com",
   "nodes": [
     {
@@ -460,13 +458,13 @@
       "typeVersion": 1.3
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-06T20:09:46.274Z",
-  "versionId": "efab9456-2b59-429a-8c1e-3450c2ee54f1"
+  "updatedAt": "2024-08-09T18:35:50.509Z",
+  "versionId": "e5f401b4-e282-4115-aca0-e49788875984"
 }

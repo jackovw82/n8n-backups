@@ -1,0 +1,94 @@
+{
+  "active": false,
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "ProfitWell",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ProfitWell": {
+      "main": [
+        [
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T20:39:30.179Z",
+  "id": "R4VJVQrAFl4pujll",
+  "meta": {
+    "templateId": "798"
+  },
+  "name": "Send financial metrics monthly to Mattermos",
+  "nodes": [
+    {
+      "parameters": {
+        "type": "monthly",
+        "options": {}
+      },
+      "name": "ProfitWell",
+      "type": "n8n-nodes-base.profitWell",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "c8eba49d-413e-40c5-a036-0a41d98d87fb"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyMonth",
+              "hour": 9
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "2073cbd6-5b72-469d-a21b-51049b8f9f7f"
+    },
+    {
+      "parameters": {
+        "channelId": "w6rsxrqds3bt9pguxzduowqucy",
+        "message": "=Active Customers: {{$node[\"ProfitWell\"].json[\"active_customers\"]}}\nTrailing Customers: {{$node[\"ProfitWell\"].json[\"active_trialing_customers\"]}}\nNew Customers: {{$node[\"ProfitWell\"].json[\"new_customers\"]}}\nGrowth Rate: {{$node[\"ProfitWell\"].json[\"growth_rate\"]}}\nRecurring Revenue: {{$node[\"ProfitWell\"].json[\"recurring_revenue\"]}}",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "5258ec2b-84ce-46b5-b4ce-650f25c676ee"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T20:39:30.179Z",
+  "versionId": "84b0b5cb-2fbc-42a7-987a-52ba8f772968"
+}

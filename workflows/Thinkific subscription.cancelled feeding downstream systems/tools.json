@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T21:50:09.834Z",
-  "id": "EUtziCUsNokkXnnR",
+  "createdAt": "2024-08-09T19:57:54.081Z",
+  "id": "LRYt7z4k4lodiTH1",
   "meta": null,
   "name": "Thinkific subscription.cancelled feeding downstream systems/tools",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T21:50:09.834Z",
-  "versionId": "8027e841-e861-4259-9050-ddc02255f176"
+  "updatedAt": "2024-08-09T19:57:54.081Z",
+  "versionId": "61de6412-f91b-4824-a4a3-da3e73816668"
 }

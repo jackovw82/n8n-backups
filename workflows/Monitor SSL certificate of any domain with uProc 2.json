@@ -1,0 +1,141 @@
+{
+  "active": false,
+  "connections": {
+    "Create Domain Item": {
+      "main": [
+        [
+          {
+            "node": "Get SSL Certificate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get SSL Certificate": {
+      "main": [
+        [
+          {
+            "node": "Certificate  has  expired?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Create Domain Item",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Certificate  has  expired?": {
+      "main": [
+        [
+          {
+            "node": "Send Expired Alarm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-10T09:16:07.771Z",
+  "id": "1RFcmmicYDlj3EBr",
+  "meta": {
+    "templateId": "861"
+  },
+  "name": "Monitor SSL certificate of any domain with uProc 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "901288fd-78a9-455a-a380-705ee7d8a11c"
+    },
+    {
+      "parameters": {
+        "functionCode": "item.domain = \"n8n.io\";\nreturn item;"
+      },
+      "name": "Create Domain Item",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        590,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "25ad3ba5-eeed-4a12-b650-eedfd0177b52"
+    },
+    {
+      "parameters": {
+        "group": "internet",
+        "tool": "getDomainCertificate",
+        "domain": "= {{$node[\"Create Domain Item\"].json[\"domain\"]}}",
+        "additionalOptions": {}
+      },
+      "name": "Get SSL Certificate",
+      "type": "n8n-nodes-base.uproc",
+      "position": [
+        790,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "5f028d29-807a-42b5-b435-ac9f25605bed"
+    },
+    {
+      "parameters": {
+        "chatId": "-1415703867",
+        "text": "=The certificate of the domain {{$node[\"Create Domain Item\"].json[\"domain\"]}} has expired!",
+        "additionalFields": {}
+      },
+      "name": "Send Expired Alarm",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        1210,
+        220
+      ],
+      "typeVersion": 1,
+      "id": "2feeb633-d51d-47e6-9899-432cc4f132fd"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"Get SSL Certificate\"].json[\"message\"][\"valid\"]+\"\"}}",
+              "value2": "false"
+            }
+          ]
+        }
+      },
+      "name": "Certificate  has  expired?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        980,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "a6f13d9c-7703-48f9-9b30-4e98e729db9d"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-10T09:16:07.771Z",
+  "versionId": "2b5b4d00-74bd-45fd-a528-cabcb4c90254"
+}

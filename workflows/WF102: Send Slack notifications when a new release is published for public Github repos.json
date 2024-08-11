@@ -46,12 +46,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-07T18:22:42.339Z",
-  "id": "UEujYQnHk1rbq5x7",
-  "meta": {
-    "templateId": "2353",
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-09T18:35:52.020Z",
+  "id": "jvUkDdUebJKwfKdU",
+  "meta": null,
   "name": "WF102: Send Slack notifications when a new release is published for public Github repos",
   "nodes": [
     {
@@ -192,13 +189,13 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-07T18:58:36.000Z",
-  "versionId": "510b3877-52db-44de-b02f-89f5fe75ec0a"
+  "updatedAt": "2024-08-09T18:35:52.020Z",
+  "versionId": "d860cf47-f23e-46b4-b000-be135c83a2a6"
 }

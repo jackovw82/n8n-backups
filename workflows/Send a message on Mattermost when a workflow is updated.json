@@ -1,0 +1,112 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-10T09:16:47.092Z",
+  "id": "cwJ5NOQsoRFFFylJ",
+  "meta": {
+    "templateId": "1059"
+  },
+  "name": "Send a message on Mattermost when a workflow is updated",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "c0345765-4488-4ac8-a9da-02f647dd2b90",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "c0345765-4488-4ac8-a9da-02f647dd2b90",
+      "typeVersion": 1,
+      "id": "537321d0-44d4-4400-8b26-532b3360256e"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Message",
+              "value": "Hello!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "7fcd6631-031a-4f2f-bf3a-a749d65cdb50"
+    },
+    {
+      "parameters": {
+        "channelId": "toyi3uoycf8rirtm7d5jm15sso",
+        "message": "=The workflow {{$workflow.name}}, was updated.",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        580,
+        390
+      ],
+      "typeVersion": 1,
+      "id": "f30c7cfa-63d1-41c7-b7f3-3a0f85187be3"
+    },
+    {
+      "parameters": {
+        "events": [
+          "update"
+        ]
+      },
+      "name": "Workflow Trigger",
+      "type": "n8n-nodes-base.workflowTrigger",
+      "position": [
+        380,
+        390
+      ],
+      "typeVersion": 1,
+      "id": "f1fae304-e603-45b9-b938-6880399892bb"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-10T09:16:47.092Z",
+  "versionId": "7456bb18-2d41-4b31-b511-2db9078a9512"
+}

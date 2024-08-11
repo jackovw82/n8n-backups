@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T20:15:53.270Z",
+  "id": "QAtHeXjqSIwOr7HG",
+  "meta": null,
+  "name": "Client_is_created_in_Toggl_from_SM",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T20:15:53.270Z",
+  "versionId": "0666e964-77ca-4a21-97fa-cc3a341ff813"
+}

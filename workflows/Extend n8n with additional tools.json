@@ -1,0 +1,589 @@
+{
+  "active": false,
+  "connections": {
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "msg_wrongcommand",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "msg_greet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Filename",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg_pleasewait",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename": {
+      "main": [
+        [
+          {
+            "node": "City List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "City List": {
+      "main": [
+        [
+          {
+            "node": "Get weather data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write csv": {
+      "main": [
+        [
+          {
+            "node": "Run R script",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run R script": {
+      "main": [
+        [
+          {
+            "node": "R successful?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "R successful?": {
+      "main": [
+        [
+          {
+            "node": "Read Binary File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg_errorR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg_pleasewait": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Any errors API?": {
+      "main": [
+        [
+          {
+            "node": "msg_errorAPI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Convert API response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get weather data": {
+      "main": [
+        [
+          {
+            "node": "Any errors API?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Binary File": {
+      "main": [
+        [
+          {
+            "node": "msg_getweather",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Write csv",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert API response": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:27:09.049Z",
+  "id": "MTQhyTy9sS8MC3VX",
+  "meta": {
+    "templateId": "1605"
+  },
+  "name": "Extend n8n with additional tools",
+  "nodes": [
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{$json[\"message\"][\"text\"]}}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "/start"
+            },
+            {
+              "value2": "/getweather",
+              "output": 1
+            }
+          ]
+        },
+        "fallbackOutput": 3
+      },
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "position": [
+        540,
+        240
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "5ba7f85a-90a4-4c38-89c3-545e18df6b4e",
+      "notes": "check bot commands"
+    },
+    {
+      "parameters": {
+        "chatId": "={{$node[\"Telegram Trigger\"].json[\"message\"][\"chat\"][\"id\"]}}",
+        "text": "=Nice to meet you, {{$node[\"Telegram Trigger\"].json[\"message\"][\"from\"][\"first_name\"]}}.\nI am n8n-powered bot, I can send you a weather data for several European capitals. The data is an image generated in ggplot2 package of R programming language.\nType /getweather to begin.",
+        "additionalFields": {}
+      },
+      "name": "msg_greet",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        1900,
+        60
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "8592ffbc-c2e4-4b47-9fff-0ba4485536ee"
+    },
+    {
+      "parameters": {
+        "chatId": "={{$node[\"Telegram Trigger\"].json[\"message\"][\"chat\"][\"id\"]}}",
+        "text": "=Sorry, {{$node[\"Telegram Trigger\"].json[\"message\"][\"from\"][\"first_name\"]}}, your command was not recognized.\n/getweather - show image with the weather info.",
+        "additionalFields": {}
+      },
+      "name": "msg_wrongcommand",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        1900,
+        920
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "a4e05ffd-eab8-4d85-86c2-3ab77807ebaa"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "2512ec1e-bcff-4dfb-9ef3-208aaecc5634",
+      "typeVersion": 1,
+      "id": "29375bde-254c-4b07-8a44-f316276ab26c"
+    },
+    {
+      "parameters": {
+        "operation": "sendPhoto",
+        "chatId": "={{$node[\"Telegram Trigger\"].json[\"message\"][\"chat\"][\"id\"]}}",
+        "binaryData": true,
+        "additionalFields": {
+          "caption": "=Here's your image, {{$node[\"Telegram Trigger\"].json[\"message\"][\"from\"][\"first_name\"]}}."
+        }
+      },
+      "name": "msg_getweather",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        2100,
+        580
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "52314919-a499-4c60-9ddd-213fa6dc0457"
+    },
+    {
+      "parameters": {
+        "functionCode": "return [{Cityid: 2643743, Cityname:\"London\",    Country: \"GB\"},\r\n        {Cityid: 2950159, Cityname:\"Berlin\",    Country: \"DE\"},\r\n        {Cityid: 3117735, Cityname:\"Madrid\",    Country: \"ES\"},\r\n        {Cityid: 3169070, Cityname:\"Rome\",      Country: \"IT\"},\r\n        {Cityid: 683506,  Cityname:\"Bucharest\", Country: \"RO\"},\r\n        {Cityid: 2968815, Cityname:\"Paris\",     Country: \"FR\"},\r\n        {Cityid: 2761369, Cityname:\"Vienna\",    Country: \"AT\"},\r\n        {Cityid: 756135,  Cityname:\"Warsaw\",    Country: \"PL\"},\r\n        {Cityid: 3054638, Cityname:\"Budapest\",  Country: \"HU\"},\r\n        {Cityid: 792680,  Cityname:\"Belgrade\",  Country: \"RS\"}];"
+      },
+      "name": "City List",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        1120,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "e93bb5b0-a96f-4d92-a4c6-2505665373d4"
+    },
+    {
+      "parameters": {
+        "functionCode": "// this data is stored as a CSV file and then processed in the R script. Please check the R code here:\n// https://gist.github.com/ed-parsadanyan/0561cd12d545e642fcef17dcb0872b00\nvar data = [];\n\nfor (item of items) {\n  data.push({CityName: item.json.name+', '+item.json.sys.country,\n             TempCur : item.json.main.temp,\n             TempMin : item.json.main.temp_min,\n             TempMax : item.json.main.temp_max\n  });\n}\n\nreturn data;"
+      },
+      "name": "Convert API response",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        940,
+        600
+      ],
+      "typeVersion": 1,
+      "id": "40bc3146-01c4-40de-961c-55bd42f17ba3"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.openweathermap.org/data/2.5/weather?id={{$json[\"Cityid\"]}}&units=metric&appid=6d3fff582a101700576faf74734f9535",
+        "options": {}
+      },
+      "name": "Get weather data",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1300,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "3370bd5b-63e0-4502-9594-ab30f86ccb43",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "fileFormat": "csv",
+        "options": {
+          "fileName": "={{$node[\"Filename\"].json[\"filename\"]}}.{{$parameter[\"fileFormat\"]}}"
+        }
+      },
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "position": [
+        1120,
+        600
+      ],
+      "typeVersion": 1,
+      "id": "733ae8cb-7b4f-449f-820d-c5326f73c12c"
+    },
+    {
+      "parameters": {
+        "fileName": "={{$node[\"Filename\"].json[\"foldername\"]}}{{$binary.data.fileName}}",
+        "options": {}
+      },
+      "name": "Write csv",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "position": [
+        1300,
+        600
+      ],
+      "typeVersion": 1,
+      "id": "b09f6fcb-bd17-4ca6-9e22-dedb2835e366"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "filename",
+              "value": "=request_from{{$node[\"Telegram Trigger\"].json[\"message\"][\"from\"][\"id\"]}}_{{DateTime.now().toISO({ format: 'basic' }).split('.')[0]}}"
+            },
+            {
+              "name": "foldername",
+              "value": "/home/node/.n8n/weather-bot/"
+            },
+            {
+              "name": "imgname",
+              "value": "=request_from{{$node[\"Telegram Trigger\"].json[\"message\"][\"from\"][\"id\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Filename",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        940,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "0c18fa88-ad0c-458a-a742-00b92972c2bd"
+    },
+    {
+      "parameters": {
+        "chatId": "={{$node[\"Telegram Trigger\"].json[\"message\"][\"chat\"][\"id\"]}}",
+        "text": "=Sorry, {{$node[\"Telegram Trigger\"].json[\"message\"][\"from\"][\"first_name\"]}}, an error occurred while fetching weather data. Please try again later.",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "name": "msg_errorAPI",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        1900,
+        400
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "a67c1a13-aa4c-4478-9040-3827cd7a6df7"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"error\"][\"name\"]}}",
+              "value2": "Error"
+            }
+          ]
+        }
+      },
+      "name": "Any errors API?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1660,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "ce1d6ebb-1441-41a8-acf2-44615c068b58"
+    },
+    {
+      "parameters": {
+        "chatId": "={{$node[\"Telegram Trigger\"].json[\"message\"][\"chat\"][\"id\"]}}",
+        "text": "=Sorry, {{$node[\"Telegram Trigger\"].json[\"message\"][\"from\"][\"first_name\"]}}, an error occurred while creating an image. Please try again later.",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "name": "msg_errorR",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        1900,
+        760
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "766e8cbd-89ca-464e-87e8-f652bdb7e57e"
+    },
+    {
+      "parameters": {
+        "filePath": "={{$node[\"Filename\"].json[\"foldername\"]}}{{$node[\"Filename\"].json[\"imgname\"]}}.png"
+      },
+      "name": "Read Binary File",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "position": [
+        1900,
+        580
+      ],
+      "typeVersion": 1,
+      "id": "355932a8-d5f6-4e22-8fe3-1554c0bde72e"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json[\"exitCode\"]}}",
+              "operation": "equal"
+            }
+          ]
+        }
+      },
+      "name": "R successful?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1660,
+        600
+      ],
+      "typeVersion": 1,
+      "id": "99162125-67f2-4c93-a1dd-e62f9762c7ef"
+    },
+    {
+      "parameters": {
+        "mode": "passThrough"
+      },
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        760,
+        920
+      ],
+      "typeVersion": 1,
+      "id": "24032972-8698-47ae-a6c8-62c650f8425e"
+    },
+    {
+      "parameters": {
+        "mode": "passThrough"
+      },
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        760,
+        60
+      ],
+      "typeVersion": 1,
+      "id": "91406887-67eb-4d08-803b-410e368483aa"
+    },
+    {
+      "parameters": {
+        "chatId": "={{$node[\"Telegram Trigger\"].json[\"message\"][\"chat\"][\"id\"]}}",
+        "text": "=Please wait while your request is being processed...",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "name": "msg_pleasewait",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        1900,
+        220
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "id": "ac5fa655-6149-4aa4-beb3-63a92415312b"
+    },
+    {
+      "parameters": {
+        "mode": "wait"
+      },
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        760,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "949111ce-38ce-4ee8-868d-24879c626e78"
+    },
+    {
+      "parameters": {
+        "command": "=Rscript --vanilla '{{$node[\"Filename\"].json[\"foldername\"]}}dumbbell_plot.R' '{{$node[\"Filename\"].json[\"foldername\"]}}{{$node[\"Filename\"].json[\"filename\"]}}.csv' '{{$node[\"Filename\"].json[\"foldername\"]}}{{$node[\"Filename\"].json[\"imgname\"]}}.png' >& {{$node[\"Filename\"].json[\"foldername\"]}}{{$node[\"Filename\"].json[\"filename\"]}}.log"
+      },
+      "name": "Run R script",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [
+        1480,
+        600
+      ],
+      "typeVersion": 1,
+      "id": "8eec4ff0-e364-45dc-99d2-96372107dc66",
+      "continueOnFail": true
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:27:09.049Z",
+  "versionId": "b3758672-85c9-4731-967f-4d257e7f5d00"
+}

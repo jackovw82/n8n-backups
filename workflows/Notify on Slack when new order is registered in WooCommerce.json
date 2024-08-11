@@ -1,0 +1,127 @@
+{
+  "active": false,
+  "connections": {
+    "Order Created": {
+      "main": [
+        [
+          {
+            "node": "Price over 100",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Price over 100": {
+      "main": [
+        [
+          {
+            "node": "Send to Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:42:19.553Z",
+  "id": "KibhjrLzb2u5q4SI",
+  "meta": {
+    "templateId": "1457"
+  },
+  "name": "Notify on Slack when new order is registered in WooCommerce",
+  "nodes": [
+    {
+      "parameters": {
+        "event": "order.created"
+      },
+      "name": "Order Created",
+      "type": "n8n-nodes-base.wooCommerceTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "287b4bf4-67ec-4c97-85d9-c0d3e6f59e6b",
+      "typeVersion": 1,
+      "id": "9806b0e1-e5b3-4d81-9def-101787c8cfa6"
+    },
+    {
+      "parameters": {
+        "channel": "woo-commerce",
+        "text": ":sparkles: There is a new order :sparkles:",
+        "otherOptions": {},
+        "attachments": [
+          {
+            "color": "#66FF00",
+            "fields": {
+              "item": [
+                {
+                  "short": true,
+                  "title": "Order ID",
+                  "value": "={{$json[\"id\"]}}"
+                },
+                {
+                  "short": true,
+                  "title": "Status",
+                  "value": "={{$json[\"status\"]}}"
+                },
+                {
+                  "short": true,
+                  "title": "Total",
+                  "value": "={{$json[\"currency_symbol\"]}}{{$json[\"total\"]}}"
+                },
+                {
+                  "short": false,
+                  "title": "Link",
+                  "value": "={{$node[\"Order Created\"].json[\"_links\"][\"self\"][0][\"href\"]}}"
+                }
+              ]
+            },
+            "footer": "=*Ordered:* {{$json[\"date_created\"]}} | *Transaction ID:* {{$json[\"transaction_id\"]}}"
+          }
+        ],
+        "blocksUi": {
+          "blocksValues": []
+        }
+      },
+      "name": "Send to Slack",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        820,
+        220
+      ],
+      "typeVersion": 1,
+      "id": "15c390ff-7c44-45b0-991f-598b1262ea8b"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json[\"total\"]}}",
+              "operation": "largerEqual",
+              "value2": 100
+            }
+          ]
+        }
+      },
+      "name": "Price over 100",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "20a840fb-fcb2-49e1-a5f0-1bab56743a09"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:42:19.553Z",
+  "versionId": "3408e25f-9a25-438a-8788-d1d34c36e7f2"
+}

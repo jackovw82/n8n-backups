@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T21:53:49.095Z",
-  "id": "gGcs0T9yRabzTb8j",
+  "createdAt": "2024-08-09T19:56:48.401Z",
+  "id": "PReUpxA3xOQ3SJVh",
   "meta": null,
   "name": "Thinkific user.signin feeding downstream systems/tools",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T21:53:49.095Z",
-  "versionId": "673c2e30-b49e-4891-a5bf-bdd167378b02"
+  "updatedAt": "2024-08-09T19:56:48.401Z",
+  "versionId": "f635a12f-8804-4fb4-b60b-449c55597015"
 }

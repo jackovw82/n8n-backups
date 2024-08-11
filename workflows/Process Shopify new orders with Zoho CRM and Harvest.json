@@ -1,0 +1,321 @@
+{
+  "active": false,
+  "connections": {
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Gmail - coupon",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Gmail - thankyou",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Harvest": {
+      "main": [
+        [
+          {
+            "node": "Trello",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set fields": {
+      "main": [
+        [
+          {
+            "node": "Harvest",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Zoho",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "order created": {
+      "main": [
+        [
+          {
+            "node": "Set fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail - coupon": {
+      "main": [
+        [
+          {
+            "node": "Mailchimp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-11T10:05:31.758Z",
+  "id": "pZOUzAoRv0daKneG",
+  "meta": {
+    "templateId": "1206"
+  },
+  "name": "Process Shopify new orders with Zoho CRM and Harvest",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "upsert",
+        "lastName": "={{$json[\"customer_lastname\"]}}",
+        "additionalFields": {
+          "Email": "={{$json[\"customer_email\"]}}",
+          "First_Name": "={{$json[\"customer_firstname\"]}}",
+          "Mailing_Address": {
+            "address_fields": {
+              "Mailing_Street": "={{$json[\"customer_street\"]}}",
+              "Mailing_City": "={{$json[\"customer_city\"]}}",
+              "Mailing_State": "=",
+              "Mailing_Country": "={{$json[\"customer_country\"]}}",
+              "Mailing_Zip": "={{$json[\"customer_zipcode\"]}}"
+            }
+          },
+          "Phone": "={{$json[\"customer_phone\"]}}"
+        }
+      },
+      "name": "Zoho",
+      "type": "n8n-nodes-base.zohoCrm",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "e7995c1e-917d-4b45-9172-91ae179f72cd"
+    },
+    {
+      "parameters": {
+        "listId": "list01",
+        "name": "=Shopify order {{$node[\"order created\"].json[\"order_number\"]}}",
+        "additionalFields": {
+          "urlSource": "={{$node[\"order created\"].json[\"order_status_url\"]}}"
+        }
+      },
+      "name": "Trello",
+      "type": "n8n-nodes-base.trello",
+      "position": [
+        590,
+        430
+      ],
+      "typeVersion": 1,
+      "id": "b8446213-1f50-45c1-9523-e0b77ec65ef2"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "customer_phone",
+              "value": "={{$json[\"customer\"][\"default_address\"][\"phone\"]}}"
+            },
+            {
+              "name": "customer_zipcode",
+              "value": "={{$json[\"shipping_address\"][\"zip\"]}}"
+            },
+            {
+              "name": "order_value",
+              "value": "={{$json[\"current_total_price\"]}}"
+            }
+          ],
+          "string": [
+            {
+              "name": "customer_firstname",
+              "value": "={{$json[\"customer\"][\"first_name\"]}}"
+            },
+            {
+              "name": "customer_lastname",
+              "value": "={{$json[\"customer\"][\"last_name\"]}}"
+            },
+            {
+              "name": "customer_email",
+              "value": "={{$json[\"customer\"][\"email\"]}}"
+            },
+            {
+              "name": "customer_country",
+              "value": "={{$json[\"shipping_address\"][\"country\"]}}"
+            },
+            {
+              "name": "customer_street",
+              "value": "={{$json[\"shipping_address\"][\"address1\"]}}"
+            },
+            {
+              "name": "customer_city",
+              "value": "={{$json[\"shipping_address\"][\"city\"]}}"
+            },
+            {
+              "name": "customer_province",
+              "value": "={{$json[\"shipping_address\"][\"province\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set fields",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        190,
+        390
+      ],
+      "typeVersion": 1,
+      "id": "2af37b6a-5de0-45a4-993e-cf11bd4dfd12"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json[\"order_value\"]}}",
+              "operation": "larger",
+              "value2": 50
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        390,
+        670
+      ],
+      "typeVersion": 1,
+      "id": "b79427fc-fb3a-4064-98ac-558f1113422c"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "subject": "Your Shopify order",
+        "message": "=Hi {{$json[\"customer_firstname\"]}},\n\nThank you for your order! Here's a 15% coupon code to use for your next order: COUPON15\n\nBest,\nShop Owner",
+        "toList": [
+          "={{$node[\"Set fields\"].json[\"customer_email\"]}}"
+        ],
+        "additionalFields": {}
+      },
+      "name": "Gmail - coupon",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        570,
+        580
+      ],
+      "typeVersion": 1,
+      "id": "1a0f3ddc-a7cb-4749-af0b-f38526161c4a"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "subject": "Your Shopify order",
+        "message": "=Hi {{$node[\"Set fields\"].json[\"customer_firstname\"]}},\nThank you for your order! We're getting it ready for shipping it to you.\n\nBest,\nShop Owner",
+        "toList": [
+          "={{$node[\"Set fields\"].json[\"customer_email\"]}}"
+        ],
+        "additionalFields": {}
+      },
+      "name": "Gmail - thankyou",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        570,
+        780
+      ],
+      "typeVersion": 1,
+      "id": "8b4cbd4c-7cf5-4d88-a2eb-571299ddf48b"
+    },
+    {
+      "parameters": {
+        "resource": "memberTag",
+        "list": "qwertz",
+        "email": "={{$node[\"Set fields\"].json[\"customer_email\"]}}",
+        "tags": [
+          "high-order"
+        ],
+        "options": {}
+      },
+      "name": "Mailchimp",
+      "type": "n8n-nodes-base.mailchimp",
+      "position": [
+        770,
+        580
+      ],
+      "typeVersion": 1,
+      "id": "949bea90-8953-4c55-b3a6-c8b8fae01b35"
+    },
+    {
+      "parameters": {
+        "topic": "orders/create"
+      },
+      "name": "order created",
+      "type": "n8n-nodes-base.shopifyTrigger",
+      "position": [
+        -10,
+        390
+      ],
+      "webhookId": "qwertz",
+      "typeVersion": 1,
+      "id": "6de5328c-16e3-47a9-a19e-084c10b0d3aa"
+    },
+    {
+      "parameters": {
+        "resource": "invoice",
+        "operation": "create",
+        "accountId": "12345",
+        "clientId": "shopify_client",
+        "additionalFields": {
+          "currency": "={{$node[\"order created\"].json[\"currency\"]}}",
+          "issue_date": "={{$node[\"order created\"].json[\"processed_at\"]}}",
+          "payment_term": "net 15",
+          "purchase_order": "={{$node[\"order created\"].json[\"order_number\"]}}"
+        }
+      },
+      "name": "Harvest",
+      "type": "n8n-nodes-base.harvest",
+      "position": [
+        410,
+        430
+      ],
+      "typeVersion": 1,
+      "id": "a1e429e4-4d52-4028-9ceb-1730f96d334f"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T10:05:31.758Z",
+  "versionId": "142d747e-875a-4271-ac68-67297311475d"
+}

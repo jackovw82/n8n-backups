@@ -58,11 +58,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-07T16:36:56.157Z",
-  "id": "m5YK0NRtQpbQkTMV",
-  "meta": {
-    "templateId": "2184"
-  },
+  "createdAt": "2024-08-09T18:35:50.591Z",
+  "id": "Egni7WjY9aMbNr76",
+  "meta": null,
   "name": "Validate email format from a Wordpress form and save a contact in Mautic",
   "nodes": [
     {
@@ -269,13 +267,13 @@
       "typeVersion": 1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-07T16:36:56.157Z",
-  "versionId": "d9004963-b81f-40c2-a922-f87acfc23d84"
+  "updatedAt": "2024-08-09T18:35:50.591Z",
+  "versionId": "fe8e17aa-26fa-4761-9cc7-b48ceff4ecb4"
 }

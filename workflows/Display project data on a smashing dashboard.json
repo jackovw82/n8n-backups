@@ -162,12 +162,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-07T18:31:29.690Z",
-  "id": "RAQH2P5QOcLzsodX",
-  "meta": {
-    "templateId": "693",
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-09T18:35:48.420Z",
+  "id": "vNEHYvWWNB4BgfMg",
+  "meta": null,
   "name": "Display project data on a smashing dashboard",
   "nodes": [
     {
@@ -792,13 +789,13 @@
       "id": "c1eb887a-f44b-450e-bc74-9ba0e6459117"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-07T18:44:19.000Z",
-  "versionId": "95c32332-9a13-48dd-9867-b08bf27343ac"
+  "updatedAt": "2024-08-09T18:35:48.420Z",
+  "versionId": "69603ec9-f4d9-4274-924e-ac1aa6c53c0d"
 }

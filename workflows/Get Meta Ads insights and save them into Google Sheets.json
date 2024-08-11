@@ -68,11 +68,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-06T20:02:11.128Z",
-  "id": "IXmxu6o9hVUlMd0U",
-  "meta": {
-    "templateId": "2355"
-  },
+  "createdAt": "2024-08-09T18:35:48.391Z",
+  "id": "1aCvXA4Tmlx0BtpV",
+  "meta": null,
   "name": "Get Meta Ads insights and save them into Google Sheets",
   "nodes": [
     {
@@ -530,13 +528,13 @@
       "typeVersion": 1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-06T20:02:11.128Z",
-  "versionId": "7e54ec96-f23b-4891-b813-43099c1f57e8"
+  "updatedAt": "2024-08-09T18:35:48.391Z",
+  "versionId": "276befb4-34df-4a3b-a8ef-87494957c80f"
 }

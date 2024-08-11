@@ -1,18 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-01T20:09:09.021Z",
-  "id": "8bQMPfpyeY99kiRP",
+  "createdAt": "2024-08-09T18:35:49.499Z",
+  "id": "NZG1ei405hdMDZ4Q",
   "meta": null,
   "name": "PushShare - Weekly newsletter to social media",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-01T20:09:09.021Z",
-  "versionId": "3a20934e-dd94-45bb-ac6b-a3bd0324a6f3"
+  "updatedAt": "2024-08-09T18:35:49.499Z",
+  "versionId": "f93baffd-2379-4d64-9859-25cd8741fe31"
 }

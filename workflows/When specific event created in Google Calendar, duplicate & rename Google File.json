@@ -1,0 +1,310 @@
+{
+  "active": false,
+  "connections": {
+    "Search folder": {
+      "main": [
+        [
+          {
+            "node": "Search file to duplicate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter specific event": {
+      "main": [
+        [
+          {
+            "node": "Search folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search file to duplicate": {
+      "main": [
+        [
+          {
+            "node": "Create and rename Google File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "New event in Google Calendar": {
+      "main": [
+        [
+          {
+            "node": "Filter specific event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:21:16.473Z",
+  "id": "nsM5RzwVSXqptc8l",
+  "meta": {
+    "templateId": "2145"
+  },
+  "name": "When specific event created in Google Calendar, duplicate & rename Google File",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "149376d5-8f56-4acc-b270-beec7dfee052",
+              "operator": {
+                "name": "filter.operator.equals",
+                "type": "string",
+                "operation": "equals"
+              },
+              "leftValue": "={{ $json.creator.email }}",
+              "rightValue": "candice@n8n.io"
+            },
+            {
+              "id": "8e53bf94-fc5e-4c80-a428-db2ca7b5c8fa",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              },
+              "leftValue": "={{ $json.source.url }}",
+              "rightValue": "https://n8n.workable.com/events/"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d8930efe-e70f-49f4-986a-be5598f30d5d",
+      "name": "Filter specific event",
+      "type": "n8n-nodes-base.filter",
+      "position": [
+        640,
+        600
+      ],
+      "notesInFlow": true,
+      "typeVersion": 2,
+      "notes": "creator.email + source.url"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "calendarId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "candice@n8n.io",
+          "cachedResultName": "candice@n8n.io"
+        },
+        "triggerOn": "eventCreated",
+        "options": {
+          "matchTerm": "=Interview with"
+        }
+      },
+      "id": "0bb2f1db-c804-4dab-8541-02386ef7ff28",
+      "name": "New event in Google Calendar",
+      "type": "n8n-nodes-base.googleCalendarTrigger",
+      "position": [
+        420,
+        600
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1,
+      "notes": "match term: \"interview with\""
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "SCREENING",
+        "limit": 1,
+        "filter": {},
+        "options": {}
+      },
+      "id": "247df98b-8207-458d-ba6a-826d7f91831c",
+      "name": "Search folder",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        840,
+        600
+      ],
+      "executeOnce": false,
+      "notesInFlow": true,
+      "retryOnFail": false,
+      "typeVersion": 3,
+      "notes": "Search for \"Screening\" folder"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "Template | M1 | Senior AE | ",
+        "limit": 1,
+        "filter": {},
+        "options": {}
+      },
+      "id": "03112460-fd45-4b82-8086-bd0a09c8300a",
+      "name": "Search file to duplicate",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        1060,
+        600
+      ],
+      "notesInFlow": true,
+      "typeVersion": 3,
+      "notes": "Search \"Template screening\" file"
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $json.id }}"
+        },
+        "name": "={{ $('Filter specific event').item.json.source.title }}",
+        "options": {}
+      },
+      "id": "a4d7371c-75ac-4d3d-afe1-1ec3920ee3ed",
+      "name": "Create and rename Google File",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        1280,
+        600
+      ],
+      "notesInFlow": true,
+      "typeVersion": 3,
+      "notes": "Create new doc"
+    },
+    {
+      "parameters": {
+        "content": "## Set up\n\n- Set up credentials for **Google Calendar**, **Google Drive**, and **Google File**. You'll need a Google Workspace account. \n- Set up the **Filter** node with the pattern you want to look for to retreive specific events in your calendar \n- Set up the **Google Drive** you want to search in\n- Set up the **Google File** you want to duplicate\n- Set up variable at the last step to rename your duplicated file however you want it, or add a description",
+        "height": 201.86891048588683,
+        "width": 783.9001364220326,
+        "color": 6
+      },
+      "id": "c78d5082-9630-4872-87b4-73c68f254b7e",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n👆\n\nYou can exchange with a trigger from another scheduling tool (Calendly, Hubspot)",
+        "height": 387.56373557965946,
+        "width": 183.1090661050851
+      },
+      "id": "3ea6d7bc-3649-4ddc-9623-f094ecce6333",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        380,
+        580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n👆\n\nYou can filter with any pattern that matches the type of event you're trying to retrieve (Event title, description, organiser, attendees...)",
+        "height": 390.03725444465573,
+        "width": 185.58258497008137
+      },
+      "id": "e1c915d6-58db-40e8-9c1e-e3446b89fa44",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        600,
+        580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n👆\n\nSearch the folder where the file you want to duplicate is located. ",
+        "height": 390.03725444465573,
+        "width": 185.58258497008137
+      },
+      "id": "d0a141a8-b165-411c-9237-23e73ca7e5eb",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        800,
+        580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n👆\n\nSearch the file you want to duplicate.",
+        "height": 390.03725444465573,
+        "width": 185.58258497008137
+      },
+      "id": "5f1820b5-06ce-4fc5-8b9f-634580ce44b7",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1020,
+        580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n👆\n\nRename the new file whichever way you want, using variables from the first step (Calendar event). \n\nEx: {Title of the event} | {date of the event} | {attendees}",
+        "height": 441.9811506095781,
+        "width": 185.58258497008137
+      },
+      "id": "1efb3ca1-514b-46a3-8213-68a395cbf4ce",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1240,
+        580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "💡 ***You can create multiple path for different type of events***",
+        "height": 80,
+        "width": 185.58258497008137,
+        "color": 7
+      },
+      "id": "13ae86e3-8629-4797-8d60-5791ca06a226",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        600,
+        480
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:21:16.473Z",
+  "versionId": "4d966c91-5787-4819-92b1-09e2d74e8204"
+}

@@ -1,0 +1,88 @@
+{
+  "active": false,
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-10T09:14:00.011Z",
+  "id": "6RgF55dVCqVBHgYP",
+  "meta": {
+    "templateId": "700"
+  },
+  "name": "Purge n8n execution history located in Mysql",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "08fda5da-809d-41a3-9a75-d23b3b20c2a7"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM execution_entity \nWHERE DATE(stoppedAt) < DATE_SUB(CURDATE(), INTERVAL 30 DAY)"
+      },
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "84041d8f-28a9-4a25-9215-16200f833329"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 7
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        380,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "c7f2dd95-b7ea-47c8-a059-68c83e5fe182"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-10T09:14:00.011Z",
+  "versionId": "d00891cc-c33e-4613-9e8b-5a125ffa2d9b"
+}

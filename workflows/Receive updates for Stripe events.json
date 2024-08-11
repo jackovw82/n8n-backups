@@ -1,0 +1,37 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T20:38:45.540Z",
+  "id": "jTEkmsmTtF1diwnU",
+  "meta": {
+    "templateId": "545"
+  },
+  "name": "Receive updates for Stripe events",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "*"
+        ]
+      },
+      "name": "Stripe Trigger",
+      "type": "n8n-nodes-base.stripeTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "4b359a40-a292-4c58-bc15-842b4d8eb3ca",
+      "typeVersion": 1,
+      "id": "2f614f13-0c69-4075-b428-81252647cbd1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T20:38:45.540Z",
+  "versionId": "c39b2682-0a43-4fc1-a305-026fe43c9f20"
+}

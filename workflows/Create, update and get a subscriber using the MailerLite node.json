@@ -3,24 +3,12 @@
   "connections": {
     "MailerLite": {
       "main": [
-        [
-          {
-            "node": "MailerLite1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "MailerLite1": {
       "main": [
-        [
-          {
-            "node": "MailerLite2",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "On clicking 'execute'": {
@@ -47,8 +35,8 @@
       "name": "On clicking 'execute'",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        380,
-        240
+        -60,
+        220
       ],
       "typeVersion": 1,
       "id": "eec36680-0829-4943-a8ef-4dd79c588ff8"
@@ -63,11 +51,17 @@
       "name": "MailerLite",
       "type": "n8n-nodes-base.mailerLite",
       "position": [
-        580,
-        240
+        280,
+        60
       ],
       "typeVersion": 1,
-      "id": "82d04e99-75ff-4aa0-bdc1-75d6ae1f062a"
+      "id": "82d04e99-75ff-4aa0-bdc1-75d6ae1f062a",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
     },
     {
       "parameters": {
@@ -87,8 +81,8 @@
       "name": "MailerLite1",
       "type": "n8n-nodes-base.mailerLite",
       "position": [
-        780,
-        240
+        280,
+        260
       ],
       "typeVersion": 1,
       "id": "9e40abce-696b-4ca8-a08a-2664d37863ab"
@@ -101,11 +95,11 @@
       "name": "MailerLite2",
       "type": "n8n-nodes-base.mailerLite",
       "position": [
-        980,
-        240
+        280,
+        480
       ],
       "typeVersion": 1,
-      "id": "fce6c6af-9095-4221-ae27-7e9c3585a586"
+      "id": "78267edd-7b88-4122-87c5-9b5359cff739"
     }
   ],
   "pinData": {},
@@ -122,6 +116,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T10:10:32.458Z",
-  "versionId": "dc4caf75-2667-46db-9118-9e7c7f7d6781"
+  "updatedAt": "2024-08-11T11:31:22.000Z",
+  "versionId": "74ded7f2-749e-40bb-9ebc-bfdbb0f34c46"
 }

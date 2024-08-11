@@ -1,0 +1,171 @@
+{
+  "active": false,
+  "connections": {
+    "Check Result": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Post to Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On new company created": {
+      "main": [
+        [
+          {
+            "node": "Get company information",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Try to load the domain": {
+      "main": [
+        [
+          {
+            "node": "Check Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get company information": {
+      "main": [
+        [
+          {
+            "node": "Try to load the domain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-11T09:06:12.573Z",
+  "id": "3Ti7io0DhbeZMXSF",
+  "meta": {
+    "templateId": "1463"
+  },
+  "name": "Validate website of new companies in Hubspot 2",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"statusCode\"]}}",
+              "value2": "200"
+            }
+          ],
+          "boolean": []
+        },
+        "combineOperation": "any"
+      },
+      "id": "9a0c7f24-a344-4955-8bdc-b129e5d8d619",
+      "name": "Check Result",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        920,
+        240
+      ],
+      "typeVersion": 1,
+      "notes": "IF\ndeliverability is not good\nOR\nDomain is not valid\nOR\nEmail is Disposable"
+    },
+    {
+      "parameters": {
+        "channel": "#hubspot-alerts",
+        "text": "=:warning: New Company with suspicious domain :warning:\n*Name: * {{$node[\"Get company information\"].json[\"properties\"][\"name\"][\"value\"]}}\n*Domain: * {{$node[\"Get company information\"].json[\"properties\"][\"website\"][\"value\"]}}\n*ID: * {{$node[\"Get company information\"].json[\"companyId\"]}}",
+        "otherOptions": {},
+        "attachments": []
+      },
+      "id": "b4d3619e-1327-4b79-a81b-caed93efa5aa",
+      "name": "Post to Slack",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1120,
+        260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "eventsUi": {
+          "eventValues": [
+            {
+              "name": "company.creation"
+            }
+          ]
+        },
+        "additionalFields": {}
+      },
+      "id": "f0e82b09-8311-49c5-b295-694ea5147b50",
+      "name": "On new company created",
+      "type": "n8n-nodes-base.hubspotTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "748453fc-65ef-48bc-bae9-a5a6d13ade54",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "company",
+        "operation": "get",
+        "companyId": "={{$json[\"companyId\"]}}",
+        "additionalFields": {}
+      },
+      "id": "81dd8835-e61f-44de-b650-23b35fbebb0d",
+      "name": "Get company information",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        560,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "={{$json[\"properties\"][\"domain\"][\"value\"]}}",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "62017a8b-a6cd-452f-a8a4-576dbd10dc4e",
+      "name": "Try to load the domain",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        720,
+        240
+      ],
+      "typeVersion": 3
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T09:06:12.573Z",
+  "versionId": "a473fe36-8147-4895-b9a4-7a2e58c0f565"
+}

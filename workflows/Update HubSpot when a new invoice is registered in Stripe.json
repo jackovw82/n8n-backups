@@ -1,0 +1,360 @@
+{
+  "active": false,
+  "connections": {
+    "If no PO Number": {
+      "main": [
+        [
+          {
+            "node": "Send no PO Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Find Deal based on PO Number",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Invoice Paid": {
+      "main": [
+        [
+          {
+            "node": "If no PO Number",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Deal to Paid": {
+      "main": [
+        [
+          {
+            "node": "Send invoice paid message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If no deal found for PO": {
+      "main": [
+        [
+          {
+            "node": "Send Deal not found message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Deal to Paid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Deal based on PO Number": {
+      "main": [
+        [
+          {
+            "node": "If no deal found for PO",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-11T09:06:46.650Z",
+  "id": "LwnimI5qAmgWBGk4",
+  "meta": {
+    "templateId": "1468"
+  },
+  "name": "Update HubSpot when a new invoice is registered in Stripe",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "invoice.payment_succeeded"
+        ]
+      },
+      "name": "When Invoice Paid",
+      "type": "n8n-nodes-base.stripeTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "47727266-5233-48e5-b7f7-e47252840a4e",
+      "typeVersion": 1,
+      "id": "600db06d-85b0-435b-ade9-d6938795ef97"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "update",
+        "dealId": "={{$json[\"id\"]}}",
+        "updateFields": {
+          "customPropertiesUi": {
+            "customPropertiesValues": [
+              {
+                "property": "paid",
+                "value": "Yes"
+              }
+            ]
+          }
+        }
+      },
+      "name": "Update Deal to Paid",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        1220,
+        280
+      ],
+      "typeVersion": 1,
+      "id": "5baf938a-5054-4e5c-ba91-7d01076ae8c9"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "filterGroupsUi": {
+          "filterGroupsValues": [
+            {
+              "filtersUi": {
+                "filterValues": [
+                  {
+                    "propertyName": "po_number",
+                    "value": "={{$json[\"data\"][\"object\"][\"custom_fields\"][0][\"value\"]}}"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {}
+      },
+      "name": "Find Deal based on PO Number",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        800,
+        260
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "id": "39e32a64-b7c0-4cb7-9998-e8e9e8f23bb9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"data\"][\"object\"][\"custom_fields\"]}}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "name": "If no PO Number",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "36c84374-2e42-48da-b8f9-5d56ccbb7dd4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"id\"]}}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "name": "If no deal found for PO",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1000,
+        260
+      ],
+      "typeVersion": 1,
+      "id": "7a3366eb-6b04-4930-b946-f1b4dbd4c6ec"
+    },
+    {
+      "parameters": {
+        "channel": "team-accounts",
+        "text": ":sparkles: An invoice has been paid :sparkles:",
+        "otherOptions": {},
+        "attachments": [
+          {
+            "color": "#00FF04",
+            "fields": {
+              "item": [
+                {
+                  "short": true,
+                  "title": "Amount",
+                  "value": "={{$node[\"When Invoice Paid\"].json[\"data\"][\"object\"][\"amount_paid\"]/100}}"
+                },
+                {
+                  "short": true,
+                  "title": "Currency",
+                  "value": "={{$node[\"When Invoice Paid\"].json[\"data\"][\"object\"][\"currency\"]}}"
+                },
+                {
+                  "short": false,
+                  "title": "Customer Name",
+                  "value": "={{$node[\"When Invoice Paid\"].json[\"data\"][\"object\"][\"customer_name\"]}}"
+                },
+                {
+                  "short": false,
+                  "title": "Customer Email",
+                  "value": "={{$node[\"When Invoice Paid\"].json[\"data\"][\"object\"][\"customer_email\"]}}"
+                },
+                {
+                  "short": true,
+                  "title": "PO Number",
+                  "value": "={{$node[\"When Invoice Paid\"].json[\"data\"][\"object\"][\"custom_fields\"][0][\"value\"]}}"
+                },
+                {
+                  "short": true,
+                  "title": "",
+                  "value": "="
+                }
+              ]
+            },
+            "footer": "=*Transaction ID:* {{$node[\"When Invoice Paid\"].json[\"id\"]}}"
+          }
+        ],
+        "blocksUi": {
+          "blocksValues": []
+        }
+      },
+      "name": "Send invoice paid message",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1400,
+        280
+      ],
+      "typeVersion": 1,
+      "id": "3aaa5aa3-98e3-4a06-903c-ffb109dd4193"
+    },
+    {
+      "parameters": {
+        "channel": "team-accounts",
+        "text": ":x: Stripe Payment with no PO Number :x:",
+        "otherOptions": {},
+        "attachments": [
+          {
+            "color": "#FF3C00",
+            "fields": {
+              "item": [
+                {
+                  "short": true,
+                  "title": "Amount",
+                  "value": "={{$json[\"data\"][\"object\"][\"amount_paid\"] / 100}}"
+                },
+                {
+                  "short": true,
+                  "title": "Currency",
+                  "value": "={{$json[\"data\"][\"object\"][\"currency\"]}}"
+                },
+                {
+                  "short": false,
+                  "title": "Customer Name",
+                  "value": "={{$json[\"data\"][\"object\"][\"customer_name\"]}}"
+                },
+                {
+                  "short": false,
+                  "title": "Customer Email",
+                  "value": "={{$json[\"data\"][\"object\"][\"customer_email\"]}}"
+                }
+              ]
+            },
+            "footer": "=*Transaction ID:* {{$json[\"id\"]}}"
+          }
+        ],
+        "blocksUi": {
+          "blocksValues": []
+        }
+      },
+      "name": "Send no PO Message",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        780,
+        20
+      ],
+      "typeVersion": 1,
+      "id": "4e2066fb-2e8a-433e-a21a-4bdd41d2a602"
+    },
+    {
+      "parameters": {
+        "channel": "team-accounts",
+        "text": ":x: Unable to find Deal for the below payment :x:",
+        "otherOptions": {},
+        "attachments": [
+          {
+            "color": "#FF3C00",
+            "fields": {
+              "item": [
+                {
+                  "short": true,
+                  "title": "Amount",
+                  "value": "={{$node[\"When Invoice Paid\"].json[\"data\"][\"object\"][\"amount_paid\"]/100}}"
+                },
+                {
+                  "short": true,
+                  "title": "Currency",
+                  "value": "={{$node[\"When Invoice Paid\"].json[\"data\"][\"object\"][\"currency\"]}}"
+                },
+                {
+                  "short": false,
+                  "title": "Customer Name",
+                  "value": "={{$node[\"When Invoice Paid\"].json[\"data\"][\"object\"][\"customer_name\"]}}"
+                },
+                {
+                  "short": false,
+                  "title": "Customer Email",
+                  "value": "={{$node[\"When Invoice Paid\"].json[\"data\"][\"object\"][\"customer_email\"]}}"
+                },
+                {
+                  "short": true,
+                  "title": "PO Number",
+                  "value": "={{$node[\"When Invoice Paid\"].json[\"data\"][\"object\"][\"custom_fields\"][0][\"value\"]}}"
+                }
+              ]
+            },
+            "footer": "=*Transaction ID:* {{$node[\"When Invoice Paid\"].json[\"id\"]}}"
+          }
+        ],
+        "blocksUi": {
+          "blocksValues": []
+        }
+      },
+      "name": "Send Deal not found message",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1160,
+        20
+      ],
+      "typeVersion": 1,
+      "id": "de44ba2a-4011-40e5-a5d2-7aa781fd1e99"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-11T09:06:46.650Z",
+  "versionId": "5c994b90-d48a-496d-8194-5236974930b1"
+}

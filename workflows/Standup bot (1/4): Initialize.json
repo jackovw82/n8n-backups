@@ -1,0 +1,136 @@
+{
+  "active": false,
+  "connections": {
+    "Move Binary Data": {
+      "main": [
+        [
+          {
+            "node": "Write Binary File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Use Default Config": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Use Default Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:31:04.543Z",
+  "id": "JSTdZsAafJEY5iv7",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "templateId": "1472"
+  },
+  "name": "Standup bot (1/4): Initialize",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "8575d7ab-e0de-4565-8249-d5437e90aacb"
+    },
+    {
+      "parameters": {
+        "fileName": "/home/node/.n8n/standup-bot-config.json",
+        "options": {}
+      },
+      "name": "Write Binary File",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "position": [
+        1020,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "f9e4cbfb-61b7-414c-87ff-62b5e4ce087d"
+    },
+    {
+      "parameters": {
+        "mode": "jsonToBinary",
+        "options": {
+          "encoding": "utf8",
+          "fileName": "standup-bot-config.json"
+        }
+      },
+      "name": "Move Binary Data",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "position": [
+        800,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "332c602f-71a0-4da3-a081-2a6bc0589f2f"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "config.slashCmdToken",
+              "value": "xxxxx"
+            },
+            {
+              "name": "config.mattermostBaseUrl",
+              "value": "https://mattermost.yourdomain.tld"
+            },
+            {
+              "name": "config.botUserToken",
+              "value": "xxxxx"
+            },
+            {
+              "name": "config.n8nWebhookUrl",
+              "value": "https://n8n.yourdomain.tld/webhook/standup-bot/action/f6f9b174745fa4651f750c36957d674c"
+            },
+            {
+              "name": "config.botUserId",
+              "value": "xxxxx"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Use Default Config",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "0d7f62a8-80df-49f1-a11d-ead13bfa1fff"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:31:04.543Z",
+  "versionId": "d08020c6-7b9d-4613-b013-2d5c8a236202"
+}

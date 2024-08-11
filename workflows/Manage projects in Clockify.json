@@ -1,0 +1,152 @@
+{
+  "active": false,
+  "connections": {
+    "Clockify": {
+      "main": [
+        [
+          {
+            "node": "Clockify1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clockify1": {
+      "main": [
+        [
+          {
+            "node": "Clockify2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clockify2": {
+      "main": [
+        [
+          {
+            "node": "Clockify3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Clockify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:39:05.875Z",
+  "id": "V3zHcwstsSmo4LAe",
+  "meta": {
+    "templateId": "701"
+  },
+  "name": "Manage projects in Clockify",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "5715fd14-cff1-4d03-8815-bb587805d55a"
+    },
+    {
+      "parameters": {
+        "workspaceId": "5f7af249d33ce12a712306dd",
+        "name": "n8n-docs",
+        "additionalFields": {
+          "color": "#0000FF",
+          "isPublic": false,
+          "note": "For n8n-docs"
+        }
+      },
+      "name": "Clockify",
+      "type": "n8n-nodes-base.clockify",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "77e3168c-d084-4a17-b234-d75f10d6d83c"
+    },
+    {
+      "parameters": {
+        "resource": "tag",
+        "workspaceId": "5f7af249d33ce12a712306dd",
+        "name": "docs"
+      },
+      "name": "Clockify1",
+      "type": "n8n-nodes-base.clockify",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "0956a1b5-fae7-41f8-b462-e5d9fccee891"
+    },
+    {
+      "parameters": {
+        "resource": "timeEntry",
+        "workspaceId": "5f7af249d33ce12a712306dd",
+        "start": "2020-10-05T08:30:00.000Z",
+        "additionalFields": {
+          "description": "Added Clockify Docs",
+          "end": "2020-10-05T09:30:00.000Z",
+          "tagIds": [
+            "5f7afbfc73610f56b88ee9ef"
+          ]
+        }
+      },
+      "name": "Clockify2",
+      "type": "n8n-nodes-base.clockify",
+      "position": [
+        980,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "f784d021-0f00-4d57-bb4c-5e14ab2b689b"
+    },
+    {
+      "parameters": {
+        "resource": "timeEntry",
+        "operation": "update",
+        "workspaceId": "5f7af249d33ce12a712306dd",
+        "timeEntryId": "={{$node[\"Clockify2\"].json[\"id\"]}}",
+        "updateFields": {
+          "projectId": "={{$node[\"Clockify\"].json[\"id\"]}}"
+        }
+      },
+      "name": "Clockify3",
+      "type": "n8n-nodes-base.clockify",
+      "position": [
+        1180,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "12482abd-ea7e-41b2-86d6-477a529686d2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:39:05.875Z",
+  "versionId": "a7ac1ac1-4f00-4254-a91d-49404a5441ca"
+}

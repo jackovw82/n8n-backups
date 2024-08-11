@@ -1,0 +1,87 @@
+{
+  "active": false,
+  "connections": {
+    "Move Binary Data": {
+      "main": [
+        [
+          {
+            "node": "Write Binary File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:30:37.601Z",
+  "id": "ntGD3AFTy1EekawC",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "templateId": "1474"
+  },
+  "name": "Standup bot (3/4): Override Config",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "a60e4594-bf9c-48c1-95f3-f6c061a57416"
+    },
+    {
+      "parameters": {
+        "fileName": "/home/node/.n8n/standup-bot-config.json",
+        "options": {}
+      },
+      "name": "Write Binary File",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "position": [
+        740,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "170e57e8-dea6-4d33-b5ae-9fc9c510b51d"
+    },
+    {
+      "parameters": {
+        "mode": "jsonToBinary",
+        "options": {
+          "encoding": "utf8",
+          "fileName": "standup-bot-config.json"
+        }
+      },
+      "name": "Move Binary Data",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "position": [
+        560,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "4a79a55a-96f6-49c4-9139-a70ea6c71841"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:30:37.601Z",
+  "versionId": "93378ce9-d02b-45ac-8aa2-c17b839eb537"
+}

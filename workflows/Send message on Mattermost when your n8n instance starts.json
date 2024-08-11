@@ -1,0 +1,64 @@
+{
+  "active": false,
+  "connections": {
+    "n8n Trigger": {
+      "main": [
+        [
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-10T09:16:30.570Z",
+  "id": "hs6fbhRUzaOytCqh",
+  "meta": {
+    "templateId": "1058"
+  },
+  "name": "Send message on Mattermost when your n8n instance starts",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "init"
+        ]
+      },
+      "name": "n8n Trigger",
+      "type": "n8n-nodes-base.n8nTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "c2e3636d-edc9-433a-8be1-f72f3e17389f"
+    },
+    {
+      "parameters": {
+        "channelId": "toyi3uoycf8rirtm7d5jm15sso",
+        "message": "=Your n8n instance started at {{$json[\"timestamp\"]}}",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "de57998a-f120-4296-8228-24ae2be62c30"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-10T09:16:30.570Z",
+  "versionId": "13180bc5-aa85-4c1e-9b3b-4011696c201d"
+}

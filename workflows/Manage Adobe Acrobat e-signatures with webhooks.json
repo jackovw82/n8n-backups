@@ -1,0 +1,169 @@
+{
+  "active": false,
+  "connections": {
+    "POST": {
+      "main": [
+        [
+          {
+            "node": "Function",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reg-GET": {
+      "main": [
+        [
+          {
+            "node": "Function",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function": {
+      "main": [
+        [
+          {
+            "node": "webhook-response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "webhook-response": {
+      "main": [
+        [
+          {
+            "node": "SetWebhookData",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:28:06.645Z",
+  "id": "TGcKB0E3SIAKPtFj",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "templateId": "1588"
+  },
+  "name": "Manage Adobe Acrobat e-signatures with webhooks",
+  "nodes": [
+    {
+      "parameters": {
+        "functionCode": "// Code here will run only once, no matter how many input items there are.\n// More info and help: https://docs.n8n.io/nodes/n8n-nodes-base.function\n\n// Loop over inputs and add a new field called 'myNewField' to the JSON of each one\nc_id = items[0].json.headers['x-adobesign-clientid'];\n\nfor (item of items) {\n  item.json.myNewField = 1;\n  item.json.clientID = c_id;\n}\n\nreturn items;"
+      },
+      "name": "Function",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        640,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "32534f68-f3b0-42d3-84c0-463e08b91ca9"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "test1",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "name": "POST",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "dfe2a7a8-c0f7-41e1-9bf7-15e2b6e98741",
+      "typeVersion": 1,
+      "id": "b69c28d9-3aa8-4b1f-8209-f8f7185598a9"
+    },
+    {
+      "parameters": {
+        "path": "test1",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "name": "reg-GET",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        380,
+        420
+      ],
+      "webhookId": "5356a36b-1090-4470-ad87-7cfdb6c18daf",
+      "typeVersion": 1,
+      "id": "bdcbff13-90d3-4bfb-abc3-1d4079741b80"
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "x-adobesign-clientid",
+                "value": "={{$node[\"Function\"].json[\"clientID\"]}}"
+              }
+            ]
+          }
+        }
+      },
+      "name": "webhook-response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        820,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "10529df7-a80a-442c-a336-216061462cbc"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "webhookData",
+              "value": "={{ $item(\"0\").$node[\"webhook-response\"].json[\"body\"] }}"
+            },
+            {
+              "name": "agreement_ID",
+              "value": "={{ $item(\"0\").$node[\"webhook-response\"].json[\"body\"][\"agreement\"][\"id\"] }}"
+            },
+            {
+              "name": "all_participants",
+              "value": "={{ $item(\"0\").$node[\"webhook-response\"].json[\"body\"][\"agreement\"][\"participantSetsInfo\"] }}"
+            },
+            {
+              "name": "agreement_status",
+              "value": "={{ $item(\"0\").$node[\"webhook-response\"].json[\"body\"][\"agreement\"][\"status\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "SetWebhookData",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        980,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "d24c26b0-8eed-4e90-b72c-712f5a2f453c"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:28:06.645Z",
+  "versionId": "1dd135d2-110b-488c-b123-a2bfef752889"
+}

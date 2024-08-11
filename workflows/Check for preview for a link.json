@@ -1,0 +1,132 @@
+{
+  "active": false,
+  "connections": {
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Peekalink1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NoOp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Peekalink": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Peekalink",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:36:23.801Z",
+  "id": "rXv1mBjUdwRhywed",
+  "meta": {
+    "templateId": "935"
+  },
+  "name": "Check for preview for a link",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "154acd72-33e5-4c62-a725-fcab2ea96fc9"
+    },
+    {
+      "parameters": {
+        "operation": "isAvailable",
+        "url": "https://n8n1.io"
+      },
+      "name": "Peekalink",
+      "type": "n8n-nodes-base.peekalink",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "d2a84e06-4c3d-4a7e-888c-35b0b87e58f1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [],
+          "boolean": [
+            {
+              "value1": "={{$json[\"isAvailable\"]}}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "2ec23a4d-108c-44db-93c1-26a85840e915"
+    },
+    {
+      "parameters": {
+        "url": "={{$node[\"Peekalink\"].parameter[\"url\"]}}"
+      },
+      "name": "Peekalink1",
+      "type": "n8n-nodes-base.peekalink",
+      "position": [
+        980,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "171a1479-2020-45d0-9cc5-4529272af5c6"
+    },
+    {
+      "parameters": {},
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        980,
+        340
+      ],
+      "typeVersion": 1,
+      "id": "c9077c4d-aa5d-47e4-b584-e19731102d85"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:36:23.801Z",
+  "versionId": "5b7c0e6f-38ef-44d9-b023-92e0ec324671"
+}

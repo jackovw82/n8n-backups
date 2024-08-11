@@ -1,0 +1,325 @@
+{
+  "active": false,
+  "connections": {
+    "Get customers": {
+      "main": [
+        [
+          {
+            "node": "Rename fields and keep only needed fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Every day at 8 am": {
+      "main": [
+        [
+          {
+            "node": "Get last execution timestamp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search organisation": {
+      "main": [
+        [
+          {
+            "node": "Add organisation Information to charge data",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Get last execution timestamp": {
+      "main": [
+        [
+          {
+            "node": "Search for charges in Stripe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search for charges in Stripe": {
+      "main": [
+        [
+          {
+            "node": "Split array of charges to items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split array of charges to items": {
+      "main": [
+        [
+          {
+            "node": "Add customer name to charge data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add customer name to charge data": {
+      "main": [
+        [
+          {
+            "node": "Search organisation",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Add organisation Information to charge data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create note with charge information": {
+      "main": [
+        [
+          {
+            "node": "Set new last execution timestamp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rename fields and keep only needed fields": {
+      "main": [
+        [
+          {
+            "node": "Add customer name to charge data",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Add organisation Information to charge data": {
+      "main": [
+        [
+          {
+            "node": "Create note with charge information",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:23:30.361Z",
+  "id": "LbqkFuxbdnaBdVZL",
+  "meta": {
+    "templateId": "1776"
+  },
+  "name": "Sync payment and customer data between Stripe and Pipedrive",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "customer",
+        "operation": "getAll",
+        "returnAll": true,
+        "filters": {}
+      },
+      "id": "28349bfd-f68e-4479-9508-28d408033d09",
+      "name": "Get customers",
+      "type": "n8n-nodes-base.stripe",
+      "position": [
+        820,
+        440
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "customerName",
+              "value": "={{ $json[\"name\"] }}"
+            },
+            {
+              "name": "customerId",
+              "value": "={{ $json[\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3f3d2389-e9ab-4140-8b04-f0a07003cecc",
+      "name": "Rename fields and keep only needed fields",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1020,
+        440
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "mergeByKey",
+        "propertyName1": "customer",
+        "propertyName2": "customerId"
+      },
+      "id": "d6d3ccff-f565-49c9-9cda-8e278d298433",
+      "name": "Add customer name to charge data",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1320,
+        260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "organization",
+        "operation": "search",
+        "term": "={{ $json[\"customerName\"] }}",
+        "additionalFields": {}
+      },
+      "id": "eadce8e7-f523-485b-8cc0-5a336c8633ef",
+      "name": "Search organisation",
+      "type": "n8n-nodes-base.pipedrive",
+      "position": [
+        1600,
+        400
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex",
+        "join": "inner"
+      },
+      "id": "dde08b48-21b0-44af-a66d-ff69399608e7",
+      "name": "Add organisation Information to charge data",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1860,
+        280
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "note",
+        "content": "={{ $json[\"description\"] }}: {{ $json[\"amount\"] / 100 }} {{ $json[\"currency\"] }}",
+        "additionalFields": {
+          "org_id": "={{ $json[\"id\"] }}"
+        }
+      },
+      "id": "6cbd0f06-0f10-4360-8c5c-e181679ba370",
+      "name": "Create note with charge information",
+      "type": "n8n-nodes-base.pipedrive",
+      "position": [
+        2080,
+        280
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "functionCode": "// Code here will run once per input item.\n// More info and help: https://docs.n8n.io/nodes/n8n-nodes-base.functionItem\n// Tip: You can use luxon for dates and $jmespath for querying JSON structures\n\n// Add a new field called 'myNewField' to the JSON of the item\nconst staticData = getWorkflowStaticData('global');\n\nif(!staticData.lastExecution){\n  staticData.lastExecution = Math.round( new Date().getTime() / 1000 );\n}\n\nitem.executionTimeStamp = Math.round( new Date().getTime() / 1000 );\nitem.lastExecution = staticData.lastExecution;\n\n\nreturn item;"
+      },
+      "id": "c6ed5a89-b50a-40ad-bd78-62ffc2430fde",
+      "name": "Get last execution timestamp",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        600,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "functionCode": "// Code here will run once per input item.\n// More info and help: https://docs.n8n.io/nodes/n8n-nodes-base.functionItem\n// Tip: You can use luxon for dates and $jmespath for querying JSON structures\n\n// Add a new field called 'myNewField' to the JSON of the item\nconst staticData = getWorkflowStaticData('global');\n\nstaticData.lastExecution = $item(0).$node[\"Get last execution timestamp\"].executionTimeStamp;\n\nreturn item;"
+      },
+      "id": "41b2c937-d479-4402-b428-29faabe32845",
+      "name": "Set new last execution timestamp",
+      "type": "n8n-nodes-base.functionItem",
+      "position": [
+        2280,
+        280
+      ],
+      "executeOnce": true,
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "56612271-08c4-4347-92b1-b898c68c3460",
+      "name": "Split array of charges to items",
+      "type": "n8n-nodes-base.itemLists",
+      "position": [
+        1020,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "stripeApi",
+        "url": "https://api.stripe.com/v1/charges/search",
+        "options": {},
+        "queryParametersUi": {
+          "parameter": [
+            {
+              "name": "query",
+              "value": "=created>{{$json[\"lastExecution\"]}} AND status:\"succeeded\""
+            }
+          ]
+        }
+      },
+      "id": "b866ba46-6269-4c8d-8021-ea99591d676d",
+      "name": "Search for charges in Stripe",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        820,
+        240
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 8
+            }
+          ]
+        }
+      },
+      "id": "a3249f70-1cd4-4d5f-8f27-15badcf10296",
+      "name": "Every day at 8 am",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:23:30.361Z",
+  "versionId": "9cf6847d-0b89-4894-8fe6-3eaec2d942f4"
+}

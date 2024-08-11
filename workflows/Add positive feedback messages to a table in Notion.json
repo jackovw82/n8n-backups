@@ -1,0 +1,187 @@
+{
+  "active": false,
+  "connections": {
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Trello",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Typeform Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Cloud Natural Language",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Cloud Natural Language": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T21:34:46.400Z",
+  "id": "LnUDgKFzvpXnaomY",
+  "meta": {
+    "templateId": "1109"
+  },
+  "name": "Add positive feedback messages to a table in Notion",
+  "nodes": [
+    {
+      "parameters": {
+        "formId": "fBYjtY5e"
+      },
+      "name": "Typeform Trigger",
+      "type": "n8n-nodes-base.typeformTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "ad8a87ef-d293-4e48-8d36-838d69ebce0f",
+      "typeVersion": 1,
+      "id": "f832e5bf-cac2-44fc-8c0a-0a7d98249771"
+    },
+    {
+      "parameters": {
+        "content": "={{$json[\"Any suggestions for us? \"]}}",
+        "options": {}
+      },
+      "name": "Google Cloud Natural Language",
+      "type": "n8n-nodes-base.googleCloudNaturalLanguage",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "ed5b1a8c-49f2-4865-9ebd-2ab54bd1da30"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$node[\"Google Cloud Natural Language\"].json[\"documentSentiment\"][\"score\"]}}",
+              "operation": "larger"
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "7601758a-ae97-4d18-b51c-b35b2e456900"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": "b7d1130a-3756-4bb3-aa56-0c77bf416437",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Name|title",
+              "title": "={{$node[\"Typeform Trigger\"].json[\"Name\"]}}"
+            },
+            {
+              "key": "Feedback|rich_text",
+              "textContent": "={{$node[\"Typeform Trigger\"].json[\"Any suggestions for us? \"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Notion",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        980,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "ab3971ce-ee1c-4ab2-a2b5-25f743811d92"
+    },
+    {
+      "parameters": {
+        "channel": "general",
+        "otherOptions": {},
+        "attachments": [
+          {
+            "text": "={{$node[\"Typeform Trigger\"].json[\"Any suggestions for us? \"]}}",
+            "title": "={{$node[\"Typeform Trigger\"].json[\"Name\"]}} {{$node[\"Google Cloud Natural Language\"].json[\"documentSentiment\"][\"score\"]}}"
+          }
+        ],
+        "blocksUi": {
+          "blocksValues": []
+        }
+      },
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1180,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "df2aa508-d83c-4cbc-984a-c23b04f65ca5"
+    },
+    {
+      "parameters": {
+        "listId": "5fbb9e2eb1d5cc0a8a7ab8ac",
+        "name": "=Score: {{$json[\"documentSentiment\"][\"score\"]}}",
+        "description": "=Score: {{$json[\"documentSentiment\"][\"score\"]}}\nFeedback: {{$node[\"Typeform Trigger\"].json[\"Any suggestions for us? \"]}}\nUser: {{$node[\"Typeform Trigger\"].json[\"Name\"]}}",
+        "additionalFields": {}
+      },
+      "name": "Trello",
+      "type": "n8n-nodes-base.trello",
+      "position": [
+        980,
+        340
+      ],
+      "typeVersion": 1,
+      "id": "0e81f1a1-5fdd-48da-844f-6659aac72836"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T21:34:46.400Z",
+  "versionId": "e9b3a3b4-ed0b-44e9-a52a-3aa765c6fca5"
+}

@@ -1,0 +1,77 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T18:35:50.527Z",
+  "id": "EUJaCck035AzNFa9",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "WF2003-4: Summarise weekly time entries per project",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2676dc98-294c-4dfd-b157-7551e9cb691f",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "sum"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8d092fd2-1947-497c-8922-b88de714ed12",
+      "name": "Summarize",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        580
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-12T06:51:16.351Z",
+      "updatedAt": "2024-08-12T06:51:16.351Z",
+      "id": "H7L2DmUwMU4RDIXJ",
+      "name": "projects"
+    },
+    {
+      "createdAt": "2024-08-11T09:16:17.257Z",
+      "updatedAt": "2024-08-11T09:16:17.257Z",
+      "id": "IZGZ9hg5E4q7jIal",
+      "name": "operations"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-12T17:02:06.000Z",
+  "versionId": "8fb0bff8-c253-4ec3-b2d5-95626db25c7f"
+}

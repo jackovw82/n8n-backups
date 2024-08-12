@@ -11,8 +11,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T15:40:10.245Z",
+      "updatedAt": "2024-08-12T15:40:10.245Z",
+      "id": "KTck2FQTslq6Fp62",
+      "name": "finance & accounting"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T19:49:13.076Z",
-  "versionId": "8cc9562f-e1aa-43ff-83fd-16f61745c5a0"
+  "updatedAt": "2024-08-12T15:41:05.000Z",
+  "versionId": "c0f83f3b-8892-4e28-bdfc-274e9229e0a3"
 }

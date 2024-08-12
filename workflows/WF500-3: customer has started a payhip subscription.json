@@ -1,0 +1,25 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T18:35:51.833Z",
+  "id": "gmu2YN8qVQFaVSpI",
+  "meta": null,
+  "name": "WF500-3: customer has started a payhip subscription",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-12T15:40:10.245Z",
+      "updatedAt": "2024-08-12T15:40:10.245Z",
+      "id": "KTck2FQTslq6Fp62",
+      "name": "finance & accounting"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-12T16:53:15.000Z",
+  "versionId": "e799c4c3-81ac-48c9-bb15-f443e59443c1"
+}

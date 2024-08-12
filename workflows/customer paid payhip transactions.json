@@ -6,13 +6,20 @@
   "meta": null,
   "name": "customer paid payhip transactions",
   "nodes": [],
-  "pinData": null,
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T15:40:10.245Z",
+      "updatedAt": "2024-08-12T15:40:10.245Z",
+      "id": "KTck2FQTslq6Fp62",
+      "name": "finance & accounting"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:51.846Z",
-  "versionId": "14f2bf79-3f4a-4e6e-8c7d-468a2117622b"
+  "updatedAt": "2024-08-12T15:41:21.000Z",
+  "versionId": "4f2a0c54-54a4-4cd7-83a8-5e51cf10e7d2"
 }

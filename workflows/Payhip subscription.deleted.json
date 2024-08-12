@@ -11,8 +11,21 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T15:40:10.245Z",
+      "updatedAt": "2024-08-12T15:40:10.245Z",
+      "id": "KTck2FQTslq6Fp62",
+      "name": "finance & accounting"
+    },
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T19:51:19.358Z",
-  "versionId": "d463a56a-a2f7-43be-9097-b207ec3d9159"
+  "updatedAt": "2024-08-12T15:40:12.000Z",
+  "versionId": "8fbe3486-9ad5-4a2c-af11-faf8678845e8"
 }

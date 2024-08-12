@@ -1,0 +1,25 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T19:56:16.952Z",
+  "id": "3GIXM5LmkF2DwLPJ",
+  "meta": null,
+  "name": "WF510-1: Thinkific enrollment.created feeding downstream systems/tools",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-12T16:51:30.000Z",
+  "versionId": "de8edce3-dc60-4f98-8219-e0aa9f00dca6"
+}

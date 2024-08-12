@@ -334,8 +334,21 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T15:37:17.545Z",
+      "updatedAt": "2024-08-12T15:37:17.545Z",
+      "id": "ZbRkTrpwwPliotSn",
+      "name": "hubspot"
+    },
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T09:03:41.534Z",
-  "versionId": "ee7a2819-1bd1-4041-8e80-ac680ededb6f"
+  "updatedAt": "2024-08-12T15:37:26.000Z",
+  "versionId": "2799f3e8-cafe-4de5-aff7-f67c9902885b"
 }

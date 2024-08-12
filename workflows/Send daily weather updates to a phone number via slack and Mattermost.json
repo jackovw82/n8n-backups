@@ -1,0 +1,136 @@
+{
+  "active": false,
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "OpenWeatherMap",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenWeatherMap": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-12T05:20:21.848Z",
+  "id": "3AcI6PLsVBGX686U",
+  "meta": {
+    "templateId": "1005",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Send daily weather updates to a phone number via slack and Mattermost",
+  "nodes": [
+    {
+      "parameters": {
+        "cityName": "cape town"
+      },
+      "name": "OpenWeatherMap",
+      "type": "n8n-nodes-base.openWeatherMap",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "1613f264-566c-4d2b-bd36-0c28f131c155",
+      "credentials": {
+        "openWeatherMapApi": {
+          "id": "IHCYJ8fJvFfbjC7M",
+          "name": "OpenWeatherMap account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 9
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "0656d7e1-6512-428f-ae61-9cccc45f3f53"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "text": "Good morning, team! 🌤️\n\nHere’s your daily weather update:\n\n📍 [City Name]:\nTemperature:  {{ $json.main.temp }}°C  \nHumidity: {{ $json.main.humidity }}\nCondition: {{ $json.weather[0].description }} \nHigh/Low: {{ $json.main.temp_max }}°C/ {{ $json.main.temp_min }} °C\nWind Speed: {{ $json.wind.speed }}\n\nMake sure to dress accordingly and stay safe!",
+        "otherOptions": {}
+      },
+      "id": "17d1ddbb-f9f4-4afb-8e1f-d625d27e5581",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        860,
+        100
+      ],
+      "credentials": {
+        "slackApi": {
+          "id": "9gyOLzEOgLqBYHJA",
+          "name": "Slack account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "channelId": "bt3dcad3ajg7xcc5ku8k5diimc",
+        "message": "=Good morning, team! 🌤️\n\nHere’s your daily weather update:\n\n📍 [City Name]:\nTemperature:  {{ $json.main.temp }}°C  \nHumidity: {{ $json.main.humidity }}\nCondition: {{ $json.weather[0].description }} \nHigh/Low: {{ $json.main.temp_max }}°C/ {{ $json.main.temp_min }} °C\nWind Speed: {{ $json.wind.speed }}\n\nMake sure to dress accordingly and stay safe!\n",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "id": "16f3c33a-7e29-433f-a5d4-24aa31a9dbbd",
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "typeVersion": 1,
+      "position": [
+        860,
+        340
+      ],
+      "credentials": {
+        "mattermostApi": {
+          "id": "tweONpBp0Ri5uslZ",
+          "name": "Mattermost account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-12T05:47:31.000Z",
+  "versionId": "913e215e-251e-47b6-bb72-c9923794d58b"
+}

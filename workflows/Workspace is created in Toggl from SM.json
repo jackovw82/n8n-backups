@@ -6,13 +6,38 @@
   "meta": null,
   "name": "Workspace is created in Toggl from SM",
   "nodes": [],
-  "pinData": null,
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T06:51:16.351Z",
+      "updatedAt": "2024-08-12T06:51:16.351Z",
+      "id": "H7L2DmUwMU4RDIXJ",
+      "name": "projects"
+    },
+    {
+      "createdAt": "2024-08-09T20:15:51.537Z",
+      "updatedAt": "2024-08-09T20:15:51.537Z",
+      "id": "Hpn0OFAE4GfFmMzq",
+      "name": "smartsuite"
+    },
+    {
+      "createdAt": "2024-08-11T09:16:17.257Z",
+      "updatedAt": "2024-08-11T09:16:17.257Z",
+      "id": "IZGZ9hg5E4q7jIal",
+      "name": "operations"
+    },
+    {
+      "createdAt": "2024-08-09T20:15:47.444Z",
+      "updatedAt": "2024-08-09T20:15:47.444Z",
+      "id": "Q6Qey3sK2BHXLdYH",
+      "name": "toggl"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:51.735Z",
-  "versionId": "28db2460-b857-4315-935c-8a8dc4c26a0a"
+  "updatedAt": "2024-08-12T07:10:09.000Z",
+  "versionId": "3d59f102-5ef0-424d-a685-e608c32e9181"
 }

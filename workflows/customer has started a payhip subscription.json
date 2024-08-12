@@ -6,13 +6,20 @@
   "meta": null,
   "name": "customer has started a payhip subscription",
   "nodes": [],
-  "pinData": null,
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T15:40:10.245Z",
+      "updatedAt": "2024-08-12T15:40:10.245Z",
+      "id": "KTck2FQTslq6Fp62",
+      "name": "finance & accounting"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:51.833Z",
-  "versionId": "fd4e0ed8-ce45-48db-866e-5dd39c1966b2"
+  "updatedAt": "2024-08-12T15:41:54.000Z",
+  "versionId": "116d8ad9-5f60-4910-84a5-842e428466de"
 }

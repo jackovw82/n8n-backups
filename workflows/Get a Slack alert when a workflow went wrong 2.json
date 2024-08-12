@@ -11,6 +11,17 @@
           }
         ]
       ]
+    },
+    "Slack": {
+      "main": [
+        [
+          {
+            "node": "Slack1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-08-10T09:17:20.408Z",
@@ -48,6 +59,32 @@
       "typeVersion": 1,
       "alwaysOutputData": true,
       "id": "9e8b1210-009a-4ea0-917b-e1a0691525ad"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "text": "🐞 What?!\n*This execution{{$node[\"Error Trigger\"].json[\"workflow\"][\"name\"]}} went wrong*\\\n\nnWhy don't you go take a look {{$node[\"Error Trigger\"].json[\"execution\"][\"url\"]}}",
+        "otherOptions": {}
+      },
+      "id": "ccf09bb4-6c24-4635-964a-9d867fe33842",
+      "name": "Slack1",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        800,
+        240
+      ],
+      "credentials": {
+        "slackApi": {
+          "id": "Pcau9VCgOIEc7TyC",
+          "name": "Slack account 2"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -55,8 +92,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-11T07:45:31.937Z",
+      "updatedAt": "2024-08-11T07:45:31.937Z",
+      "id": "Rk6FaRhDhV3biszZ",
+      "name": "IT Ops"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-10T09:17:20.408Z",
-  "versionId": "d597980d-f853-4afd-85bb-d6a9001e4fc5"
+  "updatedAt": "2024-08-12T12:44:00.000Z",
+  "versionId": "b266f81f-d07c-4e09-923b-1b3ea25d2eac"
 }

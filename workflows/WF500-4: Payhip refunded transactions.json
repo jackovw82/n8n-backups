@@ -1,0 +1,25 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T19:49:13.076Z",
+  "id": "mkxEvZ7Wpc9Kysev",
+  "meta": null,
+  "name": "WF500-4: Payhip refunded transactions",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-12T15:40:10.245Z",
+      "updatedAt": "2024-08-12T15:40:10.245Z",
+      "id": "KTck2FQTslq6Fp62",
+      "name": "finance & accounting"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-12T16:54:06.000Z",
+  "versionId": "5f69c4d6-6aaf-4f7a-813d-5fb23c3fc5af"
+}

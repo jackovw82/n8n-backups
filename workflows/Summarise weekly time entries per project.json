@@ -15,7 +15,9 @@
   },
   "createdAt": "2024-08-09T18:35:50.527Z",
   "id": "EUJaCck035AzNFa9",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Summarise weekly time entries per project",
   "nodes": [
     {
@@ -50,13 +52,26 @@
       ]
     }
   ],
-  "pinData": null,
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T06:51:16.351Z",
+      "updatedAt": "2024-08-12T06:51:16.351Z",
+      "id": "H7L2DmUwMU4RDIXJ",
+      "name": "projects"
+    },
+    {
+      "createdAt": "2024-08-11T09:16:17.257Z",
+      "updatedAt": "2024-08-11T09:16:17.257Z",
+      "id": "IZGZ9hg5E4q7jIal",
+      "name": "operations"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:50.527Z",
-  "versionId": "26089509-e23c-4150-803d-dec6c6a37964"
+  "updatedAt": "2024-08-12T14:55:43.000Z",
+  "versionId": "f1dbb628-a9c7-41a7-bc23-bdb3d5478363"
 }

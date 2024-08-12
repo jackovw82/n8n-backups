@@ -11,8 +11,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T19:54:31.122Z",
-  "versionId": "3f6e0c1b-85d4-40a0-95e6-405cee46a405"
+  "updatedAt": "2024-08-12T15:44:04.000Z",
+  "versionId": "1e3aa8d8-11a1-4c98-a22d-ec05dfe2a79f"
 }

@@ -608,13 +608,20 @@
       "typeVersion": 1
     }
   ],
-  "pinData": null,
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T12:39:06.587Z",
+      "updatedAt": "2024-08-12T12:39:41.194Z",
+      "id": "mbLRzOgSsfYouIvX",
+      "name": "content production"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:48.435Z",
-  "versionId": "8ad62cb4-dafc-4ee3-96c8-530f99f7a20c"
+  "updatedAt": "2024-08-12T12:41:41.000Z",
+  "versionId": "1f6c566c-4098-4082-887e-64f719804375"
 }

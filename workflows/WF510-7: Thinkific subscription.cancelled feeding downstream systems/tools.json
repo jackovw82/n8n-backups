@@ -1,0 +1,25 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T19:57:54.081Z",
+  "id": "LRYt7z4k4lodiTH1",
+  "meta": null,
+  "name": "WF510-7: Thinkific subscription.cancelled feeding downstream systems/tools",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-12T16:52:21.000Z",
+  "versionId": "30ee1497-029f-4ccf-a16c-e9d53aaa7e61"
+}

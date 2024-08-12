@@ -1379,8 +1379,33 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T06:51:16.351Z",
+      "updatedAt": "2024-08-12T06:51:16.351Z",
+      "id": "H7L2DmUwMU4RDIXJ",
+      "name": "projects"
+    },
+    {
+      "createdAt": "2024-08-09T20:15:51.537Z",
+      "updatedAt": "2024-08-09T20:15:51.537Z",
+      "id": "Hpn0OFAE4GfFmMzq",
+      "name": "smartsuite"
+    },
+    {
+      "createdAt": "2024-08-11T09:16:17.257Z",
+      "updatedAt": "2024-08-11T09:16:17.257Z",
+      "id": "IZGZ9hg5E4q7jIal",
+      "name": "operations"
+    },
+    {
+      "createdAt": "2024-08-09T20:15:47.444Z",
+      "updatedAt": "2024-08-09T20:15:47.444Z",
+      "id": "Q6Qey3sK2BHXLdYH",
+      "name": "toggl"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T20:11:15.000Z",
-  "versionId": "7f3cfe83-5a48-44db-85ba-249b52aa2419"
+  "updatedAt": "2024-08-12T07:12:53.000Z",
+  "versionId": "e87c7f4c-decc-4a11-83b0-3ea3278466ee"
 }

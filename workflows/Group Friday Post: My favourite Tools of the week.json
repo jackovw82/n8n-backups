@@ -6,13 +6,26 @@
   "meta": null,
   "name": "Group Friday Post: My favourite Tools of the week",
   "nodes": [],
-  "pinData": null,
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T12:39:06.587Z",
+      "updatedAt": "2024-08-12T12:39:41.194Z",
+      "id": "mbLRzOgSsfYouIvX",
+      "name": "content production"
+    },
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:48.401Z",
-  "versionId": "1849dc04-f81d-461d-bcb8-bbfcfd0b4cb3"
+  "updatedAt": "2024-08-12T14:56:23.000Z",
+  "versionId": "7bbd70d5-fd63-4a7c-952a-5bb7c6b13882"
 }

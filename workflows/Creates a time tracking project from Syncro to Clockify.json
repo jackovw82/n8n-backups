@@ -59,8 +59,21 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:16:17.257Z",
+      "updatedAt": "2024-08-11T09:16:17.257Z",
+      "id": "IZGZ9hg5E4q7jIal",
+      "name": "operations"
+    },
+    {
+      "createdAt": "2024-08-12T14:57:29.943Z",
+      "updatedAt": "2024-08-12T14:57:29.943Z",
+      "id": "joJ0Ue33e5mVcmTF",
+      "name": "oCode360"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-10T09:18:37.761Z",
-  "versionId": "21979d79-ab48-47a0-83e7-ccecc3b7619b"
+  "updatedAt": "2024-08-12T14:59:02.000Z",
+  "versionId": "530c4c59-0bf4-4a03-b82e-2c6ea8e86e1d"
 }

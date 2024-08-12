@@ -1,0 +1,25 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T19:56:38.796Z",
+  "id": "Eb9swffZxRfI3WYi",
+  "meta": null,
+  "name": "WF510-2: Thinkific user.updated feeding downstream systems/tools",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-12T16:50:57.000Z",
+  "versionId": "caede030-6a12-4477-85ad-53c56e951908"
+}

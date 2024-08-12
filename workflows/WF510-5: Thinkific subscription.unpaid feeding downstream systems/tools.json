@@ -1,0 +1,25 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T19:57:07.998Z",
+  "id": "ayoztVZ1QKhle85P",
+  "meta": null,
+  "name": "WF510-5: Thinkific subscription.unpaid feeding downstream systems/tools",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-12T16:51:58.000Z",
+  "versionId": "54764abe-bddd-4ac0-a457-361698e0a16b"
+}

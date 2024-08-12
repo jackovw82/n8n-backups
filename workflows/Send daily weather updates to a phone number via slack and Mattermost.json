@@ -91,12 +91,12 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        860,
-        100
+        820,
+        140
       ],
       "credentials": {
         "slackApi": {
-          "id": "9gyOLzEOgLqBYHJA",
+          "id": "Pcau9VCgOIEc7TyC",
           "name": "Slack account 2"
         }
       }
@@ -104,7 +104,7 @@
     {
       "parameters": {
         "channelId": "bt3dcad3ajg7xcc5ku8k5diimc",
-        "message": "=Good morning, team! 🌤️\n\nHere’s your daily weather update:\n\n📍 [City Name]:\nTemperature:  {{ $json.main.temp }}°C  \nHumidity: {{ $json.main.humidity }}\nCondition: {{ $json.weather[0].description }} \nHigh/Low: {{ $json.main.temp_max }}°C/ {{ $json.main.temp_min }} °C\nWind Speed: {{ $json.wind.speed }}\n\nMake sure to dress accordingly and stay safe!\n",
+        "message": "=Good morning, team! 🌤️\n\nHere’s your daily weather update:\n\n📍 :\nTemperature:  {{ $json.main.temp }}°C  \nHumidity: {{ $json.main.humidity }}\nCondition: {{ $json.weather[0].description }} \nHigh/Low: {{ $json.main.temp_max }}°C/ {{ $json.main.temp_min }} °C\nWind Speed: {{ $json.wind.speed }}\n\nMake sure to dress accordingly and stay safe!\n",
         "attachments": [],
         "otherOptions": {}
       },
@@ -113,7 +113,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        860,
+        820,
         340
       ],
       "credentials": {
@@ -131,6 +131,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T05:47:31.000Z",
-  "versionId": "913e215e-251e-47b6-bb72-c9923794d58b"
+  "updatedAt": "2024-08-12T09:45:31.000Z",
+  "versionId": "4a6e6c10-7e5d-47a4-8457-d8dff6605452"
 }

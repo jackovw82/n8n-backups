@@ -801,8 +801,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T09:10:23.449Z",
-  "versionId": "5274c75e-feea-4713-ac9c-70385aa975af"
+  "updatedAt": "2024-08-12T12:46:29.000Z",
+  "versionId": "1617b8f3-b96b-4d10-94f0-1016c660c0bb"
 }

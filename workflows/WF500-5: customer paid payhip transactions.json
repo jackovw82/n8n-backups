@@ -1,0 +1,25 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T18:35:51.846Z",
+  "id": "NRsKtErnBeKGie8C",
+  "meta": null,
+  "name": "WF500-5: customer paid payhip transactions",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-12T15:40:10.245Z",
+      "updatedAt": "2024-08-12T15:40:10.245Z",
+      "id": "KTck2FQTslq6Fp62",
+      "name": "finance & accounting"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-12T16:53:25.000Z",
+  "versionId": "8e0b1b0b-61fe-4e0a-8556-cadff2fd244d"
+}

@@ -342,13 +342,20 @@
       "typeVersion": 1
     }
   ],
-  "pinData": null,
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:49.870Z",
-  "versionId": "f1776639-5d26-4f96-a8cb-422a6d31b4ca"
+  "updatedAt": "2024-08-12T15:38:02.000Z",
+  "versionId": "5343a06b-997c-48fe-aa3a-eeadfb89ff1a"
 }

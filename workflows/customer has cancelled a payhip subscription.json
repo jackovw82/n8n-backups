@@ -6,13 +6,20 @@
   "meta": null,
   "name": "customer has cancelled a payhip subscription",
   "nodes": [],
-  "pinData": null,
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T15:40:10.245Z",
+      "updatedAt": "2024-08-12T15:40:10.245Z",
+      "id": "KTck2FQTslq6Fp62",
+      "name": "finance & accounting"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:51.814Z",
-  "versionId": "8a59129a-f641-4c79-9aca-a79c4ec74bc2"
+  "updatedAt": "2024-08-12T15:42:04.000Z",
+  "versionId": "18347bde-fb6f-4155-95a4-2f152bceaa0d"
 }

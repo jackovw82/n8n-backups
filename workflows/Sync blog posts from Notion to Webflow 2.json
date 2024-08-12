@@ -888,8 +888,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T12:39:06.587Z",
+      "updatedAt": "2024-08-12T12:39:41.194Z",
+      "id": "mbLRzOgSsfYouIvX",
+      "name": "content production"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T08:34:05.230Z",
-  "versionId": "aae05c31-aee5-4bf4-ad68-a1b96db8fe6d"
+  "updatedAt": "2024-08-12T12:39:34.000Z",
+  "versionId": "06fbca5f-6765-4c94-949d-337066f24d93"
 }

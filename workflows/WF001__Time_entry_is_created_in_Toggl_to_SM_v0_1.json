@@ -496,14 +496,14 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T20:13:49.039Z",
-  "id": "OeRIzilyvJGBfYu9",
+  "createdAt": "2024-08-09T20:13:07.122Z",
+  "id": "uWf9ACL8BfMJYVVI",
   "meta": null,
   "name": "WF001__Time_entry_is_created_in_Toggl_to_SM_v0_1",
   "nodes": [
     {
       "parameters": {},
-      "id": "74f30055-b057-4577-83e6-5d45d311c4af",
+      "id": "1bba7aec-ddee-4de9-8e10-ec1165f97194",
       "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
@@ -519,7 +519,7 @@
         "genericAuthType": "httpBasicAuth",
         "options": {}
       },
-      "id": "cf490765-ce03-44b0-b134-76ca57e357b0",
+      "id": "c404707b-7573-44b0-9183-676cfb7b43b8",
       "name": "GET TimeEntries",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -532,7 +532,7 @@
       "parameters": {
         "maxItems": 2
       },
-      "id": "1db17966-ffd8-4f59-8c95-5b1520023a59",
+      "id": "788bca7e-368a-49ac-9087-7e457bcdfc9f",
       "name": "Limit",
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
@@ -554,7 +554,7 @@
         "text": "={{ $json[\"message\"] }}",
         "otherOptions": {}
       },
-      "id": "ac5da319-4853-4a87-b44e-e964d1f4a93c",
+      "id": "8ece741c-e009-40a3-bd85-ada706baae74",
       "name": "Slack",
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
@@ -574,7 +574,7 @@
           "root_id": ""
         }
       },
-      "id": "106fa0ac-0724-40fe-b662-e620f5503a73",
+      "id": "ac746982-f3bb-4298-a64b-ac548d622b8b",
       "name": "Mattermost",
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
@@ -615,7 +615,7 @@
         },
         "options": {}
       },
-      "id": "60a17bac-bfb9-42c0-8c0c-57b3a011f848",
+      "id": "521cac19-d75f-4aa6-8811-53fe419862e4",
       "name": "Check if the TimeEntry exist",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -630,7 +630,7 @@
         "height": 541.0123448220287,
         "width": 1468.4485804956025
       },
-      "id": "6fb9e5eb-26a8-4054-90f0-7cc1860ac5a1",
+      "id": "179d1a56-c481-4d58-82b5-4f3cb17bae80",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -645,7 +645,7 @@
         "height": 329.3037901061815,
         "width": 228.1849366795202
       },
-      "id": "943b734c-abdb-409c-8f77-fc3a7f61e6ce",
+      "id": "2068cd03-397e-40ca-a6e3-dbbcad13bb1c",
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -659,7 +659,7 @@
         "content": "## Toggle Tiem Entries",
         "height": 263.20454016568175
       },
-      "id": "e3d622ee-fe7b-4580-bed1-902adebfcf9e",
+      "id": "70fd9dec-3dbd-49fa-a167-a153440e6643",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -684,7 +684,7 @@
         },
         "options": {}
       },
-      "id": "56b30835-143c-402c-b9eb-d39d3931472d",
+      "id": "87a067d4-353d-49a5-9868-983a401cc05a",
       "name": "lookup_toggl_project",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -695,7 +695,7 @@
     },
     {
       "parameters": {},
-      "id": "47bf28b5-196d-4922-ae32-e6c9694899db",
+      "id": "977d43d6-86bf-4393-b61c-b84f2b89b9fa",
       "name": "Remove Duplicates",
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
@@ -739,7 +739,7 @@
         "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"sf698fb364\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"sf698fb364\",\n       \"comparison\": \"is_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n}   ",
         "options": {}
       },
-      "id": "5b288f57-328e-4fdc-8369-2077d89d43cc",
+      "id": "d86fb4bc-c10b-4693-870a-c6179c1f0f2a",
       "name": "Lookup SM Project",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -792,7 +792,7 @@
         },
         "options": {}
       },
-      "id": "1d01dfbd-f63c-469d-ab85-5c7f762e0ea0",
+      "id": "4e7d5c50-210c-415a-8270-b5dc95f68637",
       "name": "Pass 2",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -857,7 +857,7 @@
         },
         "options": {}
       },
-      "id": "b4be89d4-091a-4df0-9060-f2d19b14a6df",
+      "id": "a2dad423-56aa-4adc-b6bc-84d7a68141e7",
       "name": "Pass  3",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -901,7 +901,7 @@
         "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"s9c89ee2fe\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"s9c89ee2fe\",\n       \"comparison\": \"is_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n} ",
         "options": {}
       },
-      "id": "17cc9f19-b82f-47a9-b06f-2fa55d468cec",
+      "id": "f3549b78-60dd-4788-bb34-a2733f8beffc",
       "name": "lookup SMCliient",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -934,7 +934,7 @@
         },
         "options": {}
       },
-      "id": "5dcb6fa4-a4e7-4ae1-b97a-30acb8a2d6af",
+      "id": "78c5530b-e830-49d6-8f15-786f09463f59",
       "name": "If",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
@@ -965,7 +965,7 @@
         "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"in_progress\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.proj_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.proj_record_id }}\",\n  \"s4621e0408\": \"{{ $json.client_record_id }}\"\n}",
         "options": {}
       },
-      "id": "af7869e4-d98f-496f-a95f-9d742ca1f2b6",
+      "id": "64446c35-1116-4079-8aa4-0a6cf03cf2d7",
       "name": "CreatetimeEntryinSM",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1006,7 +1006,7 @@
         },
         "options": {}
       },
-      "id": "fc7139c4-9df6-4c6e-b529-bd3b0d258ad6",
+      "id": "f97eca18-7c66-413b-a463-f0ecdaa43aaa",
       "name": "Aggregate",
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
@@ -1137,7 +1137,7 @@
         },
         "options": {}
       },
-      "id": "e7df6559-212f-468b-8fba-679c87a40b77",
+      "id": "9ec3e7be-63b5-450e-954a-cbdd07ecdbd5",
       "name": "Pass 1",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1169,7 +1169,7 @@
         },
         "options": {}
       },
-      "id": "cc32f82d-e453-4243-aefc-2e2ab95a6b16",
+      "id": "e54ee118-526e-42f9-ad98-e69cb74dc2cf",
       "name": "Filter",
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
@@ -1184,7 +1184,7 @@
         "numberInputs": 3,
         "query": "WITH \n  client_ref AS \n  (\n  SELECT * FROM input1\n  ),\n  project as \n  (\n  select * from input3\n  ),\n  time_entry  AS\n  (\n  select\n    client_ref.id AS client_id, \n    client_ref.name AS client_name,\n    client_ref.record_id AS client_record_id,\n    project.record_id AS proj_record_id,\n    project.id AS project_id, \n    project.name AS proj_name,\n    input2.id AS time_entry_id,\n    input2.*\n  from input2\n    INNER JOIN project ON project.id = input2.project_id\n    LEFT JOIN client_ref ON client_ref.id = project.client_id\n  )\nselect * from time_entry;"
       },
-      "id": "00c020f2-55dd-475a-ba8c-853a6e62fb39",
+      "id": "1091ce0f-8f9a-4fb1-add2-87a302b2f374",
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
@@ -1195,7 +1195,7 @@
     },
     {
       "parameters": {},
-      "id": "068d5b06-5178-46be-bf9f-646f5aae8e50",
+      "id": "771dc576-d073-472a-b1bd-73a5db8cc3de",
       "name": "Remove Duplicates1",
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
@@ -1224,7 +1224,7 @@
         },
         "options": {}
       },
-      "id": "ab6527b4-ceb1-4dd1-991c-34641d6a4e8c",
+      "id": "601b0bf6-84e7-4dae-980f-954989603bee",
       "name": "Find Project",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1249,7 +1249,7 @@
         },
         "options": {}
       },
-      "id": "cc62c1d6-ba83-4d0e-8909-bcd5b1beb495",
+      "id": "69bb7345-250a-4788-a099-f15a0af240b7",
       "name": "lookup_toggl_client",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1262,7 +1262,7 @@
       "parameters": {
         "jsCode": "// Assuming 'AggregatedData' is the name of the node with the aggregated data\nconst aggregatedData = $node[\"Aggregate\"].json;\n\n// Prepare the message\nlet message = 'Hi Team,\\n\\nNew time entries are ready for review. Here are the details:\\n\\n';\n\nconst dates = [...new Set(aggregatedData.s2e7d2b64e)];\n\ndates.forEach(date => {\n  message += `*Date:* ${date}\\n`;\n  message += `*Client:* ${aggregatedData.s388b58221[0]}\\n`;\n   message += '\\n\\n';\n  message += '```\\n';  // Start block quote for grey frame\n  message += 'Title                      | Status               | Worked Hours  | Description\\n';\n  message += '---------------------------|----------------------|---------------|----------------------------------------------\\n';\n  \n  aggregatedData.s2e7d2b64e.forEach((entryDate, index) => {\n    if (entryDate === date) {\n      const title = aggregatedData.title[index].padEnd(27, ' ');\n      const status = aggregatedData.status[index].value.padEnd(20, ' ');\n      const hours = aggregatedData.se6d1375cc[index].toString().padEnd(13, ' ');\n      const description = aggregatedData.text[index];\n      message += `${title}| ${status} | ${hours} | ${description}\\n`;\n    }\n  });\n  message += '```\\n\\n';  // End block quote for grey frame\n});\n\nmessage += '\\nPlease review these entries at your earliest convenience.\\nThank you!\\n';\n\nreturn [\n  {\n    json: {\n      message: message\n    }\n  }\n];\n"
       },
-      "id": "84f73f56-252d-44de-a2da-5df439c4605f",
+      "id": "8ad69bab-b39e-4728-9c7d-93af5c26939f",
       "name": "Message Formatting",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -1304,7 +1304,7 @@
         },
         "options": {}
       },
-      "id": "2cb4b583-7c8b-4993-bea8-d81553c69b26",
+      "id": "c3e9f1f6-5e95-48ba-a086-72ffc01587f6",
       "name": "If1",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
@@ -1435,7 +1435,7 @@
         },
         "options": {}
       },
-      "id": "7db7b1de-fffc-4a79-bcea-7d34b0efc9a9",
+      "id": "0d97c428-1fca-4bcf-b9f1-c65f8c7260df",
       "name": "Pass ",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1476,7 +1476,7 @@
         },
         "options": {}
       },
-      "id": "7d1627af-12c4-4703-b40c-b4dd24de58ef",
+      "id": "a4d89c8d-76c2-469c-b76d-a173864f00ef",
       "name": "Check if the TimeEntry exist2",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1487,7 +1487,7 @@
     },
     {
       "parameters": {},
-      "id": "04ce9336-28c8-45c5-8cb6-38f993e239b4",
+      "id": "a288e03f-bbfc-4212-b7b3-ae4830ea50d9",
       "name": "No Operation, do nothing1",
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
@@ -1502,7 +1502,7 @@
         "numberInputs": 3,
         "query": "with \n  client_ref as\n  (\n  select * from input1\n  )\n  SELECT \n      client_ref.id as client_id, \n      client_ref.name as client_name,\n      client_ref.wid as client_wid,\n      client_ref.archived as client_archived, \n      client_ref.at as client_created_at,\n      client_ref.creator_id as client_created_id,\n      client_ref.record_id as client_record_id,\n      a.id as time_entry_id,\n      a.*,\n      b.record_id as proj_record_id,\n      b.id as project_id, \n      b.name as project_name, \n      b.*\n  FROM input2 a, \n      input3 b\n         inner join client_ref on client_ref.id = b.client_id\nWHERE a.project_id = b.id"
       },
-      "id": "7d3beea7-bb83-4659-a67b-11b078e4796d",
+      "id": "926c3c5a-c698-4db5-89a7-9ef2fe124c81",
       "name": "Merge2",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
@@ -1517,7 +1517,7 @@
         "height": 541.0123448220287,
         "width": 1447.3936059714647
       },
-      "id": "85192766-3bb4-474c-bab2-d5f3c77441db",
+      "id": "c17c99e3-e805-44a6-8e64-9fddb68dd7df",
       "name": "Sticky Note4",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -1561,7 +1561,7 @@
         "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"s9c89ee2fe\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"s9c89ee2fe\",\n       \"comparison\": \"is_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n} ",
         "options": {}
       },
-      "id": "293563fb-b530-47d6-81ac-58c2d4382d84",
+      "id": "3eb9c0dd-95e7-4aea-93a8-cd1fc3e6ca3b",
       "name": "lookup SMCliient1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1620,7 +1620,7 @@
         },
         "options": {}
       },
-      "id": "4a897505-5f09-4215-951d-afb39a5f12fa",
+      "id": "f8624d9e-6934-444e-b16c-39df157d7c11",
       "name": "Pass  ",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1715,7 +1715,7 @@
         },
         "options": {}
       },
-      "id": "e49ee79d-6cf0-43ed-acb0-efc63ef6a67c",
+      "id": "d43bff80-ac23-42e0-94c8-d10ddf9b75c3",
       "name": "Pass 3",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1759,7 +1759,7 @@
         "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"sf698fb364\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"sf698fb364\",\n       \"comparison\": \"is_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n}   ",
         "options": {}
       },
-      "id": "edcbeb59-c86c-4d4a-8cfb-a60b6f3a7429",
+      "id": "9e918d2f-c679-4e63-b0cf-6b862896b8ac",
       "name": "Lookup SM Project1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1770,7 +1770,7 @@
     },
     {
       "parameters": {},
-      "id": "63edb28d-b90f-4b4c-8407-8e19b6d417f3",
+      "id": "30b4b6e0-b991-4a81-8fe4-1b4526030479",
       "name": "Remove Duplicates2",
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
@@ -1802,7 +1802,7 @@
         },
         "options": {}
       },
-      "id": "2db82ee6-09b0-402f-92aa-0900fc8cb227",
+      "id": "626a6f0a-47cb-47bb-a7b6-4631ada9a97c",
       "name": "If3",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
@@ -1827,7 +1827,7 @@
         },
         "options": {}
       },
-      "id": "f94874f9-9cf8-47e0-998b-2f88b3699e72",
+      "id": "9ad00c07-de08-453e-affb-baf598774581",
       "name": "lookup_toggl_project1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1852,7 +1852,7 @@
         },
         "options": {}
       },
-      "id": "1d5c3f4f-8561-4eaf-8cc6-5fd2e9aaea58",
+      "id": "f8cbac02-254a-4de6-ae5d-20628b774250",
       "name": "lookup_toggl_client1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1867,7 +1867,7 @@
         "height": 329.3037901061815,
         "width": 278.75835396816683
       },
-      "id": "6b901758-bae8-4a65-9ae7-b01864a1565b",
+      "id": "cc648998-8cf0-4999-af1c-725987b898e2",
       "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
@@ -1882,7 +1882,7 @@
         "attachments": [],
         "otherOptions": {}
       },
-      "id": "f8390017-e070-44b9-ba24-57f43982c337",
+      "id": "bf036f17-0bb5-463f-b115-8dc7efb4fdea",
       "name": "Mattermost1",
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
@@ -1896,7 +1896,7 @@
       "parameters": {
         "otherOptions": {}
       },
-      "id": "2120433b-bd10-4e3a-866a-7c08cf6bd9b1",
+      "id": "396c01e9-8503-4c8f-9f30-e08f1cb0e935",
       "name": "Slack1",
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
@@ -1908,7 +1908,7 @@
     },
     {
       "parameters": {},
-      "id": "ed65ccae-8144-4942-9902-ff7d4e7bd2ef",
+      "id": "ee0a1fde-7c64-4f7c-91ee-9aa2cb958d45",
       "name": "new",
       "type": "n8n-nodes-base.noOp",
       "position": [
@@ -1919,7 +1919,7 @@
     },
     {
       "parameters": {},
-      "id": "2c36bea5-679d-47e9-9093-9cdffbf2cfe0",
+      "id": "98772ba4-9438-46a3-b744-2716f20bb05f",
       "name": "different",
       "type": "n8n-nodes-base.noOp",
       "position": [
@@ -1930,7 +1930,7 @@
     },
     {
       "parameters": {},
-      "id": "fc66c2da-29fe-4649-b328-0207084ab83e",
+      "id": "f155f056-3d34-4d69-956a-118f5e0ddb37",
       "name": "same",
       "type": "n8n-nodes-base.noOp",
       "position": [
@@ -1959,7 +1959,7 @@
           ]
         }
       },
-      "id": "cde3648b-942d-4571-a069-cdc299e1a025",
+      "id": "7f20a9b4-574d-45e5-a0a0-314c88b871ef",
       "name": "github_status",
       "type": "n8n-nodes-base.switch",
       "position": [
@@ -1972,7 +1972,7 @@
       "parameters": {
         "jsCode": "// File Returned with Content\nif (Object.keys($input.all()[0].json).includes(\"content\")) {\n  // Get JSON Objects\n  var origWorkflow = JSON.parse(Buffer.from($input.all()[0].json.content, 'base64'));\n  var n8nWorkflow = $input.all()[1].json;\n  \n  // Order JSON Objects\n  var orderedOriginal = {}\n  var orderedActual = {}\n  \n  Object.keys(origWorkflow).sort().forEach(function(key) {\n    orderedOriginal[key] = origWorkflow[key];\n  });\n  \n  Object.keys(n8nWorkflow).sort().forEach(function(key) {\n    orderedActual[key] = n8nWorkflow[key];\n  });\n\n  // Determine Difference\n  if ( JSON.stringify(orderedOriginal) === JSON.stringify(orderedActual) ) {\n    $input.all()[0].json.github_status = \"same\";\n    $input.all()[0].json.content_decoded = orderedOriginal;\n  } else {\n    $input.all()[0].json.github_status = \"different\";\n    $input.all()[0].json.content_decoded = orderedOriginal;\n    $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n  }\n// No File Returned / New Workflow\n} else {\n  // Order JSON Object\n  var n8nWorkflow = ($input.all()[1].json);\n  var orderedActual = {}\n  Object.keys(n8nWorkflow).sort().forEach(function(key) {\n    orderedActual[key] = n8nWorkflow[key];\n  });\n  \n  // Proper Formatting\n  $input.all()[0].json.github_status = \"new\";\n  $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n}\n\n// Return Items\nreturn $input.all();"
       },
-      "id": "24492585-5f2e-465b-ad03-249aa4da30f1",
+      "id": "15b1868f-9e9b-49ff-abeb-80034e0808c9",
       "name": "isDiffOrNew",
       "type": "n8n-nodes-base.code",
       "position": [
@@ -1987,7 +1987,7 @@
         "height": 424.04333333333386,
         "width": 629.230453137713
       },
-      "id": "5ac2759e-10c0-4f83-843b-5505b597ec48",
+      "id": "b8cd91bd-e6ed-4172-8612-3789d88e151a",
       "name": "Note2",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
@@ -2001,7 +2001,7 @@
         "batchSize": 1,
         "options": {}
       },
-      "id": "96beb264-a6cd-4ab0-a71d-abe70b8455a0",
+      "id": "a894e073-e6cd-42f5-8c02-60a7f5f61518",
       "name": "OneAtATime",
       "type": "n8n-nodes-base.splitInBatches",
       "position": [
@@ -2020,7 +2020,7 @@
         "asBinaryProperty": false,
         "additionalParameters": {}
       },
-      "id": "1c5dab3e-2059-49d1-a081-c16c5551b9cb",
+      "id": "df8aac16-557f-4c2f-b6c7-b6b83a15ce7e",
       "name": "GitHub",
       "type": "n8n-nodes-base.github",
       "position": [
@@ -2035,7 +2035,7 @@
       "parameters": {
         "jsCode": "{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"functionCode\": `\n        // Get the items from the previous node\n        const items = $items();\n        \n        // Initialize an array to hold the content\n        let aggregatedContent = \"\";\n        \n        // Loop through each item and concatenate the content\n        items.forEach(item => {\n          aggregatedContent += item.json.content + \"\\\\n\"; // Adjust 'content' to the actual field name\n        });\n        \n        // Return a single item with the aggregated content\n        return [{ json: { aggregatedContent: aggregatedContent } }];\n        `\n      },\n      \"name\": \"Aggregate Content\",\n      \"type\": \"n8n-nodes-base.function\",\n      \"typeVersion\": 1,\n      \"position\": [\n        450,\n        300\n      ]\n    }\n  ]\n}"
       },
-      "id": "7585eaeb-f884-45d9-81a1-49cb894bcda4",
+      "id": "958d0d5d-a0e7-4498-b627-8e4a912c237c",
       "name": "aggregate records to teams chats",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -2066,7 +2066,7 @@
         "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.name }} - {{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"ready_for_review\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.project_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"saf4ce5701\": \"{{ $json.task_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.proj_record_id }}\",\n  \"s4621e0408\": \"{{ $json.client_record_id }}\"\n}\n ",
         "options": {}
       },
-      "id": "6bc1864b-e452-43e6-b743-af57127c8c52",
+      "id": "5eb940b1-efff-4590-a713-50bf1414bbc7",
       "name": "Create timeEntry in SM",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -2083,6 +2083,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T20:13:49.039Z",
-  "versionId": "bbd6214a-daac-4801-a756-ff5c3b549e99"
+  "updatedAt": "2024-08-09T20:13:07.122Z",
+  "versionId": "eeb14112-9b43-40ca-9056-084890e85719"
 }

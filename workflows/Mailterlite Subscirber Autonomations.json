@@ -1,0 +1,68 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-11T11:40:37.609Z",
+  "id": "QPhxKyV1gBRGYSQD",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Mailterlite Subscirber Autonomations",
+  "nodes": [
+    {
+      "parameters": {
+        "event": "subscriber.automation_triggered"
+      },
+      "id": "7f9848be-f7af-440c-94e3-4bebcc678db6",
+      "name": "Mialerlite Subscriber Autonomation Triggered",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1080,
+        80
+      ],
+      "webhookId": "52c2d945-921e-434b-9dd5-f43453c83627",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "event": "subscriber.automation_triggered"
+      },
+      "id": "20e3a478-556e-49f8-8c62-37ddb09f1dba",
+      "name": "Mialerlite Subscriber Autonomation Completed",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1080,
+        340
+      ],
+      "webhookId": "52c2d945-921e-434b-9dd5-f43453c83627",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "q085m3G8l78bm7wE",
+          "name": "Mailer Lite account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-12T08:48:58.000Z",
+  "versionId": "933ec44b-9ad1-4a9d-8b2a-10abf51c059b"
+}

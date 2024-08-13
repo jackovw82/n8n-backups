@@ -645,8 +645,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T12:39:06.587Z",
+      "updatedAt": "2024-08-12T12:39:41.194Z",
+      "id": "mbLRzOgSsfYouIvX",
+      "name": "content production"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T07:39:32.000Z",
-  "versionId": "9bcb6c4d-c920-48ce-a4a2-9113b165d7bc"
+  "updatedAt": "2024-08-13T06:43:16.000Z",
+  "versionId": "70632b04-382c-4c3c-97ee-612dc2f22a0b"
 }

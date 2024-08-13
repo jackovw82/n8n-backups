@@ -109,8 +109,8 @@
       "name": "On clicking 'execute'",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        -360,
-        0
+        -760,
+        -440
       ],
       "typeVersion": 1,
       "id": "5e88b9a7-ba34-4ccc-a634-41167a618729"
@@ -123,8 +123,8 @@
       "name": "Wordpress",
       "type": "n8n-nodes-base.wordpress",
       "position": [
-        -120,
-        0
+        -520,
+        -440
       ],
       "typeVersion": 1,
       "id": "f724719a-a2f1-46cd-9acd-23f3b1364e4c"
@@ -138,8 +138,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        760,
-        100
+        360,
+        -340
       ]
     },
     {
@@ -151,8 +151,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        760,
-        -80
+        360,
+        -520
       ]
     },
     {
@@ -176,8 +176,8 @@
       "name": "Set image ID for the post1",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        960,
-        100
+        560,
+        -340
       ],
       "typeVersion": 4.1
     },
@@ -192,8 +192,8 @@
       "name": "Search Person in Pipedrive",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        80,
-        0
+        -320,
+        -440
       ],
       "typeVersion": 4.1
     },
@@ -205,8 +205,8 @@
       "name": "Check if person is in Pipedrive and output the ID",
       "type": "n8n-nodes-base.code",
       "position": [
-        280,
-        0
+        -120,
+        -440
       ],
       "typeVersion": 2,
       "alwaysOutputData": true
@@ -226,8 +226,8 @@
       "name": "IF Person exists in Pipedrive",
       "type": "n8n-nodes-base.if",
       "position": [
-        520,
-        0
+        120,
+        -440
       ],
       "typeVersion": 1
     },
@@ -240,8 +240,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1180,
-        100
+        780,
+        -340
       ]
     },
     {
@@ -253,8 +253,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        980,
-        -80
+        580,
+        -520
       ]
     }
   ],
@@ -272,6 +272,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-13T06:50:00.000Z",
-  "versionId": "fa9c0864-98f3-4a44-a6ac-f1155dba3cf3"
+  "updatedAt": "2024-08-13T17:58:53.000Z",
+  "versionId": "049062af-a3dd-4745-af96-7988e247ab38"
 }

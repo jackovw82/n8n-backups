@@ -731,7 +731,13 @@
       "position": [
         1193.529717684841,
         780
-      ]
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "YTHJ2jq3lxpGAtS5",
+          "name": "toggl - jacko@ocode360.com"
+        }
+      }
     },
     {
       "parameters": {},
@@ -1288,7 +1294,13 @@
       "position": [
         933.529717684841,
         540
-      ]
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "YTHJ2jq3lxpGAtS5",
+          "name": "toggl - jacko@ocode360.com"
+        }
+      }
     },
     {
       "parameters": {
@@ -1504,7 +1516,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -386.470282315159,
+        -480,
         560
       ]
     },
@@ -1568,7 +1580,13 @@
       "position": [
         -806.470282315159,
         760
-      ]
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "YTHJ2jq3lxpGAtS5",
+          "name": "toggl - jacko@ocode360.com"
+        }
+      }
     },
     {
       "parameters": {
@@ -1621,8 +1639,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1,
       "position": [
-        453.529717684841,
-        1060
+        640,
+        1040
       ]
     },
     {
@@ -1647,7 +1665,7 @@
       "typeVersion": 1,
       "position": [
         440,
-        1460
+        1660
       ]
     },
     {
@@ -1660,7 +1678,7 @@
       "typeVersion": 3.4,
       "position": [
         720,
-        1360
+        1560
       ]
     },
     {
@@ -1673,7 +1691,7 @@
       "typeVersion": 3.4,
       "position": [
         720,
-        1560
+        1760
       ]
     },
     {
@@ -1684,7 +1702,7 @@
       "typeVersion": 1,
       "position": [
         1260,
-        1100
+        1300
       ]
     },
     {
@@ -1706,7 +1724,7 @@
       "typeVersion": 2.2,
       "position": [
         4360,
-        1360
+        1560
       ]
     },
     {
@@ -1726,7 +1744,7 @@
       "typeVersion": 1,
       "position": [
         4360,
-        1560
+        1760
       ],
       "credentials": {
         "mattermostApi": {
@@ -1747,7 +1765,7 @@
       "typeVersion": 1,
       "position": [
         1160,
-        1280
+        1480
       ]
     },
     {
@@ -1762,7 +1780,7 @@
       "typeVersion": 1,
       "position": [
         3380,
-        1400
+        1600
       ]
     },
     {
@@ -1787,7 +1805,7 @@
       "typeVersion": 4.2,
       "position": [
         2020,
-        1600
+        1800
       ]
     },
     {
@@ -1798,7 +1816,7 @@
       "typeVersion": 1.1,
       "position": [
         1820,
-        1600
+        1800
       ]
     },
     {
@@ -1842,7 +1860,7 @@
       "typeVersion": 4.2,
       "position": [
         2260,
-        1600
+        1800
       ]
     },
     {
@@ -1895,7 +1913,7 @@
       "typeVersion": 3.4,
       "position": [
         2480,
-        1600
+        1800
       ]
     },
     {
@@ -1960,7 +1978,7 @@
       "typeVersion": 3.4,
       "position": [
         2760,
-        1360
+        1560
       ]
     },
     {
@@ -2004,7 +2022,7 @@
       "typeVersion": 4.2,
       "position": [
         2580,
-        1360
+        1560
       ]
     },
     {
@@ -2035,7 +2053,7 @@
       "typeVersion": 4.2,
       "position": [
         3660,
-        1460
+        1660
       ]
     },
     {
@@ -2076,7 +2094,7 @@
       "typeVersion": 1,
       "position": [
         3880,
-        1460
+        1660
       ]
     },
     {
@@ -2108,7 +2126,7 @@
       "typeVersion": 2,
       "position": [
         2200,
-        1360
+        1560
       ]
     },
     {
@@ -2119,7 +2137,7 @@
       "typeVersion": 1.1,
       "position": [
         2400,
-        1360
+        1560
       ]
     },
     {
@@ -2148,7 +2166,7 @@
       "typeVersion": 3.4,
       "position": [
         1660,
-        1600
+        1800
       ]
     },
     {
@@ -2173,7 +2191,7 @@
       "typeVersion": 4.2,
       "position": [
         2000,
-        1360
+        1560
       ]
     },
     {
@@ -2186,7 +2204,7 @@
       "typeVersion": 2,
       "position": [
         4100,
-        1460
+        1660
       ]
     },
     {
@@ -2317,7 +2335,7 @@
       "typeVersion": 3.4,
       "position": [
         1416,
-        1480
+        1680
       ]
     },
     {
@@ -2332,7 +2350,7 @@
       "typeVersion": 3,
       "position": [
         2956,
-        1480
+        1680
       ]
     },
     {
@@ -2354,7 +2372,7 @@
       "typeVersion": 2.3,
       "position": [
         980,
-        1460
+        1660
       ]
     },
     {
@@ -2367,7 +2385,7 @@
       "typeVersion": 3,
       "position": [
         3180,
-        1480
+        1680
       ]
     },
     {
@@ -2378,7 +2396,7 @@
       "typeVersion": 1,
       "position": [
         3400,
-        1500
+        1700
       ]
     },
     {
@@ -2392,8 +2410,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -200,
-        1280
+        -60,
+        1660
       ]
     },
     {
@@ -2444,6 +2462,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-13T07:35:34.000Z",
-  "versionId": "43f84287-95f9-40e5-bc33-dc9a538b973e"
+  "updatedAt": "2024-08-13T09:57:28.000Z",
+  "versionId": "56bb3ebf-eafb-4508-81e9-f6016916a12f"
 }

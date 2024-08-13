@@ -1,0 +1,43 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-09T18:35:51.735Z",
+  "id": "nzWBlAw9ONBO2BK0",
+  "meta": null,
+  "name": "WF2003-3: Workspace is created in Toggl from SM",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-12T06:51:16.351Z",
+      "updatedAt": "2024-08-12T06:51:16.351Z",
+      "id": "H7L2DmUwMU4RDIXJ",
+      "name": "projects"
+    },
+    {
+      "createdAt": "2024-08-09T20:15:51.537Z",
+      "updatedAt": "2024-08-09T20:15:51.537Z",
+      "id": "Hpn0OFAE4GfFmMzq",
+      "name": "smartsuite"
+    },
+    {
+      "createdAt": "2024-08-11T09:16:17.257Z",
+      "updatedAt": "2024-08-11T09:16:17.257Z",
+      "id": "IZGZ9hg5E4q7jIal",
+      "name": "operations"
+    },
+    {
+      "createdAt": "2024-08-09T20:15:47.444Z",
+      "updatedAt": "2024-08-09T20:15:47.444Z",
+      "id": "Q6Qey3sK2BHXLdYH",
+      "name": "toggl"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-13T07:34:53.000Z",
+  "versionId": "7b051b1f-b385-4a14-81f9-39dc2f4922e1"
+}

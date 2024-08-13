@@ -1,0 +1,93 @@
+{
+  "active": false,
+  "connections": {
+    "Wordpress": {
+      "main": [
+        []
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Wordpress",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Wordpress1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-13T06:27:52.863Z",
+  "id": "zn0Nidpliqz7R6lz",
+  "meta": {
+    "templateId": "668"
+  },
+  "name": "Create or update a post in WordPress",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -220,
+        280
+      ],
+      "typeVersion": 1,
+      "id": "7460ec83-43b0-481f-9590-425bef0c812f",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "title": "created from n8n",
+        "additionalFields": {}
+      },
+      "name": "Wordpress",
+      "type": "n8n-nodes-base.wordpress",
+      "position": [
+        -20,
+        200
+      ],
+      "typeVersion": 1,
+      "id": "aee38d06-f2be-471b-a2d2-8f805e117835"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "postId": "={{$node[\"Wordpress\"].json[\"id\"]}}",
+        "updateFields": {
+          "content": "This post was created using the n8n workflow."
+        }
+      },
+      "name": "Wordpress1",
+      "type": "n8n-nodes-base.wordpress",
+      "position": [
+        -20,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "a41a408b-28b5-4090-b6ae-8d642088dbbc"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-12T12:39:06.587Z",
+      "updatedAt": "2024-08-12T12:39:41.194Z",
+      "id": "mbLRzOgSsfYouIvX",
+      "name": "content production"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-13T06:28:18.000Z",
+  "versionId": "7d3764c8-934d-4bd0-b49f-1bc1367f272f"
+}

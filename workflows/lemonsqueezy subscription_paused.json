@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-13T17:05:35.096Z",
+  "id": "eHr3xeBePQtbdT8u",
+  "meta": null,
+  "name": "lemonsqueezy subscription_paused",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-13T17:05:35.096Z",
+  "versionId": "f4c5fe6b-3e0c-45a0-a352-5a0e4c13e02c"
+}

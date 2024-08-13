@@ -1,11 +1,92 @@
 {
   "active": false,
-  "connections": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "createdAt": "2024-08-13T16:44:19.315Z",
   "id": "JZwIHGAZQjJZlSCd",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "lemonsqueezy order_created",
-  "nodes": [],
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "781beddb-e73f-476a-8b92-8902eb2043c0",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        980,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.lemonsqueezy.com/v1/stores",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.api+json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGQ1OWNlZi1kYmI4LTRlYTUtYjE3OC1kMjU0MGZjZDY5MTkiLCJqdGkiOiIyNDU4NjVlYTk3MmFkMGUzYmFjMTliNDlhMDYxNmE2OGY5OTExNjc2NDUwMmM1NWU0MzcxMzQ1M2U0Y2U5OGEwYjI2ZWI2NjgxOWFjMjNkYSIsImlhdCI6MTcyMzU2NzQwOS4zOTkxMDQsIm5iZiI6MTcyMzU2NzQwOS4zOTkxMDYsImV4cCI6MjAzOTEwMDIwOS4zNTk1NzMsInN1YiI6IjEyMDg5NTMiLCJzY29wZXMiOltdfQ.qs-XNkplfkn8msFkHnMn_RmVWWG2Gou0n_GVMuQU0hXwZmzRqRiLR6Rei88fKqWScCNOL9OfLYnSawvSlAnF3u1ZSR2FYLMrh8Iyc8aeT4v7Bm7WtmXiK4WLD3Ti4GMqx0-n9MoJRuHa4ZhNBAIjOw2B8t1aNZJcQtccpeLTEkFogyWprf7LaYbcvA5q6nTsYaCAj6kZ5tZHQppqQ1UsR6rSzCmEsVL8cxI_J6DyqRpmZ9I-pQJa2fLdWeB8QeGd7Bt98b9XyYMtWXwDqj4tUUoAfxmlGqY4Be6At1HmjGaBWpvt0-TsGPmHGJhLCqSPnaC-26wPiZn1fUkVAeT9VzrIWIVaUHFdB1zggcGU5C4Nb73vQ60b9YXm8KogwbrGLRHbThW73KqvK8Bc0_MwjNr8siistjsWCYWN7OuzRmOVoD_Rpzyx8A-O_C4unLIczii7ijH8XuYn58ZNvZkdp2s1QI1_Xlx-K-tAB24jQ7oUCIjf9o-n7knBQrpIJyjj"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/vnd.api+json",
+        "options": {}
+      },
+      "id": "55142b0f-0ce3-469e-a8ab-831664c57f9f",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "77b10ac6-f184-4428-9cab-2978028cb077",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        540
+      ]
+    }
+  ],
   "pinData": {},
   "settings": {
     "executionOrder": "v1"
@@ -20,6 +101,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-13T18:13:48.000Z",
-  "versionId": "c223323b-ba09-4106-9e68-b0b3eb16ec7c"
+  "updatedAt": "2024-08-13T19:28:40.000Z",
+  "versionId": "357d20ff-9a51-4209-a3c3-2f2327769fe1"
 }

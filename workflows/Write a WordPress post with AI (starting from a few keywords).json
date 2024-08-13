@@ -938,15 +938,48 @@
         420
       ],
       "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://wp-demo.mondo.surf/wp-json/wp/v2/posts/{{ $('Post on Wordpress').item.json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "featured_media",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1bd22e43-1a70-408f-8880-a726381ee63d",
+      "name": "Set image ID for the post1",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        3360,
+        480
+      ],
+      "typeVersion": 4.1
     }
   ],
-  "pinData": null,
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T12:39:06.587Z",
+      "updatedAt": "2024-08-12T12:39:41.194Z",
+      "id": "mbLRzOgSsfYouIvX",
+      "name": "content production"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:51.748Z",
-  "versionId": "0269ee92-61f7-4a3c-91b9-cb06246869e3"
+  "updatedAt": "2024-08-13T06:45:01.000Z",
+  "versionId": "316f1f13-919f-477f-9ead-7659f2881e14"
 }

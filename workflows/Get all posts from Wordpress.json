@@ -11,6 +11,90 @@
           }
         ]
       ]
+    },
+    "Wordpress": {
+      "main": [
+        [
+          {
+            "node": "Search Person in Pipedrive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Person in Pipedrive": {
+      "main": [
+        [
+          {
+            "node": "Check if person is in Pipedrive and output the ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if person is in Pipedrive and output the ID": {
+      "main": [
+        [
+          {
+            "node": "IF Person exists in Pipedrive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Person exists in Pipedrive": {
+      "main": [
+        [
+          {
+            "node": "Update In SmartSuite",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create in SmartSuite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create in SmartSuite": {
+      "main": [
+        [
+          {
+            "node": "Set image ID for the post1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set image ID for the post1": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update In SmartSuite": {
+      "main": [
+        [
+          {
+            "node": "Slack1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-08-13T06:27:41.922Z",
@@ -25,8 +109,8 @@
       "name": "On clicking 'execute'",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        380,
-        240
+        -360,
+        0
       ],
       "typeVersion": 1,
       "id": "5e88b9a7-ba34-4ccc-a634-41167a618729"
@@ -39,11 +123,139 @@
       "name": "Wordpress",
       "type": "n8n-nodes-base.wordpress",
       "position": [
-        580,
-        240
+        -120,
+        0
       ],
       "typeVersion": 1,
       "id": "f724719a-a2f1-46cd-9acd-23f3b1364e4c"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "93104b03-7c0e-4ed4-a249-8ef7957f7ce9",
+      "name": "Create in SmartSuite",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        760,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1c929d50-f3af-4fb2-b575-88df4a6873d3",
+      "name": "Update In SmartSuite",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        760,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://wp-demo.mondo.surf/wp-json/wp/v2/posts/{{ $('Post on Wordpress').item.json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "featured_media",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "aff86b38-b7bb-4c15-b37f-0265a6b2ad0a",
+      "name": "Set image ID for the post1",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        960,
+        100
+      ],
+      "typeVersion": 4.1
+    },
+    {
+      "parameters": {
+        "url": "=https://api.pipedrive.com/v1/itemSearch?term={{ $json.body['your-email'] }}&field_key=email&exact_match=true&item_types=person",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "pipedriveApi",
+        "options": {}
+      },
+      "id": "044913ba-691b-4df0-8617-05c236103288",
+      "name": "Search Person in Pipedrive",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        80,
+        0
+      ],
+      "typeVersion": 4.1
+    },
+    {
+      "parameters": {
+        "jsCode": "const inputItems = $input.all();\n\n// Check if there are items and that the items array is not empty\nconst hasItems = inputItems.length > 0 && inputItems[0]?.json?.data?.items.length > 0;\n\n// Retrieve the ID of the first item if available\nconst firstItemId = hasItems ? inputItems[0].json.data.items[0].item.id : null;\n\nreturn { hasItems, firstItemId };\n"
+      },
+      "id": "94aa97bc-e969-45b6-a05d-8320907cbf83",
+      "name": "Check if person is in Pipedrive and output the ID",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        280,
+        0
+      ],
+      "typeVersion": 2,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.hasItems }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "e94a59f8-bea8-43f1-8965-bb6253b79056",
+      "name": "IF Person exists in Pipedrive",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        520,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "17e3b6e6-e092-4c80-b176-ccb9103f41e7",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1180,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "49bf6d75-c391-4fa4-af07-6ceeb98bb8e9",
+      "name": "Slack1",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        980,
+        -80
+      ]
     }
   ],
   "pinData": {},
@@ -51,8 +263,15 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2024-08-12T12:39:06.587Z",
+      "updatedAt": "2024-08-12T12:39:41.194Z",
+      "id": "mbLRzOgSsfYouIvX",
+      "name": "content production"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-13T06:27:41.922Z",
-  "versionId": "2287b78f-95d0-45bf-a17c-35e69b1d6bd1"
+  "updatedAt": "2024-08-13T06:50:00.000Z",
+  "versionId": "fa9c0864-98f3-4a44-a6ac-f1155dba3cf3"
 }

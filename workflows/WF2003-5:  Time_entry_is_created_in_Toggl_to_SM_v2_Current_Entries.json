@@ -246,17 +246,6 @@
         ]
       ]
     },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Compare Datasets": {
       "main": [
         [],
@@ -604,6 +593,17 @@
           }
         ]
       ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-08-09T20:10:33.530Z",
@@ -682,7 +682,7 @@
     {
       "parameters": {
         "content": "## SmartSuite",
-        "height": 329.3037901061815,
+        "height": 255.3135864498813,
         "width": 228.1849366795202
       },
       "id": "a46b55c5-db4e-43f7-b8c9-a9c9634932fe",
@@ -690,7 +690,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2653.5297176848408,
+        2660,
         560
       ]
     },
@@ -1008,7 +1008,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"in_progress\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.proj_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.proj_record_id }}\",\n  \"s4621e0408\": \"{{ $json.client_record_id }}\"\n}",
+        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.time_entry_id }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"in_progress\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.proj_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.proj_record_id }}\",\n  \"s4621e0408\": \"{{ $json.client_record_id }}\"\n}",
         "options": {
           "batching": {
             "batch": {
@@ -1522,21 +1522,6 @@
     },
     {
       "parameters": {
-        "mode": "combineBySql",
-        "numberInputs": 3,
-        "query": "WITH \n  client_ref AS \n  (\n  SELECT * FROM input1\n  ),\n  project as \n  (\n  select * from input3\n  ),\n  time_entry  AS\n  (\n  select\n    client_ref.id AS client_id, \n    client_ref.name AS client_name,\n    client_ref.record_id AS client_record_id,\n    project.record_id AS proj_record_id,\n    project.id AS project_id, \n    project.name AS proj_name,\n    input2.id AS time_entry_id,\n    input2.*\n  from input2\n    INNER JOIN project ON project.id = input2.project_id\n    LEFT JOIN client_ref ON client_ref.id = project.client_id\n  )\nselect * from time_entry;"
-      },
-      "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        1889.529717684841,
-        660
-      ]
-    },
-    {
-      "parameters": {
         "mergeByFields": {
           "values": [
             {
@@ -1625,8 +1610,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2413.5297176848408,
-        740
+        2340,
+        700
       ]
     },
     {
@@ -1645,15 +1630,15 @@
     },
     {
       "parameters": {
-        "amount": 60
+        "amount": 30
       },
       "id": "c442b7c3-5fe1-4c2e-a170-00a2d37336fe",
       "name": "Wait",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2673.5297176848408,
-        940
+        2520,
+        700
       ],
       "webhookId": "a6729ed2-d564-4df9-86e3-3efc184408d7"
     },
@@ -1664,8 +1649,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        440,
-        1660
+        -160,
+        1720
       ]
     },
     {
@@ -1677,8 +1662,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        720,
-        1560
+        120,
+        1620
       ]
     },
     {
@@ -1690,8 +1675,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        720,
-        1760
+        120,
+        1820
       ]
     },
     {
@@ -1701,8 +1686,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        1260,
-        1300
+        660,
+        1360
       ]
     },
     {
@@ -1723,8 +1708,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        4360,
-        1560
+        3740,
+        1620
       ]
     },
     {
@@ -1743,8 +1728,8 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        4360,
-        1760
+        3740,
+        1820
       ],
       "credentials": {
         "mattermostApi": {
@@ -1764,14 +1749,14 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1160,
-        1480
+        560,
+        1540
       ]
     },
     {
       "parameters": {
         "content": "## SmartSuite",
-        "height": 329.3037901061815,
+        "height": 240.99290187124268,
         "width": 228.1849366795202
       },
       "id": "03490ee1-df2f-4b00-99ec-6c2bba7f5732",
@@ -1779,8 +1764,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3380,
-        1600
+        2980,
+        1660
       ]
     },
     {
@@ -1804,8 +1789,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2020,
-        1800
+        1420,
+        1860
       ]
     },
     {
@@ -1815,8 +1800,8 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        1820,
-        1800
+        1220,
+        1860
       ]
     },
     {
@@ -1859,8 +1844,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2260,
-        1800
+        1660,
+        1860
       ]
     },
     {
@@ -1912,8 +1897,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2480,
-        1800
+        1880,
+        1860
       ]
     },
     {
@@ -1977,8 +1962,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2760,
-        1560
+        2160,
+        1620
       ]
     },
     {
@@ -2021,8 +2006,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2580,
-        1560
+        1980,
+        1620
       ]
     },
     {
@@ -2052,8 +2037,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3660,
-        1660
+        3040,
+        1720
       ]
     },
     {
@@ -2093,8 +2078,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        3880,
-        1660
+        3260,
+        1720
       ]
     },
     {
@@ -2125,8 +2110,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        2200,
-        1560
+        1600,
+        1620
       ]
     },
     {
@@ -2136,8 +2121,8 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        2400,
-        1560
+        1800,
+        1620
       ]
     },
     {
@@ -2165,8 +2150,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1660,
-        1800
+        1060,
+        1860
       ]
     },
     {
@@ -2190,8 +2175,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2000,
-        1560
+        1400,
+        1620
       ]
     },
     {
@@ -2203,8 +2188,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4100,
-        1660
+        3480,
+        1720
       ]
     },
     {
@@ -2334,8 +2319,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1416,
-        1680
+        816,
+        1740
       ]
     },
     {
@@ -2349,8 +2334,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        2956,
-        1680
+        2356,
+        1740
       ]
     },
     {
@@ -2371,8 +2356,8 @@
       "type": "n8n-nodes-base.compareDatasets",
       "typeVersion": 2.3,
       "position": [
-        980,
-        1660
+        380,
+        1720
       ]
     },
     {
@@ -2384,8 +2369,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        3180,
-        1680
+        2580,
+        1740
       ]
     },
     {
@@ -2395,8 +2380,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        3400,
-        1700
+        2800,
+        1760
       ]
     },
     {
@@ -2410,8 +2395,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -60,
-        1660
+        -660,
+        1720
       ]
     },
     {
@@ -2427,6 +2412,21 @@
       "position": [
         -1640,
         640
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "numberInputs": 3,
+        "query": "WITH \n  client_ref AS \n  (\n  SELECT * FROM input1\n  ),\n  project as \n  (\n  select * from input3\n  ),\n  time_entry  AS\n  (\n  select\n    client_ref.id AS client_id, \n    client_ref.name AS client_name,\n    client_ref.record_id AS client_record_id,\n    project.record_id AS proj_record_id,\n    project.id AS project_id, \n    project.name AS proj_name,\n    input2.id AS time_entry_id,\n    input2.*\n  from input2\n    INNER JOIN project ON project.id = input2.project_id\n    LEFT JOIN client_ref ON client_ref.id = project.client_id\n  )\nselect * from time_entry;"
+      },
+      "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1880,
+        660
       ]
     }
   ],
@@ -2462,6 +2462,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-13T09:57:28.000Z",
-  "versionId": "56bb3ebf-eafb-4508-81e9-f6016916a12f"
+  "updatedAt": "2024-08-13T12:01:22.000Z",
+  "versionId": "9b164a07-8910-429c-af14-f2b6cbbcb728"
 }

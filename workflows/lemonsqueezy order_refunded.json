@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-13T16:44:42.127Z",
+  "id": "EdfNxFsnVuu7dMAA",
+  "meta": null,
+  "name": "lemonsqueezy order_refunded",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-13T16:44:42.127Z",
+  "versionId": "7605d42c-1e37-4047-89d6-2d44f9f8ef74"
+}

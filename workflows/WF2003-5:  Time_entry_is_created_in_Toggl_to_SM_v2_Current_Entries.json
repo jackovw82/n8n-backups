@@ -729,7 +729,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1193.529717684841,
+        1200,
         780
       ],
       "credentials": {
@@ -1195,7 +1195,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -306.470282315159,
+        -300,
         740
       ]
     },
@@ -1455,7 +1455,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -6.470282315159011,
+        0,
         740
       ]
     },
@@ -1585,7 +1585,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -106.47028231515901,
+        -100,
         560
       ]
     },
@@ -2462,6 +2462,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-13T12:01:22.000Z",
-  "versionId": "9b164a07-8910-429c-af14-f2b6cbbcb728"
+  "updatedAt": "2024-08-14T14:34:58.000Z",
+  "versionId": "922bf01a-1046-4c6f-84d8-23acce185137"
 }

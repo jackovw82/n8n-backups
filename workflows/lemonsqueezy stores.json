@@ -11,6 +11,28 @@
           }
         ]
       ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "store_response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "store_response": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-08-13T18:49:14.242Z",
@@ -27,8 +49,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        980,
-        540
+        300,
+        460
       ]
     },
     {
@@ -57,8 +79,44 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1200,
-        540
+        500,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const jsonString = 'store_response'; // Your string here\nconst parsedData = JSON.parse(jsonString);\n\n// Now you can access the attributes\nconst type= type; // \"oCode360 Academy\"\nconst id = attributes.slug; // \"o360academy\"\nconst name = id; // \"oCode360 Academy\"\nconst slug = attributes.slug; // \"o360academy\"\nconst domain = attributes.domain; // \"o360academy.lemonsqueezy.com\"\nconst url = attributes.url; // \"https://o360academy.lemonsqueezy.com\"\nconst avatarUrl = attributes.avatar_url; // URL for the avatar\nconst plan = attributes.plan; // \"free\"\nconst country = attributes.country; // \"US\"\nconst countryNicename = attributes.country_nicename; // \"United States\"\nconst currency = attributes.currency; // \"USD\"\nconst totalSales = attributes.total_sales; // 0\nconst totalRevenue = attributes.total_revenue; // 0\nconst thirtyDaySales = attributes.thirty_day_sales; // 0\nconst thirtyDayRevenue = attributes.thirty_day_revenue; // 0\nconst createdAt = attributes.created_at; // \"2023-08-31T08:27:23.000000Z\"\nconst updatedAt = attributes.updated_at; // \"2023-08-31T08:27:23.000000Z\"\n"
+      },
+      "id": "75ab6764-038f-4d6b-ba59-1e45291dfff3",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "18b6eb9a-4d70-45d1-8c91-88ee0178737d",
+              "name": "store_response",
+              "value": "={{ $json.data.split(\"data\")[1].split(\"relationships\")[0] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8b048d03-f9c3-4fe6-8997-839a17220aa4",
+      "name": "store_response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        740,
+        460
       ]
     }
   ],
@@ -76,6 +134,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-13T18:49:14.242Z",
-  "versionId": "c0bf0b30-cb43-4587-9d51-7b05b0cfa9c2"
+  "updatedAt": "2024-08-14T08:00:04.000Z",
+  "versionId": "d188a750-0400-4335-9ca6-6153d24ff9fd"
 }

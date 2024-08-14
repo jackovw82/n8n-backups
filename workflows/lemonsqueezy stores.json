@@ -85,7 +85,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const jsonString = 'store_response'; // Your string here\nconst parsedData = JSON.parse(jsonString);\n\n// Now you can access the attributes\nconst type= type; // \"oCode360 Academy\"\nconst id = attributes.slug; // \"o360academy\"\nconst name = id; // \"oCode360 Academy\"\nconst slug = attributes.slug; // \"o360academy\"\nconst domain = attributes.domain; // \"o360academy.lemonsqueezy.com\"\nconst url = attributes.url; // \"https://o360academy.lemonsqueezy.com\"\nconst avatarUrl = attributes.avatar_url; // URL for the avatar\nconst plan = attributes.plan; // \"free\"\nconst country = attributes.country; // \"US\"\nconst countryNicename = attributes.country_nicename; // \"United States\"\nconst currency = attributes.currency; // \"USD\"\nconst totalSales = attributes.total_sales; // 0\nconst totalRevenue = attributes.total_revenue; // 0\nconst thirtyDaySales = attributes.thirty_day_sales; // 0\nconst thirtyDayRevenue = attributes.thirty_day_revenue; // 0\nconst createdAt = attributes.created_at; // \"2023-08-31T08:27:23.000000Z\"\nconst updatedAt = attributes.updated_at; // \"2023-08-31T08:27:23.000000Z\"\n"
+        "jsCode": "// Get the string from the previous node's output\nconst jsonString = $node[\"store_response\"].json[\"response\"];\n\n// Parse the string into a JSON object\nlet parsedData;\ntry {\n  parsedData = JSON.parse(jsonString);\n} catch (error) {\n  return [{ error: \"Invalid JSON format\" }];\n}\n\n// Extract the attributes\nconst attributes = parsedData.attributes;\n\n// Return the extracted attributes\nreturn [\n  {\n    json: {\n      name: attributes.name,\n      slug: attributes.slug,\n      domain: attributes.domain,\n      url: attributes.url,\n      avatarUrl: attributes.avatar_url,\n      plan: attributes.plan,\n      country: attributes.country,\n      countryNicename: attributes.country_nicename,\n      currency: attributes.currency,\n      totalSales: attributes.total_sales,\n      totalRevenue: attributes.total_revenue,\n      thirtyDaySales: attributes.thirty_day_sales,\n      thirtyDayRevenue: attributes.thirty_day_revenue,\n      createdAt: attributes.created_at,\n      updatedAt: attributes.updated_at,\n    },\n  },\n];\n"
       },
       "id": "75ab6764-038f-4d6b-ba59-1e45291dfff3",
       "name": "Code",
@@ -134,6 +134,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-14T08:00:04.000Z",
-  "versionId": "d188a750-0400-4335-9ca6-6153d24ff9fd"
+  "updatedAt": "2024-08-14T14:25:59.000Z",
+  "versionId": "c7414e31-32b8-4a7c-a750-8be516ca038c"
 }

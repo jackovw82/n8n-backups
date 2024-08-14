@@ -27,6 +27,17 @@
       "main": [
         [
           {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
             "node": "store_response",
             "type": "main",
             "index": 0
@@ -72,7 +83,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        740,
+        660,
         460
       ]
     },
@@ -121,6 +132,19 @@
         80,
         460
       ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const jsonData = `{\n  \"meta\": {\n    \"page\": {\n      \"currentPage\": 1,\n      \"from\": 1,\n      \"lastPage\": 1,\n      \"perPage\": 10,\n      \"to\": 2,\n      \"total\": 2\n    }\n  },\n  \"jsonapi\": {\n    \"version\": \"1.0\"\n  },\n  \"links\": {\n    \"first\": \"https://api.lemonsqueezy.com/v1/stores?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=name\",\n    \"last\": \"https://api.lemonsqueezy.com/v1/stores?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=name\"\n  },\n  \"data\": [\n    {\n      \"type\": \"stores\",\n      \"id\": \"42137\",\n      \"attributes\": {\n        \"name\": \"oCode360 Academy\",\n        \"slug\": \"o360academy\",\n        \"domain\": \"o360academy.lemonsqueezy.com\",\n        \"url\": \"https://o360academy.lemonsqueezy.com\",\n        \"avatar_url\": \"https://lemonsqueezy.imgix.net/avatars/stores/42137/TUTPmmVUmWLMFfj62vlBJsPYD0Wv5SX3Ok16UQnN.jpg?fit=clip&h=100&ixlib=php-3.3.1&w=100&s=627c9e673c4fb28dacd2f691e7a999f3\",\n        \"plan\": \"free\",\n        \"country\": \"US\",\n        \"country_nicename\": \"United States\",\n        \"currency\": \"USD\",\n        \"total_sales\": 0,\n        \"total_revenue\": 0,\n        \"thirty_day_sales\": 0,\n        \"thirty_day_revenue\": 0,\n        \"created_at\": \"2023-08-31T08:27:23.000000Z\",\n        \"updated_at\": \"2023-08-31T08:27:23.000000Z\"\n      },\n      \"relationships\": {\n        \"products\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/products\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/products\"\n          }\n        },\n        \"orders\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/orders\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/orders\"\n          }\n        },\n        \"subscriptions\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/subscriptions\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/subscriptions\"\n          }\n        },\n        \"discounts\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/discounts\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/discounts\"\n          }\n        },\n        \"license-keys\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/license-keys\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/license-keys\"\n          }\n        },\n        \"webhooks\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/webhooks\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/webhooks\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137\"\n      }\n    },\n    {\n      \"type\": \"stores\",\n      \"id\": \"42138\",\n      \"attributes\": {\n        \"name\": \"oCode360 Academy\",\n        \"slug\": \"ocode360\",\n        \"domain\": \"ocode360.lemonsqueezy.com\",\n        \"url\": \"https://ocode360.lemonsqueezy.com\",\n        \"avatar_url\": \"https://eu.ui-avatars.com/api/?name=oCode360+Academy&length=1&background=F53D6B&color=fff&size=64&rounded=true\",\n        \"plan\": \"free\",\n        \"country\": \"US\",\n        \"country_nicename\": \"United States\",\n        \"currency\": \"USD\",\n        \"total_sales\": 0,\n        \"total_revenue\": 0,\n        \"thirty_day_sales\": 0,\n        \"thirty_day_revenue\": 0,\n        \"created_at\": \"2023-08-31T08:30:58.000000Z\",\n        \"updated_at\": \"2023-08-31T08:30:58.000000Z\"\n      },\n      \"relationships\": {\n        \"products\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/products\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/products\"\n          }\n        },\n        \"orders\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/orders\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/orders\"\n          }\n        },\n        \"subscriptions\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/subscriptions\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/subscriptions\"\n          }\n        },\n        \"discounts\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/discounts\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/discounts\"\n          }\n        },\n        \"license-keys\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/license-keys\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/license-keys\"\n          }\n        },\n        \"webhooks\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/webhooks\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/webhooks\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138\"\n      }\n    }\n  ]\n}`;\n\n// Convert the string into a JavaScript object\nconst parsedData = JSON.parse(jsonData);\n\nconsole.log(parsedData);\n"
+      },
+      "id": "e2f1e494-076e-4af6-b9c2-c05136593e7a",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        300,
+        460
+      ]
     }
   ],
   "pinData": {},
@@ -137,6 +161,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-14T16:22:43.000Z",
-  "versionId": "9c62c3e7-1f94-4968-8c04-ee735e2aa557"
+  "updatedAt": "2024-08-14T17:16:09.000Z",
+  "versionId": "48eb30a4-3382-47b6-83ce-0bc00fe7d949"
 }

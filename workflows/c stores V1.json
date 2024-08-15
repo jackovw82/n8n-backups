@@ -1,0 +1,322 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "get_products",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_products": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Check Store Entry",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create product in SM": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update product in SM1": {
+      "main": [
+        [
+          {
+            "node": "Slack1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create product in SM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update product in SM1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Store Entry": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-15T14:05:41.892Z",
+  "id": "PMdZ1mudzA01YWgV",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "c stores V1",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8fb4e71d-ed64-4efb-a2dd-37b4c138fe1c",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1080,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.lemonsqueezy.com/v1/stores",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.api+json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGQ1OWNlZi1kYmI4LTRlYTUtYjE3OC1kMjU0MGZjZDY5MTkiLCJqdGkiOiIyNDU4NjVlYTk3MmFkMGUzYmFjMTliNDlhMDYxNmE2OGY5OTExNjc2NDUwMmM1NWU0MzcxMzQ1M2U0Y2U5OGEwYjI2ZWI2NjgxOWFjMjNkYSIsImlhdCI6MTcyMzU2NzQwOS4zOTkxMDQsIm5iZiI6MTcyMzU2NzQwOS4zOTkxMDYsImV4cCI6MjAzOTEwMDIwOS4zNTk1NzMsInN1YiI6IjEyMDg5NTMiLCJzY29wZXMiOltdfQ.qs-XNkplfkn8msFkHnMn_RmVWWG2Gou0n_GVMuQU0hXwZmzRqRiLR6Rei88fKqWScCNOL9OfLYnSawvSlAnF3u1ZSR2FYLMrh8Iyc8aeT4v7Bm7WtmXiK4WLD3Ti4GMqx0-n9MoJRuHa4ZhNBAIjOw2B8t1aNZJcQtccpeLTEkFogyWprf7LaYbcvA5q6nTsYaCAj6kZ5tZHQppqQ1UsR6rSzCmEsVL8cxI_J6DyqRpmZ9I-pQJa2fLdWeB8QeGd7Bt98b9XyYMtWXwDqj4tUUoAfxmlGqY4Be6At1HmjGaBWpvt0-TsGPmHGJhLCqSPnaC-26wPiZn1fUkVAeT9VzrIWIVaUHFdB1zggcGU5C4Nb73vQ60b9YXm8KogwbrGLRHbThW73KqvK8Bc0_MwjNr8siistjsWCYWN7OuzRmOVoD_Rpzyx8A-O_C4unLIczii7ijH8XuYn58ZNvZkdp2s1QI1_Xlx-K-tAB24jQ7oUCIjf9o-n7knBQrpIJyjj"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fe99f339-57f4-470d-96ea-fbb195899322",
+      "name": "get_products",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -860,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const contentString = items[0].json.data;\nlet parsedContent;\n\ntry {\n    parsedContent = JSON.parse(contentString);\n} catch (e) {\n    return [{ json: { error: 'Invalid JSON format' } }];\n}\n\nreturn [\n    {\n        json: parsedContent\n    }\n];\n"
+      },
+      "id": "b6277946-597b-4cfc-8bd8-c4c3e6ec9009",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -660,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "726b0747-537c-4755-8211-4f8df3cfde6d",
+      "name": "Create product in SM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        340,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "dbe4781c-38ed-49f2-a986-26cbd6d2e418",
+      "name": "Update product in SM1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        340,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "e3378d85-6cf9-4314-82c5-b758ee54f592",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        560,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "d5eb821a-26ed-4717-b005-5371093f99ce",
+      "name": "Slack1",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        560,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "15f4531e-96e1-4a99-9307-5d7beabbca5b",
+              "leftValue": "={{ $json.data[0].id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6d218e6c-2658-4a41-b3c2-99ee911e6305",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        80,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66bba94fe555519ad8cb2b58/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "25"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e4317c42-c8a2-4443-b3f9-dc185a2c8f0d",
+      "name": "Check Store Entry",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -380,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "items",
+        "options": {}
+      },
+      "id": "32901911-cfbb-4ddc-8ada-413beddecf1f",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        220
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-15T14:29:23.000Z",
+  "versionId": "0d6f8f8f-4b68-4e0f-a63a-e9bb259841eb"
+}

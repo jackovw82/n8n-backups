@@ -44,7 +44,7 @@
     },
     {
       "parameters": {
-        "url": "https://api.lemonsqueezy.com/v1/stores",
+        "url": "https://api.lemonsqueezy.com/v1/orders",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -101,6 +101,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-13T19:28:40.000Z",
-  "versionId": "357d20ff-9a51-4209-a3c3-2f2327769fe1"
+  "updatedAt": "2024-08-15T13:01:59.000Z",
+  "versionId": "0db5ff7f-e2b4-4879-b949-9627661241bf"
 }

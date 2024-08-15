@@ -39,28 +39,6 @@
         ]
       ]
     },
-    "Create product in SM": {
-      "main": [
-        [
-          {
-            "node": "Link product to store in SM",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Update product in SM1": {
-      "main": [
-        [
-          {
-            "node": "Link product to store in SM1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Link product to store in SM": {
       "main": [
         [
@@ -98,14 +76,14 @@
       "main": [
         [
           {
-            "node": "Create product in SM",
+            "node": "Create store in SM1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Update product in SM1",
+            "node": "Create store in SM",
             "type": "main",
             "index": 0
           }
@@ -117,6 +95,28 @@
         [
           {
             "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create store in SM1": {
+      "main": [
+        [
+          {
+            "node": "Link product to store in SM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create store in SM": {
+      "main": [
+        [
+          {
+            "node": "Link product to store in SM1",
             "type": "main",
             "index": 0
           }
@@ -186,38 +186,12 @@
       "parameters": {
         "options": {}
       },
-      "id": "73159d08-0a24-4c93-beee-f16925cd940d",
-      "name": "Create product in SM",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        420,
-        -80
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "ffb222cd-6267-4dca-ac1a-d898e557aec9",
-      "name": "Update product in SM1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        420,
-        160
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
       "id": "45dc75f6-66dc-4e12-b397-3a6f75ade64a",
       "name": "Link product to store in SM",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        660,
+        640,
         -80
       ]
     },
@@ -230,8 +204,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        660,
-        160
+        640,
+        140
       ]
     },
     {
@@ -243,7 +217,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        880,
+        840,
         -80
       ]
     },
@@ -256,8 +230,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        880,
-        160
+        840,
+        140
       ]
     },
     {
@@ -348,6 +322,82 @@
         -300,
         -120
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66bba94fe555519ad8cb2b58/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"description\": \"\",\n  \"stoplight_status\": \"1\",\n  \"status\": {\n    \"value\": \"in_progress\"\n  },\n  \"s63b368130\": \"{{ $json.data[0].type }}\", \n  \"s76dcb9114\": \"{{ $json.data[0].id }}\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\"\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 5,
+              "batchInterval": 120
+            }
+          }
+        }
+      },
+      "id": "1180c7bf-669c-489b-87ec-16c3d261a776",
+      "name": "Create store in SM1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        420,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66bba94fe555519ad8cb2b58/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"description\": \"{{ $('Split Out1').item.json.items[0].sb3e60fbb9 }}\",\n  \"stoplight_status\": \"1\",\n  \"status\": {\n    \"value\": \"in_progress\"\n  },\n  \"s63b368130\": \"{{ $json.data[0].type }}\", \n  \"s76dcb9114\": \"{{ $json.data[0].id }}\",\n  \"sb3e60fbb9\": \"{{ $json.data[0].attributes.name }}\",\n  \"s19a2a7b8d\": \"{{ $json.data[0].attributes.slug }}\",\n  \"s3b4bab951\": \"{{ $json.data[0].attributes.domain }}\",\n  \"scce31f1d3\": \"{{ $json.data[0].attributes.url }}\",\n  \"sf28a35493\": \"{{ $json.data[0].attributes.avatar_url }}\",\n  \"s0106e510b\": \"{{ $json.data[0].attributes.plan }}\",\n  \"s6613b1b81\": \"{{ $json.data[0].attributes.country }}\",\n  \"s6cd3987a1\": \"{{ $json.data[0].attributes.country_nicename }} \",\n  \"sb4b776e0d\": \"{{ $json.data[0].attributes.currency }}\",\n  \"sa9485111e\": \"{{ $json.data[0].attributes.total_sales }}\",\n  \"s6e33a70fd\": \"{{ $json.data[0].attributes.total_revenue }}\",\n  \"sc83b8a831\": \" {{ $json.data[0].attributes.thirty_day_sales }}\",\n  \"s5c8e857f5\": \"{{ $json.data[0].attributes.thirty_day_revenue }}\",\n  \"s438ef87a1\": \"{{ $json.data[0].attributes.created_at }}\",\n  \"s7e9f73ff3\": \"{{ $json.data[0].attributes.updated_at }}\"\n}\n            ",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 5,
+              "batchInterval": 120
+            }
+          }
+        }
+      },
+      "id": "500ee14d-5b50-46f3-a159-d644be31319b",
+      "name": "Create store in SM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        420,
+        140
+      ]
     }
   ],
   "pinData": {},
@@ -364,6 +414,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-15T16:56:54.000Z",
-  "versionId": "bc072066-1a4e-4451-a074-8f4b38255d6e"
+  "updatedAt": "2024-08-15T19:49:29.000Z",
+  "versionId": "25d95d84-0964-4cce-b750-167900aa1658"
 }

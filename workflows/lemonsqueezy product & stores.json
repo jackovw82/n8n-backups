@@ -1,0 +1,166 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "get_products",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "store_response": {
+      "main": [
+        [
+          {
+            "node": "convert_stdout_to_json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "store_response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_products": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-13T18:49:14.242Z",
+  "id": "iv2j254t8K5fLvc6",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "lemonsqueezy product & stores",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "860181e1-bcce-47ad-941c-42c344602c71",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "18b6eb9a-4d70-45d1-8c91-88ee0178737d",
+              "name": "store_response",
+              "value": "={{ $json.data.split(\"data\")[1].split(\"relationships\")[0] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8b048d03-f9c3-4fe6-8997-839a17220aa4",
+      "name": "store_response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        540,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const parsedStdout = JSON.parse($input.item.json.store_response);\n\nreturn {\n  json: {\n    result: parsedStdout\n  }\n};"
+      },
+      "id": "75ab6764-038f-4d6b-ba59-1e45291dfff3",
+      "name": "convert_stdout_to_json",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        840,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const jsonData = `{\n  \"meta\": {\n    \"page\": {\n      \"currentPage\": 1,\n      \"from\": 1,\n      \"lastPage\": 1,\n      \"perPage\": 10,\n      \"to\": 2,\n      \"total\": 2\n    }\n  },\n  \"jsonapi\": {\n    \"version\": \"1.0\"\n  },\n  \"links\": {\n    \"first\": \"https://api.lemonsqueezy.com/v1/stores?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=name\",\n    \"last\": \"https://api.lemonsqueezy.com/v1/stores?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=name\"\n  },\n  \"data\": [\n    {\n      \"type\": \"stores\",\n      \"id\": \"42137\",\n      \"attributes\": {\n        \"name\": \"oCode360 Academy\",\n        \"slug\": \"o360academy\",\n        \"domain\": \"o360academy.lemonsqueezy.com\",\n        \"url\": \"https://o360academy.lemonsqueezy.com\",\n        \"avatar_url\": \"https://lemonsqueezy.imgix.net/avatars/stores/42137/TUTPmmVUmWLMFfj62vlBJsPYD0Wv5SX3Ok16UQnN.jpg?fit=clip&h=100&ixlib=php-3.3.1&w=100&s=627c9e673c4fb28dacd2f691e7a999f3\",\n        \"plan\": \"free\",\n        \"country\": \"US\",\n        \"country_nicename\": \"United States\",\n        \"currency\": \"USD\",\n        \"total_sales\": 0,\n        \"total_revenue\": 0,\n        \"thirty_day_sales\": 0,\n        \"thirty_day_revenue\": 0,\n        \"created_at\": \"2023-08-31T08:27:23.000000Z\",\n        \"updated_at\": \"2023-08-31T08:27:23.000000Z\"\n      },\n      \"relationships\": {\n        \"products\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/products\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/products\"\n          }\n        },\n        \"orders\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/orders\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/orders\"\n          }\n        },\n        \"subscriptions\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/subscriptions\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/subscriptions\"\n          }\n        },\n        \"discounts\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/discounts\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/discounts\"\n          }\n        },\n        \"license-keys\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/license-keys\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/license-keys\"\n          }\n        },\n        \"webhooks\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/webhooks\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/webhooks\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137\"\n      }\n    },\n    {\n      \"type\": \"stores\",\n      \"id\": \"42138\",\n      \"attributes\": {\n        \"name\": \"oCode360 Academy\",\n        \"slug\": \"ocode360\",\n        \"domain\": \"ocode360.lemonsqueezy.com\",\n        \"url\": \"https://ocode360.lemonsqueezy.com\",\n        \"avatar_url\": \"https://eu.ui-avatars.com/api/?name=oCode360+Academy&length=1&background=F53D6B&color=fff&size=64&rounded=true\",\n        \"plan\": \"free\",\n        \"country\": \"US\",\n        \"country_nicename\": \"United States\",\n        \"currency\": \"USD\",\n        \"total_sales\": 0,\n        \"total_revenue\": 0,\n        \"thirty_day_sales\": 0,\n        \"thirty_day_revenue\": 0,\n        \"created_at\": \"2023-08-31T08:30:58.000000Z\",\n        \"updated_at\": \"2023-08-31T08:30:58.000000Z\"\n      },\n      \"relationships\": {\n        \"products\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/products\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/products\"\n          }\n        },\n        \"orders\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/orders\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/orders\"\n          }\n        },\n        \"subscriptions\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/subscriptions\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/subscriptions\"\n          }\n        },\n        \"discounts\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/discounts\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/discounts\"\n          }\n        },\n        \"license-keys\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/license-keys\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/license-keys\"\n          }\n        },\n        \"webhooks\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/webhooks\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/webhooks\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138\"\n      }\n    }\n  ]\n}`;\n\n// Convert the string into a JavaScript object\nconst parsedData = JSON.parse(jsonData);\n\nconsole.log(parsedData);\n"
+      },
+      "id": "e2f1e494-076e-4af6-b9c2-c05136593e7a",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        300,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.lemonsqueezy.com/v1/products?include=variants",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.api+json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NGQ1OWNlZi1kYmI4LTRlYTUtYjE3OC1kMjU0MGZjZDY5MTkiLCJqdGkiOiIyNDU4NjVlYTk3MmFkMGUzYmFjMTliNDlhMDYxNmE2OGY5OTExNjc2NDUwMmM1NWU0MzcxMzQ1M2U0Y2U5OGEwYjI2ZWI2NjgxOWFjMjNkYSIsImlhdCI6MTcyMzU2NzQwOS4zOTkxMDQsIm5iZiI6MTcyMzU2NzQwOS4zOTkxMDYsImV4cCI6MjAzOTEwMDIwOS4zNTk1NzMsInN1YiI6IjEyMDg5NTMiLCJzY29wZXMiOltdfQ.qs-XNkplfkn8msFkHnMn_RmVWWG2Gou0n_GVMuQU0hXwZmzRqRiLR6Rei88fKqWScCNOL9OfLYnSawvSlAnF3u1ZSR2FYLMrh8Iyc8aeT4v7Bm7WtmXiK4WLD3Ti4GMqx0-n9MoJRuHa4ZhNBAIjOw2B8t1aNZJcQtccpeLTEkFogyWprf7LaYbcvA5q6nTsYaCAj6kZ5tZHQppqQ1UsR6rSzCmEsVL8cxI_J6DyqRpmZ9I-pQJa2fLdWeB8QeGd7Bt98b9XyYMtWXwDqj4tUUoAfxmlGqY4Be6At1HmjGaBWpvt0-TsGPmHGJhLCqSPnaC-26wPiZn1fUkVAeT9VzrIWIVaUHFdB1zggcGU5C4Nb73vQ60b9YXm8KogwbrGLRHbThW73KqvK8Bc0_MwjNr8siistjsWCYWN7OuzRmOVoD_Rpzyx8A-O_C4unLIczii7ijH8XuYn58ZNvZkdp2s1QI1_Xlx-K-tAB24jQ7oUCIjf9o-n7knBQrpIJyjj"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "55641ff5-2d6c-467a-afaf-4bb07938553c",
+      "name": "get_products",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        80,
+        460
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-11T09:05:52.167Z",
+      "updatedAt": "2024-08-11T09:14:06.583Z",
+      "id": "zlJZt3Fo1ZYAvCNp",
+      "name": "sales & marketing"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-15T08:11:58.000Z",
+  "versionId": "e8c6ebdd-d5ca-4871-bab5-58e8faff9377"
+}

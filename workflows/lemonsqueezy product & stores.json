@@ -12,11 +12,22 @@
         ]
       ]
     },
-    "store_response": {
+    "get_products": {
       "main": [
         [
           {
-            "node": "convert_stdout_to_json",
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse JSON": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
             "type": "main",
             "index": 0
           }
@@ -27,18 +38,7 @@
       "main": [
         [
           {
-            "node": "store_response",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "get_products": {
-      "main": [
-        [
-          {
-            "node": "Code",
+            "node": "Parse JSON",
             "type": "main",
             "index": 0
           }
@@ -66,56 +66,7 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "18b6eb9a-4d70-45d1-8c91-88ee0178737d",
-              "name": "store_response",
-              "value": "={{ $json.data.split(\"data\")[1].split(\"relationships\")[0] }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "8b048d03-f9c3-4fe6-8997-839a17220aa4",
-      "name": "store_response",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        540,
-        460
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "const parsedStdout = JSON.parse($input.item.json.store_response);\n\nreturn {\n  json: {\n    result: parsedStdout\n  }\n};"
-      },
-      "id": "75ab6764-038f-4d6b-ba59-1e45291dfff3",
-      "name": "convert_stdout_to_json",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        840,
-        460
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "const jsonData = `{\n  \"meta\": {\n    \"page\": {\n      \"currentPage\": 1,\n      \"from\": 1,\n      \"lastPage\": 1,\n      \"perPage\": 10,\n      \"to\": 2,\n      \"total\": 2\n    }\n  },\n  \"jsonapi\": {\n    \"version\": \"1.0\"\n  },\n  \"links\": {\n    \"first\": \"https://api.lemonsqueezy.com/v1/stores?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=name\",\n    \"last\": \"https://api.lemonsqueezy.com/v1/stores?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=name\"\n  },\n  \"data\": [\n    {\n      \"type\": \"stores\",\n      \"id\": \"42137\",\n      \"attributes\": {\n        \"name\": \"oCode360 Academy\",\n        \"slug\": \"o360academy\",\n        \"domain\": \"o360academy.lemonsqueezy.com\",\n        \"url\": \"https://o360academy.lemonsqueezy.com\",\n        \"avatar_url\": \"https://lemonsqueezy.imgix.net/avatars/stores/42137/TUTPmmVUmWLMFfj62vlBJsPYD0Wv5SX3Ok16UQnN.jpg?fit=clip&h=100&ixlib=php-3.3.1&w=100&s=627c9e673c4fb28dacd2f691e7a999f3\",\n        \"plan\": \"free\",\n        \"country\": \"US\",\n        \"country_nicename\": \"United States\",\n        \"currency\": \"USD\",\n        \"total_sales\": 0,\n        \"total_revenue\": 0,\n        \"thirty_day_sales\": 0,\n        \"thirty_day_revenue\": 0,\n        \"created_at\": \"2023-08-31T08:27:23.000000Z\",\n        \"updated_at\": \"2023-08-31T08:27:23.000000Z\"\n      },\n      \"relationships\": {\n        \"products\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/products\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/products\"\n          }\n        },\n        \"orders\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/orders\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/orders\"\n          }\n        },\n        \"subscriptions\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/subscriptions\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/subscriptions\"\n          }\n        },\n        \"discounts\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/discounts\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/discounts\"\n          }\n        },\n        \"license-keys\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/license-keys\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/license-keys\"\n          }\n        },\n        \"webhooks\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/webhooks\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/webhooks\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137\"\n      }\n    },\n    {\n      \"type\": \"stores\",\n      \"id\": \"42138\",\n      \"attributes\": {\n        \"name\": \"oCode360 Academy\",\n        \"slug\": \"ocode360\",\n        \"domain\": \"ocode360.lemonsqueezy.com\",\n        \"url\": \"https://ocode360.lemonsqueezy.com\",\n        \"avatar_url\": \"https://eu.ui-avatars.com/api/?name=oCode360+Academy&length=1&background=F53D6B&color=fff&size=64&rounded=true\",\n        \"plan\": \"free\",\n        \"country\": \"US\",\n        \"country_nicename\": \"United States\",\n        \"currency\": \"USD\",\n        \"total_sales\": 0,\n        \"total_revenue\": 0,\n        \"thirty_day_sales\": 0,\n        \"thirty_day_revenue\": 0,\n        \"created_at\": \"2023-08-31T08:30:58.000000Z\",\n        \"updated_at\": \"2023-08-31T08:30:58.000000Z\"\n      },\n      \"relationships\": {\n        \"products\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/products\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/products\"\n          }\n        },\n        \"orders\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/orders\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/orders\"\n          }\n        },\n        \"subscriptions\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/subscriptions\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/subscriptions\"\n          }\n        },\n        \"discounts\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/discounts\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/discounts\"\n          }\n        },\n        \"license-keys\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/license-keys\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/license-keys\"\n          }\n        },\n        \"webhooks\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/webhooks\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/webhooks\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138\"\n      }\n    }\n  ]\n}`;\n\n// Convert the string into a JavaScript object\nconst parsedData = JSON.parse(jsonData);\n\nconsole.log(parsedData);\n"
-      },
-      "id": "e2f1e494-076e-4af6-b9c2-c05136593e7a",
-      "name": "Code",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        300,
-        460
-      ]
-    },
-    {
-      "parameters": {
-        "url": "https://api.lemonsqueezy.com/v1/products?include=variants",
+        "url": "https://api.lemonsqueezy.com/v1/products?include=store",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -145,6 +96,56 @@
         80,
         460
       ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "715b636e-d0dc-4196-a31b-f900797466db",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "de96e5ae-2d0a-4593-b18f-a7e2370fab9c",
+      "name": "Parse JSON",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        540,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "responseJSON",
+        "options": {}
+      },
+      "id": "9630cd6b-a03e-47cd-9db1-ae4048604050",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        760,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Step 1: Get the outer JSON string from the previous node's output\nconst outerJsonString = $input.first().json.data;\n\n// Step 2: Parse the outer JSON string to access the nested JSON string\nlet outerParsedData;\ntry {\n  outerParsedData = JSON.parse(outerJsonString);\n} catch (error) {\n  return [{ json: { error: \"Invalid outer JSON format: \" + error.message } }];\n}\n\n// Step 3: Parse the inner JSON string (nested data)\nlet innerParsedData;\ntry {\n  innerParsedData = JSON.parse(outerParsedData.data);\n} catch (error) {\n  return [{ json: { error: \"Invalid inner JSON format: \" + error.message } }];\n}\n\n// Step 4: Return the un-nested data so that it can be used in further workflow steps\nreturn [\n  {\n    json: innerParsedData\n  }\n];\n"
+      },
+      "id": "01dffe1e-c4b9-40fb-8748-a74b639561b9",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        300,
+        460
+      ]
     }
   ],
   "pinData": {},
@@ -161,6 +162,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-15T08:11:58.000Z",
-  "versionId": "e8c6ebdd-d5ca-4871-bab5-58e8faff9377"
+  "updatedAt": "2024-08-15T09:28:17.000Z",
+  "versionId": "facc509b-32ea-4467-9ea3-d026a424e92e"
 }

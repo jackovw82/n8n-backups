@@ -5,25 +5,14 @@
       "main": [
         [
           {
-            "node": "store_response1",
+            "node": "get_products",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "store_response": {
-      "main": [
-        [
-          {
-            "node": "convert_stdout_to_json",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "store_response1": {
+    "get_products": {
       "main": [
         [
           {
@@ -38,7 +27,131 @@
       "main": [
         [
           {
-            "node": "store_response",
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Check if product exist1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if product exist": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create product in SM": {
+      "main": [
+        [
+          {
+            "node": "Link product to store in SM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update product in SM1": {
+      "main": [
+        [
+          {
+            "node": "Link product to store in SM1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Link product to store in SM": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Link product to store in SM1": {
+      "main": [
+        [
+          {
+            "node": "Slack1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if product exist1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Check if product exist",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create store  in SM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Create product in SM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update product in SM1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create store  in SM": {
+      "main": [
+        [
+          {
+            "node": "Check if product exist",
             "type": "main",
             "index": 0
           }
@@ -46,8 +159,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-13T18:49:14.242Z",
-  "id": "iv2j254t8K5fLvc6",
+  "createdAt": "2024-08-15T14:02:27.869Z",
+  "id": "edIy9fiIHNSer4jE",
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -55,54 +168,18 @@
   "nodes": [
     {
       "parameters": {},
-      "id": "860181e1-bcce-47ad-941c-42c344602c71",
+      "id": "aaa61da9-13f4-40e5-bbc7-a580d059c4b7",
       "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -160,
-        460
+        -1120,
+        380
       ]
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "18b6eb9a-4d70-45d1-8c91-88ee0178737d",
-              "name": "store_response",
-              "value": "={{ $json.data.split(\"data\")[1].split(\"relationships\")[0] }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "8b048d03-f9c3-4fe6-8997-839a17220aa4",
-      "name": "store_response",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        660,
-        460
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "const parsedStdout = JSON.parse($input.item.json.store_response);\n\nreturn {\n  json: {\n    result: parsedStdout\n  }\n};"
-      },
-      "id": "75ab6764-038f-4d6b-ba59-1e45291dfff3",
-      "name": "convert_stdout_to_json",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        960,
-        460
-      ]
-    },
-    {
-      "parameters": {
-        "url": "https://api.lemonsqueezy.com/v1/stores",
+        "url": "https://api.lemonsqueezy.com/v1/products?include=store",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -116,34 +193,458 @@
             }
           ]
         },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {}
-          ]
-        },
         "options": {}
       },
-      "id": "55641ff5-2d6c-467a-afaf-4bb07938553c",
-      "name": "store_response1",
+      "id": "1d6cb5f8-ca12-4c7d-9fa8-8e47c5a1552e",
+      "name": "get_products",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        80,
-        460
+        -880,
+        380
       ]
     },
     {
       "parameters": {
-        "jsCode": "const jsonData = `{\n  \"meta\": {\n    \"page\": {\n      \"currentPage\": 1,\n      \"from\": 1,\n      \"lastPage\": 1,\n      \"perPage\": 10,\n      \"to\": 2,\n      \"total\": 2\n    }\n  },\n  \"jsonapi\": {\n    \"version\": \"1.0\"\n  },\n  \"links\": {\n    \"first\": \"https://api.lemonsqueezy.com/v1/stores?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=name\",\n    \"last\": \"https://api.lemonsqueezy.com/v1/stores?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=name\"\n  },\n  \"data\": [\n    {\n      \"type\": \"stores\",\n      \"id\": \"42137\",\n      \"attributes\": {\n        \"name\": \"oCode360 Academy\",\n        \"slug\": \"o360academy\",\n        \"domain\": \"o360academy.lemonsqueezy.com\",\n        \"url\": \"https://o360academy.lemonsqueezy.com\",\n        \"avatar_url\": \"https://lemonsqueezy.imgix.net/avatars/stores/42137/TUTPmmVUmWLMFfj62vlBJsPYD0Wv5SX3Ok16UQnN.jpg?fit=clip&h=100&ixlib=php-3.3.1&w=100&s=627c9e673c4fb28dacd2f691e7a999f3\",\n        \"plan\": \"free\",\n        \"country\": \"US\",\n        \"country_nicename\": \"United States\",\n        \"currency\": \"USD\",\n        \"total_sales\": 0,\n        \"total_revenue\": 0,\n        \"thirty_day_sales\": 0,\n        \"thirty_day_revenue\": 0,\n        \"created_at\": \"2023-08-31T08:27:23.000000Z\",\n        \"updated_at\": \"2023-08-31T08:27:23.000000Z\"\n      },\n      \"relationships\": {\n        \"products\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/products\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/products\"\n          }\n        },\n        \"orders\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/orders\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/orders\"\n          }\n        },\n        \"subscriptions\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/subscriptions\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/subscriptions\"\n          }\n        },\n        \"discounts\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/discounts\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/discounts\"\n          }\n        },\n        \"license-keys\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/license-keys\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/license-keys\"\n          }\n        },\n        \"webhooks\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42137/webhooks\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137/relationships/webhooks\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"https://api.lemonsqueezy.com/v1/stores/42137\"\n      }\n    },\n    {\n      \"type\": \"stores\",\n      \"id\": \"42138\",\n      \"attributes\": {\n        \"name\": \"oCode360 Academy\",\n        \"slug\": \"ocode360\",\n        \"domain\": \"ocode360.lemonsqueezy.com\",\n        \"url\": \"https://ocode360.lemonsqueezy.com\",\n        \"avatar_url\": \"https://eu.ui-avatars.com/api/?name=oCode360+Academy&length=1&background=F53D6B&color=fff&size=64&rounded=true\",\n        \"plan\": \"free\",\n        \"country\": \"US\",\n        \"country_nicename\": \"United States\",\n        \"currency\": \"USD\",\n        \"total_sales\": 0,\n        \"total_revenue\": 0,\n        \"thirty_day_sales\": 0,\n        \"thirty_day_revenue\": 0,\n        \"created_at\": \"2023-08-31T08:30:58.000000Z\",\n        \"updated_at\": \"2023-08-31T08:30:58.000000Z\"\n      },\n      \"relationships\": {\n        \"products\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/products\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/products\"\n          }\n        },\n        \"orders\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/orders\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/orders\"\n          }\n        },\n        \"subscriptions\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/subscriptions\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/subscriptions\"\n          }\n        },\n        \"discounts\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/discounts\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/discounts\"\n          }\n        },\n        \"license-keys\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/license-keys\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/license-keys\"\n          }\n        },\n        \"webhooks\": {\n          \"links\": {\n            \"related\": \"https://api.lemonsqueezy.com/v1/stores/42138/webhooks\",\n            \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138/relationships/webhooks\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"https://api.lemonsqueezy.com/v1/stores/42138\"\n      }\n    }\n  ]\n}`;\n\n// Convert the string into a JavaScript object\nconst parsedData = JSON.parse(jsonData);\n\nconsole.log(parsedData);\n"
+        "jsCode": "const contentString = items[0].json.data;\nlet parsedContent;\n\ntry {\n    parsedContent = JSON.parse(contentString);\n} catch (e) {\n    return [{ json: { error: 'Invalid JSON format' } }];\n}\n\nreturn [\n    {\n        json: parsedContent\n    }\n];\n"
       },
-      "id": "e2f1e494-076e-4af6-b9c2-c05136593e7a",
+      "id": "d09c67f3-5018-4939-b7cd-f70943319c51",
       "name": "Code",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        300,
-        460
+        -640,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "370d2d82-3eee-4c32-aec9-3730d9387163",
+              "name": "data[0].type",
+              "value": "={{ $json.data[0].type }}",
+              "type": "string"
+            },
+            {
+              "id": "bd261fb3-7178-4a55-90d3-b6ed7b6fa745",
+              "name": "data[0].id",
+              "value": "={{ $json.data[0].id }}",
+              "type": "string"
+            },
+            {
+              "id": "2d8e2260-0103-4a9a-8782-3f5bf3a5e443",
+              "name": "data[0].attributes.store_id",
+              "value": "={{ $json.data[0].attributes.store_id }}",
+              "type": "number"
+            },
+            {
+              "id": "dfbd30da-fd44-4ca6-961a-dfa82f18fcdc",
+              "name": "data[0].attributes.name",
+              "value": "={{ $json.data[0].attributes.name }}",
+              "type": "string"
+            },
+            {
+              "id": "6683d222-1d2a-48bd-908d-bc135c2afd4c",
+              "name": "data[0].attributes.slug",
+              "value": "={{ $json.data[0].attributes.slug }}",
+              "type": "string"
+            },
+            {
+              "id": "1ee6ac40-8a95-4c87-955b-505b030dd834",
+              "name": "data[0].attributes.description",
+              "value": "={{ $json.data[0].attributes.description }}",
+              "type": "string"
+            },
+            {
+              "id": "fbffb7a1-1499-4758-b28f-6a26e186992a",
+              "name": "data[0].attributes.status",
+              "value": "={{ $json.data[0].attributes.status }}",
+              "type": "string"
+            },
+            {
+              "id": "e944c77b-c5e6-4fbe-aa51-32183b86cac0",
+              "name": "data[0].attributes.thumb_url",
+              "value": "={{ $json.data[0].attributes.thumb_url }}",
+              "type": "string"
+            },
+            {
+              "id": "812d5077-f808-44ca-bfda-cca292ee7fe1",
+              "name": "data[0].attributes.price",
+              "value": "={{ $json.data[0].attributes.price }}",
+              "type": "number"
+            },
+            {
+              "id": "44e02f44-5757-4c97-9c7c-41ff51775d5d",
+              "name": "data[0].attributes.price_formatted",
+              "value": "={{ $json.data[0].attributes.price_formatted }}",
+              "type": "string"
+            },
+            {
+              "id": "bfad149e-cb68-4c7d-8137-00c310f974f1",
+              "name": "data[0].attributes.from_price",
+              "value": "={{ $json.data[0].attributes.from_price }}",
+              "type": "string"
+            },
+            {
+              "id": "663e3c61-a01c-4e83-8108-241174f2afe9",
+              "name": "data[0].attributes.to_price",
+              "value": "={{ $json.data[0].attributes.to_price }}",
+              "type": "string"
+            },
+            {
+              "id": "bfdcc022-65a7-4318-abab-f04136e6d02f",
+              "name": "data[0].attributes.pay_what_you_want",
+              "value": "={{ $json.data[0].attributes.pay_what_you_want }}",
+              "type": "boolean"
+            },
+            {
+              "id": "c8e3935d-a2cd-40fb-a9af-bf0bec57a4b5",
+              "name": "data[0].attributes.buy_now_url",
+              "value": "={{ $json.data[0].attributes.buy_now_url }}",
+              "type": "string"
+            },
+            {
+              "id": "67949304-571f-4095-b26c-eac79f096c0e",
+              "name": "data[0].attributes.created_at",
+              "value": "={{ $json.data[0].attributes.created_at }}",
+              "type": "string"
+            },
+            {
+              "id": "a491f825-4d8f-4e99-960c-79b8c98e54ce",
+              "name": "data[0].attributes.updated_at",
+              "value": "={{ $json.data[0].attributes.updated_at }}",
+              "type": "string"
+            },
+            {
+              "id": "33c891de-9c34-4a3a-91f5-854530f280ec",
+              "name": "data[0].attributes.test_mode",
+              "value": "={{ $json.data[0].attributes.test_mode }}",
+              "type": "boolean"
+            },
+            {
+              "id": "aff6f8e9-13a0-4e01-8efd-7de0e2cd1f7b",
+              "name": "data[0].relationships.store.links.related",
+              "value": "={{ $json.data[0].relationships.store.links.related }}",
+              "type": "string"
+            },
+            {
+              "id": "56527a73-40b1-4a34-b350-6528ebd0f137",
+              "name": "data[0].relationships.variants.links.self",
+              "value": "={{ $json.data[0].relationships.variants.links.self }}",
+              "type": "string"
+            },
+            {
+              "id": "c25252e7-a3f2-4b7a-847f-6c9a467a37a9",
+              "name": "data[0].links.self",
+              "value": "={{ $json.data[0].links.self }}",
+              "type": "string"
+            },
+            {
+              "id": "5335d334-c9e9-416a-8a79-e2a6474a3a52",
+              "name": "included[0].id",
+              "value": "={{ $json.included[0].id }}",
+              "type": "string"
+            },
+            {
+              "id": "5227f0e7-dabd-42e1-a5d0-594f49c40fda",
+              "name": "included[0].attributes.name",
+              "value": "={{ $json.included[0].attributes.name }}",
+              "type": "string"
+            },
+            {
+              "id": "f618aec3-3b79-469c-ac4c-595d58d93510",
+              "name": "included[0].attributes.slug",
+              "value": "={{ $json.included[0].attributes.slug }}",
+              "type": "string"
+            },
+            {
+              "id": "5506d00c-5fab-4bf4-b2f4-45fba67a56c7",
+              "name": "included[0].attributes.domain",
+              "value": "={{ $json.included[0].attributes.domain }}",
+              "type": "string"
+            },
+            {
+              "id": "3e580877-958d-42d6-bb10-b46822565216",
+              "name": "included[0].attributes.url",
+              "value": "={{ $json.included[0].attributes.url }}",
+              "type": "string"
+            },
+            {
+              "id": "5c91f6df-6abb-4c59-99c2-8816f5d03252",
+              "name": "included[0].attributes.plan",
+              "value": "={{ $json.included[0].attributes.plan }}",
+              "type": "string"
+            },
+            {
+              "id": "01488106-85bf-4850-b22a-a15a40600b18",
+              "name": "included[0].attributes.country",
+              "value": "={{ $json.included[0].attributes.country }}",
+              "type": "string"
+            },
+            {
+              "id": "6fda382e-bbfb-453b-b73f-d7f6906644b4",
+              "name": "included[0].attributes.country_nicename",
+              "value": "={{ $json.included[0].attributes.country_nicename }}",
+              "type": "string"
+            },
+            {
+              "id": "08ed6c84-2c62-4490-89bd-1bf805f2fbf6",
+              "name": "included[0].attributes.currency",
+              "value": "={{ $json.included[0].attributes.currency }}",
+              "type": "string"
+            },
+            {
+              "id": "faeffa34-961b-43b1-82b3-1ddd3ec1b66d",
+              "name": "included[0].attributes.total_sales",
+              "value": "={{ $json.included[0].attributes.total_sales }}",
+              "type": "number"
+            },
+            {
+              "id": "0713e769-bcbc-4412-b14d-c193556e33da",
+              "name": "included[0].attributes.total_revenue",
+              "value": "={{ $json.included[0].attributes.total_revenue }}",
+              "type": "number"
+            },
+            {
+              "id": "8414a0c6-6767-42b5-ac2f-3651ca8b4df4",
+              "name": "included[0].attributes.thirty_day_sales",
+              "value": "={{ $json.included[0].attributes.thirty_day_sales }}",
+              "type": "number"
+            },
+            {
+              "id": "7cb947aa-cb67-4cef-959c-842b953d16ee",
+              "name": "included[0].attributes.thirty_day_revenue",
+              "value": "={{ $json.included[0].attributes.thirty_day_revenue }}",
+              "type": "number"
+            },
+            {
+              "id": "5563d7d6-7817-462c-8864-a54b688eb59d",
+              "name": "included[0].attributes.created_at",
+              "value": "={{ $json.included[0].attributes.created_at }}",
+              "type": "string"
+            },
+            {
+              "id": "b83dcef6-b1f5-4b2d-8542-d13ea09e42ae",
+              "name": "included[0].attributes.updated_at",
+              "value": "={{ $json.included[0].attributes.updated_at }}",
+              "type": "string"
+            },
+            {
+              "id": "cd10ff13-8ea3-48db-bf10-426ac158ab6e",
+              "name": "included[0].relationships.products.links.related",
+              "value": "={{ $json.included[0].relationships.products.links.related }}",
+              "type": "string"
+            },
+            {
+              "id": "2827ae47-77cf-46d9-98fe-33ac1d022027",
+              "name": "included[0].relationships.orders.links.related",
+              "value": "={{ $json.included[0].relationships.orders.links.related }}",
+              "type": "string"
+            },
+            {
+              "id": "a78933e1-5136-4e89-8ddc-05ee13da5b72",
+              "name": "included[0].relationships.subscriptions.links.related",
+              "value": "={{ $json.included[0].relationships.subscriptions.links.related }}",
+              "type": "string"
+            },
+            {
+              "id": "93a8cd14-7367-4ddf-983a-253a45bce143",
+              "name": "included[0].relationships.discounts.links.related",
+              "value": "={{ $json.included[0].relationships.discounts.links.related }}",
+              "type": "string"
+            },
+            {
+              "id": "15467d00-706b-44b3-845a-f8a76cec8e62",
+              "name": "included[0].relationships.webhooks.links.related",
+              "value": "={{ $json.included[0].relationships.webhooks.links.related }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1c34eeb6-0dc7-4020-b66c-67c0ddd1dada",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -380,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4ea6132c-ea3a-4985-a6fa-5fd88ca99093",
+      "name": "Check if product exist",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        620,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "09c3ea46-d481-4b55-ba11-b4d19b7c142b",
+      "name": "Create product in SM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1140,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "5fd86b69-bda6-4ec7-bdcd-f07684eeef00",
+      "name": "Update product in SM1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1140,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b3c78268-36fa-44f4-b769-f7b3874639a5",
+      "name": "Link product to store in SM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1380,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "acfe653f-127d-4e1c-8fdc-48c24d250466",
+      "name": "Link product to store in SM1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1380,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "a4a6392a-00df-44f8-8659-2a0e7c54c78e",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1600,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "45ea6f38-abe9-4a07-9f99-dc35f7a4bba3",
+      "name": "Slack1",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1600,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "886dcc45-66c3-445c-a37f-bf4b3aec6c1b",
+      "name": "Check if product exist1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -140,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "15f4531e-96e1-4a99-9307-5d7beabbca5b",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "a74b7523-a971-4bea-87df-8887cfd85c6c",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0f2b69a2-cf0a-40f6-ab9c-3c9c560568d7",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        80,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "0eea164a-bb75-4512-8bfe-b0f3941c9f2d",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        840,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "33416671-e0ba-4e90-94f0-7e6a78d41b55",
+      "name": "Create store  in SM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        340,
+        520
       ]
     }
   ],
@@ -161,6 +662,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-14T17:16:09.000Z",
-  "versionId": "48eb30a4-3382-47b6-83ce-0bc00fe7d949"
+  "updatedAt": "2024-08-15T14:02:27.869Z",
+  "versionId": "6a04f240-eb3b-4ab2-b628-44915ee08c5d"
 }

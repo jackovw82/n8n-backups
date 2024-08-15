@@ -38,7 +38,7 @@
       "main": [
         [
           {
-            "node": "Check if product exist1",
+            "node": "Check if store exist",
             "type": "main",
             "index": 0
           }
@@ -100,17 +100,6 @@
         ]
       ]
     },
-    "Check if product exist1": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "If": {
       "main": [
         [
@@ -122,7 +111,7 @@
         ],
         [
           {
-            "node": "Create store  in SM",
+            "node": "Execute Workflow",
             "type": "main",
             "index": 0
           }
@@ -147,11 +136,11 @@
         ]
       ]
     },
-    "Create store  in SM": {
+    "Check if store exist": {
       "main": [
         [
           {
-            "node": "Check if product exist",
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -173,8 +162,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1120,
-        380
+        -1020,
+        40
       ]
     },
     {
@@ -200,8 +189,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -880,
-        380
+        -780,
+        40
       ]
     },
     {
@@ -213,8 +202,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -640,
-        380
+        -580,
+        40
       ]
     },
     {
@@ -470,8 +459,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -380,
-        380
+        -360,
+        40
       ]
     },
     {
@@ -483,8 +472,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        620,
-        360
+        300,
+        -100
       ]
     },
     {
@@ -496,8 +485,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1140,
-        160
+        740,
+        -300
       ]
     },
     {
@@ -509,8 +498,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1140,
-        400
+        760,
+        -80
       ]
     },
     {
@@ -522,8 +511,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1380,
-        160
+        980,
+        -300
       ]
     },
     {
@@ -535,8 +524,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1380,
-        400
+        1000,
+        -80
       ]
     },
     {
@@ -548,8 +537,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1600,
-        160
+        1200,
+        -300
       ]
     },
     {
@@ -561,21 +550,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1600,
-        400
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "43f9c881-413b-4ffd-b630-d861bdd68de6",
-      "name": "Check if product exist1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -140,
-        380
+        1220,
+        -80
       ]
     },
     {
@@ -618,7 +594,7 @@
       "typeVersion": 2,
       "position": [
         80,
-        380
+        40
       ]
     },
     {
@@ -630,21 +606,34 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        840,
-        280
+        520,
+        -180
       ]
     },
     {
       "parameters": {
         "options": {}
       },
-      "id": "6253cf6a-2318-45f0-97de-47ff5e517f50",
-      "name": "Create store  in SM",
+      "id": "43f9c881-413b-4ffd-b630-d861bdd68de6",
+      "name": "Check if store exist",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        340,
-        520
+        -140,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "8b2105e4-2d14-43df-b7f1-924500396249",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        300,
+        200
       ]
     }
   ],
@@ -662,6 +651,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-15T12:51:56.000Z",
-  "versionId": "51327c4d-16fa-4f1d-b05e-3e017fbff984"
+  "updatedAt": "2024-08-15T16:30:33.000Z",
+  "versionId": "3a07e736-86b3-4cbc-94ee-7f2c5a76cebd"
 }

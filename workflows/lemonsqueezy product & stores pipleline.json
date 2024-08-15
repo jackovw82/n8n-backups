@@ -27,29 +27,12 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "Check Product Entry",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Edit Fields": {
-      "main": [
-        [
+          },
           {
-            "node": "Check if store exist",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Check if product exist": {
-      "main": [
-        [
-          {
-            "node": "If1",
+            "node": "If2",
             "type": "main",
             "index": 0
           }
@@ -100,25 +83,18 @@
         ]
       ]
     },
-    "If": {
+    "Split Out1": {
       "main": [
         [
           {
-            "node": "Check if product exist",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Execute Workflow",
+            "node": "If2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "If1": {
+    "If2": {
       "main": [
         [
           {
@@ -136,11 +112,11 @@
         ]
       ]
     },
-    "Check if store exist": {
+    "Check Product Entry": {
       "main": [
         [
           {
-            "node": "If",
+            "node": "Split Out1",
             "type": "main",
             "index": 0
           }
@@ -162,7 +138,7 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1020,
+        -1000,
         40
       ]
     },
@@ -189,291 +165,21 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -780,
+        -760,
         40
       ]
     },
     {
       "parameters": {
-        "jsCode": "const contentString = items[0].json.data;\nlet parsedContent;\n\ntry {\n    parsedContent = JSON.parse(contentString);\n} catch (e) {\n    return [{ json: { error: 'Invalid JSON format' } }];\n}\n\nreturn [\n    {\n        json: parsedContent\n    }\n];\n"
+        "jsCode": "const contentString = items[0].json.data;\nlet parsedContent;\n\ntry {\n    parsedContent = JSON.parse(contentString);\n} catch (e) {\n    return [{ json: { error: 'Invalid JSON format' } }];\n}\n\nreturn [\n    {\n        json: parsedContent\n    }\n];"
       },
       "id": "01dffe1e-c4b9-40fb-8748-a74b639561b9",
       "name": "Code",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -580,
+        -560,
         40
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "370d2d82-3eee-4c32-aec9-3730d9387163",
-              "name": "data[0].type",
-              "value": "={{ $json.data[0].type }}",
-              "type": "string"
-            },
-            {
-              "id": "bd261fb3-7178-4a55-90d3-b6ed7b6fa745",
-              "name": "data[0].id",
-              "value": "={{ $json.data[0].id }}",
-              "type": "string"
-            },
-            {
-              "id": "2d8e2260-0103-4a9a-8782-3f5bf3a5e443",
-              "name": "data[0].attributes.store_id",
-              "value": "={{ $json.data[0].attributes.store_id }}",
-              "type": "number"
-            },
-            {
-              "id": "dfbd30da-fd44-4ca6-961a-dfa82f18fcdc",
-              "name": "data[0].attributes.name",
-              "value": "={{ $json.data[0].attributes.name }}",
-              "type": "string"
-            },
-            {
-              "id": "6683d222-1d2a-48bd-908d-bc135c2afd4c",
-              "name": "data[0].attributes.slug",
-              "value": "={{ $json.data[0].attributes.slug }}",
-              "type": "string"
-            },
-            {
-              "id": "1ee6ac40-8a95-4c87-955b-505b030dd834",
-              "name": "data[0].attributes.description",
-              "value": "={{ $json.data[0].attributes.description }}",
-              "type": "string"
-            },
-            {
-              "id": "fbffb7a1-1499-4758-b28f-6a26e186992a",
-              "name": "data[0].attributes.status",
-              "value": "={{ $json.data[0].attributes.status }}",
-              "type": "string"
-            },
-            {
-              "id": "e944c77b-c5e6-4fbe-aa51-32183b86cac0",
-              "name": "data[0].attributes.thumb_url",
-              "value": "={{ $json.data[0].attributes.thumb_url }}",
-              "type": "string"
-            },
-            {
-              "id": "812d5077-f808-44ca-bfda-cca292ee7fe1",
-              "name": "data[0].attributes.price",
-              "value": "={{ $json.data[0].attributes.price }}",
-              "type": "number"
-            },
-            {
-              "id": "44e02f44-5757-4c97-9c7c-41ff51775d5d",
-              "name": "data[0].attributes.price_formatted",
-              "value": "={{ $json.data[0].attributes.price_formatted }}",
-              "type": "string"
-            },
-            {
-              "id": "bfad149e-cb68-4c7d-8137-00c310f974f1",
-              "name": "data[0].attributes.from_price",
-              "value": "={{ $json.data[0].attributes.from_price }}",
-              "type": "string"
-            },
-            {
-              "id": "663e3c61-a01c-4e83-8108-241174f2afe9",
-              "name": "data[0].attributes.to_price",
-              "value": "={{ $json.data[0].attributes.to_price }}",
-              "type": "string"
-            },
-            {
-              "id": "bfdcc022-65a7-4318-abab-f04136e6d02f",
-              "name": "data[0].attributes.pay_what_you_want",
-              "value": "={{ $json.data[0].attributes.pay_what_you_want }}",
-              "type": "boolean"
-            },
-            {
-              "id": "c8e3935d-a2cd-40fb-a9af-bf0bec57a4b5",
-              "name": "data[0].attributes.buy_now_url",
-              "value": "={{ $json.data[0].attributes.buy_now_url }}",
-              "type": "string"
-            },
-            {
-              "id": "67949304-571f-4095-b26c-eac79f096c0e",
-              "name": "data[0].attributes.created_at",
-              "value": "={{ $json.data[0].attributes.created_at }}",
-              "type": "string"
-            },
-            {
-              "id": "a491f825-4d8f-4e99-960c-79b8c98e54ce",
-              "name": "data[0].attributes.updated_at",
-              "value": "={{ $json.data[0].attributes.updated_at }}",
-              "type": "string"
-            },
-            {
-              "id": "33c891de-9c34-4a3a-91f5-854530f280ec",
-              "name": "data[0].attributes.test_mode",
-              "value": "={{ $json.data[0].attributes.test_mode }}",
-              "type": "boolean"
-            },
-            {
-              "id": "aff6f8e9-13a0-4e01-8efd-7de0e2cd1f7b",
-              "name": "data[0].relationships.store.links.related",
-              "value": "={{ $json.data[0].relationships.store.links.related }}",
-              "type": "string"
-            },
-            {
-              "id": "56527a73-40b1-4a34-b350-6528ebd0f137",
-              "name": "data[0].relationships.variants.links.self",
-              "value": "={{ $json.data[0].relationships.variants.links.self }}",
-              "type": "string"
-            },
-            {
-              "id": "c25252e7-a3f2-4b7a-847f-6c9a467a37a9",
-              "name": "data[0].links.self",
-              "value": "={{ $json.data[0].links.self }}",
-              "type": "string"
-            },
-            {
-              "id": "5335d334-c9e9-416a-8a79-e2a6474a3a52",
-              "name": "included[0].id",
-              "value": "={{ $json.included[0].id }}",
-              "type": "string"
-            },
-            {
-              "id": "5227f0e7-dabd-42e1-a5d0-594f49c40fda",
-              "name": "included[0].attributes.name",
-              "value": "={{ $json.included[0].attributes.name }}",
-              "type": "string"
-            },
-            {
-              "id": "f618aec3-3b79-469c-ac4c-595d58d93510",
-              "name": "included[0].attributes.slug",
-              "value": "={{ $json.included[0].attributes.slug }}",
-              "type": "string"
-            },
-            {
-              "id": "5506d00c-5fab-4bf4-b2f4-45fba67a56c7",
-              "name": "included[0].attributes.domain",
-              "value": "={{ $json.included[0].attributes.domain }}",
-              "type": "string"
-            },
-            {
-              "id": "3e580877-958d-42d6-bb10-b46822565216",
-              "name": "included[0].attributes.url",
-              "value": "={{ $json.included[0].attributes.url }}",
-              "type": "string"
-            },
-            {
-              "id": "5c91f6df-6abb-4c59-99c2-8816f5d03252",
-              "name": "included[0].attributes.plan",
-              "value": "={{ $json.included[0].attributes.plan }}",
-              "type": "string"
-            },
-            {
-              "id": "01488106-85bf-4850-b22a-a15a40600b18",
-              "name": "included[0].attributes.country",
-              "value": "={{ $json.included[0].attributes.country }}",
-              "type": "string"
-            },
-            {
-              "id": "6fda382e-bbfb-453b-b73f-d7f6906644b4",
-              "name": "included[0].attributes.country_nicename",
-              "value": "={{ $json.included[0].attributes.country_nicename }}",
-              "type": "string"
-            },
-            {
-              "id": "08ed6c84-2c62-4490-89bd-1bf805f2fbf6",
-              "name": "included[0].attributes.currency",
-              "value": "={{ $json.included[0].attributes.currency }}",
-              "type": "string"
-            },
-            {
-              "id": "faeffa34-961b-43b1-82b3-1ddd3ec1b66d",
-              "name": "included[0].attributes.total_sales",
-              "value": "={{ $json.included[0].attributes.total_sales }}",
-              "type": "number"
-            },
-            {
-              "id": "0713e769-bcbc-4412-b14d-c193556e33da",
-              "name": "included[0].attributes.total_revenue",
-              "value": "={{ $json.included[0].attributes.total_revenue }}",
-              "type": "number"
-            },
-            {
-              "id": "8414a0c6-6767-42b5-ac2f-3651ca8b4df4",
-              "name": "included[0].attributes.thirty_day_sales",
-              "value": "={{ $json.included[0].attributes.thirty_day_sales }}",
-              "type": "number"
-            },
-            {
-              "id": "7cb947aa-cb67-4cef-959c-842b953d16ee",
-              "name": "included[0].attributes.thirty_day_revenue",
-              "value": "={{ $json.included[0].attributes.thirty_day_revenue }}",
-              "type": "number"
-            },
-            {
-              "id": "5563d7d6-7817-462c-8864-a54b688eb59d",
-              "name": "included[0].attributes.created_at",
-              "value": "={{ $json.included[0].attributes.created_at }}",
-              "type": "string"
-            },
-            {
-              "id": "b83dcef6-b1f5-4b2d-8542-d13ea09e42ae",
-              "name": "included[0].attributes.updated_at",
-              "value": "={{ $json.included[0].attributes.updated_at }}",
-              "type": "string"
-            },
-            {
-              "id": "cd10ff13-8ea3-48db-bf10-426ac158ab6e",
-              "name": "included[0].relationships.products.links.related",
-              "value": "={{ $json.included[0].relationships.products.links.related }}",
-              "type": "string"
-            },
-            {
-              "id": "2827ae47-77cf-46d9-98fe-33ac1d022027",
-              "name": "included[0].relationships.orders.links.related",
-              "value": "={{ $json.included[0].relationships.orders.links.related }}",
-              "type": "string"
-            },
-            {
-              "id": "a78933e1-5136-4e89-8ddc-05ee13da5b72",
-              "name": "included[0].relationships.subscriptions.links.related",
-              "value": "={{ $json.included[0].relationships.subscriptions.links.related }}",
-              "type": "string"
-            },
-            {
-              "id": "93a8cd14-7367-4ddf-983a-253a45bce143",
-              "name": "included[0].relationships.discounts.links.related",
-              "value": "={{ $json.included[0].relationships.discounts.links.related }}",
-              "type": "string"
-            },
-            {
-              "id": "15467d00-706b-44b3-845a-f8a76cec8e62",
-              "name": "included[0].relationships.webhooks.links.related",
-              "value": "={{ $json.included[0].relationships.webhooks.links.related }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "bfff4984-74ad-4ac1-8a50-a4bc73c166d2",
-      "name": "Edit Fields",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -360,
-        40
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "7ffd467d-113d-485f-8e25-552f19396951",
-      "name": "Check if product exist",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        300,
-        -100
       ]
     },
     {
@@ -485,8 +191,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        740,
-        -300
+        420,
+        -80
       ]
     },
     {
@@ -498,8 +204,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        760,
-        -80
+        420,
+        160
       ]
     },
     {
@@ -511,8 +217,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        980,
-        -300
+        660,
+        -80
       ]
     },
     {
@@ -524,8 +230,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1000,
-        -80
+        660,
+        160
       ]
     },
     {
@@ -537,8 +243,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1200,
-        -300
+        880,
+        -80
       ]
     },
     {
@@ -550,8 +256,24 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1220,
-        -80
+        880,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "items",
+        "options": {}
+      },
+      "id": "8a2374a9-35d3-4ad4-b4e5-afba7014d032",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        -120
       ]
     },
     {
@@ -565,22 +287,11 @@
           "conditions": [
             {
               "id": "15f4531e-96e1-4a99-9307-5d7beabbca5b",
-              "leftValue": "",
-              "rightValue": "",
+              "leftValue": "={{ $json.data[0].id }}",
+              "rightValue": "={{ $json.items[0].sa7e639fac }}",
               "operator": {
                 "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            },
-            {
-              "id": "a74b7523-a971-4bea-87df-8887cfd85c6c",
-              "leftValue": "",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
+                "operation": "notEquals"
               }
             }
           ],
@@ -588,52 +299,54 @@
         },
         "options": {}
       },
-      "id": "da176268-783f-4760-bd0f-29df0142f044",
-      "name": "If",
+      "id": "98f64514-5d21-4428-9491-a5e0033a1dd4",
+      "name": "If2",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        80,
+        140,
         40
       ]
     },
     {
       "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66bba63ce24d2ee29028e068/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "25"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
         "options": {}
       },
-      "id": "0ffe28b4-a721-458d-a9de-a34164512831",
-      "name": "If1",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        520,
-        -180
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "43f9c881-413b-4ffd-b630-d861bdd68de6",
-      "name": "Check if store exist",
+      "id": "176fd944-0143-4744-8ac9-ae4f9149a29b",
+      "name": "Check Product Entry",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -140,
-        40
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "8b2105e4-2d14-43df-b7f1-924500396249",
-      "name": "Execute Workflow",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        300,
-        200
+        -300,
+        -120
       ]
     }
   ],
@@ -651,6 +364,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-15T16:30:33.000Z",
-  "versionId": "3a07e736-86b3-4cbc-94ee-7f2c5a76cebd"
+  "updatedAt": "2024-08-15T16:56:54.000Z",
+  "versionId": "bc072066-1a4e-4451-a074-8f4b38255d6e"
 }

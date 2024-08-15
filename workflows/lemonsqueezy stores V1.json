@@ -332,7 +332,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"description\": \"{{ $('Split Out1').item.json.items[0].sb3e60fbb9 }}\",\n  \"stoplight_status\": \"1\",\n  \"status\": {\n    \"value\": \"in_progress\"\n  },\n  \"s63b368130\": \"{{ $json.data[0].type }}\", \n  \"s76dcb9114\": \"{{ $json.data[0].id }}\",\n  \"sb3e60fbb9\": \"{{ $json.data[0].attributes.name }}\",\n  \"s19a2a7b8d\": \"{{ $json.data[0].attributes.slug }}\",\n  \"s3b4bab951\": \"{{ $json.data[0].attributes.domain }}\",\n  \"scce31f1d3\": \"{{ $json.data[0].attributes.url }}\",\n  \"sf28a35493\": \"{{ $json.data[0].attributes.avatar_url }}\",\n  \"s0106e510b\": \"{{ $json.data[0].attributes.plan }}\",\n  \"s6613b1b81\": \"{{ $json.data[0].attributes.country }}\",\n  \"s6cd3987a1\": \"{{ $json.data[0].attributes.country_nicename }} \",\n  \"sb4b776e0d\": \"{{ $json.data[0].attributes.currency }}\",\n  \"sa9485111e\": \"{{ $json.data[0].attributes.total_sales }}\",\n  \"s6e33a70fd\": \"{{ $json.data[0].attributes.total_revenue }}\",\n  \"sc83b8a831\": \" {{ $json.data[0].attributes.thirty_day_sales }}\",\n  \"s5c8e857f5\": \"{{ $json.data[0].attributes.thirty_day_revenue }}\",\n  \"s438ef87a1\": \"{{ $json.data[0].attributes.created_at }}\",\n  \"s7e9f73ff3\": \"{{ $json.data[0].attributes.updated_at }}\"\n}\n            ",
+        "jsonBody": "={\n  \"description\": \"{{ $('Split Out1').item.json.items[0].sb3e60fbb9 }}\",\n  \"stoplight_status\": \"1\",\n  \"status\": {\n    \"value\": \"in_progress\"\n  },\n  \"s1c02fcf6f\": \"\", \n  \"sa7e639fac\": \"\",\n  \"s762407c0f\": \"\",\n  \"sc7204a3d7\": \"\",\n  \"s22e5fbd34\": \"\",\n  \"s03f71e992\": \"\",\n  \"sbd6dfffa6\": \"}\",\n  \"s75a5e2da3\": \"}\",\n  \"s75a5e2da3\": \"\",\n  \"s78f09e28a\": \"\",\n  \"s78f09e28a\": \"\",\n  \"s9d5c47a49\": \"\",\n  \"sd2e8050a9\": \"\",\n  \"sc31c5ea0d\": \"\",\n  \"s690e98405\": \"\",\n  \"sb94fb975c\": \"\",\n  \"s2e850650a\": \"\",\n  \"s2e850650a\": \"\",\n  \"s74354ed71\": \"\",\n  \"s1fc46d69a\": \"\",\n  \"s7e1e307e1\": \"\",\n  \"se1e223957\": \"\"\n}\n            ",
         "options": {
           "batching": {
             "batch": {
@@ -366,6 +366,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-15T16:26:59.000Z",
-  "versionId": "9b624f05-ddfa-477b-96be-9698a8aa87db"
+  "updatedAt": "2024-08-15T20:03:19.000Z",
+  "versionId": "26fa626d-dfef-46a9-b1f9-d7dc734be0a0"
 }

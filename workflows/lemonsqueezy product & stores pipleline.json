@@ -41,24 +41,12 @@
     },
     "Link product to store in SM": {
       "main": [
-        [
-          {
-            "node": "Slack",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Link product to store in SM1": {
       "main": [
-        [
-          {
-            "node": "Slack1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Split Out1": {
@@ -205,32 +193,6 @@
       "typeVersion": 4.2,
       "position": [
         640,
-        140
-      ]
-    },
-    {
-      "parameters": {
-        "otherOptions": {}
-      },
-      "id": "95f424e6-f4df-4a9b-9014-0ef9ef66dc1e",
-      "name": "Slack",
-      "type": "n8n-nodes-base.slack",
-      "typeVersion": 2.2,
-      "position": [
-        840,
-        -80
-      ]
-    },
-    {
-      "parameters": {
-        "otherOptions": {}
-      },
-      "id": "2ff416fe-9146-402e-8814-f5890f1004e8",
-      "name": "Slack1",
-      "type": "n8n-nodes-base.slack",
-      "typeVersion": 2.2,
-      "position": [
-        840,
         140
       ]
     },
@@ -414,6 +376,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-15T19:49:29.000Z",
-  "versionId": "25d95d84-0964-4cce-b750-167900aa1658"
+  "updatedAt": "2024-08-16T07:38:08.000Z",
+  "versionId": "06a3513c-c162-496b-a1d2-49f1ce8142aa"
 }

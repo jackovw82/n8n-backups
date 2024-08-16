@@ -194,7 +194,7 @@
       "typeVersion": 1,
       "position": [
         -1000,
-        40
+        0
       ]
     },
     {
@@ -221,7 +221,7 @@
       "typeVersion": 4.2,
       "position": [
         -760,
-        40
+        0
       ]
     },
     {
@@ -234,7 +234,7 @@
       "typeVersion": 2,
       "position": [
         -560,
-        40
+        0
       ]
     },
     {
@@ -276,7 +276,7 @@
       "typeVersion": 1,
       "position": [
         -100,
-        -120
+        -80
       ]
     },
     {
@@ -317,7 +317,7 @@
       "typeVersion": 4.2,
       "position": [
         -300,
-        -120
+        -80
       ]
     },
     {
@@ -369,7 +369,7 @@
       "typeVersion": 1,
       "position": [
         -200,
-        40
+        80
       ]
     },
     {
@@ -381,7 +381,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1340,
+        1280,
         -60
       ]
     },
@@ -578,6 +578,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-16T13:46:09.000Z",
-  "versionId": "c6ca4137-3120-4266-8ad8-ef48defdf6a9"
+  "updatedAt": "2024-08-16T17:24:18.000Z",
+  "versionId": "ad998e0e-5564-448c-afc2-7f1bd5d5fa60"
 }

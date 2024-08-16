@@ -61,22 +61,117 @@
         ]
       ]
     },
-    "Create store in SM": {
+    "Split Out": {
       "main": [
         [
           {
-            "node": "Link product to store in SM1",
+            "node": "If",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Split Out": {
+    "Split Out1": {
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Link product to store in SM": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Message Formatting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message Formatting": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Message Formatting1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Link product to store in SM1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message Formatting1": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create store in SM1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update product and  store in SM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update product and  store in SM": {
+      "main": [
+        [
+          {
+            "node": "Link product to store in SM1",
             "type": "main",
             "index": 0
           }
@@ -151,8 +246,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        640,
-        -80
+        620,
+        -140
       ]
     },
     {
@@ -164,8 +259,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        640,
-        140
+        620,
+        40
       ]
     },
     {
@@ -244,7 +339,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"description\": \"\",\n  \"stoplight_status\": \"1\",\n  \"status\": {\n    \"value\": \"in_progress\"\n  },\n  \"s63b368130\": \"{{ $json.data[0].type }}\", \n  \"s76dcb9114\": \"{{ $json.data[0].id }}\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\",\n  \"\": \"\"\n}",
+        "jsonBody": "={\n  \"description\": \"{{ $json.attributes.description }}\",\n  \"stoplight_status\": \"1\",\n  \"status\": {\n    \"value\": \"in_progress\"\n  },\n  \"s1c02fcf6f\": \"{{ $json.type }}\", \n  \"sa7e639fac\": \"{{ $json.id }}\",\n  \"s762407c0f\": \"{{ $json.attributes.store_id }}\",\n  \"sc7204a3d7\": \"{{ $json.attributes.name }}\",\n  \"s22e5fbd34\": \"{{ $json.attributes.slug }}\",\n  \"s03f71e992\": \"{{ $json.attributes.status }}\",\n  \"sbd6dfffa6\": \"{{ $json.attributes.status_formatted }}\",\n  \"s75a5e2da3\": \"{{ $json.attributes.thumb_url }}\",\n  \"s78f09e28a\": \"{{ $json.attributes.large_thumb_url }}\",\n  \"s9d5c47a49\": \"{{ $json.attributes.price }}\",\n  \"sd2e8050a9\": \"{{ $json.attributes.price_formatted }}\",\n  \"sc31c5ea0d\": \"{{ $json.attributes.from_price }}\",\n  \"s690e98405\": \"{{ $json.attributes.to_price }}\",\n  \"sb94fb975c\": \"{{ $json.attributes.pay_what_you_want }}\",\n  \"s2e850650a\": \"{{ $json.attributes.buy_now_url }}\",\n  \"s6e56cc0a2\": \"{{ $json.attributes.from_price_formatted }}\",\n  \"sfb5338a19\": \"{{ $json.attributes.to_price_formatted }}\",\n  \"s74354ed71\": \"{{ $json.attributes.created_at }}\",\n  \"s1fc46d69a\": \"{{ $json.attributes.updated_at }}\",\n  \"s7e1e307e1\": \" {{ $json.attributes.test_mode }}\"\n\n}                ",
         "options": {
           "batching": {
             "batch": {
@@ -259,8 +354,175 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        420,
-        -80
+        400,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "7fb487a8-6f73-4348-9f94-46db9173c33b",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "otherOptions": {}
+      },
+      "id": "df912e48-2741-429d-898c-56cde872fabb",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1340,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "title"
+            },
+            {
+              "fieldToAggregate": "sf7335e6da"
+            },
+            {
+              "fieldToAggregate": "status"
+            },
+            {
+              "fieldToAggregate": "s2e7d2b64e"
+            },
+            {
+              "fieldToAggregate": "se6d1375cc"
+            },
+            {
+              "fieldToAggregate": "s6e80240de"
+            },
+            {
+              "fieldToAggregate": "s388b58221"
+            },
+            {
+              "fieldToAggregate": "description.data.content[0].content[0].text"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "00b2c836-862d-44d0-871c-eaf786f19f37",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        820,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Assuming 'AggregatedData' is the name of the node with the aggregated data\nconst aggregatedData = $node[\"Aggregate\"].json;\n\n// Prepare the message\nlet message = 'Hi Team,\\n\\nNew time entries are ready for review. Here are the details:\\n\\n';\n\nconst dates = [...new Set(aggregatedData.s2e7d2b64e)];\n\ndates.forEach(date => {\n  message += `*Date:* ${date}\\n`;\n  message += `*Client:* ${aggregatedData.s388b58221[0]}\\n`;\n   message += '\\n\\n';\n  message += '```\\n';  // Start block quote for grey frame\n  message += 'Title                      | Status               | Worked Hours  | Description\\n';\n  message += '---------------------------|----------------------|---------------|----------------------------------------------\\n';\n  \n  aggregatedData.s2e7d2b64e.forEach((entryDate, index) => {\n    if (entryDate === date) {\n      const title = aggregatedData.title[index].padEnd(27, ' ');\n      const status = aggregatedData.status[index].value.padEnd(20, ' ');\n      const hours = aggregatedData.se6d1375cc[index].toString().padEnd(13, ' ');\n      const description = aggregatedData.text[index];\n      message += `${title}| ${status} | ${hours} | ${description}\\n`;\n    }\n  });\n  message += '```\\n\\n';  // End block quote for grey frame\n});\n\nmessage += '\\nPlease review these entries at your earliest convenience.\\nThank you!\\n';\n\nreturn [\n  {\n    json: {\n      message: message\n    }\n  }\n];"
+      },
+      "id": "e2aec0e5-dfe4-45cd-8bbf-a9a2c3f425e6",
+      "name": "Message Formatting",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "title"
+            },
+            {
+              "fieldToAggregate": "sf7335e6da"
+            },
+            {
+              "fieldToAggregate": "status"
+            },
+            {
+              "fieldToAggregate": "s2e7d2b64e"
+            },
+            {
+              "fieldToAggregate": "se6d1375cc"
+            },
+            {
+              "fieldToAggregate": "s6e80240de"
+            },
+            {
+              "fieldToAggregate": "s388b58221"
+            },
+            {
+              "fieldToAggregate": "description.data.content[0].content[0].text"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1f50b9a3-3602-4f21-90b1-74cd6c8e5703",
+      "name": "Aggregate1",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        820,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Assuming 'AggregatedData' is the name of the node with the aggregated data\nconst aggregatedData = $node[\"Aggregate1\"].json;\n\n// Prepare the message\nlet message = 'Hi Team,\\n\\nNew time entries are ready for review. Here are the details:\\n\\n';\n\nconst dates = [...new Set(aggregatedData.s2e7d2b64e)];\n\ndates.forEach(date => {\n  message += `*Date:* ${date}\\n`;\n  message += `*Client:* ${aggregatedData.s388b58221[0]}\\n`;\n   message += '\\n\\n';\n  message += '```\\n';  // Start block quote for grey frame\n  message += 'Title                      | Status               | Worked Hours  | Description\\n';\n  message += '---------------------------|----------------------|---------------|----------------------------------------------\\n';\n  \n  aggregatedData.s2e7d2b64e.forEach((entryDate, index) => {\n    if (entryDate === date) {\n      const title = aggregatedData.title[index].padEnd(27, ' ');\n      const status = aggregatedData.status[index].value.padEnd(20, ' ');\n      const hours = aggregatedData.se6d1375cc[index].toString().padEnd(13, ' ');\n      const description = aggregatedData.text[index];\n      message += `${title}| ${status} | ${hours} | ${description}\\n`;\n    }\n  });\n  message += '```\\n\\n';  // End block quote for grey frame\n});\n\nmessage += '\\nPlease review these entries at your earliest convenience.\\nThank you!\\n';\n\nreturn [\n  {\n    json: {\n      message: message\n    }\n  }\n];"
+      },
+      "id": "f8f370b6-11c5-4b74-83f1-fd511ec03f2c",
+      "name": "Message Formatting1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "24159261-0eb3-4d82-8bd8-ce419176c972",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "={{ $json.items[0].sa7e639fac }}",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a6157854-c50c-4614-aec3-d6c2aa57bdbc",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        140,
+        -20
       ]
     },
     {
@@ -282,7 +544,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"description\": \"{{ $('Split Out1').item.json.items[0].sb3e60fbb9 }}\",\n  \"stoplight_status\": \"1\",\n  \"status\": {\n    \"value\": \"in_progress\"\n  },\n  \"s63b368130\": \"{{ $json.data[0].type }}\", \n  \"s76dcb9114\": \"{{ $json.data[0].id }}\",\n  \"sb3e60fbb9\": \"{{ $json.data[0].attributes.name }}\",\n  \"s19a2a7b8d\": \"{{ $json.data[0].attributes.slug }}\",\n  \"s3b4bab951\": \"{{ $json.data[0].attributes.domain }}\",\n  \"scce31f1d3\": \"{{ $json.data[0].attributes.url }}\",\n  \"sf28a35493\": \"{{ $json.data[0].attributes.avatar_url }}\",\n  \"s0106e510b\": \"{{ $json.data[0].attributes.plan }}\",\n  \"s6613b1b81\": \"{{ $json.data[0].attributes.country }}\",\n  \"s6cd3987a1\": \"{{ $json.data[0].attributes.country_nicename }} \",\n  \"sb4b776e0d\": \"{{ $json.data[0].attributes.currency }}\",\n  \"sa9485111e\": \"{{ $json.data[0].attributes.total_sales }}\",\n  \"s6e33a70fd\": \"{{ $json.data[0].attributes.total_revenue }}\",\n  \"sc83b8a831\": \" {{ $json.data[0].attributes.thirty_day_sales }}\",\n  \"s5c8e857f5\": \"{{ $json.data[0].attributes.thirty_day_revenue }}\",\n  \"s438ef87a1\": \"{{ $json.data[0].attributes.created_at }}\",\n  \"s7e9f73ff3\": \"{{ $json.data[0].attributes.updated_at }}\"\n}\n            ",
+        "jsonBody": "={\n  \"description\": \"{{ $json.attributes.description }}\",\n  \"stoplight_status\": \"1\",\n  \"status\": {\n    \"value\": \"in_progress\"\n  },\n  \"s1c02fcf6f\": \"{{ $json.type }}\", \n  \"sa7e639fac\": \"{{ $json.id }}\",\n  \"s762407c0f\": \"{{ $json.attributes.store_id }}\",\n  \"sc7204a3d7\": \"{{ $json.attributes.name }}\",\n  \"s22e5fbd34\": \"{{ $json.attributes.slug }}\",\n  \"s03f71e992\": \"{{ $json.attributes.status }}\",\n  \"sbd6dfffa6\": \"{{ $json.attributes.status_formatted }}\",\n  \"s75a5e2da3\": \"{{ $json.attributes.thumb_url }}\",\n  \"s78f09e28a\": \"{{ $json.attributes.large_thumb_url }}\",\n  \"s9d5c47a49\": \"{{ $json.attributes.price }}\",\n  \"sd2e8050a9\": \"{{ $json.attributes.price_formatted }}\",\n  \"sc31c5ea0d\": \"{{ $json.attributes.from_price }}\",\n  \"s690e98405\": \"{{ $json.attributes.to_price }}\",\n  \"sb94fb975c\": \"{{ $json.attributes.pay_what_you_want }}\",\n  \"s2e850650a\": \"{{ $json.attributes.buy_now_url }}\",\n  \"s6e56cc0a2\": \"{{ $json.attributes.from_price_formatted }}\",\n  \"sfb5338a19\": \"{{ $json.attributes.to_price_formatted }}\",\n  \"s74354ed71\": \"{{ $json.attributes.created_at }}\",\n  \"s1fc46d69a\": \"{{ $json.attributes.updated_at }}\",\n  \"s7e1e307e1\": \" {{ $json.attributes.test_mode }}\"\n\n}                ",
         "options": {
           "batching": {
             "batch": {
@@ -292,112 +554,12 @@
           }
         }
       },
-      "id": "500ee14d-5b50-46f3-a159-d644be31319b",
-      "name": "Create store in SM",
+      "id": "c238a4e9-2393-4ba5-a960-cfe95d23b2b0",
+      "name": "Update product and  store in SM",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        420,
-        140
-      ]
-    },
-    {
-      "parameters": {
-        "fieldToSplitOut": "data",
-        "options": {}
-      },
-      "id": "7fb487a8-6f73-4348-9f94-46db9173c33b",
-      "name": "Split Out",
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [
-        -200,
-        40
-      ]
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json.id }}",
-                    "rightValue": "={{ $('Code').item.json.data[0].id }}",
-                    "operator": {
-                      "type": "string",
-                      "operation": "notEquals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": "=create record"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "id": "bc7047e0-fb46-495a-8237-64cd9e614638",
-                    "leftValue": "{{ $json.id }}",
-                    "rightValue": "{{ $('Code').item.json.data[0].id }}",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "update record"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "id": "a259baf9-1711-4a11-95e1-e7d53a983c36",
-                    "leftValue": "{{ $json.id }}",
-                    "rightValue": "",
-                    "operator": {
-                      "type": "string",
-                      "operation": "empty",
-                      "singleValue": true
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "do nothing"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "6bc7191b-f3c3-41aa-a267-3695b8ab6129",
-      "name": "Switch",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3,
-      "position": [
-        20,
+        400,
         40
       ]
     }
@@ -416,6 +578,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-16T11:08:57.000Z",
-  "versionId": "64cb443e-74ad-455f-b1b0-d5bbc149ded6"
+  "updatedAt": "2024-08-16T13:46:09.000Z",
+  "versionId": "c6ca4137-3120-4266-8ad8-ef48defdf6a9"
 }

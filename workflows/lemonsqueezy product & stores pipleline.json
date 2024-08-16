@@ -32,46 +32,7 @@
             "index": 0
           },
           {
-            "node": "If2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Link product to store in SM": {
-      "main": [
-        []
-      ]
-    },
-    "Link product to store in SM1": {
-      "main": [
-        []
-      ]
-    },
-    "Split Out1": {
-      "main": [
-        [
-          {
-            "node": "If2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If2": {
-      "main": [
-        [
-          {
-            "node": "Create store in SM1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Create store in SM",
+            "node": "Split Out",
             "type": "main",
             "index": 0
           }
@@ -105,6 +66,17 @@
         [
           {
             "node": "Link product to store in SM1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -210,38 +182,6 @@
       "position": [
         -100,
         -120
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "15f4531e-96e1-4a99-9307-5d7beabbca5b",
-              "leftValue": "={{ $json.data[0].id }}",
-              "rightValue": "={{ $json.items[0].sa7e639fac }}",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "98f64514-5d21-4428-9491-a5e0033a1dd4",
-      "name": "If2",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        140,
-        40
       ]
     },
     {
@@ -360,6 +300,106 @@
         420,
         140
       ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "7fb487a8-6f73-4348-9f94-46db9173c33b",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "={{ $('Code').item.json.data[0].id }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": "=create record"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "bc7047e0-fb46-495a-8237-64cd9e614638",
+                    "leftValue": "{{ $json.id }}",
+                    "rightValue": "{{ $('Code').item.json.data[0].id }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "update record"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a259baf9-1711-4a11-95e1-e7d53a983c36",
+                    "leftValue": "{{ $json.id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "do nothing"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6bc7191b-f3c3-41aa-a267-3695b8ab6129",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        20,
+        40
+      ]
     }
   ],
   "pinData": {},
@@ -376,6 +416,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-16T07:38:08.000Z",
-  "versionId": "06a3513c-c162-496b-a1d2-49f1ce8142aa"
+  "updatedAt": "2024-08-16T11:08:57.000Z",
+  "versionId": "64cb443e-74ad-455f-b1b0-d5bbc149ded6"
 }

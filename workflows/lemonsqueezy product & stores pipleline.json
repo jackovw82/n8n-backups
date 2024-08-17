@@ -54,7 +54,7 @@
       "main": [
         [
           {
-            "node": "Link product to store in SM",
+            "node": "Lookup SM Store",
             "type": "main",
             "index": 0
           }
@@ -171,7 +171,29 @@
       "main": [
         [
           {
+            "node": "Check Product Entry2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Product Entry2": {
+      "main": [
+        [
+          {
             "node": "Link product to store in SM1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lookup SM Store": {
+      "main": [
+        [
+          {
+            "node": "Link product to store in SM",
             "type": "main",
             "index": 0
           }
@@ -246,7 +268,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        620,
+        820,
         -140
       ]
     },
@@ -259,7 +281,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        620,
+        820,
         40
       ]
     },
@@ -381,7 +403,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1280,
+        1480,
         -60
       ]
     },
@@ -422,7 +444,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        820,
+        1020,
         -140
       ]
     },
@@ -435,7 +457,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1040,
+        1240,
         -140
       ]
     },
@@ -476,7 +498,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        820,
+        1020,
         40
       ]
     },
@@ -489,7 +511,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1040,
+        1240,
         40
       ]
     },
@@ -562,6 +584,88 @@
         400,
         40
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66bba63ce24d2ee29028e068/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "25"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e7165494-788e-4c64-bb7c-6dac2731158a",
+      "name": "Check Product Entry2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        600,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66bba63ce24d2ee29028e068/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "25"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "064b2dfd-b70d-43f6-b46b-2865a1b8ca55",
+      "name": "Lookup SM Store",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        600,
+        -140
+      ]
     }
   ],
   "pinData": {},
@@ -578,6 +682,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-16T17:24:18.000Z",
-  "versionId": "ad998e0e-5564-448c-afc2-7f1bd5d5fa60"
+  "updatedAt": "2024-08-17T09:24:04.000Z",
+  "versionId": "794e3a15-ab43-43d3-afc3-53e7d0d7d987"
 }

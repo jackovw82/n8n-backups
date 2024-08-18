@@ -65,7 +65,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -127,24 +127,6 @@
         ]
       ]
     },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Create store in SM1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Update product and  store in SM",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Update product and  store in SM": {
       "main": [
         [
@@ -160,7 +142,18 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Create store in SM1",
             "type": "main",
             "index": 0
           }
@@ -458,38 +451,6 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "24159261-0eb3-4d82-8bd8-ce419176c972",
-              "leftValue": "={{ $json.id }}",
-              "rightValue": "={{ $json.items[0].sa7e639fac }}",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "a6157854-c50c-4614-aec3-d6c2aa57bdbc",
-      "name": "If",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        320,
-        -20
-      ]
-    },
-    {
-      "parameters": {
         "method": "POST",
         "url": "https://app.smartsuite.com/api/v1/applications/66bba94fe555519ad8cb2b58/records/",
         "sendHeaders": true,
@@ -548,6 +509,43 @@
         80,
         -80
       ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "={{ $json.items[0].sa7e639fac }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "90854ade-a9e4-4e44-834e-c1af081182f6",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        300,
+        0
+      ]
     }
   ],
   "pinData": {},
@@ -564,6 +562,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-18T10:06:20.000Z",
-  "versionId": "ea8ca4bd-6fe8-4d74-bc69-02bc67704564"
+  "updatedAt": "2024-08-18T16:17:47.000Z",
+  "versionId": "40f066d6-becf-4eec-9a23-e1ef00d4ff83"
 }

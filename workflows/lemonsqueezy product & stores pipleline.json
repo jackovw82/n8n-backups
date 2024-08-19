@@ -262,7 +262,6 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"description\": \"{{ $json.attributes.description }}\",\n  \"stoplight_status\": \"1\",\n  \"status\": {\n    \"value\": \"in_progress\"\n  },\n  \"s1c02fcf6f\": \"{{ $json.type }}\", \n  \"sa7e639fac\": \"{{ $json.id }}\"\n}",
         "options": {
           "batching": {
             "batch": {
@@ -420,6 +419,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-19T20:08:20.000Z",
-  "versionId": "ba2e1ee7-206c-4233-afb2-7981acb9b2fb"
+  "updatedAt": "2024-08-19T20:58:59.000Z",
+  "versionId": "bcbc30f1-812d-467d-916e-a81608100db8"
 }

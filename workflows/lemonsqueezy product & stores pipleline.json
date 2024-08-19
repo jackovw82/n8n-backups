@@ -65,7 +65,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "Merge",
             "type": "main",
             "index": 0
           }
@@ -94,17 +94,6 @@
         ]
       ]
     },
-    "Edit Fields": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Split Out": {
       "main": [
         [
@@ -120,35 +109,6 @@
       "main": [
         [
           {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items": {
-      "main": [
-        [
-          {
-            "node": "Create store in SM1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Replace Me",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Replace Me": {
-      "main": [
-        [
-          {
             "node": "Wait",
             "type": "main",
             "index": 0
@@ -160,7 +120,7 @@
       "main": [
         [
           {
-            "node": "Loop Over Items",
+            "node": "Create store in SM1",
             "type": "main",
             "index": 0
           }
@@ -302,7 +262,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"description\": \"{{ $json.attributes.description }}\",\n  \"stoplight_status\": \"1\",\n  \"status\": {\n    \"value\": \"in_progress\"\n  },\n  \"s1c02fcf6f\": \"{{$json.type }}\", \n  \"sa7e639fac\": \"{{$json.id }}\",\n  \"s762407c0f\": \"{{$json.attributes.store_id }}\",\n  \"sc7204a3d7\": \"{{$json.attributes.name }}\"\n}           ",
+        "jsonBody": "={\n  \"description\": \"{{ $json.attributes.description }}\",\n  \"stoplight_status\": \"1\",\n  \"status\": {\n    \"value\": \"in_progress\"\n  },\n  \"s1c02fcf6f\": \"{{ $json.type }}\", \n  \"sa7e639fac\": \"{{ $json.id }}\"\n}",
         "options": {
           "batching": {
             "batch": {
@@ -317,8 +277,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        940,
-        -120
+        560,
+        -20
       ]
     },
     {
@@ -331,7 +291,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -120,
+        -220,
         80
       ]
     },
@@ -344,8 +304,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1620,
-        -120
+        1240,
+        -20
       ]
     },
     {
@@ -385,8 +345,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        1160,
-        -120
+        780,
+        -20
       ]
     },
     {
@@ -398,31 +358,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1380,
-        -120
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "3a6b5816-7c1f-4ddb-8b60-979105533b00",
-              "name": "items[0].sa7e639fac",
-              "value": "={{ $json.items[0].sa7e639fac }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "e9c225e8-ca19-4e50-82da-412fcadb1c33",
-      "name": "Edit Fields",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        80,
-        -80
+        1000,
+        -20
       ]
     },
     {
@@ -435,14 +372,14 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        300,
-        0
+        140,
+        -20
       ]
     },
     {
       "parameters": {
         "content": "## SmartSuite",
-        "height": 255.3135864498813,
+        "height": 215.62412356444966,
         "width": 228.1849366795202
       },
       "id": "a4b84b8b-1c09-4507-adff-ec4313869c06",
@@ -450,48 +387,23 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        740,
-        800
+        480,
+        -80
       ]
     },
     {
       "parameters": {
-        "batchSize": 5,
-        "options": {}
+        "amount": 15
       },
-      "id": "866617b1-f5ee-4793-b8cd-6bb0cedfacde",
-      "name": "Loop Over Items",
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        540,
-        0
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "bbc7df82-7b47-4e71-ad83-aac3b3d144ff",
-      "name": "Replace Me",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        766,
-        40
-      ]
-    },
-    {
-      "parameters": {
-        "amount": 30
-      },
-      "id": "1cf77b38-90ba-457d-a6f9-799c5db9338a",
+      "id": "15e0889c-4741-4679-af0e-c73771a37c92",
       "name": "Wait",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        946,
-        40
+        340,
+        -20
       ],
-      "webhookId": "a6729ed2-d564-4df9-86e3-3efc184408d7"
+      "webhookId": "e196ccb8-2f01-4cf1-a21e-ccad888d590e"
     }
   ],
   "pinData": {},
@@ -508,6 +420,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-19T17:36:01.000Z",
-  "versionId": "3862cd63-1edf-4414-aa69-dec46725a9fc"
+  "updatedAt": "2024-08-19T20:08:20.000Z",
+  "versionId": "ba2e1ee7-206c-4233-afb2-7981acb9b2fb"
 }

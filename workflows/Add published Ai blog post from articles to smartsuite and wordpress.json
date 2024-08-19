@@ -1,0 +1,178 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Blog Title",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Wordpress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Feed Trigger": {
+      "main": [
+        [
+          {
+            "node": "Blog Title",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Blog Title": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T18:35:51.995Z",
+  "id": "DS1y8e2q2bhfSMaz",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Add published Ai blog post from articles to smartsuite and wordpress",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "bbf01eba-49ab-4553-9829-42cfe39d34a0",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        160,
+        600
+      ],
+      "webhookId": "0efa9023-c7f3-446e-9618-b1e6815d07c1"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "options": {}
+      },
+      "id": "9ee68dd7-2c7e-45fd-9a16-4c7b9f3480b6",
+      "name": "OpenAI1",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        760,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "additionalFields": {
+          "authorId": "",
+          "slug": "",
+          "status": "draft",
+          "sticky": false,
+          "tags": []
+        }
+      },
+      "id": "03513176-44d5-44e9-8f40-2b2b8dddaf3e",
+      "name": "Wordpress",
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "options": {}
+      },
+      "id": "a8e1252b-7e7e-4934-b46c-05a9be3361ec",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1000,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            },
+            {}
+          ]
+        },
+        "feedUrl": "https://rss.app/feed/dCel8CZtsL4os91G"
+      },
+      "id": "36ef97c7-a680-4311-94ac-0e8b5fb988c6",
+      "name": "RSS Feed Trigger",
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [
+        140,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "assistant",
+        "assistantId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "id": "155147d6-72e4-46a4-9585-e4a04d2811d4",
+      "name": "Blog Title",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        380,
+        420
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-19T18:20:08.000Z",
+  "versionId": "610f661a-752a-4cd5-becc-4e6940e4ea5e"
+}

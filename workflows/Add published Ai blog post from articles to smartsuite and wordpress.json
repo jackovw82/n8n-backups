@@ -52,6 +52,11 @@
             "node": "OpenAI1",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -89,7 +94,7 @@
       "typeVersion": 1.4,
       "position": [
         760,
-        420
+        500
       ]
     },
     {
@@ -108,7 +113,7 @@
       "typeVersion": 1,
       "position": [
         1200,
-        420
+        500
       ]
     },
     {
@@ -122,7 +127,7 @@
       "typeVersion": 4.2,
       "position": [
         1000,
-        420
+        500
       ]
     },
     {
@@ -164,6 +169,29 @@
         380,
         420
       ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "messages": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "0e1f0cf3-ec40-4dbc-863d-820c5005f9bd",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        720,
+        280
+      ]
     }
   ],
   "pinData": {},
@@ -173,6 +201,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-19T18:20:08.000Z",
-  "versionId": "610f661a-752a-4cd5-becc-4e6940e4ea5e"
+  "updatedAt": "2024-08-19T18:53:45.000Z",
+  "versionId": "2c11d852-dcd5-4183-89c3-1b4161a42ff6"
 }

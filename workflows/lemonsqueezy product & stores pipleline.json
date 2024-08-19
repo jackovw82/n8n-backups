@@ -175,7 +175,7 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1000,
+        -960,
         0
       ]
     },
@@ -310,8 +310,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        580,
-        -140
+        520,
+        -80
       ]
     },
     {
@@ -324,7 +324,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -200,
+        -120,
         80
       ]
     },
@@ -337,8 +337,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1260,
-        -60
+        1200,
+        0
       ]
     },
     {
@@ -378,8 +378,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        800,
-        -140
+        740,
+        -80
       ]
     },
     {
@@ -391,8 +391,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1020,
-        -140
+        960,
+        -80
       ]
     },
     {
@@ -432,8 +432,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        800,
-        40
+        740,
+        100
       ]
     },
     {
@@ -445,8 +445,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1020,
-        40
+        960,
+        100
       ]
     },
     {
@@ -483,8 +483,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        580,
-        40
+        520,
+        100
       ]
     },
     {
@@ -562,6 +562,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-18T16:17:47.000Z",
-  "versionId": "40f066d6-becf-4eec-9a23-e1ef00d4ff83"
+  "updatedAt": "2024-08-19T11:39:41.000Z",
+  "versionId": "09b3290b-5101-4ab8-8340-eb2590d1288f"
 }

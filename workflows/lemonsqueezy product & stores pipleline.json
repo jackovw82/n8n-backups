@@ -262,6 +262,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
+        "jsonBody": "{\n  \"title\": {{ $json.description }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"in_progress\"\n  },\n  \"s7e18ac595\": \"\", \n  \"sf78e2e067\": \"\",\n  \"s22e5fbd34\": \"\",\n  \"se64e66b7d\": \"\",\n  \"s104c552d1\": \"\",\n  \"sf7335e6da\": \"\",\n  \"s462427aec\": \"\",\n  \"sa60c2dda1\": \"\",\n  \"sa7b8b841b\": \"\",\n  \"sa7a9c2140\": \"\",\n  \"se2afa90b2\": \"\",\n  \"s8ce8d1b63\": \"\",\n  \"s875daacbd\": \"\",\n  \"s160017cbb\": \"\",\n  \"s93e0bbcaa\": \"\",\n  \"s5a8e4c60d\": \"\",\n  \"s4c2ea1202\": \"\",\n  \"sbca20347b\": \"\"\n}  ",
         "options": {
           "batching": {
             "batch": {
@@ -419,6 +420,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-08-19T20:58:59.000Z",
-  "versionId": "bcbc30f1-812d-467d-916e-a81608100db8"
+  "updatedAt": "2024-08-20T06:41:23.000Z",
+  "versionId": "5b76f12a-bae3-445a-af0e-7af67978968b"
 }

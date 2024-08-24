@@ -64,8 +64,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-21T12:50:17.652Z",
-  "id": "0ljxoSjkdfI0Bb7v",
+  "createdAt": "2024-08-21T12:42:44.739Z",
+  "id": "90dcNUKvCq5NubI8",
   "meta": null,
   "name": "Enrich new Hubspot contacts with contact and company data from ExactBuyer",
   "nodes": [
@@ -328,6 +328,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-21T12:50:17.652Z",
-  "versionId": "5ccec0f2-af5a-4939-98ba-7814fe445cdf"
+  "updatedAt": "2024-08-21T12:42:44.739Z",
+  "versionId": "3e03cb62-671b-4781-83ee-a5ab1a1f1bac"
 }

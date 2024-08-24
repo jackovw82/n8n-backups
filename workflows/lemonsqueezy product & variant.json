@@ -46,11 +46,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-15T08:59:57.027Z",
-  "id": "5dbFVHWEUGcRolyJ",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-21T12:42:49.200Z",
+  "id": "AwmjXh518sPeuGJH",
+  "meta": null,
   "name": "lemonsqueezy product & variant",
   "nodes": [
     {
@@ -147,20 +145,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-15T08:59:57.027Z",
-  "versionId": "e6f34e38-d40f-48b3-8a3b-e8a65cfc6737"
+  "updatedAt": "2024-08-21T12:42:49.200Z",
+  "versionId": "344efc38-db1b-4a5a-a009-58e620f255b1"
 }

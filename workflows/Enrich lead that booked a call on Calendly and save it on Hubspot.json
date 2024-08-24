@@ -111,11 +111,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T09:11:38.587Z",
-  "id": "pcwwHJ1RboAZz5tV",
-  "meta": {
-    "templateId": "2129"
-  },
+  "createdAt": "2024-08-21T12:42:44.724Z",
+  "id": "0xXd3iUrYjJO5FLG",
+  "meta": null,
   "name": "Enrich lead that booked a call on Calendly and save it on Hubspot",
   "nodes": [
     {
@@ -526,20 +524,13 @@
       "typeVersion": 1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T09:11:39.000Z",
-  "versionId": "06969110-5a7b-464e-969f-e4b94c46e97a"
+  "updatedAt": "2024-08-21T12:42:44.724Z",
+  "versionId": "dfeb1d6e-87bd-4627-8540-e94439e1a65b"
 }

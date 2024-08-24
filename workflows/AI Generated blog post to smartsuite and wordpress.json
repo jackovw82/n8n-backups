@@ -134,11 +134,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-19T19:33:54.785Z",
-  "id": "Jykg7evvA4MflBMH",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-21T11:03:01.764Z",
+  "id": "8C4oYsxadmge1x6L",
+  "meta": null,
   "name": "AI Generated blog post to smartsuite and wordpress",
   "nodes": [
     {
@@ -344,13 +342,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-19T20:10:09.000Z",
-  "versionId": "87004105-fb37-41be-aa4c-b0198bd07fee"
+  "updatedAt": "2024-08-21T11:03:01.764Z",
+  "versionId": "33b6b872-a3f4-4257-b7fa-da1ab340a224"
 }

@@ -1,0 +1,914 @@
+{
+  "active": false,
+  "connections": {
+    "lookup_toggl_project": {
+      "main": [
+        [
+          {
+            "node": "Lookup SM Project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicates": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lookup SM Project": {
+      "main": [
+        [
+          {
+            "node": "Pass 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Project": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pass ": {
+      "main": [
+        [
+          {
+            "node": "Find Project",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SMTimeEntry": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [],
+        [],
+        [],
+        [
+          {
+            "node": "Pass ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "CreatetimeEntryinSM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET TimeEntries - Current1": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "SMTimeEntry",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "GET TimeEntries - Current1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pass 2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "lookup_toggl_project",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-21T12:50:19.321Z",
+  "id": "OKQPZBYN5HHU1zo6",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "WF002: Time_entry_is_created_in_Toggl_to_SM_v2_Historical_Entries_archive",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Reference Toggl",
+        "height": 407.92605896845396,
+        "width": 1731.1622979288454
+      },
+      "id": "5789fedf-b367-4e92-9219-e1fd90d21358",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## SmartSuite",
+        "height": 244.79552279207837,
+        "width": 228.1849366795202
+      },
+      "id": "929871d4-8683-42d6-b45f-499a3d0ea2cf",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3560,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Toggle Tiem Entries",
+        "height": 263.20454016568175
+      },
+      "id": "7d03a946-58c6-4c50-9be2-79d9ec85d5f9",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        180,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.track.toggl.com/api/v9/workspaces/8524979/projects/{{ $json.project_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Basic amFja29Ab2NvZGUzNjAuY29tOkFHWV9ucWcqenh2M2FteDNtd2U="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fd882f4f-75c8-4b43-b569-ba6165ef623f",
+      "name": "lookup_toggl_project",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2180,
+        700
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "2ebf18cf-28d5-40b7-a502-0060a109835f",
+      "name": "Remove Duplicates",
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 1.1,
+      "position": [
+        1700,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/65b0c1654050e485a501517d/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "3"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"sort\": [\n    {\n      \"direction\": \"asc\",\n      \"field\": \"sf698fb364\"\n    }\n  ],\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {\n       \"field\": \"sf698fb364\",\n       \"comparison\": \"is_equal_to\",\n       \"value\": \"{{ $json.id }}\"\n      }\n    ]\n  }\n}   ",
+        "options": {}
+      },
+      "id": "b7138ffd-5b46-4344-9302-b806c2a6b076",
+      "name": "Lookup SM Project",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2400,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7bae4cdb-e441-48c8-8c0b-37d282e8bcaa",
+              "name": "record_id",
+              "value": "={{ $json.items[0].id }}",
+              "type": "string"
+            },
+            {
+              "id": "3ae977a8-3ab7-4570-8487-4e9a124c56fd",
+              "name": "id",
+              "value": "={{ $('lookup_toggl_project').item.json.id }}",
+              "type": "number"
+            },
+            {
+              "id": "416e681b-48b9-4704-9808-931bf9e9bc76",
+              "name": "workspace_id",
+              "value": "={{ $('lookup_toggl_project').item.json.workspace_id }}",
+              "type": "number"
+            },
+            {
+              "id": "56a887bf-c0be-4c2a-96ec-fc368836ba29",
+              "name": "client_id",
+              "value": "={{ $('lookup_toggl_project').item.json.client_id }}",
+              "type": "number"
+            },
+            {
+              "id": "e4a5d9e6-79b2-4425-9a0d-ee5c98320657",
+              "name": "name",
+              "value": "={{ $('lookup_toggl_project').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "2307815a-a79e-425f-a7e3-6c74d74ccea6",
+              "name": "start_date",
+              "value": "={{ $('lookup_toggl_project').item.json.start_date }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "60bfc630-2ad3-409f-9b8d-676d0aeebb98",
+      "name": "Pass 2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2620,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"in_progress\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"sf78e2e067\": \"{{ $json.seconds }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.proj_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"sbca20347b\": \"{{ $json.proj_record_id }}\"\n}  ",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 5
+            }
+          }
+        }
+      },
+      "id": "77f35b50-37fc-4098-94fd-e8476605dd89",
+      "name": "CreatetimeEntryinSM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3620,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f7122793-20cb-4ed8-b704-40e43d29ed22",
+              "name": "project_id",
+              "value": "={{ $json.project_id }}",
+              "type": "string"
+            },
+            {
+              "id": "bfd09284-ccce-42cd-ac05-2a5ccf2c1d21",
+              "name": "workspace_id",
+              "value": "={{ $json.workspace_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9a569a57-4b23-4175-a89e-8d98007c698a",
+      "name": "Find Project",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1500,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "48afe8d4-e3d4-4038-8c09-04789b642c49",
+              "name": "id",
+              "value": "={{ $('Edit Fields').item.json.id }}",
+              "type": "number"
+            },
+            {
+              "id": "5634e5ca-0737-4b43-a05b-98c3b3bae062",
+              "name": "seconds",
+              "value": "={{ $('Edit Fields').item.json.seconds }}",
+              "type": "number"
+            },
+            {
+              "id": "976757c3-0d5f-4332-9fa7-dbc8fbd40d60",
+              "name": "start",
+              "value": "={{ $('Edit Fields').item.json.start }}",
+              "type": "string"
+            },
+            {
+              "id": "ea8551d7-60d1-47f5-a8ff-8a5fe755857e",
+              "name": "stop",
+              "value": "={{ $('Edit Fields').item.json.stop }}",
+              "type": "string"
+            },
+            {
+              "id": "e6b126a2-26b8-4b9d-a15a-b327918b1df9",
+              "name": "at",
+              "value": "={{ $('Edit Fields').item.json.at }}",
+              "type": "string"
+            },
+            {
+              "id": "65461fee-4022-4b1e-9868-661f8098d8aa",
+              "name": "user_id",
+              "value": "={{ $('Edit Fields').item.json.user_id }}",
+              "type": "number"
+            },
+            {
+              "id": "65dde3e1-a6ff-49f5-9cda-18da3f535cf4",
+              "name": "username",
+              "value": "={{ $('Edit Fields').item.json.username }}",
+              "type": "string"
+            },
+            {
+              "id": "d78ebaa4-7c38-42d4-bd07-d5f0d85ab2e8",
+              "name": "project_id",
+              "value": "={{ $('Edit Fields').item.json.project_id }}",
+              "type": "number"
+            },
+            {
+              "id": "901fc2e8-367a-4a4f-87ba-2ef53aa857b0",
+              "name": "task_id",
+              "value": "={{ $('Edit Fields').item.json.task_id }}",
+              "type": "string"
+            },
+            {
+              "id": "62447f61-e0d0-4dcc-8ac2-56c131e41f84",
+              "name": "billable",
+              "value": "={{ $('Edit Fields').item.json.billable }}",
+              "type": "boolean"
+            },
+            {
+              "id": "9ff295c1-98f4-4323-a2ce-f353c43679cb",
+              "name": "tag_ids",
+              "value": "={{ $('Edit Fields').item.json.tag_ids }}",
+              "type": "array"
+            },
+            {
+              "id": "e2b4fcb5-af54-47ec-aa3b-bad3f2c7d56d",
+              "name": "currency",
+              "value": "={{ $('Edit Fields').item.json.currency }}",
+              "type": "string"
+            },
+            {
+              "id": "b3b8042f-250d-4590-9509-63c2b03d3c63",
+              "name": "description",
+              "value": "={{ $('Edit Fields').item.json.description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c0d1a634-d1ee-48c4-b8ea-c87f681ed0e2",
+      "name": "Pass ",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1340,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "25"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "87bf149f-977d-4bd5-abed-8ada0270cc5d",
+      "name": "SMTimeEntry",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "sac94990b3",
+              "field2": "id"
+            }
+          ]
+        },
+        "resolve": "preferInput2",
+        "options": {}
+      },
+      "id": "3186eee4-4fb7-4fda-9721-e7d2c2374679",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        1080,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "items",
+        "options": {}
+      },
+      "id": "54e29563-c23a-450c-84d4-f9e5108ccc5b",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        720,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 5,
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "b12aa6fe-320c-4586-9809-4240b9306176",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3160,
+        600
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "52622284-a074-40f8-b1fc-41baf651fadf",
+      "name": "Replace Me",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.track.toggl.com/reports/api/v3/workspace/8524979/search/time_entries",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Basic PGVtYWlsPjo8cGFzc3dvcmQ+"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"start_date\": \"2024-07-01\",\n  \"end_date\": \"2024-07-14\",\n  \"user_id\": \"Jacko\"\n}",
+        "options": {}
+      },
+      "id": "620a31eb-5526-497d-832b-47e229daefaa",
+      "name": "GET TimeEntries - Current1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "time_entries",
+        "options": {}
+      },
+      "id": "a86868b1-8784-43a6-b6cd-52fd2ee45bef",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        520,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8e92a2ae-d29a-4ab6-9b99-dd1a9e04d9d4",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "number"
+            },
+            {
+              "id": "48cf2368-15de-4d20-befd-7a26bdffe479",
+              "name": "seconds",
+              "value": "={{ $json.seconds }}",
+              "type": "number"
+            },
+            {
+              "id": "f8f64d3a-3144-4a95-9876-6d097d2252b6",
+              "name": "start",
+              "value": "={{ $json.start }}",
+              "type": "string"
+            },
+            {
+              "id": "f79c925b-5fba-40f9-aef1-42d86c177f00",
+              "name": "stop",
+              "value": "={{ $json.stop }}",
+              "type": "string"
+            },
+            {
+              "id": "b11136c5-6dbd-4f37-9f52-6c887507cab0",
+              "name": "at",
+              "value": "={{ $json.at }}",
+              "type": "string"
+            },
+            {
+              "id": "e09c6890-202d-40ba-b35b-1103788be531",
+              "name": "user_id",
+              "value": "={{ $('GET TimeEntries - Current1').item.json.user_id }}",
+              "type": "number"
+            },
+            {
+              "id": "4bf104f9-7f83-4e48-964f-002c6b20e74f",
+              "name": "username",
+              "value": "={{ $('GET TimeEntries - Current1').item.json.username }}",
+              "type": "string"
+            },
+            {
+              "id": "b10c1cd7-8acd-4aba-bd78-25562cdf804e",
+              "name": "project_id",
+              "value": "={{ $('GET TimeEntries - Current1').item.json.project_id }}",
+              "type": "number"
+            },
+            {
+              "id": "68d58651-4a4e-40a6-98ed-4bc387d7b480",
+              "name": "task_id",
+              "value": "={{ $('GET TimeEntries - Current1').item.json.task_id }}",
+              "type": "string"
+            },
+            {
+              "id": "2697a791-8905-4f5c-8cf7-bf809bd2b897",
+              "name": "billable",
+              "value": "={{ $('GET TimeEntries - Current1').item.json.billable }}",
+              "type": "boolean"
+            },
+            {
+              "id": "ae6bf2c7-851f-4e9e-9153-3b378752be08",
+              "name": "tag_ids",
+              "value": "={{ $('GET TimeEntries - Current1').item.json.tag_ids }}",
+              "type": "array"
+            },
+            {
+              "id": "ecc45ba1-4faf-4118-ac9e-401ff27c34dd",
+              "name": "currency",
+              "value": "={{ $('GET TimeEntries - Current1').item.json.currency }}",
+              "type": "string"
+            },
+            {
+              "id": "3df26ca0-762f-4440-8740-4cf3b0da0fe2",
+              "name": "description",
+              "value": "={{ $('GET TimeEntries - Current1').item.json.description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "4087c902-63d6-4b39-8d89-aea024b31e7e",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        740,
+        660
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "76d96020-8d73-46e0-a0d4-74835d9c3a48",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "query": "WITH \n  project as \n  (\n  select * from input2\n  ),\n  time_entry  AS\n  (\n  select\n    project.record_id AS proj_record_id,\n    project.id AS project_id, \n    project.name AS proj_name,\n    input1.id AS time_entry_id,\n    input1.*\n  from input1\n    left JOIN project ON project.id = input1.project_id\n  )\nselect * from time_entry;"
+      },
+      "id": "a13283ad-d854-466f-b855-8c76b4c78560",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2860,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "2fe0f194-c568-47b0-913f-e9fad857f550",
+              "leftValue": "={{ $json.project_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "23aaf46c-e922-44ef-a7e5-cc08188bafde",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1940,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "e6bbe79e-c6d2-4661-aead-8191f9cebfb8",
+              "leftValue": "={{ $json.project_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3ecd6a2b-f466-45b6-9c56-1194e42d399d",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1620,
+        580
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-22T06:39:28.000Z",
+  "versionId": "f055ae43-4e86-4b45-9f2a-bad196f83c69"
+}

@@ -156,11 +156,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:19:53.218Z",
-  "id": "VjanQVqHXqZ6eXzA",
-  "meta": {
-    "templateId": "1956"
-  },
+  "createdAt": "2024-08-21T12:42:43.262Z",
+  "id": "diDsvcg3D2t7LWlt",
+  "meta": null,
   "name": "AI: Summarize podcast episode and enhance using Wikipedia",
   "nodes": [
     {
@@ -434,13 +432,13 @@
       "typeVersion": 1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:19:53.218Z",
-  "versionId": "014f5129-0b7e-4729-84f5-2c5a2e7c3f58"
+  "updatedAt": "2024-08-21T12:42:43.262Z",
+  "versionId": "95e25536-4553-469d-b989-57f30824ee20"
 }

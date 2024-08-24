@@ -111,11 +111,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T09:12:05.048Z",
-  "id": "Ul9TrBomLpUQx4Um",
-  "meta": {
-    "templateId": "2130"
-  },
+  "createdAt": "2024-08-21T12:50:17.611Z",
+  "id": "gKCg3KYDYCbCnQpM",
+  "meta": null,
   "name": "Enrich lead captured by ConvertKit and save it in Hubspot",
   "nodes": [
     {
@@ -525,20 +523,13 @@
       "typeVersion": 2
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T09:12:22.000Z",
-  "versionId": "5e4e8b64-3e0f-47cf-b272-9927ec552176"
+  "updatedAt": "2024-08-21T12:50:17.611Z",
+  "versionId": "f8da88c4-5541-4641-a52f-94ab6e9f999a"
 }

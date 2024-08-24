@@ -1,11 +1,9 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-11T11:40:37.609Z",
-  "id": "QPhxKyV1gBRGYSQD",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-21T12:42:46.318Z",
+  "id": "71VAbuDzIpoDQ6pv",
+  "meta": null,
   "name": "Mailterlite Subscirber Automoations",
   "nodes": [
     {
@@ -49,20 +47,13 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T19:05:43.000Z",
-  "versionId": "4e2615ea-e26a-452c-8222-f5f3d7aeb55a"
+  "updatedAt": "2024-08-21T12:42:46.318Z",
+  "versionId": "9a1a6cb2-87ef-4185-9067-18891adbbac4"
 }

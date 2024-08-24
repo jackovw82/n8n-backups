@@ -239,11 +239,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:35:23.329Z",
-  "id": "kWhHvqeEeJQb0uIq",
-  "meta": {
-    "templateId": "1093"
-  },
+  "createdAt": "2024-08-21T12:42:41.398Z",
+  "id": "cfcAvoEJKye9toYb",
+  "meta": null,
   "name": "Build a self-hosted URL shortener with a dashboard",
   "nodes": [
     {
@@ -807,13 +805,13 @@
       "id": "e4817fb0-5b03-4253-abc5-a39f5974f89a"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:35:23.329Z",
-  "versionId": "11b35d3b-9424-4d50-afe9-293383959194"
+  "updatedAt": "2024-08-21T12:42:41.398Z",
+  "versionId": "e6972206-452a-431f-8235-d453d8e3a53e"
 }

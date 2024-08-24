@@ -46,11 +46,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T09:05:55.843Z",
-  "id": "YmICYt4OCYeBcv5t",
-  "meta": {
-    "templateId": "1461"
-  },
+  "createdAt": "2024-08-21T12:42:47.917Z",
+  "id": "1XI1ojUIupOZU5pW",
+  "meta": null,
   "name": "Validate email of new contacts in Hubspot 2",
   "nodes": [
     {
@@ -156,20 +154,13 @@
       "id": "ad344add-41b8-4883-ba41-207fc13641fb"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T14:53:14.000Z",
-  "versionId": "887d62ba-4875-4b5c-97e5-74456d506643"
+  "updatedAt": "2024-08-21T12:42:47.917Z",
+  "versionId": "ae8a268e-26f1-4a65-ad3b-6597ed382447"
 }

@@ -35,11 +35,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:37:39.516Z",
-  "id": "lyiqcYb1SLCX8dOD",
-  "meta": {
-    "templateId": "832"
-  },
+  "createdAt": "2024-08-21T12:42:43.026Z",
+  "id": "hlfn052x7H72LSdZ",
+  "meta": null,
   "name": "Create a channel, add a member, and post a message to the channel on Mattermost",
   "nodes": [
     {
@@ -102,13 +100,13 @@
       "id": "92369de9-1836-43eb-b629-db880627f783"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:37:39.516Z",
-  "versionId": "00586d66-671e-4538-ba3e-0ec6fabe1f0f"
+  "updatedAt": "2024-08-21T12:42:43.026Z",
+  "versionId": "f8477cb5-9489-4d4e-8ea7-577b4c9d4000"
 }

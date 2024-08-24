@@ -46,12 +46,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:28:06.645Z",
-  "id": "TGcKB0E3SIAKPtFj",
-  "meta": {
-    "templateCredsSetupCompleted": true,
-    "templateId": "1588"
-  },
+  "createdAt": "2024-08-21T12:42:46.289Z",
+  "id": "2nRrfvDVTkg2tEDv",
+  "meta": null,
   "name": "Manage Adobe Acrobat e-signatures with webhooks",
   "nodes": [
     {
@@ -157,13 +154,13 @@
       "id": "d24c26b0-8eed-4e90-b72c-712f5a2f453c"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:28:06.645Z",
-  "versionId": "1dd135d2-110b-488c-b123-a2bfef752889"
+  "updatedAt": "2024-08-21T12:42:46.289Z",
+  "versionId": "f1f6dd67-df19-43c9-843a-8ee3bedb748b"
 }

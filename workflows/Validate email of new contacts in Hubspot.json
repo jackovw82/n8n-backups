@@ -46,11 +46,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:33:16.322Z",
-  "id": "6iiBWjcnflmvmzTK",
-  "meta": {
-    "templateId": "1461"
-  },
+  "createdAt": "2024-08-21T12:42:47.929Z",
+  "id": "hrJf14ZExwj71khv",
+  "meta": null,
   "name": "Validate email of new contacts in Hubspot",
   "nodes": [
     {
@@ -156,13 +154,13 @@
       "id": "f95a8e4f-7987-44fd-9013-7a54cec0fb8f"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:33:16.322Z",
-  "versionId": "1c251466-ca2b-43eb-a42c-a1629522d8d3"
+  "updatedAt": "2024-08-21T12:42:47.929Z",
+  "versionId": "89e5158a-1177-4e99-98e9-431bf0767774"
 }

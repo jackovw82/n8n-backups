@@ -287,11 +287,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:37:22.286Z",
-  "id": "z6HDdXAoIEoT321m",
-  "meta": {
-    "templateId": "837"
-  },
+  "createdAt": "2024-08-21T12:42:47.776Z",
+  "id": "pUUitMWPoRpQIuwo",
+  "meta": null,
   "name": "Track changes of product prices 2",
   "nodes": [
     {
@@ -699,13 +697,13 @@
       "id": "061dd84a-7784-4bf5-a7a9-37938cce47e5"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:37:22.286Z",
-  "versionId": "d4675bf4-e3f8-42d3-9a9b-cd5ea510f858"
+  "updatedAt": "2024-08-21T12:42:47.776Z",
+  "versionId": "4b63c756-3ff6-44b9-ad99-4c23430422c2"
 }

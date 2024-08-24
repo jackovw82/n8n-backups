@@ -1,0 +1,254 @@
+{
+  "active": false,
+  "connections": {
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Set price",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NoOp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "Shopify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shopify": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set price": {
+      "main": [
+        [
+          {
+            "node": "Function",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-22T14:51:38.519Z",
+  "id": "YYH0LHodksyYG6H8",
+  "meta": {
+    "templateId": "1207"
+  },
+  "name": "Run weekly inventories on Shopify sales",
+  "nodes": [
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyWeek",
+              "hour": 10
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        380,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "210a8672-4abb-49cc-8398-24e8fb186350"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "options": {}
+      },
+      "name": "Shopify",
+      "type": "n8n-nodes-base.shopify",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "2bedb149-daa4-45b8-b968-eec7e62a2155"
+    },
+    {
+      "parameters": {
+        "functionCode": "let totalOrders = items.length;\nlet ordersSum = 0;\n\nfor(let i=0; i < items.length; i++) {\n  ordersSum = ordersSum + parseFloat(items[i].json.orderPrice);\n}\nreturn [{json:{totalOrders, ordersSum}}]"
+      },
+      "name": "Function",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        1380,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "58f4a21d-d202-4b29-8d02-47af7d5862ee"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "append",
+        "sheetId": "1GVyV1yYwWZu510NTzVgi2RyesrsnuP3RxXmWbX1O7DQ",
+        "options": {}
+      },
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        1580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "3981ab93-af6e-4580-958b-71da02e8f7b3"
+    },
+    {
+      "parameters": {
+        "channel": "shopify",
+        "text": "=Hey team, this week we had {{$json[\"totalOrders\"]}} orders with a total value of € {{$json[\"ordersSum\"]}}.",
+        "otherOptions": {},
+        "attachments": []
+      },
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1580,
+        40
+      ],
+      "typeVersion": 1,
+      "id": "0714b49d-a8b7-4053-a141-1af2487841af"
+    },
+    {
+      "parameters": {
+        "value": "={{$json[\"created_at\"]}}",
+        "dataPropertyName": "order_date",
+        "options": {}
+      },
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "position": [
+        780,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "b95ae4f9-6954-4a44-8c62-eaebb1cb2332"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "dateTime": [
+            {
+              "value1": "={{$node[\"Date & Time\"].json[\"order_date\"]}}",
+              "value2": "2021-08-17T15:00:53.223Z"
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        980,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "e4c4ab46-26e9-4ca7-9820-00804e02485c"
+    },
+    {
+      "parameters": {},
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1180,
+        340
+      ],
+      "typeVersion": 1,
+      "id": "78b8a869-3e3f-48eb-8e37-860608b2dc79"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "orderPrice",
+              "value": "={{$json[\"total_price\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set price",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1180,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "d2d7f5b4-1bf5-47be-a227-da3d0175f40c"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-08-22T15:23:48.276Z",
+      "updatedAt": "2024-08-22T15:23:48.276Z",
+      "id": "bxsFpsA4Wm06ilfw",
+      "name": "operations"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-22T15:24:00.000Z",
+  "versionId": "5b9bf5d6-6ba4-44dd-8cda-30cb7b1cf127"
+}

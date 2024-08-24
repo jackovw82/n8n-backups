@@ -1,11 +1,9 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T20:38:45.540Z",
-  "id": "jTEkmsmTtF1diwnU",
-  "meta": {
-    "templateId": "545"
-  },
+  "createdAt": "2024-08-21T12:42:46.848Z",
+  "id": "H05DieoHSSDflYJi",
+  "meta": null,
   "name": "Receive updates for Stripe events",
   "nodes": [
     {
@@ -25,13 +23,13 @@
       "id": "2f614f13-0c69-4075-b428-81252647cbd1"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T20:38:45.540Z",
-  "versionId": "c39b2682-0a43-4fc1-a305-026fe43c9f20"
+  "updatedAt": "2024-08-21T12:42:46.848Z",
+  "versionId": "95221a10-f237-480a-8eba-35ee9aa4b0b0"
 }

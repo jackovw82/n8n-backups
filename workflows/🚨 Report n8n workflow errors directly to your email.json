@@ -13,11 +13,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:20:46.968Z",
-  "id": "7FO98J06u2YEzCj3",
-  "meta": {
-    "templateId": "2160"
-  },
+  "createdAt": "2024-08-21T12:50:20.232Z",
+  "id": "cPJRwn9vSJ2Z4H7N",
+  "meta": null,
   "name": "🚨 Report n8n workflow errors directly to your email",
   "nodes": [
     {
@@ -80,13 +78,13 @@
       "typeVersion": 2.1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:20:46.968Z",
-  "versionId": "f61109dd-e99a-4a0c-a6bf-269b4b6873f8"
+  "updatedAt": "2024-08-21T12:50:20.232Z",
+  "versionId": "1d8cd602-499a-4d74-8dfa-f17d59cd347c"
 }

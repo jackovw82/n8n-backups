@@ -24,11 +24,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T10:11:08.528Z",
-  "id": "U5nhbnynrVSTh5h9",
-  "meta": {
-    "templateId": "759"
-  },
+  "createdAt": "2024-08-21T12:42:46.870Z",
+  "id": "fWW3bKfsGhq6JyAD",
+  "meta": null,
   "name": "Receive updates when a subscriber is added to a group in MailerLite",
   "nodes": [
     {
@@ -100,20 +98,13 @@
       "id": "60754135-cc11-4421-873d-8447b7893fbb"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T11:27:34.000Z",
-  "versionId": "c1cc101c-7d0f-4a38-889e-98ac2907c75f"
+  "updatedAt": "2024-08-21T12:42:46.870Z",
+  "versionId": "6991b223-af16-4879-b6af-5edc3809c821"
 }

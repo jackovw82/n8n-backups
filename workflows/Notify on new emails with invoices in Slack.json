@@ -64,8 +64,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-21T12:50:18.227Z",
-  "id": "AYCXp7092ZDfYwZM",
+  "createdAt": "2024-08-21T12:42:46.491Z",
+  "id": "W4WTPdTRM0hVI34R",
   "meta": null,
   "name": "Notify on new emails with invoices in Slack",
   "nodes": [
@@ -213,6 +213,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-21T12:50:18.227Z",
-  "versionId": "e41bcf41-bab3-47b6-bfc0-8390c6e9c148"
+  "updatedAt": "2024-08-21T12:42:46.491Z",
+  "versionId": "ce4dc1d8-4d4e-4f82-ae85-4dccda2e6f4a"
 }

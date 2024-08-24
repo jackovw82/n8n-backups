@@ -23,11 +23,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-13T06:27:52.863Z",
-  "id": "zn0Nidpliqz7R6lz",
-  "meta": {
-    "templateId": "668"
-  },
+  "createdAt": "2024-08-21T12:42:43.177Z",
+  "id": "1NowuFcErfStvsZx",
+  "meta": null,
   "name": "Create or update a post in WordPress",
   "nodes": [
     {
@@ -74,20 +72,13 @@
       "id": "a41a408b-28b5-4090-b6ae-8d642088dbbc"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-12T12:39:06.587Z",
-      "updatedAt": "2024-08-12T12:39:41.194Z",
-      "id": "mbLRzOgSsfYouIvX",
-      "name": "content production"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-13T06:28:18.000Z",
-  "versionId": "7d3764c8-934d-4bd0-b49f-1bc1367f272f"
+  "updatedAt": "2024-08-21T12:42:43.177Z",
+  "versionId": "76ea1788-70f9-46d5-891d-c59d1079e414"
 }

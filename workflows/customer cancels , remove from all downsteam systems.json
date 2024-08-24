@@ -1,25 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T18:35:51.776Z",
-  "id": "uO42EBrhNXgIgE98",
+  "createdAt": "2024-08-21T12:50:19.892Z",
+  "id": "INxlfpeNCAT4zIHV",
   "meta": null,
   "name": "customer cancels , remove from all downsteam systems",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-13T07:13:15.000Z",
-  "versionId": "dc8c93c9-478f-4145-a1a1-227d6d5e96c6"
+  "updatedAt": "2024-08-21T12:50:19.892Z",
+  "versionId": "e21d29d4-1fd4-4c09-947c-cd9eadff4706"
 }

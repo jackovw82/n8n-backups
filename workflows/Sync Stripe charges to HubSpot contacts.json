@@ -165,11 +165,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T09:08:50.422Z",
-  "id": "RbMkdrc4e2qppS0A",
-  "meta": {
-    "templateId": "1855"
-  },
+  "createdAt": "2024-08-21T12:42:47.460Z",
+  "id": "B4MQCvHs6vSa54UR",
+  "meta": null,
   "name": "Sync Stripe charges to HubSpot contacts",
   "nodes": [
     {
@@ -636,20 +634,13 @@
       "typeVersion": 1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T12:46:45.000Z",
-  "versionId": "564d1d13-54bf-499c-a464-186a298a4f35"
+  "updatedAt": "2024-08-21T12:42:47.460Z",
+  "versionId": "fe5081b7-2a73-4446-a50a-307f37542ab8"
 }

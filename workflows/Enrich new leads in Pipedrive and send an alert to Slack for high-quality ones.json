@@ -150,8 +150,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T18:35:48.380Z",
-  "id": "Y7IbuD2XdKHVTgw6",
+  "createdAt": "2024-08-21T12:50:17.668Z",
+  "id": "LIl7rcLkUWNB17gV",
   "meta": null,
   "name": "Enrich new leads in Pipedrive and send an alert to Slack for high-quality ones",
   "nodes": [
@@ -616,6 +616,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:48.380Z",
-  "versionId": "fddf916a-591e-4caf-89a2-946b3ffa7424"
+  "updatedAt": "2024-08-21T12:50:17.668Z",
+  "versionId": "aa372ff4-6b34-4826-a5cb-9eee3db68392"
 }

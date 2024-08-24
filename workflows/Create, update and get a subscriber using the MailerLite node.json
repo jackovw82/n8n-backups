@@ -23,11 +23,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T10:10:32.458Z",
-  "id": "Msxq7MGIXOFjEzac",
-  "meta": {
-    "templateId": "751"
-  },
+  "createdAt": "2024-08-21T12:50:17.582Z",
+  "id": "EcMijTYIG169fK0w",
+  "meta": null,
   "name": "Create, update and get a subscriber using the MailerLite node",
   "nodes": [
     {
@@ -102,20 +100,13 @@
       "id": "78267edd-7b88-4122-87c5-9b5359cff739"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T11:31:22.000Z",
-  "versionId": "74ded7f2-749e-40bb-9ebc-bfdbb0f34c46"
+  "updatedAt": "2024-08-21T12:50:17.582Z",
+  "versionId": "1e5631d3-8c49-4d45-aca5-5ce7d531e626"
 }

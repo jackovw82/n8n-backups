@@ -1,0 +1,239 @@
+{
+  "active": false,
+  "connections": {
+    "Keep only userId": {
+      "main": [
+        [
+          {
+            "node": "Add Hubspot userId to data",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "On order updated": {
+      "main": [
+        [
+          {
+            "node": "Add Hubspot userId to data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create or update contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create or update contact": {
+      "main": [
+        [
+          {
+            "node": "Keep only userId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "New Order, deal not found": {
+      "main": [
+        [
+          {
+            "node": "Create new deal",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Do Nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Hubspot userId to data": {
+      "main": [
+        [
+          {
+            "node": "Find if order already exists as deal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find if order already exists as deal": {
+      "main": [
+        [
+          {
+            "node": "New Order, deal not found",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-22T17:33:09.434Z",
+  "id": "iFMVpe0uXNct22OU",
+  "meta": {
+    "templateId": "1805"
+  },
+  "name": "Sync Shopify customers to your HubSpot contacts 2",
+  "nodes": [
+    {
+      "parameters": {
+        "topic": "orders/updated"
+      },
+      "id": "5cb9cd37-a73d-4f3f-b4dd-4b56e79f4056",
+      "name": "On order updated",
+      "type": "n8n-nodes-base.shopifyTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "0972ce92-d800-4049-ab60-7c71898ecbfa",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "userId",
+              "value": "={{ $json[\"vid\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "720e35c7-387e-428a-8930-0dfb67536382",
+      "name": "Keep only userId",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        860,
+        360
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json}}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "3bb1f676-6733-4c1f-b3d0-4604f8baa0c8",
+      "name": "New Order, deal not found",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1560,
+        260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "7f4b86a1-9ea7-4c5d-a336-eea2ec6dc341",
+      "name": "Do Nothing",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1800,
+        360
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "stage": "closedwon",
+        "additionalFields": {
+          "amount": "={{ $node[\"Add Hubspot userId to data\"].json[\"current_total_price\"] }}",
+          "associatedVids": "={{ $node[\"Add Hubspot userId to data\"].json[\"userId\"] }}",
+          "closeDate": "={{ $node[\"Add Hubspot userId to data\"].json[\"created_at\"] }}",
+          "dealName": "={{ $node[\"Add Hubspot userId to data\"].json[\"name\"] }}"
+        }
+      },
+      "id": "f60c88f1-8dab-498e-9f18-d7842dfa60c6",
+      "name": "Create new deal",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        1800,
+        160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "search",
+        "additionalFields": {
+          "query": "={{ $json[\"name\"] }}"
+        }
+      },
+      "id": "3d9de7e0-8cd4-4cea-a78c-8a862c32edeb",
+      "name": "Find if order already exists as deal",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        1340,
+        260
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex"
+      },
+      "id": "f85b698a-872a-477b-9466-e35622b381a2",
+      "name": "Add Hubspot userId to data",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1140,
+        260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "contact",
+        "email": "={{ $json[\"contact_email\"] }}",
+        "additionalFields": {
+          "city": "={{ $json[\"customer\"][\"default_address\"][\"city\"] }}",
+          "country": "={{ $json[\"customer\"][\"default_address\"][\"country\"] }}",
+          "firstName": "={{ $json[\"customer\"][\"default_address\"][\"first_name\"] }}",
+          "lastName": "={{ $json[\"customer\"][\"default_address\"][\"last_name\"] }}"
+        }
+      },
+      "id": "11502ac7-1e57-4614-9dd5-31f5fc62c91c",
+      "name": "Create or update contact",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        640,
+        360
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-22T17:33:09.434Z",
+  "versionId": "c40b2cae-8a38-4bcd-8e4c-36e2a7de37e7"
+}

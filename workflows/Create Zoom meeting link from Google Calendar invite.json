@@ -57,8 +57,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-21T12:42:43.015Z",
-  "id": "jWvlMd05Ls5xlrDo",
+  "createdAt": "2024-08-21T12:50:17.408Z",
+  "id": "sIdmaTRinF4iDgEU",
   "meta": null,
   "name": "Create Zoom meeting link from Google Calendar invite",
   "nodes": [
@@ -195,6 +195,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-21T12:42:43.015Z",
-  "versionId": "388ea769-19ce-4063-bbed-ec4c40f79505"
+  "updatedAt": "2024-08-21T12:50:17.408Z",
+  "versionId": "c59c34f9-2222-4cdb-8821-01429fb25b2a"
 }

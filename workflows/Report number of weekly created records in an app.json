@@ -62,11 +62,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T09:45:21.700Z",
-  "id": "hMAbcxQradZhKTwI",
-  "meta": {
-    "templateId": "1931"
-  },
+  "createdAt": "2024-08-21T12:42:47.114Z",
+  "id": "p1ERttEskcvVytrn",
+  "meta": null,
   "name": "Report number of weekly created records in an app",
   "nodes": [
     {
@@ -279,20 +277,13 @@
       "notes": "Mock Data"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T07:45:31.937Z",
-      "updatedAt": "2024-08-11T07:45:31.937Z",
-      "id": "Rk6FaRhDhV3biszZ",
-      "name": "IT Ops"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T12:44:28.000Z",
-  "versionId": "7f07bf47-eed0-459d-ba84-c3c1b7852e76"
+  "updatedAt": "2024-08-21T12:42:47.114Z",
+  "versionId": "b4f0f7f3-328f-4c8f-a8b8-caa18d2bc172"
 }

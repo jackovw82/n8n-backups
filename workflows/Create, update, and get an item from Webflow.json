@@ -35,11 +35,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:36:00.160Z",
-  "id": "O4RIfmG3KDKNDlIE",
-  "meta": {
-    "templateId": "1048"
-  },
+  "createdAt": "2024-08-21T12:50:17.518Z",
+  "id": "MftBpb72ChVjcm7C",
+  "meta": null,
   "name": "Create, update, and get an item from Webflow",
   "nodes": [
     {
@@ -144,13 +142,13 @@
       "id": "237cb18c-1cc5-446f-b6c2-76c9f2fde65a"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:36:00.160Z",
-  "versionId": "e1a46ce5-49f7-4118-8fe2-77bdfa77b863"
+  "updatedAt": "2024-08-21T12:50:17.518Z",
+  "versionId": "8cd4bfb7-ff61-4cf6-830f-04ddef84132f"
 }

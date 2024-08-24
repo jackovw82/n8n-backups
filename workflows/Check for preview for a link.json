@@ -42,11 +42,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:36:23.801Z",
-  "id": "rXv1mBjUdwRhywed",
-  "meta": {
-    "templateId": "935"
-  },
+  "createdAt": "2024-08-21T12:42:41.563Z",
+  "id": "ISbhlFH5xi3E78Km",
+  "meta": null,
   "name": "Check for preview for a link",
   "nodes": [
     {
@@ -120,13 +118,13 @@
       "id": "c9077c4d-aa5d-47e4-b584-e19731102d85"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:36:23.801Z",
-  "versionId": "5b7c0e6f-38ef-44d9-b023-92e0ec324671"
+  "updatedAt": "2024-08-21T12:42:41.563Z",
+  "versionId": "d6d2685b-0cfa-4cbd-839f-57fac3528ee4"
 }

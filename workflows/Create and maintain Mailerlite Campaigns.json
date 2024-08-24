@@ -1,11 +1,9 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-11T11:38:03.172Z",
-  "id": "anaHgJ3ilQCQSOpi",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-21T12:42:43.260Z",
+  "id": "0mrZUgSzTJ5XCOQT",
+  "meta": null,
   "name": "Create and maintain Mailerlite Campaigns",
   "nodes": [
     {
@@ -29,26 +27,13 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-12T08:52:29.192Z",
-      "updatedAt": "2024-08-12T08:52:29.192Z",
-      "id": "GDO0RMw45RMQINBd",
-      "name": "mailerlite"
-    },
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T08:52:31.000Z",
-  "versionId": "8e74eb24-76ae-4d73-9c8d-561a36570142"
+  "updatedAt": "2024-08-21T12:42:43.260Z",
+  "versionId": "2f4ed431-643a-47b5-ad04-4187fa63e4da"
 }

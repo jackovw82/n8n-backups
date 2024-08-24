@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T18:35:51.761Z",
-  "id": "XgzFaF3x4eRDeyhr",
+  "createdAt": "2024-08-21T12:42:49.083Z",
+  "id": "UGv4CLxBNWeCat2F",
   "meta": null,
   "name": "copy client final selection to google drive folder and share",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:51.761Z",
-  "versionId": "ba43709d-0d16-43e0-9ea0-ee3d96146828"
+  "updatedAt": "2024-08-21T12:42:49.083Z",
+  "versionId": "f72601c7-9be0-4a19-ac86-cf6c62e09e7b"
 }

@@ -64,11 +64,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T08:37:56.447Z",
-  "id": "OOBKTjSaFWZX6Q7s",
-  "meta": {
-    "templateId": "1223"
-  },
+  "createdAt": "2024-08-21T12:42:41.412Z",
+  "id": "nqOW9Otzf98oUfPz",
+  "meta": null,
   "name": "Capture leads in HubSpot from Typeform",
   "nodes": [
     {
@@ -217,13 +215,13 @@
       "id": "6f786da5-e00e-488a-ad79-0d10e8d29e4a"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T08:37:56.447Z",
-  "versionId": "e3f9eaa1-4c71-4cbd-9bf1-6e041c553c3e"
+  "updatedAt": "2024-08-21T12:42:41.412Z",
+  "versionId": "7455c629-3d30-46fd-aa72-a2e33b81b572"
 }

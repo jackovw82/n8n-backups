@@ -1,0 +1,51 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-22T19:21:25.532Z",
+  "id": "9bvJfoh1CdD1wvNM",
+  "meta": {
+    "templateId": "650",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Gumroad  Subscription [sales] to SM copy",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.gumroad.com/v2/resource_subscriptions",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "tJqRgo85uqkjM8UU95H2XmfWvLH5H2_yKG5bL2AVHPw"
+            },
+            {
+              "name": "resource_name",
+              "value": "=sale"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cd1a5ff5-746e-456b-bac5-68a9010984a1",
+      "name": "list offer codes",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -380,
+        120
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-22T20:11:00.000Z",
+  "versionId": "19b7297c-a7a6-482e-92c0-75f309816660"
+}

@@ -138,8 +138,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-21T12:50:17.992Z",
-  "id": "LkhJemCzZa0W38KM",
+  "createdAt": "2024-08-21T12:42:46.235Z",
+  "id": "29Kb5xKfc0CaC2t0",
   "meta": null,
   "name": "Host your own Uptime Monitoring with Scheduled Triggers",
   "nodes": [
@@ -681,6 +681,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-21T12:50:17.992Z",
-  "versionId": "5b90147a-bb9d-47a9-bf9d-0d849b16b734"
+  "updatedAt": "2024-08-21T12:42:46.235Z",
+  "versionId": "08137611-e509-4c2a-8138-3331ac20252c"
 }

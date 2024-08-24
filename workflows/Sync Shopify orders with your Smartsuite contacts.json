@@ -1,0 +1,275 @@
+{
+  "active": false,
+  "connections": {
+    "On customer updated": {
+      "main": [
+        [
+          {
+            "node": "Add Zendesk contact Id to Shopify data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Search contact by email adress",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "User exists in Zendesk": {
+      "main": [
+        [
+          {
+            "node": "Contact data is modified",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create contact in Zendesk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contact data is modified": {
+      "main": [
+        [
+          {
+            "node": "Update contact in Zendesk",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NoOp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep only UserId and email": {
+      "main": [
+        [
+          {
+            "node": "Add Zendesk contact Id to Shopify data",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Search contact by email adress": {
+      "main": [
+        [
+          {
+            "node": "Keep only UserId and email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Zendesk contact Id to Shopify data": {
+      "main": [
+        [
+          {
+            "node": "User exists in Zendesk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-22T14:51:30.321Z",
+  "id": "cpj9wvXYXsuWdk9F",
+  "meta": {
+    "templateId": "1808"
+  },
+  "name": "Sync Shopify orders with your Smartsuite contacts",
+  "nodes": [
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "ZendeskUserId",
+              "value": "={{ $json[\"id\"] }}"
+            }
+          ],
+          "string": [
+            {
+              "name": "ZendeskEmail",
+              "value": "={{ $json[\"email\"] }}"
+            },
+            {
+              "name": "ZendeskPhone",
+              "value": "={{ $json[\"phone\"]  }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "94fc73af-a35d-4d5c-a192-6190d2a731ff",
+      "name": "Keep only UserId and email",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        840,
+        380
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json[\"ZendeskUserId\"] }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "6decc852-d5b9-40c4-b51e-832283637027",
+      "name": "User exists in Zendesk",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1300,
+        260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "mergeByKey",
+        "propertyName1": "email",
+        "propertyName2": "ZendeskEmail"
+      },
+      "id": "70fa2ad7-c43c-4d22-ba6d-89495f8b5794",
+      "name": "Add Zendesk contact Id to Shopify data",
+      "type": "n8n-nodes-base.merge",
+      "position": [
+        1060,
+        260
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "topic": "customers/update"
+      },
+      "id": "346d3e04-433c-4b43-868f-729d3ee67ee2",
+      "name": "On customer updated",
+      "type": "n8n-nodes-base.shopifyTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "a0d5e8ea-3f53-496e-a41b-cb022f715b43",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "a2ff1fa3-d67a-4abb-94ae-f22cad7de359",
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1800,
+        300
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json[\"phone\"] }}",
+              "operation": "notEqual",
+              "value2": "={{ $json[\"ZendeskPhone\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "41418930-0898-4602-88a3-cf4238f32890",
+      "name": "Contact data is modified",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1580,
+        200
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "user",
+        "name": "={{ $json[\"first_name\"] }} {{ $json[\"last_name\"] }}",
+        "additionalFields": {
+          "email": "={{ $json[\"email\"] }}",
+          "phone": "={{ $json[\"phone\"] ?? ' ' }}"
+        }
+      },
+      "id": "ee1791fb-eaa0-4829-af3b-e72d7b3e80d5",
+      "name": "Create contact in Zendesk",
+      "type": "n8n-nodes-base.zendesk",
+      "position": [
+        1580,
+        360
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "user",
+        "operation": "update",
+        "id": "={{ $json[\"ZendeskUserId\"] }}",
+        "updateFields": {
+          "phone": "={{ $json[\"phone\"] ?? 0}}"
+        }
+      },
+      "id": "67dc85c6-39af-43cc-951e-bcfd31b73e46",
+      "name": "Update contact in Zendesk",
+      "type": "n8n-nodes-base.zendesk",
+      "position": [
+        1800,
+        100
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "user",
+        "operation": "search",
+        "limit": 1,
+        "filters": {
+          "query": "={{ $json[\"email\"] }}"
+        }
+      },
+      "id": "9ab30a51-e599-4361-b170-b18b9d4021cb",
+      "name": "Search contact by email adress",
+      "type": "n8n-nodes-base.zendesk",
+      "position": [
+        640,
+        380
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-22T15:25:14.000Z",
+  "versionId": "46416da8-0cd2-4241-b074-f60d5a9fa435"
+}

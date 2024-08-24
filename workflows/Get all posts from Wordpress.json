@@ -97,11 +97,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-13T06:27:41.922Z",
-  "id": "wdIIsQYDLcUJIzws",
-  "meta": {
-    "templateId": "546"
-  },
+  "createdAt": "2024-08-21T12:50:17.875Z",
+  "id": "CA9lQRlGtFbOaRZv",
+  "meta": null,
   "name": "Get all posts from Wordpress",
   "nodes": [
     {
@@ -258,20 +256,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-12T12:39:06.587Z",
-      "updatedAt": "2024-08-12T12:39:41.194Z",
-      "id": "mbLRzOgSsfYouIvX",
-      "name": "content production"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-13T17:58:53.000Z",
-  "versionId": "049062af-a3dd-4745-af96-7988e247ab38"
+  "updatedAt": "2024-08-21T12:50:17.875Z",
+  "versionId": "f20e7109-9209-400f-9ce9-56fb871ce756"
 }

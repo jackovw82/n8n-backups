@@ -35,11 +35,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T20:40:13.438Z",
-  "id": "sn5uJ16Fwx1tV1na",
-  "meta": {
-    "templateId": "993"
-  },
+  "createdAt": "2024-08-21T12:42:46.837Z",
+  "id": "rodTvD7gYtdPpkgV",
+  "meta": null,
   "name": "Receive transfer updates from Wise and add to Airtable",
   "nodes": [
     {
@@ -122,13 +120,13 @@
       "id": "37a09477-3af2-4465-a691-9dcda6f5e156"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T20:40:13.438Z",
-  "versionId": "42916174-48ac-4e0f-b237-44c6ba155aaa"
+  "updatedAt": "2024-08-21T12:42:46.837Z",
+  "versionId": "b33ca5e3-1561-40e6-9d5e-992105dbcf9b"
 }

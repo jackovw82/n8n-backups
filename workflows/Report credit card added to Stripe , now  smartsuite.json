@@ -1,31 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T18:35:49.605Z",
-  "id": "0TFhIohkZsfWtDz9",
+  "createdAt": "2024-08-21T12:42:47.100Z",
+  "id": "sFrz9ZOd65VlxOqu",
   "meta": null,
   "name": "Report credit card added to Stripe , now  smartsuite",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-12T14:57:21.205Z",
-      "updatedAt": "2024-08-12T14:57:21.205Z",
-      "id": "ahp0Fs603GnfzKGx",
-      "name": "Finance & Accounting"
-    },
-    {
-      "createdAt": "2024-08-12T14:57:29.943Z",
-      "updatedAt": "2024-08-12T14:57:29.943Z",
-      "id": "joJ0Ue33e5mVcmTF",
-      "name": "oCode360"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T14:57:31.000Z",
-  "versionId": "09852211-c9aa-4994-be54-f62289f29384"
+  "updatedAt": "2024-08-21T12:42:47.100Z",
+  "versionId": "4df4171b-0e82-48df-9ef1-82b3f2f09cc4"
 }

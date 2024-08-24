@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T18:35:51.995Z",
-  "id": "DS1y8e2q2bhfSMaz",
+  "createdAt": "2024-08-21T12:42:39.306Z",
+  "id": "BX66M7DBz7a1rjMR",
   "meta": null,
   "name": "Add published blog post to smartsuite",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:51.995Z",
-  "versionId": "3ef82036-f8ce-4f8b-b33f-f37fa8a3181d"
+  "updatedAt": "2024-08-21T12:42:39.306Z",
+  "versionId": "27c350db-c0b9-45ce-a2a5-e37abeba8ae0"
 }

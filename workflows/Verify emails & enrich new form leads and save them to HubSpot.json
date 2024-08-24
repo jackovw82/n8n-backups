@@ -64,11 +64,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T09:09:52.043Z",
-  "id": "Vs41jmCzejAGZC7l",
-  "meta": {
-    "templateId": "2116"
-  },
+  "createdAt": "2024-08-21T12:42:48.103Z",
+  "id": "dugtSGPM3S58sQc5",
+  "meta": null,
   "name": "Verify emails & enrich new form leads and save them to HubSpot",
   "nodes": [
     {
@@ -270,20 +268,13 @@
       "typeVersion": 1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T09:09:52.043Z",
-  "versionId": "437e1ca0-4899-43d2-8c22-cdcfcf4bb2f9"
+  "updatedAt": "2024-08-21T12:42:48.103Z",
+  "versionId": "c401340a-ccbd-47a2-a743-cdfae8407f8e"
 }

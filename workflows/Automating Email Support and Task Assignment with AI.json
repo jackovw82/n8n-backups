@@ -1,0 +1,32 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-23T07:13:43.678Z",
+  "id": "ilZeq6H94KwlChXh",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Automating Email Support and Task Assignment with AI",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "97522c7c-62e9-4773-8055-0228dda143cd",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        1200,
+        700
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-23T07:13:43.678Z",
+  "versionId": "2116bbe9-7d11-42ff-ae5e-cedb80040e0a"
+}

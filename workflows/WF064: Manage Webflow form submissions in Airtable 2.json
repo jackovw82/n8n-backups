@@ -148,8 +148,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T18:35:51.678Z",
-  "id": "5M0MDb7fiwO3wD0m",
+  "createdAt": "2024-08-21T12:50:19.412Z",
+  "id": "ptbCJVF7WfGgu8SM",
   "meta": null,
   "name": "WF064: Manage Webflow form submissions in Airtable 2",
   "nodes": [
@@ -615,6 +615,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:51.678Z",
-  "versionId": "2c880d4d-0d9a-4d3a-8838-3e5fb8046462"
+  "updatedAt": "2024-08-21T12:50:19.412Z",
+  "versionId": "aeb678ff-65a1-4f12-b4a8-8eebe046a6da"
 }

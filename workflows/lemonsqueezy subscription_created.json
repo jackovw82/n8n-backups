@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-21T12:50:20.079Z",
-  "id": "8LA1Vzu2flR0mMTN",
+  "createdAt": "2024-08-21T12:42:49.229Z",
+  "id": "WCJUe4p9oXReuzny",
   "meta": null,
   "name": "lemonsqueezy subscription_created",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-21T12:50:20.079Z",
-  "versionId": "52f5e47d-a47c-46a2-9f95-67e8c38d565c"
+  "updatedAt": "2024-08-21T12:42:49.229Z",
+  "versionId": "54f3f683-4a00-481f-bd01-4e2de96e30e6"
 }

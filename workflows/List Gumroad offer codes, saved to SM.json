@@ -1,0 +1,46 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-22T18:17:43.310Z",
+  "id": "YaACDSQIKCVHg6lR",
+  "meta": {
+    "templateId": "650",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "List Gumroad offer codes, saved to SM",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://api.gumroad.com/v2/products/A-m3CDDC5dlrSdKZp0RFhA==/offer_codes",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "tJqRgo85uqkjM8UU95H2XmfWvLH5H2_yKG5bL2AVHPw"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "33cbab8c-5a79-424e-a507-0669b2f25ff8",
+      "name": "list offer codes",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -380,
+        120
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-22T18:18:18.000Z",
+  "versionId": "2e026c6a-36d0-473d-b389-b7472075bf72"
+}

@@ -64,11 +64,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T09:09:10.359Z",
-  "id": "Mv8xKbI3N07HJ4Oy",
-  "meta": {
-    "templateId": "2111"
-  },
+  "createdAt": "2024-08-21T12:50:17.652Z",
+  "id": "0ljxoSjkdfI0Bb7v",
+  "meta": null,
   "name": "Enrich new Hubspot contacts with contact and company data from ExactBuyer",
   "nodes": [
     {
@@ -323,20 +321,13 @@
       "typeVersion": 1
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T09:09:10.359Z",
-  "versionId": "135efa6d-b7cf-4cde-8be1-a3b006aea84f"
+  "updatedAt": "2024-08-21T12:50:17.652Z",
+  "versionId": "5ccec0f2-af5a-4939-98ba-7814fe445cdf"
 }

@@ -13,11 +13,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:34:01.796Z",
-  "id": "Uk7pt4387Nz8xUhv",
-  "meta": {
-    "templateId": "1283"
-  },
+  "createdAt": "2024-08-21T12:50:17.912Z",
+  "id": "Dvp9rsojmX764RK8",
+  "meta": null,
   "name": "Get email notifications for newly uploaded Google Drive files",
   "nodes": [
     {
@@ -61,13 +59,13 @@
       "id": "f911a277-4143-4120-b37d-bdaa1819d66d"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:34:01.796Z",
-  "versionId": "7d47d80c-3cb9-4b87-aea6-1e3021baa9e7"
+  "updatedAt": "2024-08-21T12:50:17.912Z",
+  "versionId": "ba890ac6-9442-416c-9a58-bf16edbd665d"
 }

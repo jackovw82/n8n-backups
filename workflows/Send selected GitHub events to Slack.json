@@ -1,0 +1,215 @@
+{
+  "active": false,
+  "connections": {
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Slack - Add",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Slack - Remove",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "n8n - get all workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-22T16:39:50.651Z",
+  "id": "Nu2uoY3QFlSlGfXe",
+  "meta": {
+    "templateId": "4"
+  },
+  "name": "Send selected GitHub events to Slack",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"Github Trigger\"].data[\"body\"][\"action\"]}}",
+              "value2": "created"
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        700,
+        280
+      ],
+      "typeVersion": 1,
+      "id": "3877c5a2-f919-4327-9157-97bb7ea0fa1e"
+    },
+    {
+      "parameters": {
+        "channel": "#general",
+        "otherOptions": {},
+        "attachments": [
+          {
+            "text": "=The project has now: {{$node[\"Github Trigger\"].data[\"body\"][\"repository\"][\"stargazers_count\"]}} Stars",
+            "color": "#88FF00",
+            "title": "=Got new star from: {{$node[\"Github Trigger\"].data[\"body\"][\"sender\"][\"login\"]}}",
+            "image_url": "={{$node[\"Github Trigger\"].data[\"body\"][\"sender\"][\"avatar_url\"]}}",
+            "title_link": "={{$node[\"Github Trigger\"].data[\"body\"][\"sender\"][\"html_url\"]}}"
+          }
+        ]
+      },
+      "name": "Slack - Add",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        920,
+        180
+      ],
+      "typeVersion": 1,
+      "id": "d3767350-b1ce-4a0c-842d-835b157ccde5"
+    },
+    {
+      "parameters": {
+        "channel": "#general",
+        "otherOptions": {},
+        "attachments": [
+          {
+            "text": "=The project has now: {{$node[\"Github Trigger\"].data[\"body\"][\"repository\"][\"stargazers_count\"]}} Stars",
+            "color": "#ff0000",
+            "title": "=Star got removed by: {{$node[\"Github Trigger\"].data[\"body\"][\"sender\"][\"login\"]}}",
+            "image_url": "={{$node[\"Github Trigger\"].data[\"body\"][\"sender\"][\"avatar_url\"]}}",
+            "title_link": "={{$node[\"Github Trigger\"].data[\"body\"][\"sender\"][\"html_url\"]}}"
+          }
+        ]
+      },
+      "name": "Slack - Remove",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        920,
+        360
+      ],
+      "typeVersion": 1,
+      "id": "391a1c07-3269-47fe-86f3-c405cb59dd5f"
+    },
+    {
+      "parameters": {},
+      "id": "f837cdb5-dc27-433f-b931-7ed8bba1e6e9",
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -200,
+        280
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "repo.owner",
+              "value": "jackovw82"
+            },
+            {
+              "name": "repo.name",
+              "value": "n8n-backups"
+            },
+            {
+              "name": "repo.path",
+              "value": "workflows/"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9b7557a0-b5b5-4a87-a52b-7602003af8dc",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        0,
+        180
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "filters": {},
+        "requestOptions": {}
+      },
+      "id": "baa2f73c-b2f6-431c-b906-6790ce701755",
+      "name": "n8n - get all workflows",
+      "type": "n8n-nodes-base.n8n",
+      "position": [
+        0,
+        380
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "n8nApi": {
+          "id": "9ALFxkY91WQ8hhIe",
+          "name": "n8n account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "owner": {
+          "__rl": true,
+          "value": "jackovw82",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n-backup",
+          "mode": "name"
+        },
+        "events": [
+          "repository"
+        ],
+        "options": {}
+      },
+      "id": "0294dda9-4e7b-4387-a1af-c0bfc82ce4d0",
+      "name": "Github Trigger",
+      "type": "n8n-nodes-base.githubTrigger",
+      "typeVersion": 1,
+      "position": [
+        420,
+        300
+      ],
+      "webhookId": "4d66a0c9-97be-4518-b3ea-e4b0ce4b7364",
+      "credentials": {
+        "githubApi": {
+          "id": "0eYR0UUza2XDwZgT",
+          "name": "GitHub account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-22T18:00:43.000Z",
+  "versionId": "8e96be37-f4a2-47a2-83ab-f038a9e26f8b"
+}

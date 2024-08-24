@@ -1,0 +1,46 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-22T14:38:55.089Z",
+  "id": "tBIorURPOCz2RXIu",
+  "meta": {
+    "templateId": "650",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "List Gumroad products  and save to SM",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://api.gumroad.com/v2/products",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "tJqRgo85uqkjM8UU95H2XmfWvLH5H2_yKG5bL2AVHPw"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "80e820db-00fd-452c-8ce1-43b542ab6e4e",
+      "name": "List products",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -280,
+        160
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-23T06:54:33.000Z",
+  "versionId": "58eedf71-c9b6-4075-9538-384cda45a109"
+}

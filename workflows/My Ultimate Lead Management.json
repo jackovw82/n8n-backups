@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T18:35:48.449Z",
-  "id": "xf7rnbMQmqDXSV4K",
+  "createdAt": "2024-08-21T12:42:46.422Z",
+  "id": "aGCG9U2ad6obEsfY",
   "meta": null,
   "name": "My Ultimate Lead Management",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:48.449Z",
-  "versionId": "680126ee-4b76-4fbe-905e-c58a2abf5206"
+  "updatedAt": "2024-08-21T12:42:46.422Z",
+  "versionId": "c2de2eca-4ddd-46d9-ac95-287f7a3f2a06"
 }

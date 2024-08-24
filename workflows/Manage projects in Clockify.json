@@ -46,11 +46,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:39:05.875Z",
-  "id": "V3zHcwstsSmo4LAe",
-  "meta": {
-    "templateId": "701"
-  },
+  "createdAt": "2024-08-21T12:50:18.079Z",
+  "id": "0Fb9TRSJeuJm1UWW",
+  "meta": null,
   "name": "Manage projects in Clockify",
   "nodes": [
     {
@@ -140,13 +138,13 @@
       "id": "12482abd-ea7e-41b2-86d6-477a529686d2"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:39:05.875Z",
-  "versionId": "a7ac1ac1-4f00-4254-a91d-49404a5441ca"
+  "updatedAt": "2024-08-21T12:50:18.079Z",
+  "versionId": "628f8d55-0d70-4eeb-9531-f2dc25af014f"
 }

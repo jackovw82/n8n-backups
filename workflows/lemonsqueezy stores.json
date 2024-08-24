@@ -159,11 +159,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-15T14:02:27.869Z",
-  "id": "edIy9fiIHNSer4jE",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-21T12:50:20.053Z",
+  "id": "SOo96x1cUvcINyFO",
+  "meta": null,
   "name": "lemonsqueezy stores",
   "nodes": [
     {
@@ -648,20 +646,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-15T14:02:27.869Z",
-  "versionId": "6a04f240-eb3b-4ab2-b628-44915ee08c5d"
+  "updatedAt": "2024-08-21T12:50:20.053Z",
+  "versionId": "4ce14f0f-6ba3-4bbd-83cc-0d4105d35f39"
 }

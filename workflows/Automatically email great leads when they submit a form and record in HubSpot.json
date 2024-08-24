@@ -98,11 +98,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T09:11:15.968Z",
-  "id": "IHfgEBcKfvnRqyfz",
-  "meta": {
-    "templateId": "2122"
-  },
+  "createdAt": "2024-08-21T12:50:17.224Z",
+  "id": "9heIDQkQqt1ma1Jw",
+  "meta": null,
   "name": "Automatically email great leads when they submit a form and record in HubSpot",
   "nodes": [
     {
@@ -416,20 +414,13 @@
       "typeVersion": 2
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T09:11:15.968Z",
-  "versionId": "663e3c0e-6bf1-41f5-b8f9-8eadafcfc2e2"
+  "updatedAt": "2024-08-21T12:50:17.224Z",
+  "versionId": "2dd1c354-bfb7-428e-9fbd-4525f79a234f"
 }

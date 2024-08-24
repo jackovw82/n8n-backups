@@ -1,25 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T19:48:54.257Z",
-  "id": "RSptyGsQJifzRSmC",
+  "createdAt": "2024-08-21T12:42:48.875Z",
+  "id": "ReslIeREWNVwXZkX",
   "meta": null,
   "name": "WF500-1: Payhip Paid Transactions",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-12T15:40:10.245Z",
-      "updatedAt": "2024-08-12T15:40:10.245Z",
-      "id": "KTck2FQTslq6Fp62",
-      "name": "finance & accounting"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T16:52:49.000Z",
-  "versionId": "eb41d69d-9058-44db-af6e-fa1ea628748f"
+  "updatedAt": "2024-08-21T12:42:48.875Z",
+  "versionId": "c324b62c-55f2-48ec-942d-609b5905028f"
 }

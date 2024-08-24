@@ -1,11 +1,9 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-11T11:31:41.710Z",
-  "id": "ffWS1C2bokrvEgYD",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-21T12:50:17.563Z",
+  "id": "CBfhjCvHaI9M1zfn",
+  "meta": null,
   "name": "Create, update and get a MailerLite subscriber to SM",
   "nodes": [
     {
@@ -129,20 +127,13 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T18:56:22.000Z",
-  "versionId": "a10a6b85-274a-4f84-81e2-c3f947f68455"
+  "updatedAt": "2024-08-21T12:50:17.563Z",
+  "versionId": "065532ef-5b77-41ae-a202-819a356bfefe"
 }

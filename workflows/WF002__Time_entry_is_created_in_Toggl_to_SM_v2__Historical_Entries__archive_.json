@@ -220,11 +220,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T20:11:54.529Z",
-  "id": "6lIWjW5oZSTf0CSy",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-22T07:06:59.611Z",
+  "id": "fREqhnNYtp4xqOxJ",
+  "meta": null,
   "name": "WF002__Time_entry_is_created_in_Toggl_to_SM_v2__Historical_Entries__archive_",
   "nodes": [
     {
@@ -902,13 +900,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T20:11:54.529Z",
-  "versionId": "14e0a708-7364-47e9-9a5e-d46b3a55ba5b"
+  "updatedAt": "2024-08-22T07:06:59.611Z",
+  "versionId": "96f96502-eb32-48f9-9b1e-63d0047296a3"
 }

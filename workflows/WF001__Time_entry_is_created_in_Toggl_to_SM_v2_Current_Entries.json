@@ -250,7 +250,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Limit",
             "type": "main",
             "index": 0
           }
@@ -330,6 +330,17 @@
           }
         ]
       ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-08-22T07:06:59.794Z",
@@ -366,7 +377,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        3413.5297176848408,
+        3633.5297176848408,
         540
       ]
     },
@@ -386,7 +397,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        3413.5297176848408,
+        3633.5297176848408,
         740
       ]
     },
@@ -453,7 +464,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1193.529717684841,
+        1413.529717684841,
         780
       ]
     },
@@ -464,7 +475,7 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        993.529717684841,
+        1213.529717684841,
         780
       ]
     },
@@ -508,7 +519,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1433.529717684841,
+        1653.529717684841,
         780
       ]
     },
@@ -561,7 +572,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1653.529717684841,
+        1873.529717684841,
         780
       ]
     },
@@ -626,7 +637,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1693.529717684841,
+        1913.529717684841,
         540
       ]
     },
@@ -670,7 +681,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1513.529717684841,
+        1733.529717684841,
         540
       ]
     },
@@ -703,7 +714,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -566.470282315159,
+        -280,
         760
       ]
     },
@@ -741,7 +752,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2713.5297176848408,
+        2933.5297176848408,
         640
       ]
     },
@@ -782,7 +793,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        2933.5297176848408,
+        3153.5297176848408,
         640
       ]
     },
@@ -913,7 +924,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -306.470282315159,
+        -20,
         740
       ]
     },
@@ -945,7 +956,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        1133.529717684841,
+        1353.529717684841,
         540
       ]
     },
@@ -956,7 +967,7 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        1333.529717684841,
+        1553.529717684841,
         540
       ]
     },
@@ -985,7 +996,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        733.529717684841,
+        953.529717684841,
         780
       ]
     },
@@ -1008,7 +1019,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        933.529717684841,
+        1153.529717684841,
         540
       ]
     },
@@ -1021,7 +1032,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3153.5297176848408,
+        3373.5297176848408,
         640
       ]
     },
@@ -1152,7 +1163,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        553.529717684841,
+        773.529717684841,
         660
       ]
     },
@@ -1165,7 +1176,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -6.470282315159011,
+        213.529717684841,
         740
       ]
     },
@@ -1241,7 +1252,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        1889.529717684841,
+        2109.5297176848408,
         660
       ]
     },
@@ -1302,7 +1313,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2113.5297176848408,
+        2333.5297176848408,
         660
       ]
     },
@@ -1313,7 +1324,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2480,
+        2700,
         680
       ]
     },
@@ -1326,7 +1337,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        2340,
+        2560,
         460
       ],
       "webhookId": "a6729ed2-d564-4df9-86e3-3efc184408d7"
@@ -1404,8 +1415,21 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
       "position": [
-        240,
+        460,
         640
+      ]
+    },
+    {
+      "parameters": {
+        "maxItems": 2
+      },
+      "id": "b181a53a-bfb2-4d3c-b072-9353b49c5c49",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        760
       ]
     }
   ],
@@ -1416,6 +1440,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-24T14:43:40.000Z",
-  "versionId": "50b6127c-8cfe-431e-9065-eb7366a51803"
+  "updatedAt": "2024-08-24T20:21:51.000Z",
+  "versionId": "d880dcdb-dfe3-4d05-ba36-0a9bca1a2ca8"
 }

@@ -212,11 +212,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:27:09.049Z",
-  "id": "MTQhyTy9sS8MC3VX",
-  "meta": {
-    "templateId": "1605"
-  },
+  "createdAt": "2024-08-21T12:42:45.269Z",
+  "id": "3pS4vTyJ1i9GTBOB",
+  "meta": null,
   "name": "Extend n8n with additional tools",
   "nodes": [
     {
@@ -577,13 +575,13 @@
       "continueOnFail": true
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:27:09.049Z",
-  "versionId": "b3758672-85c9-4731-967f-4d257e7f5d00"
+  "updatedAt": "2024-08-21T12:42:45.269Z",
+  "versionId": "3e4232ff-99f5-4b86-b2e2-21b99609c7c6"
 }

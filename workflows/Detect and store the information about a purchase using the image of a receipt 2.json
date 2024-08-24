@@ -35,8 +35,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-21T12:42:43.899Z",
-  "id": "etlmVj9foBSOBCK2",
+  "createdAt": "2024-08-21T12:50:17.566Z",
+  "id": "xUo8DCUiAByuZWZX",
   "meta": null,
   "name": "Detect and store the information about a purchase using the image of a receipt 2",
   "nodes": [
@@ -134,6 +134,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-21T12:42:43.899Z",
-  "versionId": "363afebc-d13f-44a6-9df7-09202357e928"
+  "updatedAt": "2024-08-21T12:50:17.566Z",
+  "versionId": "2a5abd2a-0264-47cf-82b4-6806ccb06648"
 }

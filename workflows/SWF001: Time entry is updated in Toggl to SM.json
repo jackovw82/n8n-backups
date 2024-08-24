@@ -268,11 +268,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T18:35:50.621Z",
-  "id": "SJxevHVvaIVcqfKB",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-21T12:42:47.304Z",
+  "id": "E57U3rxSJK9Ook5I",
+  "meta": null,
   "name": "SWF001: Time entry is updated in Toggl to SM",
   "nodes": [
     {
@@ -1036,38 +1034,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-12T06:51:16.351Z",
-      "updatedAt": "2024-08-12T06:51:16.351Z",
-      "id": "H7L2DmUwMU4RDIXJ",
-      "name": "projects"
-    },
-    {
-      "createdAt": "2024-08-09T20:15:51.537Z",
-      "updatedAt": "2024-08-09T20:15:51.537Z",
-      "id": "Hpn0OFAE4GfFmMzq",
-      "name": "smartsuite"
-    },
-    {
-      "createdAt": "2024-08-11T09:16:17.257Z",
-      "updatedAt": "2024-08-11T09:16:17.257Z",
-      "id": "IZGZ9hg5E4q7jIal",
-      "name": "operations"
-    },
-    {
-      "createdAt": "2024-08-09T20:15:47.444Z",
-      "updatedAt": "2024-08-09T20:15:47.444Z",
-      "id": "Q6Qey3sK2BHXLdYH",
-      "name": "toggl"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T07:14:22.000Z",
-  "versionId": "ef7d3708-a73a-49f4-be36-a3b5221ac135"
+  "updatedAt": "2024-08-21T12:42:47.304Z",
+  "versionId": "db5816cf-484b-4a12-b286-94019ba580e3"
 }

@@ -1,25 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T19:49:13.076Z",
-  "id": "mkxEvZ7Wpc9Kysev",
+  "createdAt": "2024-08-21T12:42:46.559Z",
+  "id": "HWtV9wvJ3CxTcS3g",
   "meta": null,
   "name": "Payhip refunded transactions",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-12T15:40:10.245Z",
-      "updatedAt": "2024-08-12T15:40:10.245Z",
-      "id": "KTck2FQTslq6Fp62",
-      "name": "finance & accounting"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T15:41:05.000Z",
-  "versionId": "c0f83f3b-8892-4e28-bdfc-274e9229e0a3"
+  "updatedAt": "2024-08-21T12:42:46.559Z",
+  "versionId": "874b021d-8156-4e4f-b471-afc45e1edade"
 }

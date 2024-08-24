@@ -1,31 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T19:51:19.358Z",
-  "id": "aUOOlmlsIutPTzEg",
+  "createdAt": "2024-08-21T12:42:48.955Z",
+  "id": "fFXqpmNIl2VuADI4",
   "meta": null,
   "name": "WF500-6: Payhip subscription.deleted",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-12T15:40:10.245Z",
-      "updatedAt": "2024-08-12T15:40:10.245Z",
-      "id": "KTck2FQTslq6Fp62",
-      "name": "finance & accounting"
-    },
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T16:54:46.000Z",
-  "versionId": "f398c5b9-ef66-499f-84f4-81fa8a2887ac"
+  "updatedAt": "2024-08-21T12:42:48.955Z",
+  "versionId": "302d7318-c4b7-47a4-ac5a-055a6a3335fe"
 }

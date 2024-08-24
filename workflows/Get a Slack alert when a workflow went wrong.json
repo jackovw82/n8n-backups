@@ -13,11 +13,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T20:40:40.288Z",
-  "id": "yljuI7QrWlK8jBtn",
-  "meta": {
-    "templateId": "1326"
-  },
+  "createdAt": "2024-08-21T12:50:17.850Z",
+  "id": "eWvzlWhj9jPDaUIF",
+  "meta": null,
   "name": "Get a Slack alert when a workflow went wrong",
   "nodes": [
     {
@@ -50,13 +48,13 @@
       "id": "e8730629-2521-4633-baac-24b5ca73bd55"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T20:40:40.288Z",
-  "versionId": "5c7bb11d-e10e-4221-90c3-8f0cdd70fb87"
+  "updatedAt": "2024-08-21T12:50:17.850Z",
+  "versionId": "c6a6e1b0-6436-4a4f-98d2-5f4926077d82"
 }

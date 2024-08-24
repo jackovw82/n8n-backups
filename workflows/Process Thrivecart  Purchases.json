@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T18:35:51.972Z",
-  "id": "GR8VaA46hs8QrkVU",
+  "createdAt": "2024-08-21T12:42:46.633Z",
+  "id": "etZfSCQvPbUnQG27",
   "meta": null,
   "name": "Process Thrivecart  Purchases",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:51.972Z",
-  "versionId": "186556f2-4d3c-499d-b2d8-e42ef12111a5"
+  "updatedAt": "2024-08-21T12:42:46.633Z",
+  "versionId": "28845320-e424-41e6-ac02-84d899f628bf"
 }

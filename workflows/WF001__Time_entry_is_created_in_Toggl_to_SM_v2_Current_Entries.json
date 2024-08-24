@@ -235,42 +235,11 @@
         ]
       ]
     },
-    "Code1": {
-      "main": [
-        [
-          {
-            "node": "Compare Datasets",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
     "Merge": {
       "main": [
         [
           {
             "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Compare Datasets": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Execute Workflow",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [],
-        [
-          {
-            "node": "Pass ",
             "type": "main",
             "index": 0
           }
@@ -292,7 +261,7 @@
       "main": [
         [
           {
-            "node": "Compare Datasets",
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -333,6 +302,29 @@
         [
           {
             "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Pass ",
             "type": "main",
             "index": 0
           }
@@ -1255,29 +1247,9 @@
     },
     {
       "parameters": {
-        "mergeByFields": {
-          "values": [
-            {
-              "field1": "sac94990b3",
-              "field2": "id"
-            }
-          ]
-        },
-        "resolve": "preferInput2",
-        "options": {}
-      },
-      "id": "7f12e6ae-a8ee-4bad-8b76-e55a0ca8b2af",
-      "name": "Compare Datasets",
-      "type": "n8n-nodes-base.compareDatasets",
-      "typeVersion": 2.3,
-      "position": [
-        213.529717684841,
-        640
-      ]
-    },
-    {
-      "parameters": {
         "url": "https://api.track.toggl.com/api/v9/me/time_entries",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -1296,7 +1268,13 @@
       "position": [
         -800,
         760
-      ]
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "6WJNY0bjxn7UPeUf",
+          "name": "Toggl"
+        }
+      }
     },
     {
       "parameters": {
@@ -1341,20 +1319,6 @@
     },
     {
       "parameters": {
-        "workflowId": "ZE9SnLbzFwlrNBX6",
-        "options": {}
-      },
-      "id": "8be9a70d-27ef-4bab-8bca-1653fd4ae0e8",
-      "name": "Execute Workflow",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        453.529717684841,
-        1060
-      ]
-    },
-    {
-      "parameters": {
         "amount": 60
       },
       "id": "c442b7c3-5fe1-4c2e-a170-00a2d37336fe",
@@ -1381,6 +1345,68 @@
         -1340,
         220
       ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.items[0].sac94990b3 }}",
+                    "rightValue": "={{ $json.id }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "matched"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "48ad925d-0f5b-4d5c-a143-6ec568ae5c2f",
+                    "leftValue": "={{ $json.items[0].sac94990b3 }}",
+                    "rightValue": "={{ $json.id }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "unmatched"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7ea597fa-5132-4501-8b6d-fe80a4e7ce8c",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        240,
+        640
+      ]
     }
   ],
   "pinData": {},
@@ -1390,6 +1416,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-23T19:17:47.000Z",
-  "versionId": "846f3082-dda3-4612-8ba3-b4cccced654b"
+  "updatedAt": "2024-08-24T14:43:40.000Z",
+  "versionId": "50b6127c-8cfe-431e-9065-eb7366a51803"
 }

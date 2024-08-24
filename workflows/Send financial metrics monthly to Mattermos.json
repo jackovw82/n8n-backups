@@ -24,11 +24,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T20:39:30.179Z",
-  "id": "R4VJVQrAFl4pujll",
-  "meta": {
-    "templateId": "798"
-  },
+  "createdAt": "2024-08-21T12:42:47.292Z",
+  "id": "1nz4NJBuZDCJlIx1",
+  "meta": null,
   "name": "Send financial metrics monthly to Mattermos",
   "nodes": [
     {
@@ -82,13 +80,13 @@
       "id": "5258ec2b-84ce-46b5-b4ce-650f25c676ee"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T20:39:30.179Z",
-  "versionId": "84b0b5cb-2fbc-42a7-987a-52ba8f772968"
+  "updatedAt": "2024-08-21T12:42:47.292Z",
+  "versionId": "bd1e5dbf-7caf-4363-be4a-ae8e6a62a3c9"
 }

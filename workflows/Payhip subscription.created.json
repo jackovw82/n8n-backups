@@ -1,25 +1,18 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T19:50:46.675Z",
-  "id": "fCllQbEmxOebTC6O",
+  "createdAt": "2024-08-21T12:42:46.572Z",
+  "id": "MM1cc93iQPdG1rgn",
   "meta": null,
   "name": "Payhip subscription.created",
   "nodes": [],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-12T15:40:10.245Z",
-      "updatedAt": "2024-08-12T15:40:10.245Z",
-      "id": "KTck2FQTslq6Fp62",
-      "name": "finance & accounting"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T15:40:59.000Z",
-  "versionId": "b6141e09-ba22-43fd-928a-05386e6feeb0"
+  "updatedAt": "2024-08-21T12:42:46.572Z",
+  "versionId": "03d1f1b0-fa38-4bb0-9c7e-d6d8a3d93ded"
 }

@@ -53,11 +53,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:34:46.400Z",
-  "id": "LnUDgKFzvpXnaomY",
-  "meta": {
-    "templateId": "1109"
-  },
+  "createdAt": "2024-08-21T12:42:39.265Z",
+  "id": "SACQtczPQre3UVIR",
+  "meta": null,
   "name": "Add positive feedback messages to a table in Notion",
   "nodes": [
     {
@@ -175,13 +173,13 @@
       "id": "0e81f1a1-5fdd-48da-844f-6659aac72836"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:34:46.400Z",
-  "versionId": "e9b3a3b4-ed0b-44e9-a52a-3aa765c6fca5"
+  "updatedAt": "2024-08-21T12:42:39.265Z",
+  "versionId": "f3c49154-8cb9-4971-a73e-9d3c4e364031"
 }

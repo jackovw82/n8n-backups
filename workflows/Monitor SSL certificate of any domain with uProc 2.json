@@ -46,11 +46,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-10T09:16:07.771Z",
-  "id": "1RFcmmicYDlj3EBr",
-  "meta": {
-    "templateId": "861"
-  },
+  "createdAt": "2024-08-21T12:50:18.137Z",
+  "id": "QNKYNzQG8DMRt8NS",
+  "meta": null,
   "name": "Monitor SSL certificate of any domain with uProc 2",
   "nodes": [
     {
@@ -129,13 +127,13 @@
       "id": "a6f13d9c-7703-48f9-9b30-4e98e729db9d"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-10T09:16:07.771Z",
-  "versionId": "2b5b4d00-74bd-45fd-a528-cabcb4c90254"
+  "updatedAt": "2024-08-21T12:50:18.137Z",
+  "versionId": "dce71c24-da2d-47a6-bead-8565cc91ad72"
 }

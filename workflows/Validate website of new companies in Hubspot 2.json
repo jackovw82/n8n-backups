@@ -47,11 +47,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-11T09:06:12.573Z",
-  "id": "3Ti7io0DhbeZMXSF",
-  "meta": {
-    "templateId": "1463"
-  },
+  "createdAt": "2024-08-22T07:06:55.379Z",
+  "id": "1jUVpvkSLv4uJ2Gy",
+  "meta": null,
   "name": "Validate website of new companies in Hubspot 2",
   "nodes": [
     {
@@ -152,20 +150,13 @@
       "typeVersion": 3
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:05:52.167Z",
-      "updatedAt": "2024-08-11T09:14:06.583Z",
-      "id": "zlJZt3Fo1ZYAvCNp",
-      "name": "sales & marketing"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-11T09:06:12.573Z",
-  "versionId": "a473fe36-8147-4895-b9a4-7a2e58c0f565"
+  "updatedAt": "2024-08-22T07:06:55.379Z",
+  "versionId": "57c7d512-f66f-4faa-a8c9-b1d2eb9a1044"
 }

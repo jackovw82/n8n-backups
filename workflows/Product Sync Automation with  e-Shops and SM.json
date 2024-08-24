@@ -152,12 +152,12 @@
       "main": [
         [
           {
-            "node": "Slack2",
+            "node": "Slack",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Mattermost2",
+            "node": "Mattermost",
             "type": "main",
             "index": 0
           }
@@ -204,7 +204,7 @@
       "typeVersion": 1,
       "position": [
         180,
-        820
+        860
       ]
     },
     {
@@ -252,8 +252,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1520,
-        720
+        1640,
+        920
       ]
     },
     {
@@ -272,8 +272,8 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        1520,
-        900
+        1640,
+        1100
       ]
     },
     {
@@ -311,7 +311,7 @@
       "typeVersion": 4.2,
       "position": [
         820,
-        820
+        920
       ]
     },
     {
@@ -352,7 +352,7 @@
       "typeVersion": 1,
       "position": [
         1080,
-        820
+        920
       ]
     },
     {
@@ -365,7 +365,7 @@
       "typeVersion": 2,
       "position": [
         1300,
-        820
+        920
       ]
     },
     {
@@ -430,7 +430,7 @@
       "typeVersion": 4.2,
       "position": [
         -20,
-        820
+        860
       ]
     },
     {
@@ -446,7 +446,7 @@
       "typeVersion": 1,
       "position": [
         180,
-        1200
+        1180
       ],
       "disabled": true
     },
@@ -471,51 +471,9 @@
       "typeVersion": 4.2,
       "position": [
         -20,
-        1200
+        1180
       ],
       "disabled": true
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "select": "channel",
-        "channelId": {
-          "__rl": true,
-          "value": "C07BLFDL917",
-          "mode": "list",
-          "cachedResultName": "toggl-time-captured"
-        },
-        "text": "={{ $json[\"message\"] }}",
-        "otherOptions": {}
-      },
-      "id": "f7aacc21-f3ee-493e-a1b7-a225c71c1824",
-      "name": "Slack2",
-      "type": "n8n-nodes-base.slack",
-      "typeVersion": 2.2,
-      "position": [
-        1520,
-        1060
-      ]
-    },
-    {
-      "parameters": {
-        "channelId": "jpqr5pw497dxf8kirt96t4ar5r",
-        "message": "={{ $json[\"message\"] }}",
-        "attachments": [
-          {}
-        ],
-        "otherOptions": {
-          "root_id": ""
-        }
-      },
-      "id": "1c86beea-4823-46ed-83ab-1a1c095a23bc",
-      "name": "Mattermost2",
-      "type": "n8n-nodes-base.mattermost",
-      "typeVersion": 1,
-      "position": [
-        1520,
-        1240
-      ]
     },
     {
       "parameters": {
@@ -552,7 +510,7 @@
       "typeVersion": 4.2,
       "position": [
         820,
-        1160
+        1100
       ]
     },
     {
@@ -593,7 +551,7 @@
       "typeVersion": 1,
       "position": [
         1080,
-        1160
+        1100
       ]
     },
     {
@@ -606,7 +564,7 @@
       "typeVersion": 2,
       "position": [
         1300,
-        1160
+        1100
       ]
     },
     {
@@ -682,6 +640,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-23T19:01:57.000Z",
-  "versionId": "fa461d7a-de58-4b8f-85be-1297e897ab17"
+  "updatedAt": "2024-08-24T14:24:25.000Z",
+  "versionId": "c5e3baca-08ac-4886-886e-14ace8e1e437"
 }

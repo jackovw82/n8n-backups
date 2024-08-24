@@ -13,11 +13,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-10T09:18:37.761Z",
-  "id": "WwMrt0Qa3bltPDIV",
-  "meta": {
-    "templateId": "1487"
-  },
+  "createdAt": "2024-08-21T12:50:19.544Z",
+  "id": "uS2UiPFcxCOJRDGX",
+  "meta": null,
   "name": "WF2003-3: Creates a time tracking project from Syncro to Clockify",
   "nodes": [
     {
@@ -54,26 +52,13 @@
       "id": "bae2957b-33bf-4f66-9f2e-ec177a585099"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-11T09:16:17.257Z",
-      "updatedAt": "2024-08-11T09:16:17.257Z",
-      "id": "IZGZ9hg5E4q7jIal",
-      "name": "operations"
-    },
-    {
-      "createdAt": "2024-08-12T14:57:29.943Z",
-      "updatedAt": "2024-08-12T14:57:29.943Z",
-      "id": "joJ0Ue33e5mVcmTF",
-      "name": "oCode360"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T17:01:51.000Z",
-  "versionId": "91adddbf-9480-4ee0-9e63-3755c52df362"
+  "updatedAt": "2024-08-21T12:50:19.544Z",
+  "versionId": "aa37f019-cc7a-47b9-90af-4799487ff9d3"
 }

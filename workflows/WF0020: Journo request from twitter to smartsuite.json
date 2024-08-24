@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2024-08-09T18:35:51.152Z",
-  "id": "wWbD09HnU2kGrUsJ",
+  "createdAt": "2024-08-21T12:50:19.297Z",
+  "id": "pok94VFg7nSnicIq",
   "meta": null,
   "name": "WF0020: Journo request from twitter to smartsuite",
   "nodes": [],
@@ -13,6 +13,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T18:35:51.152Z",
-  "versionId": "b796f135-c52b-45c5-bd0b-ac8945c8ec91"
+  "updatedAt": "2024-08-21T12:50:19.297Z",
+  "versionId": "22403def-30aa-40fa-9f7f-965ff77bd124"
 }

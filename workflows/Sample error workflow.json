@@ -24,11 +24,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:40:22.771Z",
-  "id": "6FQrL8BYX0zJ5pxZ",
-  "meta": {
-    "templateId": "359"
-  },
+  "createdAt": "2024-08-21T12:42:47.195Z",
+  "id": "RnJV5lDFrLARuAhA",
+  "meta": null,
   "name": "Sample error workflow",
   "nodes": [
     {
@@ -72,13 +70,13 @@
       "id": "06eef22f-912a-451d-9d89-46a198ac172e"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:40:22.771Z",
-  "versionId": "003bec05-2b18-42b4-8d37-ea0275c14708"
+  "updatedAt": "2024-08-21T12:42:47.195Z",
+  "versionId": "61845a34-a06d-42b8-8abc-ff226d260af5"
 }

@@ -13,8 +13,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-21T12:50:17.674Z",
-  "id": "q9VJsBvTwUDjmkrR",
+  "createdAt": "2024-08-21T12:42:45.225Z",
+  "id": "RMHbHGbSGxI3g7EL",
   "meta": null,
   "name": "Execute another workflow",
   "nodes": [
@@ -51,6 +51,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-21T12:50:17.674Z",
-  "versionId": "d8ceb11b-95ba-4d01-92b7-c76d99893691"
+  "updatedAt": "2024-08-21T12:42:45.225Z",
+  "versionId": "d914f42f-714d-403e-81bb-b090e4ce8f21"
 }

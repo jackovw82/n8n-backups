@@ -1,0 +1,341 @@
+{
+  "active": false,
+  "connections": {
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "high-priority",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "low-priority",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "#closedwon",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Google Slides",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hubspot": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hubspot Trigger": {
+      "main": [
+        [
+          {
+            "node": "Hubspot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-22T14:41:15.258Z",
+  "id": "EBF5qkzA7bippfTy",
+  "meta": {
+    "templateId": "1225"
+  },
+  "name": "Export new deals from HubSpot to Slack and Airtable 3",
+  "nodes": [
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "deal_value",
+              "value": "={{$json[\"properties\"][\"amount\"][\"value\"]}}"
+            },
+            {
+              "name": "deal_id",
+              "value": "={{$json[\"dealId\"]}}"
+            }
+          ],
+          "string": [
+            {
+              "name": "deal_name",
+              "value": "={{$json[\"properties\"][\"dealname\"][\"value\"]}}"
+            },
+            {
+              "name": "deal_date",
+              "value": "={{$json[\"properties\"][\"closedate\"][\"timestamp\"]}}"
+            },
+            {
+              "name": "deal_description",
+              "value": "={{$json[\"properties\"][\"description\"][\"value\"]}}"
+            },
+            {
+              "name": "deal_type",
+              "value": "={{$json[\"properties\"][\"dealtype\"][\"value\"]}}"
+            },
+            {
+              "name": "deal_stage",
+              "value": "={{$json[\"properties\"][\"dealstage\"][\"value\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        770,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "509ed5ba-da74-4664-9f14-bb9438d04a53"
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{$node[\"Hubspot\"].json[\"properties\"][\"dealstage\"][\"value\"]}}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "closedwon"
+            },
+            {
+              "value2": "presentationscheduled",
+              "output": 1
+            },
+            {
+              "value2": "closedlost",
+              "output": 2
+            }
+          ]
+        }
+      },
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "position": [
+        970,
+        -10
+      ],
+      "typeVersion": 1,
+      "id": "fb6c2386-0bda-42b8-950d-2b955aec2ace"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json[\"deal_value\"]}}",
+              "operation": "larger",
+              "value2": 500
+            }
+          ],
+          "string": [
+            {
+              "value1": "={{$json[\"deal_type\"]}}",
+              "value2": "newbusiness"
+            },
+            {
+              "value1": "={{$json[\"deal_stage\"]}}",
+              "operation": "notEqual",
+              "value2": "closedlost|closedwon"
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        970,
+        390
+      ],
+      "typeVersion": 1,
+      "id": "086c3086-8efc-4260-836d-6097d5397121"
+    },
+    {
+      "parameters": {
+        "resource": "ticket",
+        "pipelineId": "0",
+        "stageId": "1",
+        "ticketName": "=Deal: {{$json[\"deal_name\"]}}",
+        "additionalFields": {
+          "description": "={{$json[\"deal_description\"]}}",
+          "priority": "HIGH",
+          "ticketOwnerId": 12345
+        }
+      },
+      "name": "high-priority",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        1170,
+        290
+      ],
+      "typeVersion": 1,
+      "id": "dcc4c67a-8be3-4e58-a079-a79fad3b53ee"
+    },
+    {
+      "parameters": {
+        "resource": "ticket",
+        "pipelineId": "0",
+        "stageId": "1",
+        "ticketName": "=Deal: {{$json[\"deal_name\"]}}",
+        "additionalFields": {
+          "description": "={{$json[\"deal_description\"]}}",
+          "priority": "MEDIUM"
+        }
+      },
+      "name": "low-priority",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        1170,
+        490
+      ],
+      "typeVersion": 1,
+      "id": "2ef7ad63-3fa4-441c-983c-f84aa1a61645"
+    },
+    {
+      "parameters": {
+        "channel": "deals",
+        "text": "=We successfully closed the deal {{$node[\"Set\"].json[\"deal_name\"]}}!",
+        "otherOptions": {},
+        "attachments": []
+      },
+      "name": "#closedwon",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1180,
+        -180
+      ],
+      "typeVersion": 1,
+      "id": "f90c570b-1740-4552-850e-a7a994cda608"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "application": "appqwertz",
+        "table": "lost_deals",
+        "addAllFields": false,
+        "fields": [
+          "deal_name",
+          "deal_id",
+          "deal_type"
+        ],
+        "options": {}
+      },
+      "name": "Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "position": [
+        1180,
+        140
+      ],
+      "typeVersion": 1,
+      "id": "3d4f510e-1389-4d91-8385-ca2f6a3edea1"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "title": "=Presentation for deal {{$node[\"Set\"].json[\"deal_name\"]}}"
+      },
+      "name": "Google Slides",
+      "type": "n8n-nodes-base.googleSlides",
+      "position": [
+        1180,
+        -20
+      ],
+      "typeVersion": 1,
+      "id": "ff40f28a-943c-43e6-ae57-b4c706282420"
+    },
+    {
+      "parameters": {
+        "eventsUi": {
+          "eventValues": [
+            {
+              "name": "deal.creation"
+            }
+          ]
+        },
+        "additionalFields": {}
+      },
+      "name": "Hubspot Trigger",
+      "type": "n8n-nodes-base.hubspotTrigger",
+      "position": [
+        380,
+        240
+      ],
+      "webhookId": "12345",
+      "typeVersion": 1,
+      "id": "3437f840-11a5-44f1-bd84-6a6e60b392df"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dealId": "={{$json[\"dealId\"]}}",
+        "additionalFields": {}
+      },
+      "name": "Hubspot",
+      "type": "n8n-nodes-base.hubspot",
+      "position": [
+        580,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "901f3b4a-d851-4dd4-aab6-508d392aa62c"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-23T06:54:28.000Z",
+  "versionId": "8282faf8-9c18-4be8-99f8-6559b0a18786"
+}

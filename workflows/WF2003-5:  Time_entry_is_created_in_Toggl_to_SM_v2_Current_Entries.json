@@ -595,8 +595,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T20:10:33.530Z",
-  "id": "9nCUbWaCwjyCcFR3",
+  "createdAt": "2024-08-21T12:50:19.708Z",
+  "id": "M1ej0qRX7hgXKpJf",
   "meta": null,
   "name": "WF2003-5:  Time_entry_is_created_in_Toggl_to_SM_v2_Current_Entries",
   "nodes": [
@@ -2408,38 +2408,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-12T06:51:16.351Z",
-      "updatedAt": "2024-08-12T06:51:16.351Z",
-      "id": "H7L2DmUwMU4RDIXJ",
-      "name": "projects"
-    },
-    {
-      "createdAt": "2024-08-09T20:15:51.537Z",
-      "updatedAt": "2024-08-09T20:15:51.537Z",
-      "id": "Hpn0OFAE4GfFmMzq",
-      "name": "smartsuite"
-    },
-    {
-      "createdAt": "2024-08-11T09:16:17.257Z",
-      "updatedAt": "2024-08-11T09:16:17.257Z",
-      "id": "IZGZ9hg5E4q7jIal",
-      "name": "operations"
-    },
-    {
-      "createdAt": "2024-08-09T20:15:47.444Z",
-      "updatedAt": "2024-08-09T20:15:47.444Z",
-      "id": "Q6Qey3sK2BHXLdYH",
-      "name": "toggl"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-20T18:30:30.000Z",
-  "versionId": "653dd60c-55b7-4273-9498-07339c96a59b"
+  "updatedAt": "2024-08-21T12:50:19.708Z",
+  "versionId": "c45ac400-4000-4348-a9f6-44905f6643fd"
 }

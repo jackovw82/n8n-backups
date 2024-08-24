@@ -162,11 +162,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T18:35:48.420Z",
-  "id": "vNEHYvWWNB4BgfMg",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-21T12:50:19.678Z",
+  "id": "bvrryStytqe6TFSR",
+  "meta": null,
   "name": "WF2003-6: Display project data on a smashing dashboard",
   "nodes": [
     {
@@ -791,13 +789,13 @@
       "id": "c1eb887a-f44b-450e-bc74-9ba0e6459117"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T17:02:36.000Z",
-  "versionId": "8a14510b-4069-46ee-8f37-2798a180f79c"
+  "updatedAt": "2024-08-21T12:50:19.678Z",
+  "versionId": "ba386b8f-80a6-4cd2-9893-90df780b4f63"
 }

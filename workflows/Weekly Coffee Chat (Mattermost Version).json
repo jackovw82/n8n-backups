@@ -51,11 +51,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T21:37:04.725Z",
-  "id": "RnD5MUr09xZ9BCGN",
-  "meta": {
-    "templateId": "853"
-  },
+  "createdAt": "2024-08-21T12:42:48.977Z",
+  "id": "JVddDLp7J0b27WhB",
+  "meta": null,
   "name": "Weekly Coffee Chat (Mattermost Version)",
   "nodes": [
     {
@@ -168,13 +166,13 @@
       "id": "c39d00c0-a52a-4105-ae2f-21c50b3f2c61"
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T21:37:04.725Z",
-  "versionId": "af02f5d4-ebd4-41aa-b233-b194a7226e7c"
+  "updatedAt": "2024-08-21T12:42:48.977Z",
+  "versionId": "b80b0873-10b9-474f-a012-4a2940b9cd5b"
 }

@@ -1,0 +1,687 @@
+{
+  "active": false,
+  "connections": {
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "List SM Products",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "List Gumroad products",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "List lmsqy products",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreatetimeEntryinSM": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Message Formatting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message Formatting": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Gumroad products": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List SM Products": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List lmsqy products": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreatetimeEntryinSM2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Message Formatting2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message Formatting2": {
+      "main": [
+        [
+          {
+            "node": "Slack2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "CreatetimeEntryinSM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CreatetimeEntryinSM2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-22T20:46:47.537Z",
+  "id": "bBgaILsLwGi9aqT6",
+  "meta": {
+    "templateId": "2089",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Product Sync Automation with  e-Shops and SM",
+  "nodes": [
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "items",
+        "options": {}
+      },
+      "id": "ee0b10d7-7c04-4e76-8a4e-0ddedfd6e0e5",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        180,
+        820
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "1604f4e1-3bfb-463c-8460-bec844ccc2c0",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "products",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "products[0]",
+        "options": {}
+      },
+      "id": "f940e605-be0d-4e39-a809-731bbda98fe7",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        180,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C07BLFDL917",
+          "mode": "list",
+          "cachedResultName": "toggl-time-captured"
+        },
+        "text": "={{ $json[\"message\"] }}",
+        "otherOptions": {}
+      },
+      "id": "11b7dd36-2b78-42cb-8d91-224b73b480ac",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1520,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "channelId": "jpqr5pw497dxf8kirt96t4ar5r",
+        "message": "={{ $json[\"message\"] }}",
+        "attachments": [
+          {}
+        ],
+        "otherOptions": {
+          "root_id": ""
+        }
+      },
+      "id": "8631b2a9-8ef2-4ec0-a616-b302016c16b8",
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66c78a2dbce4c9bd2cb89ae0/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=  \"description\": \"\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n      \"value\": \"ready_for_review\"\n  },\n     \"sa367b179c\": \"\", \n     \"s4a76ca555\": \"\",\n     \"s59cf5f62e\": \"\",\n     \"s01309874d\": \"\",\n     \"s0055e37c7\": \"\",\n     \"sdcc84aca9\": \"\",\n     \"s27c84f9dc\": \"\",\n     \"s2a1e431cf\": \"\",\n     \"s695ddd3bc\": \"\",\n     \"se04e3e0e9\": \"\",\n     \"s43e17a141\": \"\",\n     \"sf72583110\": \"\",\n     \"s7910830c4\": \"\",\n     \"saf5f43a19\": \"\",\n     \"scc7f33c59\": \"\",\n     \"s6c8e93252\": \"\",\n     \"snsbx99t\": \"\",\n     \"se2b0a7144\": \"\",\n     \"s43e17a141\": \"\",\n     \"s87545f511\": \"\",\n     \"s5137f6d86\": \"\",\n     \"s2abe8099b\": \"\",\n     \"sb75a0684c\": \"\",\n     \"s301fca032\": \"\",\n     \"sefc57f988\": \"\",\n     \"s918f4afc8\": \"\",\n     \"s301fca032\": \"\",\n     \"sa73f1f512\": \"\",\n     \"s3fa19f28b\": \"\",\n     \"s3ec98c5e6\": \"\",\n     \"s15d83fd8f\": \"\",\n     \"s17796c427\": \"\"\n\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 5,
+              "batchInterval": 120
+            }
+          }
+        }
+      },
+      "id": "d55d0d8d-28f7-4186-a7f6-c37b1e811040",
+      "name": "CreatetimeEntryinSM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        820,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "title"
+            },
+            {
+              "fieldToAggregate": "sf7335e6da"
+            },
+            {
+              "fieldToAggregate": "status"
+            },
+            {
+              "fieldToAggregate": "s2e7d2b64e"
+            },
+            {
+              "fieldToAggregate": "se6d1375cc"
+            },
+            {
+              "fieldToAggregate": "s6e80240de"
+            },
+            {
+              "fieldToAggregate": "s388b58221"
+            },
+            {
+              "fieldToAggregate": "description.data.content[0].content[0].text"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "43ca98a7-e9aa-49a5-9f8f-90a93939a7fc",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Assuming 'AggregatedData' is the name of the node with the aggregated data\nconst aggregatedData = $node[\"Aggregate\"].json;\n\n// Prepare the message\nlet message = 'Hi Team,\\n\\nNew time entries are ready for review. Here are the details:\\n\\n';\n\nconst dates = [...new Set(aggregatedData.s2e7d2b64e)];\n\ndates.forEach(date => {\n  message += `*Date:* ${date}\\n`;\n  message += `*Client:* ${aggregatedData.s388b58221[0]}\\n`;\n   message += '\\n\\n';\n  message += '```\\n';  // Start block quote for grey frame\n  message += 'Title                      | Status               | Worked Hours  | Description\\n';\n  message += '---------------------------|----------------------|---------------|----------------------------------------------\\n';\n  \n  aggregatedData.s2e7d2b64e.forEach((entryDate, index) => {\n    if (entryDate === date) {\n      const title = aggregatedData.title[index].padEnd(27, ' ');\n      const status = aggregatedData.status[index].value.padEnd(20, ' ');\n      const hours = aggregatedData.se6d1375cc[index].toString().padEnd(13, ' ');\n      const description = aggregatedData.text[index];\n      message += `${title}| ${status} | ${hours} | ${description}\\n`;\n    }\n  });\n  message += '```\\n\\n';  // End block quote for grey frame\n});\n\nmessage += '\\nPlease review these entries at your earliest convenience.\\nThank you!\\n';\n\nreturn [\n  {\n    json: {\n      message: message\n    }\n  }\n];"
+      },
+      "id": "59515c17-40c2-4d16-addc-43b068a953ba",
+      "name": "Message Formatting",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.gumroad.com/v2/products",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "tJqRgo85uqkjM8UU95H2XmfWvLH5H2_yKG5bL2AVHPw"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c3a38716-76a0-48a8-a86d-10c330264ae8",
+      "name": "List Gumroad products",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -20,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66c4e7e2873ba568943bfff0/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "25"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2dd641dd-a3ef-4ad1-98e6-651310eb3c97",
+      "name": "List SM Products",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -20,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "products",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "products[0]",
+        "options": {}
+      },
+      "id": "362ba636-403b-460e-b452-8a62c2e14711",
+      "name": "Split Out2",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        180,
+        1200
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "https://api.gumroad.com/v2/products",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "tJqRgo85uqkjM8UU95H2XmfWvLH5H2_yKG5bL2AVHPw"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ff1ebeb9-ac27-414e-9205-da4a6cc23727",
+      "name": "List lmsqy products",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -20,
+        1200
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C07BLFDL917",
+          "mode": "list",
+          "cachedResultName": "toggl-time-captured"
+        },
+        "text": "={{ $json[\"message\"] }}",
+        "otherOptions": {}
+      },
+      "id": "f7aacc21-f3ee-493e-a1b7-a225c71c1824",
+      "name": "Slack2",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1520,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "channelId": "jpqr5pw497dxf8kirt96t4ar5r",
+        "message": "={{ $json[\"message\"] }}",
+        "attachments": [
+          {}
+        ],
+        "otherOptions": {
+          "root_id": ""
+        }
+      },
+      "id": "1c86beea-4823-46ed-83ab-1a1c095a23bc",
+      "name": "Mattermost2",
+      "type": "n8n-nodes-base.mattermost",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66c78a2dbce4c9bd2cb89ae0/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=  \"description\": \"\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n      \"value\": \"ready_for_review\"\n  },\n     \"sa367b179c\": \"\", \n     \"s4a76ca555\": \"\",\n     \"s59cf5f62e\": \"\",\n     \"s01309874d\": \"\",\n     \"s0055e37c7\": \"\",\n     \"sdcc84aca9\": \"\",\n     \"s27c84f9dc\": \"\",\n     \"s2a1e431cf\": \"\",\n     \"s695ddd3bc\": \"\",\n     \"se04e3e0e9\": \"\",\n     \"s43e17a141\": \"\",\n     \"sf72583110\": \"\",\n     \"s7910830c4\": \"\",\n     \"saf5f43a19\": \"\",\n     \"scc7f33c59\": \"\",\n     \"s6c8e93252\": \"\",\n     \"snsbx99t\": \"\",\n     \"se2b0a7144\": \"\",\n     \"s43e17a141\": \"\",\n     \"s87545f511\": \"\",\n     \"s5137f6d86\": \"\",\n     \"s2abe8099b\": \"\",\n     \"sb75a0684c\": \"\",\n     \"s301fca032\": \"\",\n     \"sefc57f988\": \"\",\n     \"s918f4afc8\": \"\",\n     \"s301fca032\": \"\",\n     \"sa73f1f512\": \"\",\n     \"s3fa19f28b\": \"\",\n     \"s3ec98c5e6\": \"\",\n     \"s15d83fd8f\": \"\",\n     \"s17796c427\": \"\"\n\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 5,
+              "batchInterval": 120
+            }
+          }
+        }
+      },
+      "id": "f1b0816b-59ce-4d98-b5ab-4be420fb22df",
+      "name": "CreatetimeEntryinSM2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        820,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "title"
+            },
+            {
+              "fieldToAggregate": "sf7335e6da"
+            },
+            {
+              "fieldToAggregate": "status"
+            },
+            {
+              "fieldToAggregate": "s2e7d2b64e"
+            },
+            {
+              "fieldToAggregate": "se6d1375cc"
+            },
+            {
+              "fieldToAggregate": "s6e80240de"
+            },
+            {
+              "fieldToAggregate": "s388b58221"
+            },
+            {
+              "fieldToAggregate": "description.data.content[0].content[0].text"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bf8be121-b20d-4c89-97e9-0e0ee815db56",
+      "name": "Aggregate2",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Assuming 'AggregatedData' is the name of the node with the aggregated data\nconst aggregatedData = $node[\"Aggregate2\"].json;\n\n// Prepare the message\nlet message = 'Hi Team,\\n\\nNew time entries are ready for review. Here are the details:\\n\\n';\n\nconst dates = [...new Set(aggregatedData.s2e7d2b64e)];\n\ndates.forEach(date => {\n  message += `*Date:* ${date}\\n`;\n  message += `*Client:* ${aggregatedData.s388b58221[0]}\\n`;\n   message += '\\n\\n';\n  message += '```\\n';  // Start block quote for grey frame\n  message += 'Title                      | Status               | Worked Hours  | Description\\n';\n  message += '---------------------------|----------------------|---------------|----------------------------------------------\\n';\n  \n  aggregatedData.s2e7d2b64e.forEach((entryDate, index) => {\n    if (entryDate === date) {\n      const title = aggregatedData.title[index].padEnd(27, ' ');\n      const status = aggregatedData.status[index].value.padEnd(20, ' ');\n      const hours = aggregatedData.se6d1375cc[index].toString().padEnd(13, ' ');\n      const description = aggregatedData.text[index];\n      message += `${title}| ${status} | ${hours} | ${description}\\n`;\n    }\n  });\n  message += '```\\n\\n';  // End block quote for grey frame\n});\n\nmessage += '\\nPlease review these entries at your earliest convenience.\\nThank you!\\n';\n\nreturn [\n  {\n    json: {\n      message: message\n    }\n  }\n];"
+      },
+      "id": "27c49255-5801-41bc-a925-96e0310a0b43",
+      "name": "Message Formatting2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.items[0].sa7e639fac }}",
+                    "rightValue": "={{ $json.products.id }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "New Record"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "76ee8792-f9c1-4d6a-b605-cd5f8775cc3c",
+                    "leftValue": "={{ $json.items[0].sa7e639fac }}",
+                    "rightValue": "={{ $json.products.id }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Existing"
+            },
+            {},
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "91a94c4f-dd2f-4053-96c8-984f7903da5e",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        460,
+        1020
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-23T19:01:57.000Z",
+  "versionId": "fa461d7a-de58-4b8f-85be-1297e897ab17"
+}

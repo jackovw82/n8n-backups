@@ -220,11 +220,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T18:35:51.575Z",
-  "id": "j8cT7er2Aml2YlKi",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "createdAt": "2024-08-21T12:42:48.298Z",
+  "id": "FekqQ7a0TIGbIs0e",
+  "meta": null,
   "name": "WF002: Time entry is created in Toggl to SM v2 -  Historical Entries (archive)",
   "nodes": [
     {
@@ -914,38 +912,13 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [
-    {
-      "createdAt": "2024-08-12T06:51:16.351Z",
-      "updatedAt": "2024-08-12T06:51:16.351Z",
-      "id": "H7L2DmUwMU4RDIXJ",
-      "name": "projects"
-    },
-    {
-      "createdAt": "2024-08-09T20:15:51.537Z",
-      "updatedAt": "2024-08-09T20:15:51.537Z",
-      "id": "Hpn0OFAE4GfFmMzq",
-      "name": "smartsuite"
-    },
-    {
-      "createdAt": "2024-08-11T09:16:17.257Z",
-      "updatedAt": "2024-08-11T09:16:17.257Z",
-      "id": "IZGZ9hg5E4q7jIal",
-      "name": "operations"
-    },
-    {
-      "createdAt": "2024-08-09T20:15:47.444Z",
-      "updatedAt": "2024-08-09T20:15:47.444Z",
-      "id": "Q6Qey3sK2BHXLdYH",
-      "name": "toggl"
-    }
-  ],
+  "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-12T07:13:46.000Z",
-  "versionId": "01c526eb-a36c-4a8f-9aff-0d3c6d9ebf16"
+  "updatedAt": "2024-08-21T12:42:48.298Z",
+  "versionId": "9e815edc-1a66-4f44-a5a6-4001369fc63d"
 }

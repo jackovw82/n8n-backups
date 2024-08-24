@@ -24,8 +24,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-21T12:42:48.966Z",
-  "id": "4NBf0yfUNznZue3v",
+  "createdAt": "2024-08-21T12:50:19.760Z",
+  "id": "97x67zO1dQALo8zT",
   "meta": null,
   "name": "Webhooks with Mattermost",
   "nodes": [
@@ -86,6 +86,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-21T12:42:48.966Z",
-  "versionId": "3f8097ed-d039-466b-8863-66bf63ca25dc"
+  "updatedAt": "2024-08-21T12:50:19.760Z",
+  "versionId": "fc3f6e07-c4b7-463f-af66-f8484c3d3ced"
 }

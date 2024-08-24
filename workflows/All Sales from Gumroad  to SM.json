@@ -1,0 +1,54 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-22T18:21:57.849Z",
+  "id": "cCWZjQkyDTmh0lgs",
+  "meta": {
+    "templateId": "650",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "All Sales from Gumroad  to SM",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://api.gumroad.com/v2/sales",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "tJqRgo85uqkjM8UU95H2XmfWvLH5H2_yKG5bL2AVHPw"
+            },
+            {
+              "name": "before",
+              "value": "2021-09-03"
+            },
+            {
+              "name": "after",
+              "value": "2025-09-03"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "74abfb5e-ccf3-43d9-851d-ee9532dccee6",
+      "name": "list offer codes",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -380,
+        120
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-22T18:24:13.000Z",
+  "versionId": "4a0e92c8-1ace-464b-824a-7b0b32d2556c"
+}

@@ -46,11 +46,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-09T20:25:58.806Z",
-  "id": "9OI8bItINBI99wAK",
-  "meta": {
-    "templateId": "2141"
-  },
+  "createdAt": "2024-08-21T12:42:39.287Z",
+  "id": "QV7cK33n5AuO3OTQ",
+  "meta": null,
   "name": "Add product ideas to Google Sheets via a Slack",
   "nodes": [
     {
@@ -286,13 +284,13 @@
       "typeVersion": 3
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-09T20:25:58.806Z",
-  "versionId": "5bdbe08c-70e7-4ecc-aa97-508f6b40f033"
+  "updatedAt": "2024-08-21T12:42:39.287Z",
+  "versionId": "cd07b6fa-8055-4e09-8cfb-70091d3e7eb8"
 }

@@ -24,8 +24,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-21T12:50:19.987Z",
-  "id": "Y2XMaCkSP95xQFzy",
+  "createdAt": "2024-08-21T12:42:49.145Z",
+  "id": "YNqYiifiDnDCOlnv",
   "meta": null,
   "name": "lemonsqueezy order_created",
   "nodes": [
@@ -92,6 +92,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-21T12:50:19.987Z",
-  "versionId": "0234b177-c029-47f8-a923-902f6bbf0317"
+  "updatedAt": "2024-08-21T12:42:49.145Z",
+  "versionId": "6d56265b-592d-4dee-9fc4-e7731120b0b9"
 }

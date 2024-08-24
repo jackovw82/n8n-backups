@@ -46,11 +46,9 @@
       ]
     }
   },
-  "createdAt": "2024-08-10T09:22:09.896Z",
-  "id": "Xas6OeVdTgeqYahG",
-  "meta": {
-    "templateId": "1575"
-  },
+  "createdAt": "2024-08-21T12:42:47.833Z",
+  "id": "OiBCgn5kB1P86sQP",
+  "meta": null,
   "name": "Update people through Zulip about open tickets in Zammad",
   "nodes": [
     {
@@ -140,13 +138,13 @@
       "notes": "Daily stand-up open days."
     }
   ],
-  "pinData": {},
+  "pinData": null,
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-10T09:29:58.000Z",
-  "versionId": "1bc7858e-4ff8-4ca3-8334-7dd7b8a413c8"
+  "updatedAt": "2024-08-21T12:42:47.833Z",
+  "versionId": "f08d186c-85ed-4667-a26f-ac914e84de0c"
 }

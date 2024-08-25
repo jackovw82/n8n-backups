@@ -17,22 +17,6 @@
         ]
       ]
     },
-    "lookup_toggl_project": {
-      "main": [
-        [
-          {
-            "node": "Lookup SM Project",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "lookup_toggl_client",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Remove Duplicates": {
       "main": [
         [
@@ -165,17 +149,6 @@
         ]
       ]
     },
-    "lookup_toggl_client": {
-      "main": [
-        [
-          {
-            "node": "Filter",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Message Formatting": {
       "main": [
         [
@@ -257,17 +230,6 @@
         ]
       ]
     },
-    "Split Out": {
-      "main": [
-        [
-          {
-            "node": "Switch",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Loop Over Items": {
       "main": [
         [
@@ -277,28 +239,6 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Replace Me",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Replace Me": {
-      "main": [
-        [
-          {
-            "node": "Wait",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait": {
-      "main": [
         [
           {
             "node": "Loop Over Items",
@@ -312,21 +252,9 @@
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "Merge1",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Pass ",
-            "type": "main",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -336,6 +264,49 @@
         [
           {
             "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Pass ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "lookup_toggl_project": {
+      "main": [
+        [
+          {
+            "node": "Lookup SM Project",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "lookup_toggl_client",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Pass 2",
             "type": "main",
             "index": 0
           }
@@ -355,7 +326,7 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1086.470282315159,
+        -1026,
         560
       ]
     },
@@ -377,8 +348,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        3633.5297176848408,
-        540
+        3180,
+        500
       ]
     },
     {
@@ -397,23 +368,23 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        3633.5297176848408,
-        740
+        3180,
+        700
       ]
     },
     {
       "parameters": {
         "content": "## Reference Toggl",
         "height": 541.0123448220287,
-        "width": 1600.355323922164
+        "width": 1498.0221229877702
       },
       "id": "470fa24f-8684-4bad-a9d2-95cae930c87b",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        460,
-        460
+        660,
+        420
       ]
     },
     {
@@ -427,8 +398,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2653.5297176848408,
-        560
+        2420,
+        500
       ]
     },
     {
@@ -441,31 +412,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -880,
+        -820,
         660
-      ]
-    },
-    {
-      "parameters": {
-        "url": "=https://api.track.toggl.com/api/v9/workspaces/{{ $json.workspace_id }}/projects/{{ $json.project_id }}",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "authorization",
-              "value": "Basic amFja29Ab2NvZGUzNjAuY29tOkFHWV9ucWcqenh2M2FteDNtd2U="
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "59a55a21-f7be-466d-91f2-1c58a2f707a7",
-      "name": "lookup_toggl_project",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1413.529717684841,
-        780
       ]
     },
     {
@@ -475,8 +423,8 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        1213.529717684841,
-        780
+        1135,
+        740
       ]
     },
     {
@@ -519,8 +467,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1653.529717684841,
-        780
+        1600,
+        820
       ]
     },
     {
@@ -536,31 +484,31 @@
             {
               "id": "3ae977a8-3ab7-4570-8487-4e9a124c56fd",
               "name": "id",
-              "value": "={{ $('lookup_toggl_project').item.json.id }}",
+              "value": "={{ $json.id }}",
               "type": "number"
             },
             {
               "id": "416e681b-48b9-4704-9808-931bf9e9bc76",
               "name": "workspace_id",
-              "value": "={{ $('lookup_toggl_project').item.json.workspace_id }}",
-              "type": "number"
-            },
-            {
-              "id": "56a887bf-c0be-4c2a-96ec-fc368836ba29",
-              "name": "client_id",
-              "value": "={{ $('lookup_toggl_project').item.json.client_id }}",
+              "value": "={{ $json.workspace_id }}",
               "type": "number"
             },
             {
               "id": "e4a5d9e6-79b2-4425-9a0d-ee5c98320657",
               "name": "name",
-              "value": "={{ $('lookup_toggl_project').item.json.name }}",
+              "value": "={{ $('lookup_toggl_client').item.json.name }}",
               "type": "string"
             },
             {
               "id": "2307815a-a79e-425f-a7e3-6c74d74ccea6",
               "name": "start_date",
-              "value": "={{ $('lookup_toggl_project').item.json.start_date }}",
+              "value": "={{ $json.start_date }}",
+              "type": "string"
+            },
+            {
+              "id": "5c36cd8f-03b8-43b3-be9a-88528e1a2aac",
+              "name": "",
+              "value": "={{ $json.name }}",
               "type": "string"
             }
           ]
@@ -572,8 +520,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1873.529717684841,
-        780
+        1800,
+        740
       ]
     },
     {
@@ -637,8 +585,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1913.529717684841,
-        540
+        1835,
+        500
       ]
     },
     {
@@ -681,8 +629,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1733.529717684841,
-        540
+        1655,
+        500
       ]
     },
     {
@@ -714,7 +662,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -280,
+        -260,
         760
       ]
     },
@@ -752,8 +700,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2933.5297176848408,
-        640
+        2480,
+        600
       ]
     },
     {
@@ -793,8 +741,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        3153.5297176848408,
-        640
+        2700,
+        600
       ]
     },
     {
@@ -924,7 +872,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -20,
+        20,
         740
       ]
     },
@@ -940,7 +888,7 @@
             {
               "id": "08ff3ca5-b4b3-485d-a7f0-995210d56231",
               "leftValue": "={{ $json.id }}",
-              "rightValue": "={{ $('lookup_toggl_project').item.json.client_id }}",
+              "rightValue": "={{ $('lookup_toggl_client').item.json.client_id }}",
               "operator": {
                 "type": "number",
                 "operation": "equals"
@@ -956,8 +904,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        1353.529717684841,
-        540
+        1275,
+        500
       ]
     },
     {
@@ -967,8 +915,8 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        1553.529717684841,
-        540
+        1475,
+        500
       ]
     },
     {
@@ -996,31 +944,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        953.529717684841,
-        780
-      ]
-    },
-    {
-      "parameters": {
-        "url": "=https://api.track.toggl.com/api/v9/workspaces/{{ $json.workspace_id }}/clients",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "authorization",
-              "value": "Basic amFja29Ab2NvZGUzNjAuY29tOkFHWV9ucWcqenh2M2FteDNtd2U="
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "cd9ec7d2-a0be-4f7e-9845-dbf6b76f38f5",
-      "name": "lookup_toggl_client",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1153.529717684841,
-        540
+        875,
+        740
       ]
     },
     {
@@ -1032,8 +957,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3373.5297176848408,
-        640
+        2920,
+        600
       ]
     },
     {
@@ -1163,8 +1088,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        773.529717684841,
-        660
+        695,
+        620
       ]
     },
     {
@@ -1176,7 +1101,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        213.529717684841,
+        274,
         740
       ]
     },
@@ -1196,7 +1121,7 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -1086.470282315159,
+        -1026,
         760
       ]
     },
@@ -1237,7 +1162,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -386.470282315159,
+        -326,
         560
       ]
     },
@@ -1252,8 +1177,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        2109.5297176848408,
-        660
+        2031,
+        620
       ]
     },
     {
@@ -1277,7 +1202,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -800,
+        -740,
         760
       ],
       "credentials": {
@@ -1299,7 +1224,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -106.47028231515901,
+        -20,
         560
       ]
     },
@@ -1313,34 +1238,9 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2333.5297176848408,
-        660
+        2240,
+        620
       ]
-    },
-    {
-      "parameters": {},
-      "id": "21048d67-825d-44ff-9e66-cfa533871313",
-      "name": "Replace Me",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        2700,
-        680
-      ]
-    },
-    {
-      "parameters": {
-        "amount": 60
-      },
-      "id": "c442b7c3-5fe1-4c2e-a170-00a2d37336fe",
-      "name": "Wait",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        2560,
-        460
-      ],
-      "webhookId": "a6729ed2-d564-4df9-86e3-3efc184408d7"
     },
     {
       "parameters": {
@@ -1359,68 +1259,6 @@
     },
     {
       "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json.items[0].sac94990b3 }}",
-                    "rightValue": "={{ $json.id }}",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "matched"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "id": "48ad925d-0f5b-4d5c-a143-6ec568ae5c2f",
-                    "leftValue": "={{ $json.items[0].sac94990b3 }}",
-                    "rightValue": "={{ $json.id }}",
-                    "operator": {
-                      "type": "string",
-                      "operation": "notEquals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "unmatched"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "7ea597fa-5132-4501-8b6d-fe80a4e7ce8c",
-      "name": "Switch",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3,
-      "position": [
-        460,
-        640
-      ]
-    },
-    {
-      "parameters": {
         "maxItems": 2
       },
       "id": "b181a53a-bfb2-4d3c-b072-9353b49c5c49",
@@ -1428,9 +1266,70 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -580,
+        -520,
         760
       ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "items[0].sac94990b3, id",
+        "joinMode": "keepNonMatches",
+        "outputDataFrom": "input2",
+        "options": {}
+      },
+      "id": "01136f52-fd70-4189-a032-023dc2ddcb83",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        480,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.track.toggl.com/api/v9/workspaces/{{ $json.workspace_id }}/projects/{{ $json.project_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "options": {}
+      },
+      "id": "0cb2a012-6677-48c4-99d1-0c5ee588f7e6",
+      "name": "lookup_toggl_project",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1340,
+        740
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "6WJNY0bjxn7UPeUf",
+          "name": "Toggl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.track.toggl.com/api/v9/workspaces/{{ $json.workspace_id }}/clients",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "options": {}
+      },
+      "id": "f19170c3-36f9-41eb-8bbc-4d54db712674",
+      "name": "lookup_toggl_client",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        500
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "6WJNY0bjxn7UPeUf",
+          "name": "Toggl"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1440,6 +1339,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-24T20:21:51.000Z",
-  "versionId": "d880dcdb-dfe3-4d05-ba36-0a9bca1a2ca8"
+  "updatedAt": "2024-08-24T20:58:16.000Z",
+  "versionId": "b77d66a2-d475-45bc-8f30-8933b882c165"
 }

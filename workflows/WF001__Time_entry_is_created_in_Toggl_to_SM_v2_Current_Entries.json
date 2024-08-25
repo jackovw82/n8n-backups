@@ -32,9 +32,9 @@
       "main": [
         [
           {
-            "node": "Pass 2",
+            "node": "Merge2",
             "type": "main",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -306,6 +306,17 @@
             "index": 0
           },
           {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
             "node": "Pass 2",
             "type": "main",
             "index": 0
@@ -348,7 +359,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        3180,
+        3369,
         500
       ]
     },
@@ -368,15 +379,15 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        3180,
+        3369,
         700
       ]
     },
     {
       "parameters": {
         "content": "## Reference Toggl",
-        "height": 541.0123448220287,
-        "width": 1498.0221229877702
+        "height": 584.0666134462809,
+        "width": 1683.6447439774379
       },
       "id": "470fa24f-8684-4bad-a9d2-95cae930c87b",
       "name": "Sticky Note",
@@ -398,7 +409,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2420,
+        2609,
         500
       ]
     },
@@ -483,33 +494,27 @@
             },
             {
               "id": "3ae977a8-3ab7-4570-8487-4e9a124c56fd",
-              "name": "id",
+              "name": "=id",
               "value": "={{ $json.id }}",
               "type": "number"
             },
             {
               "id": "416e681b-48b9-4704-9808-931bf9e9bc76",
-              "name": "workspace_id",
+              "name": "=workspace_id",
               "value": "={{ $json.workspace_id }}",
               "type": "number"
             },
             {
               "id": "e4a5d9e6-79b2-4425-9a0d-ee5c98320657",
               "name": "name",
-              "value": "={{ $('lookup_toggl_client').item.json.name }}",
-              "type": "string"
-            },
-            {
-              "id": "2307815a-a79e-425f-a7e3-6c74d74ccea6",
-              "name": "start_date",
-              "value": "={{ $json.start_date }}",
-              "type": "string"
-            },
-            {
-              "id": "5c36cd8f-03b8-43b3-be9a-88528e1a2aac",
-              "name": "",
               "value": "={{ $json.name }}",
               "type": "string"
+            },
+            {
+              "id": "8eda39d2-0b72-4621-936c-f7988e7f413f",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "number"
             }
           ]
         },
@@ -520,8 +525,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1800,
-        740
+        2040,
+        760
       ]
     },
     {
@@ -700,7 +705,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2480,
+        2669,
         600
       ]
     },
@@ -741,7 +746,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        2700,
+        2889,
         600
       ]
     },
@@ -957,7 +962,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2920,
+        3109,
         600
       ]
     },
@@ -1177,7 +1182,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        2031,
+        2220,
         620
       ]
     },
@@ -1238,7 +1243,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2240,
+        2429,
         620
       ]
     },
@@ -1330,6 +1335,21 @@
           "name": "Toggl"
         }
       }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "id, items[0].s32c34a296",
+        "options": {}
+      },
+      "id": "cfe51961-af19-4e1a-8393-6affc38c5ac0",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1860,
+        760
+      ]
     }
   ],
   "pinData": {},
@@ -1339,6 +1359,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-24T20:58:16.000Z",
-  "versionId": "b77d66a2-d475-45bc-8f30-8933b882c165"
+  "updatedAt": "2024-08-25T09:30:54.000Z",
+  "versionId": "10b35884-5744-4005-ab10-ff123217cae0"
 }

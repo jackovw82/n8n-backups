@@ -323,6 +323,17 @@
           }
         ]
       ]
+    },
+    "lookup_toggl_client": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-08-22T07:06:59.794Z",
@@ -1359,6 +1370,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-25T09:30:54.000Z",
-  "versionId": "10b35884-5744-4005-ab10-ff123217cae0"
+  "updatedAt": "2024-08-26T09:06:47.000Z",
+  "versionId": "1c974c3f-0648-44da-a66a-33cff094afc7"
 }

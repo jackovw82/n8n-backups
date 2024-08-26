@@ -32,9 +32,9 @@
       "main": [
         [
           {
-            "node": "Merge2",
+            "node": "Split Out1",
             "type": "main",
-            "index": 1
+            "index": 0
           }
         ]
       ]
@@ -208,17 +208,6 @@
         ]
       ]
     },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "GET TimeEntries - Current": {
       "main": [
         [
@@ -313,22 +302,44 @@
         ]
       ]
     },
-    "Merge2": {
+    "lookup_toggl_client": {
       "main": [
         [
           {
-            "node": "Pass 2",
+            "node": "Filter",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "lookup_toggl_client": {
+    "Split Out1": {
       "main": [
         [
           {
-            "node": "Filter",
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Pass 2",
             "type": "main",
             "index": 0
           }
@@ -370,8 +381,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        3369,
-        500
+        3900,
+        520
       ]
     },
     {
@@ -390,15 +401,15 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        3369,
-        700
+        3900,
+        720
       ]
     },
     {
       "parameters": {
         "content": "## Reference Toggl",
         "height": 584.0666134462809,
-        "width": 1683.6447439774379
+        "width": 2124.1097793227354
       },
       "id": "470fa24f-8684-4bad-a9d2-95cae930c87b",
       "name": "Sticky Note",
@@ -412,7 +423,7 @@
     {
       "parameters": {
         "content": "## SmartSuite",
-        "height": 329.3037901061815,
+        "height": 263.41928765919954,
         "width": 228.1849366795202
       },
       "id": "a46b55c5-db4e-43f7-b8c9-a9c9634932fe",
@@ -420,8 +431,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2609,
-        500
+        3140,
+        540
       ]
     },
     {
@@ -536,7 +547,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2040,
+        2480,
         760
       ]
     },
@@ -716,8 +727,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2669,
-        600
+        3200,
+        620
       ]
     },
     {
@@ -757,8 +768,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        2889,
-        600
+        3420,
+        620
       ]
     },
     {
@@ -904,7 +915,7 @@
             {
               "id": "08ff3ca5-b4b3-485d-a7f0-995210d56231",
               "leftValue": "={{ $json.id }}",
-              "rightValue": "={{ $('lookup_toggl_client').item.json.client_id }}",
+              "rightValue": "={{ $('lookup_toggl_project').item.json.client_id }}",
               "operator": {
                 "type": "number",
                 "operation": "equals"
@@ -973,8 +984,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3109,
-        600
+        3640,
+        620
       ]
     },
     {
@@ -1184,21 +1195,6 @@
     },
     {
       "parameters": {
-        "mode": "combineBySql",
-        "numberInputs": 3,
-        "query": "WITH \n  client_ref AS \n  (\n  SELECT * FROM input1\n  ),\n  project as \n  (\n  select * from input3\n  ),\n  time_entry  AS\n  (\n  select\n    client_ref.id AS client_id, \n    client_ref.name AS client_name,\n    client_ref.record_id AS client_record_id,\n    project.record_id AS proj_record_id,\n    project.id AS project_id, \n    project.name AS proj_name,\n    input2.id AS time_entry_id,\n    input2.*\n  from input2\n    INNER JOIN project ON project.id = input2.project_id\n    LEFT JOIN client_ref ON client_ref.id = project.client_id\n  )\nselect * from time_entry;"
-      },
-      "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        2220,
-        620
-      ]
-    },
-    {
-      "parameters": {
         "url": "https://api.track.toggl.com/api/v9/me/time_entries",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpBasicAuth",
@@ -1254,8 +1250,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2429,
-        620
+        2960,
+        640
       ]
     },
     {
@@ -1275,7 +1271,7 @@
     },
     {
       "parameters": {
-        "maxItems": 2
+        "maxItems": 5
       },
       "id": "b181a53a-bfb2-4d3c-b072-9353b49c5c49",
       "name": "Limit",
@@ -1349,16 +1345,46 @@
     },
     {
       "parameters": {
-        "mode": "combine",
-        "fieldsToMatchString": "id, items[0].s32c34a296",
+        "fieldToSplitOut": "=items",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "items[0].id, items[0].sf698fb364",
         "options": {}
       },
-      "id": "cfe51961-af19-4e1a-8393-6affc38c5ac0",
+      "id": "00643721-a664-46ad-ab6b-87478998bb48",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "numberInputs": 3,
+        "query": "WITH \n  client_ref AS \n  (\n  SELECT * FROM input1\n  ),\n  project as \n  (\n  select * from input3\n  ),\n  time_entry  AS\n  (\n  select\n    client_ref.id AS client_id, \n    client_ref.name AS client_name,\n    client_ref.record_id AS client_record_id,\n    project.record_id AS proj_record_id,\n    project.id AS project_id, \n    project.name AS proj_name,\n    input2.id AS time_entry_id,\n    input2.*\n  from input2\n    INNER JOIN project ON project.id = input2.project_id\n    LEFT JOIN client_ref ON client_ref.id = project.client_id\n  )\nselect * from time_entry;"
+      },
+      "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2660,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "query": "WITH \n  project_ref AS \n  (\n  SELECT id FROM input2\n  ),\n  project_det as \n  (\n  select * from input1\n  )\n  select\n  project_det.*, project_ref.*\n   --project_ref.id as sm_id\n  from project_det\n    INNER JOIN project_ref ON project_det.id = project_ref.sf698fb364"
+      },
+      "id": "85972e67-375d-4d5d-9dde-a2f1e3113f97",
       "name": "Merge2",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        1860,
+        2060,
         760
       ]
     }
@@ -1370,6 +1396,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-26T09:06:47.000Z",
-  "versionId": "1c974c3f-0648-44da-a66a-33cff094afc7"
+  "updatedAt": "2024-08-26T16:22:22.000Z",
+  "versionId": "49c98242-e5e6-49aa-b2e2-dc317c1a32ba"
 }

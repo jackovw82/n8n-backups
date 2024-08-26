@@ -39,17 +39,6 @@
         ]
       ]
     },
-    "Pass 2": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 2
-          }
-        ]
-      ]
-    },
     "Pass  3": {
       "main": [
         [
@@ -285,17 +274,17 @@
       "main": [
         [
           {
-            "node": "Lookup SM Project",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "lookup_toggl_client",
             "type": "main",
             "index": 0
           },
           {
             "node": "Merge2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Lookup SM Project",
             "type": "main",
             "index": 0
           }
@@ -317,9 +306,31 @@
       "main": [
         [
           {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
             "node": "Merge2",
             "type": "main",
             "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
           }
         ]
       ]
@@ -329,17 +340,6 @@
         [
           {
             "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge2": {
-      "main": [
-        [
-          {
-            "node": "Pass 2",
             "type": "main",
             "index": 0
           }
@@ -381,8 +381,8 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        3900,
-        520
+        3720,
+        500
       ]
     },
     {
@@ -401,23 +401,23 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        3900,
-        720
+        3720,
+        700
       ]
     },
     {
       "parameters": {
         "content": "## Reference Toggl",
-        "height": 584.0666134462809,
-        "width": 2124.1097793227354
+        "height": 737.4059175040908,
+        "width": 1981.6263551982208
       },
       "id": "470fa24f-8684-4bad-a9d2-95cae930c87b",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        660,
-        420
+        680,
+        340
       ]
     },
     {
@@ -431,7 +431,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3140,
+        2960,
         540
       ]
     },
@@ -470,10 +470,6 @@
             {
               "name": "offet",
               "value": "0"
-            },
-            {
-              "name": "limit",
-              "value": "3"
             }
           ]
         },
@@ -501,54 +497,7 @@
       "typeVersion": 4.2,
       "position": [
         1600,
-        820
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "7bae4cdb-e441-48c8-8c0b-37d282e8bcaa",
-              "name": "record_id",
-              "value": "={{ $json.items[0].id }}",
-              "type": "string"
-            },
-            {
-              "id": "3ae977a8-3ab7-4570-8487-4e9a124c56fd",
-              "name": "=id",
-              "value": "={{ $json.id }}",
-              "type": "number"
-            },
-            {
-              "id": "416e681b-48b9-4704-9808-931bf9e9bc76",
-              "name": "=workspace_id",
-              "value": "={{ $json.workspace_id }}",
-              "type": "number"
-            },
-            {
-              "id": "e4a5d9e6-79b2-4425-9a0d-ee5c98320657",
-              "name": "name",
-              "value": "={{ $json.name }}",
-              "type": "string"
-            },
-            {
-              "id": "8eda39d2-0b72-4621-936c-f7988e7f413f",
-              "name": "id",
-              "value": "={{ $json.id }}",
-              "type": "number"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "7243f1f4-73ee-4aa6-a4d6-f924544bd92c",
-      "name": "Pass 2",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2480,
-        760
+        840
       ]
     },
     {
@@ -612,7 +561,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1835,
+        2140,
         500
       ]
     },
@@ -656,7 +605,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1655,
+        1880,
         500
       ]
     },
@@ -727,8 +676,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3200,
-        620
+        3020,
+        600
       ]
     },
     {
@@ -768,8 +717,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        3420,
-        620
+        3240,
+        600
       ]
     },
     {
@@ -931,7 +880,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        1275,
+        1380,
         500
       ]
     },
@@ -942,7 +891,7 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        1475,
+        1620,
         500
       ]
     },
@@ -984,8 +933,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3640,
-        620
+        3460,
+        600
       ]
     },
     {
@@ -1250,8 +1199,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2960,
-        640
+        2740,
+        620
       ]
     },
     {
@@ -1271,7 +1220,7 @@
     },
     {
       "parameters": {
-        "maxItems": 5
+        "maxItems": 10
       },
       "id": "b181a53a-bfb2-4d3c-b072-9353b49c5c49",
       "name": "Limit",
@@ -1355,38 +1304,68 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1800,
-        820
+        1840,
+        840
       ]
     },
     {
       "parameters": {
-        "mode": "combineBySql",
-        "numberInputs": 3,
-        "query": "WITH \n  client_ref AS \n  (\n  SELECT * FROM input1\n  ),\n  project as \n  (\n  select * from input3\n  ),\n  time_entry  AS\n  (\n  select\n    client_ref.id AS client_id, \n    client_ref.name AS client_name,\n    client_ref.record_id AS client_record_id,\n    project.record_id AS proj_record_id,\n    project.id AS project_id, \n    project.name AS proj_name,\n    input2.id AS time_entry_id,\n    input2.*\n  from input2\n    INNER JOIN project ON project.id = input2.project_id\n    LEFT JOIN client_ref ON client_ref.id = project.client_id\n  )\nselect * from time_entry;"
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2cf490ee-7f09-43c8-a76e-d6a3e9bb2388",
+              "name": "sm_id",
+              "value": "={{ $json['items[0].id'] }}",
+              "type": "string"
+            },
+            {
+              "id": "add3b906-5fff-471c-92f2-e68827095892",
+              "name": "sm_time_entry",
+              "value": "={{ $json['items[0].sf698fb364'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
       },
-      "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
+      "id": "dcfde4e3-7ea6-4206-a0ec-08d287e8c4a4",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        2660,
-        620
+        2060,
+        840
       ]
     },
     {
       "parameters": {
         "mode": "combineBySql",
-        "query": "WITH \n  project_ref AS \n  (\n  SELECT id FROM input2\n  ),\n  project_det as \n  (\n  select * from input1\n  )\n  select\n  project_det.*, project_ref.*\n   --project_ref.id as sm_id\n  from project_det\n    INNER JOIN project_ref ON project_det.id = project_ref.sf698fb364"
+        "query": " WITH \n  project_det AS (\n    SELECT * \n    FROM input2\n  ),\n  project_ref AS (\n    SELECT *\n    FROM input1\n  )\nSELECT\n  project_ref.*,\n  project_det.*\n\nFROM \n  project_ref\nLEFT JOIN \n  project_det \nON \n  cast(project_det.id as TEXT) = cast(project_ref.sf698fb364 as text);\n"
       },
       "id": "85972e67-375d-4d5d-9dde-a2f1e3113f97",
       "name": "Merge2",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        2060,
+        2320,
         760
       ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "numberInputs": 3,
+        "query": "WITH \n  time_entry  AS\n  (\n  select\n  *\n  from input2)\nselect * from time_entry;"
+      },
+      "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2520,
+        620
+      ],
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -1396,6 +1375,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-26T16:22:22.000Z",
-  "versionId": "49c98242-e5e6-49aa-b2e2-dc317c1a32ba"
+  "updatedAt": "2024-08-26T20:21:33.000Z",
+  "versionId": "295008d0-b207-4db9-8226-829f25e8eb0a"
 }

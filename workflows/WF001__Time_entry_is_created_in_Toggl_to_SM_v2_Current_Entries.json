@@ -1344,7 +1344,7 @@
       "parameters": {
         "mode": "combineBySql",
         "numberInputs": 3,
-        "query": "WITH \n  project as \n  (\n  select * from input3\n  )\n  ,time_entry  AS\n  (\n  select\n  *\n  from input2)\nselect \n  project.*,\n  time_entry.*\nfrom time_entry\n  left join project on cast(project.id  as numeric) = cast(time_entry.project_id as numeric)\n;"
+        "query": "WITH \n  project as \n  (\n  select * from input3\n  )\n  ,time_entry  AS\n  (\n  select\n  *\n  from input2)\nselect \n  project.*,\n  time_entry.*\nfrom time_entry"
       },
       "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
       "name": "Merge",
@@ -1364,6 +1364,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-27T12:05:11.000Z",
-  "versionId": "3f543d98-8513-438c-b16e-7f7c73c13d69"
+  "updatedAt": "2024-08-27T17:26:42.000Z",
+  "versionId": "75dc241c-4553-4356-a8fd-24b0e3ecd9c1"
 }

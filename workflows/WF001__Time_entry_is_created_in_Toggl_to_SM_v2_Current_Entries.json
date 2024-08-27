@@ -39,17 +39,6 @@
         ]
       ]
     },
-    "Pass  3": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "lookup SMCliient": {
       "main": [
         [
@@ -409,14 +398,14 @@
       "parameters": {
         "content": "## Reference Toggl",
         "height": 737.4059175040908,
-        "width": 1981.6263551982208
+        "width": 2007.8407551982198
       },
       "id": "470fa24f-8684-4bad-a9d2-95cae930c87b",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        680,
+        653.7856000000011,
         340
       ]
     },
@@ -1355,7 +1344,7 @@
       "parameters": {
         "mode": "combineBySql",
         "numberInputs": 3,
-        "query": "WITH \n  time_entry  AS\n  (\n  select\n  *\n  from input2)\nselect * from time_entry;"
+        "query": "WITH \n  time_entry  AS\n  (\n  select\n  *\n  from input2),\n  project as \n  (\n  select * from input3\n  )\nselect \n  *\nfrom time_entry\n  left join project on project.id = time_entry.project_id\n;"
       },
       "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
       "name": "Merge",
@@ -1375,6 +1364,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-26T20:21:33.000Z",
-  "versionId": "295008d0-b207-4db9-8226-829f25e8eb0a"
+  "updatedAt": "2024-08-26T21:08:57.000Z",
+  "versionId": "f53b8407-251d-4ecf-8c0c-38efebcd703c"
 }

@@ -181,6 +181,27 @@
           }
         ]
       ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "List SM Products",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "List Gumroad products",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "List lmsqy products",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-08-22T20:46:47.537Z",
@@ -214,8 +235,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -280,
-        1020
+        -320,
+        940
       ]
     },
     {
@@ -252,7 +273,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1640,
+        1460,
         920
       ]
     },
@@ -272,7 +293,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        1640,
+        1460,
         1100
       ]
     },
@@ -310,7 +331,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        820,
+        780,
         920
       ]
     },
@@ -351,7 +372,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        1080,
+        1000,
         920
       ]
     },
@@ -364,7 +385,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1300,
+        1200,
         920
       ]
     },
@@ -509,7 +530,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        820,
+        780,
         1100
       ]
     },
@@ -550,7 +571,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        1080,
+        1000,
         1100
       ]
     },
@@ -563,7 +584,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1300,
+        1200,
         1100
       ]
     },
@@ -631,6 +652,23 @@
         460,
         1020
       ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "ef4679bb-4cbe-4fe9-862a-51a850618534",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -320,
+        1120
+      ]
     }
   ],
   "pinData": {},
@@ -640,6 +678,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-24T14:24:25.000Z",
-  "versionId": "c5e3baca-08ac-4886-886e-14ace8e1e437"
+  "updatedAt": "2024-08-27T07:44:31.000Z",
+  "versionId": "32212607-abf5-46b2-934b-47607896fec4"
 }

@@ -1,0 +1,476 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SMTimeEntry",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Message Formatting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message Formatting": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SMTimeEntry": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Subscriber": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Subscriber": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Create Subscriber",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Subscriber",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-27T18:12:11.201Z",
+  "id": "N3qEbcMyB2svb6kU",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "sync new mailerlite subscribers to SM",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8a386752-981f-49c1-a264-520a576993bf",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -80,
+        340
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "https://connect.mailerlite.com/api/subscribers",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer  eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMDhhNjc4YmFhOGE0Mjc4ZmRmZTA2OWEzMmU4MzIwOTg2Nzg4NDZjMWU2NmQwZDU2NjU0NTNkOTA3ZjA4MGRjYTBjNzA2MDI2YTFiYTBiZmMiLCJpYXQiOjE3MjQ3ODI0NDIuNzU3OTgyLCJuYmYiOjE3MjQ3ODI0NDIuNzU3OTg0LCJleHAiOjQ4ODA0NTYwNDIuNzU1NDY2LCJzdWIiOiIxMDY5MDAzIiwic2NvcGVzIjpbXX0.MgAmafLcTpTYYTTwqSF8NExCRRkLXYADeF2ZVSIlitvejZ-J1TGVvzePkDBoiDSYID-J1WKvfamNZDFLN_LjJQqU06b2F_BaVg1zlR5sWlk1-cKJJ9Gm2Pud3BVMRc7570PC4UbmW_pYjKjiFMFSubas17N-U51VUKupjfqp11lSxoTjfK9V9uB_C5LhtoYG72Qu-OIzLt_ffw3kj-AwgkLmjXobqcbxXdhuNWW6qOXxDQG6AqJUZfPRmBr1SCAvZ6yAidj_FyzD9Zq6V3B0VtiC4lgRcXJ8T4_G432hycDc7F-YnN2thHZ1HcZlJ2ztRDa4ay4f7RINTZGn2HghZG8ScKePOMjAljnq8kqGhpH9EjG6k-FnNxMRLeV4nCr3GwRH5JKoiYNYXDIYqNHomGDoBt6twbUP75-SS3SDx1dH895PMtFrbUgYqcjXmG70FjHADL3we1G8JJuvkhX91vSEqkhmxMvvogUGw7dnPhaO9UV-860dbxb0ZOA21dJK1lFX7tfTYmWlhqKqlzCRcoiyyYQfouN3VcaQbBEcvbSq4_4FmmFEy6Vbl91Jy4kmU3huVVi33kyqKNl0HHs5xmhQ_EzsejeY-XTp93NiQEwPpgRBbzZfbhDSrMxev5IymyYUop6JYHNvZzmEYuKBSmf4yAjsclYQYr8eKn-RAKI"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "89d54e25-b312-4834-b4b9-3bf18cea45a8",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        260,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C07BLFDL917",
+          "mode": "list",
+          "cachedResultName": "toggl-time-captured"
+        },
+        "text": "={{ $json[\"message\"] }}",
+        "otherOptions": {}
+      },
+      "id": "214c3a36-0193-4dd9-bce6-c4640f4dc6d5",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1700,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "channelId": "jpqr5pw497dxf8kirt96t4ar5r",
+        "message": "={{ $json[\"message\"] }}",
+        "attachments": [
+          {}
+        ],
+        "otherOptions": {
+          "root_id": ""
+        }
+      },
+      "id": "29c65983-e8f8-41d4-addd-1ed8bc16e0f9",
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "title"
+            },
+            {
+              "fieldToAggregate": "sf7335e6da"
+            },
+            {
+              "fieldToAggregate": "status"
+            },
+            {
+              "fieldToAggregate": "s2e7d2b64e"
+            },
+            {
+              "fieldToAggregate": "se6d1375cc"
+            },
+            {
+              "fieldToAggregate": "s6e80240de"
+            },
+            {
+              "fieldToAggregate": "s388b58221"
+            },
+            {
+              "fieldToAggregate": "description.data.content[0].content[0].text"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ae479129-dcad-4bb3-80fb-42d29b3cfe6c",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Assuming 'AggregatedData' is the name of the node with the aggregated data\nconst aggregatedData = $node[\"Aggregate\"].json;\n\n// Prepare the message\nlet message = 'Hi Team,\\n\\nNew time entries are ready for review. Here are the details:\\n\\n';\n\nconst dates = [...new Set(aggregatedData.s2e7d2b64e)];\n\ndates.forEach(date => {\n  message += `*Date:* ${date}\\n`;\n  message += `*Client:* ${aggregatedData.s388b58221[0]}\\n`;\n   message += '\\n\\n';\n  message += '```\\n';  // Start block quote for grey frame\n  message += 'Title                      | Status               | Worked Hours  | Description\\n';\n  message += '---------------------------|----------------------|---------------|----------------------------------------------\\n';\n  \n  aggregatedData.s2e7d2b64e.forEach((entryDate, index) => {\n    if (entryDate === date) {\n      const title = aggregatedData.title[index].padEnd(27, ' ');\n      const status = aggregatedData.status[index].value.padEnd(20, ' ');\n      const hours = aggregatedData.se6d1375cc[index].toString().padEnd(13, ' ');\n      const description = aggregatedData.text[index];\n      message += `${title}| ${status} | ${hours} | ${description}\\n`;\n    }\n  });\n  message += '```\\n\\n';  // End block quote for grey frame\n});\n\nmessage += '\\nPlease review these entries at your earliest convenience.\\nThank you!\\n';\n\nreturn [\n  {\n    json: {\n      message: message\n    }\n  }\n];"
+      },
+      "id": "fee2cf5b-5e04-4c7e-8e9d-40f1443a65a3",
+      "name": "Message Formatting",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66cdd2af45744a6ad9d404c6/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "25"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "78e2810c-1922-497f-87c5-142c0bbd0ec1",
+      "name": "SMTimeEntry",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "items",
+        "options": {}
+      },
+      "id": "1b006d55-7f19-4e70-9850-4da1cdb33e14",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        440,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66cdd2af45744a6ad9d404c6/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"title\": \"{{ $json.data[0].fields.name }}- {{ $json.data[0].fields.last_name }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"{{ $json.data[0].status }}\"\n  },\n \t \"s83aff2ca3\": \"{{ $json.data[0].id }}\", \n\t \"seef9be73f\": \"{{ $json.data[0].email }}\", \n\t \"s605154076\": \"{{ $json.data[0].status }}\", \n \t \"sa3391023f\": \"{{ $json.data[0].source }}\", \n\t \"sfa773767c\": \"{{ $json.data[0].sent }}\", \n\t \"s42c301ed6\": \"{{ $json.data[0].opens_count }}\", \n \t \"sdf1296650\": \"{{ $json.data[0].clicks_count }}\", \n\t \"s596d03ab3\": \"{{ $json.data[0].open_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].click_rate }}\", \n\t \"s1c6490541\": \"{{ $json.data[0].subscribed_at }}\", \n\t \"s2ce00d764\": \"{{ $json.data[0].unsubscribed_at }}\", \n\t \"s6576bfd42\": \"{{ $json.data[0].created_at }}\", \n\t \"s39bc7a9be\": \"{{ $json.data[0].updated_at }}\", \n\t \"s8b859eae9\": \"{{ $json.data[0].fields.name }}\", \n\t \"sba31ce70d\": \"{{ $json.data[0].fields.last_name }}\", \n\t \"s291c28451\": \"{{ $json.data[0].fields.company }}\", \n\t \"sc600bc4f0\": \"{{ $json.data[0].fields.country }}\", \n\t \"s2463dbdbb\": \"{{ $json.data[0].fields.city }}\", \n\t \"s0fc970993\": \"{{ $json.data[0].fields.phone }}\", \n\t \"sfb8f84267\": \"{{ $json.data[0].fields.state }}\", \n\t \"s1478c2983\": \"{{ $json.data[0].fields.z_i_p }}, \n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at }}\", \n\t \"s083fcd2a1\": \"{{ $json.data[0].optin_ip }}\"\n}\n",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 5,
+              "batchInterval": 120
+            }
+          }
+        }
+      },
+      "id": "0d5e2dfc-1fbb-4300-84cc-5450eebda990",
+      "name": "Create Subscriber",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66cdd2af45744a6ad9d404c6/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"title\": \"{{ $json.data[0].fields.name }}- {{ $json.data[0].fields.last_name }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"{{ $json.data[0].status }}\"\n  },\n \t \"s83aff2ca3\": \"{{ $json.data[0].id }}\", \n\t \"seef9be73f\": \"{{ $json.data[0].email }}\", \n\t \"s605154076\": \"{{ $json.data[0].status }}\", \n \t \"sa3391023f\": \"{{ $json.data[0].source }}\", \n\t \"sfa773767c\": \"{{ $json.data[0].sent }}\", \n\t \"s42c301ed6\": \"{{ $json.data[0].opens_count }}\", \n \t \"sdf1296650\": \"{{ $json.data[0].clicks_count }}\", \n\t \"s596d03ab3\": \"{{ $json.data[0].open_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].click_rate }}\", \n\t \"s1c6490541\": \"{{ $json.data[0].subscribed_at }}\", \n\t \"s2ce00d764\": \"{{ $json.data[0].unsubscribed_at }}\", \n\t \"s6576bfd42\": \"{{ $json.data[0].created_at }}\", \n\t \"s39bc7a9be\": \"{{ $json.data[0].updated_at }}\", \n\t \"s8b859eae9\": \"{{ $json.data[0].fields.name }}\", \n\t \"sba31ce70d\": \"{{ $json.data[0].fields.last_name }}\", \n\t \"s291c28451\": \"{{ $json.data[0].fields.company }}\", \n\t \"sc600bc4f0\": \"{{ $json.data[0].fields.country }}\", \n\t \"s2463dbdbb\": \"{{ $json.data[0].fields.city }}\", \n\t \"s0fc970993\": \"{{ $json.data[0].fields.phone }}\", \n\t \"sfb8f84267\": \"{{ $json.data[0].fields.state }}\", \n\t \"s1478c2983\": \"{{ $json.data[0].fields.z_i_p }}, \n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at }}\", \n\t \"s083fcd2a1\": \"{{ $json.data[0].optin_ip }}\"\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 5,
+              "batchInterval": 120
+            }
+          }
+        }
+      },
+      "id": "9478358e-dafa-4c2f-8dbe-18d17b0c382e",
+      "name": "Update Subscriber",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.items[0].seef9be73f[0] }}",
+                    "rightValue": "={{ $json.data[0].email }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "0c9cfe6c-3ad2-444d-a8af-7c1f712f79e3",
+                    "leftValue": "={{ $json.items[0].seef9be73f[0] }}",
+                    "rightValue": "={{ $json.data[0].email }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {
+          "looseTypeValidation": false,
+          "allMatchingOutputs": false
+        }
+      },
+      "id": "e1036f79-238f-40b0-a2a3-92d1a5119a56",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        720,
+        340
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-27T19:45:02.000Z",
+  "versionId": "e8df6a8c-b790-4080-98c2-2d275b872418"
+}

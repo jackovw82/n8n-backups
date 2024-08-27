@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "CreatetimeEntryinSM",
             "type": "main",
             "index": 0
           }
@@ -110,6 +110,66 @@
           }
         ]
       ]
+    },
+    "CreatetimeEntryinSM": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Message Formatting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message Formatting": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MailerLite Trigger5": {
+      "main": [
+        [
+          {
+            "node": "Set5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set5": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-08-27T12:10:12.767Z",
@@ -122,7 +182,7 @@
   "nodes": [
     {
       "parameters": {
-        "event": "subscriber.add_to_group"
+        "event": "subscriber.complaint"
       },
       "name": "MailerLite Trigger",
       "type": "n8n-nodes-base.mailerLiteTrigger",
@@ -165,19 +225,6 @@
       ],
       "typeVersion": 1,
       "id": "0443039b-312a-4807-a7c1-ca9e1bb654a8"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "5d16b8dd-1df7-4445-b9ec-de9fe6c97b8e",
-      "name": "HTTP Request",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        620,
-        -300
-      ]
     },
     {
       "parameters": {
@@ -484,6 +531,228 @@
         -120,
         580
       ]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C07BLFDL917",
+          "mode": "list",
+          "cachedResultName": "toggl-time-captured"
+        },
+        "text": "={{ $json[\"message\"] }}",
+        "otherOptions": {}
+      },
+      "id": "b8b7c781-b108-4d86-b92e-cdcf9ca459e2",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        2120,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "channelId": "jpqr5pw497dxf8kirt96t4ar5r",
+        "message": "={{ $json[\"message\"] }}",
+        "attachments": [
+          {}
+        ],
+        "otherOptions": {
+          "root_id": ""
+        }
+      },
+      "id": "d6cc425b-857f-430f-949e-d4ff396c17c1",
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"in_progress\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.proj_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.proj_record_id }}\",\n  \"s4621e0408\": \"{{ $json.client_record_id }}\"\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 5,
+              "batchInterval": 120
+            }
+          }
+        }
+      },
+      "id": "9a8ea221-b3c5-4e40-984f-c50d71341a85",
+      "name": "CreatetimeEntryinSM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        -300
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "title"
+            },
+            {
+              "fieldToAggregate": "sf7335e6da"
+            },
+            {
+              "fieldToAggregate": "status"
+            },
+            {
+              "fieldToAggregate": "s2e7d2b64e"
+            },
+            {
+              "fieldToAggregate": "se6d1375cc"
+            },
+            {
+              "fieldToAggregate": "s6e80240de"
+            },
+            {
+              "fieldToAggregate": "s388b58221"
+            },
+            {
+              "fieldToAggregate": "description.data.content[0].content[0].text"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a16b8007-e72e-4c56-b524-b4aeb4c2d024",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Assuming 'AggregatedData' is the name of the node with the aggregated data\nconst aggregatedData = $node[\"Aggregate\"].json;\n\n// Prepare the message\nlet message = 'Hi Team,\\n\\nNew time entries are ready for review. Here are the details:\\n\\n';\n\nconst dates = [...new Set(aggregatedData.s2e7d2b64e)];\n\ndates.forEach(date => {\n  message += `*Date:* ${date}\\n`;\n  message += `*Client:* ${aggregatedData.s388b58221[0]}\\n`;\n   message += '\\n\\n';\n  message += '```\\n';  // Start block quote for grey frame\n  message += 'Title                      | Status               | Worked Hours  | Description\\n';\n  message += '---------------------------|----------------------|---------------|----------------------------------------------\\n';\n  \n  aggregatedData.s2e7d2b64e.forEach((entryDate, index) => {\n    if (entryDate === date) {\n      const title = aggregatedData.title[index].padEnd(27, ' ');\n      const status = aggregatedData.status[index].value.padEnd(20, ' ');\n      const hours = aggregatedData.se6d1375cc[index].toString().padEnd(13, ' ');\n      const description = aggregatedData.text[index];\n      message += `${title}| ${status} | ${hours} | ${description}\\n`;\n    }\n  });\n  message += '```\\n\\n';  // End block quote for grey frame\n});\n\nmessage += '\\nPlease review these entries at your earliest convenience.\\nThank you!\\n';\n\nreturn [\n  {\n    json: {\n      message: message\n    }\n  }\n];"
+      },
+      "id": "7831304b-173e-4a73-8bc9-5b1c70940d91",
+      "name": "Message Formatting",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1860,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## SmartSuite",
+        "height": 263.41928765919954,
+        "width": 228.1849366795202
+      },
+      "id": "3cae1c23-f7a3-4c75-a355-11b47ca9fb96",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        800,
+        -360
+      ]
+    },
+    {
+      "parameters": {
+        "event": "subscriber.add_to_group"
+      },
+      "name": "MailerLite Trigger5",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "position": [
+        200,
+        780
+      ],
+      "webhookId": "dd15d919-18b3-4af7-a5c9-c4583cdda9f5",
+      "typeVersion": 1,
+      "id": "e751c367-ce2d-4511-bd30-eb7e38370d2f",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "25JDTD7fp4pkxnII",
+          "name": "Mailer Lite account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Name",
+              "value": "={{$node[\"MailerLite Trigger5\"].json[\"data\"][\"subscriber\"][\"name\"]}}"
+            },
+            {
+              "name": "Email",
+              "value": "={{$node[\"MailerLite Trigger5\"].json[\"data\"][\"subscriber\"][\"email\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set5",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        400,
+        780
+      ],
+      "typeVersion": 1,
+      "id": "36705736-1221-4db8-9e96-0f30a6eca75b"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "41218eea-776b-45de-92d8-093b34295484",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        620,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## New Subscriber added in Mailerlite",
+        "height": 111.5625
+      },
+      "id": "2996c430-c888-409d-89f4-f5e0e7e5f722",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        780
+      ]
     }
   ],
   "pinData": {},
@@ -493,6 +762,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-27T13:45:41.000Z",
-  "versionId": "3b300262-9639-4349-ab3b-3690671a6f52"
+  "updatedAt": "2024-08-27T18:05:58.000Z",
+  "versionId": "5a0838cc-ea86-4290-9402-deb4bee10421"
 }

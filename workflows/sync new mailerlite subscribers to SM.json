@@ -59,7 +59,7 @@
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "Merge",
             "type": "main",
             "index": 0
           }
@@ -92,9 +92,9 @@
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "Merge",
             "type": "main",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -116,6 +116,17 @@
           }
         ]
       ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-08-27T18:12:11.201Z",
@@ -131,7 +142,7 @@
       "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        -80,
+        0,
         340
       ],
       "typeVersion": 1
@@ -168,7 +179,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        260,
+        420,
         340
       ]
     },
@@ -190,7 +201,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        1700,
+        1920,
         200
       ]
     },
@@ -210,7 +221,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        1700,
+        1920,
         400
       ]
     },
@@ -251,7 +262,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        1240,
+        1460,
         300
       ]
     },
@@ -264,7 +275,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1460,
+        1680,
         300
       ]
     },
@@ -305,7 +316,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        220,
+        240,
         160
       ]
     },
@@ -321,7 +332,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        440,
+        500,
         160
       ]
     },
@@ -344,11 +355,11 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"title\": \"{{ $json.data[0].fields.name }}- {{ $json.data[0].fields.last_name }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"{{ $json.data[0].status }}\"\n  },\n \t \"s83aff2ca3\": \"{{ $json.data[0].id }}\", \n\t \"seef9be73f\": \"{{ $json.data[0].email }}\", \n\t \"s605154076\": \"{{ $json.data[0].status }}\", \n \t \"sa3391023f\": \"{{ $json.data[0].source }}\", \n\t \"sfa773767c\": \"{{ $json.data[0].sent }}\", \n\t \"s42c301ed6\": \"{{ $json.data[0].opens_count }}\", \n \t \"sdf1296650\": \"{{ $json.data[0].clicks_count }}\", \n\t \"s596d03ab3\": \"{{ $json.data[0].open_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].click_rate }}\", \n\t \"s1c6490541\": \"{{ $json.data[0].subscribed_at }}\", \n\t \"s2ce00d764\": \"{{ $json.data[0].unsubscribed_at }}\", \n\t \"s6576bfd42\": \"{{ $json.data[0].created_at }}\", \n\t \"s39bc7a9be\": \"{{ $json.data[0].updated_at }}\", \n\t \"s8b859eae9\": \"{{ $json.data[0].fields.name }}\", \n\t \"sba31ce70d\": \"{{ $json.data[0].fields.last_name }}\", \n\t \"s291c28451\": \"{{ $json.data[0].fields.company }}\", \n\t \"sc600bc4f0\": \"{{ $json.data[0].fields.country }}\", \n\t \"s2463dbdbb\": \"{{ $json.data[0].fields.city }}\", \n\t \"s0fc970993\": \"{{ $json.data[0].fields.phone }}\", \n\t \"sfb8f84267\": \"{{ $json.data[0].fields.state }}\", \n\t \"s1478c2983\": \"{{ $json.data[0].fields.z_i_p }}, \n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at }}\", \n\t \"s083fcd2a1\": \"{{ $json.data[0].optin_ip }}\"\n}\n",
+        "jsonBody": "={\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"{{ $json.data[0].status }}\"\n  },\n \t \"s83aff2ca3\": \"{{ $json.data[0].id }}\", \n\t \"seef9be73f\": \"{{ $json.data[0].email }}\",\n\t \"s605154076\": \"{{ $json.data[0].status }}\", \n \t \"sa3391023f\": \"{{ $json.data[0].source }}\", \n\t \"sfa773767c\": \"{{ $json.data[0].sent }}\", \n\t \"s42c301ed6\": \"{{ $json.data[0].opens_count }}\", \n \t \"sdf1296650\": \"{{ $json.data[0].clicks_count }}\", \n\t \"s596d03ab3\": \"{{ $json.data[0].open_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].click_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].ip_address }}\", \n\t \"s1c6490541\": \"{{ $json.data[0].subscribed_at }}\", \n\t \"s2ce00d764\": \"{{ $json.data[0].unsubscribed_at }}\", \n\t \"s6576bfd42\": \"{{ $json.data[0].created_at }}\",\n\t \"s39bc7a9be\": \"{{ $json.data[0].updated_at }}\", \n\t \"s2463dbdbb\": \"{{ $json.data[0].fields.name }}\",\n\t \"sc600bc4f0\": \"{{ $json.data[0].fields.last_name }}\", \n\t \"sba31ce70d\": \"{{ $json.data[0].fields.company }}\", \n\t \"s291c28451\": \"{{ $json.data[0].fields.country }}\", \n\t \"s8b859eae9\": \"{{ $json.data[0].fields.city }}\",\n\t \"s0fc970993\": \"{{ $json.data[0].fields.phone }}\", \n\t \"sfb8f84267\": \"{{ $json.data[0].fields.state }}\",\n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at }}\", \n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at}}\"\n}",
         "options": {
           "batching": {
             "batch": {
-              "batchSize": 5,
+              "batchSize": 1,
               "batchInterval": 120
             }
           }
@@ -359,13 +370,13 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        980,
+        1200,
         220
       ]
     },
     {
       "parameters": {
-        "method": "POST",
+        "method": "PATCH",
         "url": "https://app.smartsuite.com/api/v1/applications/66cdd2af45744a6ad9d404c6/records/",
         "sendHeaders": true,
         "headerParameters": {
@@ -382,7 +393,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"title\": \"{{ $json.data[0].fields.name }}- {{ $json.data[0].fields.last_name }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"{{ $json.data[0].status }}\"\n  },\n \t \"s83aff2ca3\": \"{{ $json.data[0].id }}\", \n\t \"seef9be73f\": \"{{ $json.data[0].email }}\", \n\t \"s605154076\": \"{{ $json.data[0].status }}\", \n \t \"sa3391023f\": \"{{ $json.data[0].source }}\", \n\t \"sfa773767c\": \"{{ $json.data[0].sent }}\", \n\t \"s42c301ed6\": \"{{ $json.data[0].opens_count }}\", \n \t \"sdf1296650\": \"{{ $json.data[0].clicks_count }}\", \n\t \"s596d03ab3\": \"{{ $json.data[0].open_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].click_rate }}\", \n\t \"s1c6490541\": \"{{ $json.data[0].subscribed_at }}\", \n\t \"s2ce00d764\": \"{{ $json.data[0].unsubscribed_at }}\", \n\t \"s6576bfd42\": \"{{ $json.data[0].created_at }}\", \n\t \"s39bc7a9be\": \"{{ $json.data[0].updated_at }}\", \n\t \"s8b859eae9\": \"{{ $json.data[0].fields.name }}\", \n\t \"sba31ce70d\": \"{{ $json.data[0].fields.last_name }}\", \n\t \"s291c28451\": \"{{ $json.data[0].fields.company }}\", \n\t \"sc600bc4f0\": \"{{ $json.data[0].fields.country }}\", \n\t \"s2463dbdbb\": \"{{ $json.data[0].fields.city }}\", \n\t \"s0fc970993\": \"{{ $json.data[0].fields.phone }}\", \n\t \"sfb8f84267\": \"{{ $json.data[0].fields.state }}\", \n\t \"s1478c2983\": \"{{ $json.data[0].fields.z_i_p }}, \n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at }}\", \n\t \"s083fcd2a1\": \"{{ $json.data[0].optin_ip }}\"\n}",
+        "jsonBody": "={\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"{{ $json.data[0].status }}\"\n  },\n \t \"s83aff2ca3\": \"{{ $json.data[0].id }}\", \n\t \"seef9be73f\": \"{{ $json.data[0].email }}\",\n\t \"s605154076\": \"{{ $json.data[0].status }}\", \n \t \"sa3391023f\": \"{{ $json.data[0].source }}\", \n\t \"sfa773767c\": \"{{ $json.data[0].sent }}\", \n\t \"s42c301ed6\": \"{{ $json.data[0].opens_count }}\", \n \t \"sdf1296650\": \"{{ $json.data[0].clicks_count }}\", \n\t \"s596d03ab3\": \"{{ $json.data[0].open_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].click_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].ip_address }}\", \n\t \"s1c6490541\": \"{{ $json.data[0].subscribed_at }}\", \n\t \"s2ce00d764\": \"{{ $json.data[0].unsubscribed_at }}\", \n\t \"s6576bfd42\": \"{{ $json.data[0].created_at }}\",\n\t \"s39bc7a9be\": \"{{ $json.data[0].updated_at }}\", \n\t \"s2463dbdbb\": \"{{ $json.data[0].fields.name }}\",\n\t \"sc600bc4f0\": \"{{ $json.data[0].fields.last_name }}\", \n\t \"sba31ce70d\": \"{{ $json.data[0].fields.company }}\", \n\t \"s291c28451\": \"{{ $json.data[0].fields.country }}\", \n\t \"s8b859eae9\": \"{{ $json.data[0].fields.city }}\",\n\t \"s0fc970993\": \"{{ $json.data[0].fields.phone }}\", \n\t \"sfb8f84267\": \"{{ $json.data[0].fields.state }}\",\n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at }}\", \n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at}}\"\n}",
         "options": {
           "batching": {
             "batch": {
@@ -397,7 +408,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        980,
+        1200,
         440
       ]
     },
@@ -459,8 +470,32 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
       "position": [
-        720,
-        340
+        960,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "advanced": true,
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "seef9be73f",
+              "field2": "email"
+            }
+          ]
+        },
+        "joinMode": "enrichInput1",
+        "options": {}
+      },
+      "id": "272539ad-c1e9-4683-8fb1-a3568285c443",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        780,
+        320
       ]
     }
   ],
@@ -471,6 +506,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-27T19:45:02.000Z",
-  "versionId": "e8df6a8c-b790-4080-98c2-2d275b872418"
+  "updatedAt": "2024-08-27T21:44:40.000Z",
+  "versionId": "bd0bb324-8d66-4ee4-8623-b6752603544a"
 }

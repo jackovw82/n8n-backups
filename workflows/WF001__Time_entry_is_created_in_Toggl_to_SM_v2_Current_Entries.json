@@ -1359,11 +1359,17 @@
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timezone": "Africa/Johannesburg",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-27T17:26:42.000Z",
-  "versionId": "75dc241c-4553-4356-a8fd-24b0e3ecd9c1"
+  "updatedAt": "2024-08-28T17:19:45.000Z",
+  "versionId": "6a0f5d23-abc7-4c8c-9ee6-12b3a2227d91"
 }

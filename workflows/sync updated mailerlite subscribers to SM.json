@@ -1,0 +1,442 @@
+{
+  "active": false,
+  "connections": {
+    "SMTimeEntry": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "SMTimeEntry",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Update Subscriber",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "SMTimeEntry",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Lookup Subscriber",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lookup Subscriber": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-28T18:52:17.152Z",
+  "id": "8XoZ8hMbjObfhAoq",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "sync updated mailerlite subscribers to SM",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://connect.mailerlite.com/api/subscribers",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer  eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiNzI3NjA3ZDdhOWNlNDBlMThiZjNkYmUwMDc3NDBhZjU0NDAwYTVmZGQwZTM4NTllYzE2YTQ5YmIwMzMwOTAzNDE2NDY4ODE2MTc4NzVkYjYiLCJpYXQiOjE3MjQ4NzAwODguMjcxMjAyLCJuYmYiOjE3MjQ4NzAwODguMjcxMjA1LCJleHAiOjQ4ODA1NDM2ODguMjY4MjE5LCJzdWIiOiIxMDY5MDAzIiwic2NvcGVzIjpbXX0.pYfi7Ik_QX0WCZwcVhqJlG9n_RNc7n0tqxjue40wkLGIPdyGgEV4wkp_3dzlT3v6-N8_he2pNlyXZ0C1ZkL-zy77DfZY8j2UWVPgQuZAvao8q0HFWGjEhbtZ22hYXo3Grc8N0-1_RO5Vxk4mbviyLJyuGkiyHaefVpgSzddCzQHze_nDdvyXCHOkJmIaMmFjsrQwq5X8oYFnKPJmUFjh9Amq3LIbigncTRwlgqXroLrPALZTrJouWTNXI92y3tQt_HXnzHlrmnNKISkBOrPEg7IFPbW4ohNe1DK591usff7ywGNLw7e2YuRqCK9cHJeLLwjTN_307w-SQtfwNNVNq61j3sxoXA8ojr_NKvhu_KSvKG2bFzYFvS0aSfFgu1Jlnpqs-TxOIruE6cc25I8IPwJQGboEBWflRwQCpE27ocKC10x909CYrLzUwDCnYIVuHDLq_JPnGxJrkvTizxstdkxt46SUDR0zdhxfP3Z2mJw0RWEB0Hl-BtrShz_I-6lf-bLn-AwOVcWUM8U1SZ_PaLKe2ldph-2ztFhZN8fMdAcLbE40QD4L-_75BCVTLW4VVl4DIXCIN8mv1_2M1_rbskPXQw1FiC0ie2Lgi5CntzI4HekvmFWOwIuyT7TxsyYwgTNWAQfJUYTq2xUqDpcC-H0SduRG0-VWbyF45SBcyRk"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "62360b46-1f21-4b90-9b67-e06051424d7c",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        260,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66cdd2af45744a6ad9d404c6/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "25"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "abb8fde3-6f20-49e9-9243-c4d392c7452b",
+      "name": "SMTimeEntry",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        120,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "id": "1ebd29cd-c9ce-4cda-8cb2-502be852b58a",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        380,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "6e594f17-724c-45ee-8cc6-e29b1ee43edc",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -140,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66cdd2af45744a6ad9d404c6/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"{{ $json.data[0].status }}\"\n  },\n \t \"s83aff2ca3\": \"{{ $json.data[0].id }}\", \n\t \"seef9be73f\": \"{{ $json.data[0].email }}\",\n\t \"s605154076\": \"{{ $json.data[0].status }}\", \n \t \"sa3391023f\": \"{{ $json.data[0].source }}\", \n\t \"sfa773767c\": \"{{ $json.data[0].sent }}\", \n\t \"s42c301ed6\": \"{{ $json.data[0].opens_count }}\", \n \t \"sdf1296650\": \"{{ $json.data[0].clicks_count }}\", \n\t \"s596d03ab3\": \"{{ $json.data[0].open_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].click_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].ip_address }}\", \n\t \"s1c6490541\": \"{{ $json.data[0].subscribed_at }}\", \n\t \"s2ce00d764\": \"{{ $json.data[0].unsubscribed_at }}\", \n\t \"s6576bfd42\": \"{{ $json.data[0].created_at }}\",\n\t \"s39bc7a9be\": \"{{ $json.data[0].updated_at }}\", \n\t \"s2463dbdbb\": \"{{ $json.data[0].fields.name }}\",\n\t \"sc600bc4f0\": \"{{ $json.data[0].fields.last_name }}\", \n\t \"sba31ce70d\": \"{{ $json.data[0].fields.company }}\", \n\t \"s291c28451\": \"{{ $json.data[0].fields.country }}\", \n\t \"s8b859eae9\": \"{{ $json.data[0].fields.city }}\",\n\t \"s0fc970993\": \"{{ $json.data[0].fields.phone }}\", \n\t \"sfb8f84267\": \"{{ $json.data[0].fields.state }}\",\n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at }}\", \n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at}}\"\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 120
+            }
+          }
+        }
+      },
+      "id": "058f782d-4233-4f9a-827f-bccb51bdf6c9",
+      "name": "Update Subscriber",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1700,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "645faed4-e4c1-46ae-829c-fb83c55ba3ee",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1400,
+        340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5ecd2a1c-cbc8-4f86-bdfe-ccf6d2d1f3d7",
+      "name": "Replace Me",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        420
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ab7f49d2-3d9c-4db7-b976-96e725b95cca",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "seef9be73f[0]",
+              "field2": "data[0].email"
+            },
+            {
+              "field1": "s0fc970993",
+              "field2": "data[0].fields.phone"
+            },
+            {
+              "field1": "s2463dbdbb",
+              "field2": "data[0].fields.name"
+            },
+            {
+              "field1": "sc600bc4f0",
+              "field2": "data[0].fields.last_name"
+            },
+            {
+              "field1": "sba31ce70d",
+              "field2": "data[0].fields.company"
+            },
+            {
+              "field1": "sa3391023f",
+              "field2": "data[0].opens_count"
+            },
+            {
+              "field1": "sfa773767c",
+              "field2": "data[0].clicks_count"
+            },
+            {
+              "field1": "s42c301ed6",
+              "field2": "data[0].open_rate"
+            },
+            {
+              "field1": "sdf1296650",
+              "field2": "data[0].click_rate"
+            },
+            {
+              "field1": "s596d03ab3",
+              "field2": "data[0].click_rate"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e546caf2-f85a-4c30-b055-32957c75a23b",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        580,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66cdd2af45744a6ad9d404c6/records/list/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "offet",
+              "value": "0"
+            },
+            {
+              "name": "limit",
+              "value": "25"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "17b634c4-82c2-4f6a-b34e-b247ffb870f6",
+      "name": "Lookup Subscriber",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1140,
+        320
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e98bbb25-57d4-4338-b101-97b73cbef471",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        140
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-29T11:05:08.000Z",
+  "versionId": "28ea7791-2eab-4c84-9d1c-bdd8b342d68b"
+}

@@ -162,26 +162,6 @@
       ]
     },
     {
-      "parameters": {
-        "event": "subscriber.create"
-      },
-      "id": "2275d47f-13c4-41a9-8cec-6d633734ed7d",
-      "name": "MailerLite Trigger6",
-      "type": "n8n-nodes-base.mailerLiteTrigger",
-      "typeVersion": 1,
-      "position": [
-        2820,
-        -760
-      ],
-      "webhookId": "c03ed5ef-d24d-4b26-9056-ad7d3a4f7c1f",
-      "credentials": {
-        "mailerLiteApi": {
-          "id": "25JDTD7fp4pkxnII",
-          "name": "Mailer Lite account"
-        }
-      }
-    },
-    {
       "parameters": {},
       "id": "f7d203ed-0f34-48cf-bcd5-0e09d0908d46",
       "name": "When clicking ‘Test workflow’",
@@ -382,6 +362,26 @@
         }
       },
       "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "event": "subscriber.update"
+      },
+      "id": "4afc2a86-91a2-4fe0-ab75-e652ab59d0e7",
+      "name": "MailerLite Trigger",
+      "type": "n8n-nodes-base.mailerLiteTrigger",
+      "typeVersion": 1,
+      "position": [
+        480,
+        320
+      ],
+      "webhookId": "cf19c5de-40ad-477c-806c-2e4ee3a86ba0",
+      "credentials": {
+        "mailerLiteApi": {
+          "id": "25JDTD7fp4pkxnII",
+          "name": "Mailer Lite account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -391,6 +391,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-28T21:03:54.000Z",
-  "versionId": "63350869-5a3f-4cd3-aa71-57c2d199527c"
+  "updatedAt": "2024-08-29T12:49:51.000Z",
+  "versionId": "9929d824-62bb-4f38-8f5e-29ec334075d4"
 }

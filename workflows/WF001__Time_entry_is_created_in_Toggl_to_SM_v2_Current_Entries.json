@@ -147,12 +147,12 @@
       "main": [
         [
           {
-            "node": "Merge",
+            "node": "Find Project",
             "type": "main",
-            "index": 1
+            "index": 0
           },
           {
-            "node": "Find Project",
+            "node": "Merge",
             "type": "main",
             "index": 0
           }
@@ -317,9 +317,20 @@
       "main": [
         [
           {
+            "node": "Remove Duplicates2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicates2": {
+      "main": [
+        [
+          {
             "node": "Merge",
             "type": "main",
-            "index": 2
+            "index": 1
           }
         ]
       ]
@@ -370,7 +381,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        3720,
+        4240,
         500
       ]
     },
@@ -390,7 +401,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        3720,
+        4240,
         700
       ]
     },
@@ -398,7 +409,7 @@
       "parameters": {
         "content": "## Reference Toggl",
         "height": 737.4059175040908,
-        "width": 2007.8407551982198
+        "width": 2238.7512626898824
       },
       "id": "470fa24f-8684-4bad-a9d2-95cae930c87b",
       "name": "Sticky Note",
@@ -420,7 +431,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2960,
+        3260,
         540
       ]
     },
@@ -665,7 +676,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3020,
+        3540,
         600
       ]
     },
@@ -706,7 +717,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        3240,
+        3760,
         600
       ]
     },
@@ -922,7 +933,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3460,
+        3980,
         600
       ]
     },
@@ -1188,7 +1199,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2740,
+        3260,
         620
       ]
     },
@@ -1342,16 +1353,30 @@
     },
     {
       "parameters": {
+        "compare": "selectedFields",
+        "fieldsToCompare": "id",
+        "options": {}
+      },
+      "id": "dc87d021-cbe7-4318-9343-ec100127ec9d",
+      "name": "Remove Duplicates2",
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 1.1,
+      "position": [
+        2540,
+        760
+      ]
+    },
+    {
+      "parameters": {
         "mode": "combineBySql",
-        "numberInputs": 3,
-        "query": "WITH \n  project as \n  (\n  select * from input3\n  )\n  ,time_entry  AS\n  (\n  select\n  *\n  from input2)\nselect \n  project.*,\n  time_entry.*\nfrom time_entry"
+        "query": "WITH \n  time_entry  AS\n  (\n  select * from input1\n  )\n  ,project as \n  (\n  select * from input2\n  )\nselect \n  project.*,\n  time_entry.*\nfrom time_entry\n  left join project on project.id = time_entry.project_id"
       },
       "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        2520,
+        2740,
         620
       ],
       "disabled": true
@@ -1370,6 +1395,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-28T17:19:45.000Z",
-  "versionId": "6a0f5d23-abc7-4c8c-9ee6-12b3a2227d91"
+  "updatedAt": "2024-08-29T13:45:27.000Z",
+  "versionId": "294b61b9-35d5-4169-bcb7-3e70f4f230dc"
 }

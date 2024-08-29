@@ -34,17 +34,6 @@
         ]
       ]
     },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "Create Subscriber",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Schedule Trigger": {
       "main": [
         [
@@ -55,6 +44,17 @@
           },
           {
             "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Create Subscriber",
             "type": "main",
             "index": 0
           }
@@ -200,20 +200,6 @@
     },
     {
       "parameters": {
-        "mode": "combineBySql",
-        "query": "SELECT * FROM input2 LEFT JOIN input1 ON input1.seef9be73f <> input2.id"
-      },
-      "id": "d09d99f5-7fb6-4eee-bd8e-e16a61e83a61",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        560,
-        240
-      ]
-    },
-    {
-      "parameters": {
         "rule": {
           "interval": [
             {}
@@ -228,6 +214,20 @@
         -240,
         260
       ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "query": "SELECT * FROM input2 LEFT JOIN input1 ON input1.seef9be73f <> input2.id"
+      },
+      "id": "d09d99f5-7fb6-4eee-bd8e-e16a61e83a61",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        560,
+        240
+      ]
     }
   ],
   "pinData": {},
@@ -237,6 +237,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-28T18:52:03.000Z",
-  "versionId": "b8e528f5-f096-4d67-9176-15047fb5ddfe"
+  "updatedAt": "2024-08-29T07:21:46.000Z",
+  "versionId": "e863112c-38cc-4f7d-9c31-7882bbf47635"
 }

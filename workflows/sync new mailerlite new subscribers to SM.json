@@ -1,11 +1,22 @@
 {
   "active": false,
   "connections": {
-    "SMTimeEntry": {
+    "Merge": {
       "main": [
         [
           {
-            "node": "Split Out",
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create Subscriber",
             "type": "main",
             "index": 0
           }
@@ -23,13 +34,13 @@
         ]
       ]
     },
-    "HTTP Request": {
+    "SMTimeEntry": {
       "main": [
         [
           {
-            "node": "Merge",
+            "node": "Split Out",
             "type": "main",
-            "index": 1
+            "index": 0
           }
         ]
       ]
@@ -50,13 +61,13 @@
         ]
       ]
     },
-    "Merge": {
+    "HTTP Request": {
       "main": [
         [
           {
-            "node": "Create Subscriber",
+            "node": "Merge",
             "type": "main",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -71,38 +82,98 @@
   "nodes": [
     {
       "parameters": {
-        "url": "https://connect.mailerlite.com/api/subscribers",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            },
-            {
-              "name": "Accept",
-              "value": "application/json"
-            }
+        "mode": "combineBySql",
+        "query": "SELECT * FROM input2 LEFT JOIN input1 ON input1.seef9be73f <> input2.id"
+      },
+      "id": "3a4e274c-7310-4a82-a6a0-81f642fe1b8e",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        360,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b5fa46f8-cb86-4fc0-b0e7-f056d3eb2921",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        580,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
           ]
-        },
+        }
+      },
+      "id": "728665bd-94dc-4d84-9815-c1d32c1c2288",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -420,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/66cdd2af45744a6ad9d404c6/records/",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer  eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiNzI3NjA3ZDdhOWNlNDBlMThiZjNkYmUwMDc3NDBhZjU0NDAwYTVmZGQwZTM4NTllYzE2YTQ5YmIwMzMwOTAzNDE2NDY4ODE2MTc4NzVkYjYiLCJpYXQiOjE3MjQ4NzAwODguMjcxMjAyLCJuYmYiOjE3MjQ4NzAwODguMjcxMjA1LCJleHAiOjQ4ODA1NDM2ODguMjY4MjE5LCJzdWIiOiIxMDY5MDAzIiwic2NvcGVzIjpbXX0.pYfi7Ik_QX0WCZwcVhqJlG9n_RNc7n0tqxjue40wkLGIPdyGgEV4wkp_3dzlT3v6-N8_he2pNlyXZ0C1ZkL-zy77DfZY8j2UWVPgQuZAvao8q0HFWGjEhbtZ22hYXo3Grc8N0-1_RO5Vxk4mbviyLJyuGkiyHaefVpgSzddCzQHze_nDdvyXCHOkJmIaMmFjsrQwq5X8oYFnKPJmUFjh9Amq3LIbigncTRwlgqXroLrPALZTrJouWTNXI92y3tQt_HXnzHlrmnNKISkBOrPEg7IFPbW4ohNe1DK591usff7ywGNLw7e2YuRqCK9cHJeLLwjTN_307w-SQtfwNNVNq61j3sxoXA8ojr_NKvhu_KSvKG2bFzYFvS0aSfFgu1Jlnpqs-TxOIruE6cc25I8IPwJQGboEBWflRwQCpE27ocKC10x909CYrLzUwDCnYIVuHDLq_JPnGxJrkvTizxstdkxt46SUDR0zdhxfP3Z2mJw0RWEB0Hl-BtrShz_I-6lf-bLn-AwOVcWUM8U1SZ_PaLKe2ldph-2ztFhZN8fMdAcLbE40QD4L-_75BCVTLW4VVl4DIXCIN8mv1_2M1_rbskPXQw1FiC0ie2Lgi5CntzI4HekvmFWOwIuyT7TxsyYwgTNWAQfJUYTq2xUqDpcC-H0SduRG0-VWbyF45SBcyRk"
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
             }
           ]
         },
-        "options": {}
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"{{ $json.data[0].status }}\"\n  },\n \t \"s83aff2ca3\": \"{{ $json.data[0].id }}\", \n\t \"seef9be73f\": \"{{ $json.data[0].email }}\",\n\t \"s605154076\": \"{{ $json.data[0].status }}\", \n \t \"sa3391023f\": \"{{ $json.data[0].source }}\", \n\t \"sfa773767c\": \"{{ $json.data[0].sent }}\", \n\t \"s42c301ed6\": \"{{ $json.data[0].opens_count }}\", \n \t \"sdf1296650\": \"{{ $json.data[0].clicks_count }}\", \n\t \"s596d03ab3\": \"{{ $json.data[0].open_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].click_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].ip_address }}\", \n\t \"s1c6490541\": \"{{ $json.data[0].subscribed_at }}\", \n\t \"s2ce00d764\": \"{{ $json.data[0].unsubscribed_at }}\", \n\t \"s6576bfd42\": \"{{ $json.data[0].created_at }}\",\n\t \"s39bc7a9be\": \"{{ $json.data[0].updated_at }}\", \n\t \"s2463dbdbb\": \"{{ $json.data[0].fields.name }}\",\n\t \"sc600bc4f0\": \"{{ $json.data[0].fields.last_name }}\", \n\t \"sba31ce70d\": \"{{ $json.data[0].fields.company }}\", \n\t \"s291c28451\": \"{{ $json.data[0].fields.country }}\", \n\t \"s8b859eae9\": \"{{ $json.data[0].fields.city }}\",\n\t \"s0fc970993\": \"{{ $json.data[0].fields.phone }}\", \n\t \"sfb8f84267\": \"{{ $json.data[0].fields.state }}\",\n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at }}\", \n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at}}\"\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 120
+            }
+          }
+        }
       },
-      "id": "89d54e25-b312-4834-b4b9-3bf18cea45a8",
-      "name": "HTTP Request",
+      "id": "03db5c70-abb5-4c1f-a4c4-7c3f07e6a240",
+      "name": "Create Subscriber",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        200,
-        320
+        860,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "options": {}
+      },
+      "id": "c37876f5-0f2e-4407-b719-14e2ebd5f9d3",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        120,
+        120
       ]
     },
     {
@@ -137,96 +208,49 @@
         },
         "options": {}
       },
-      "id": "78e2810c-1922-497f-87c5-142c0bbd0ec1",
+      "id": "3fc076f2-9464-4206-bf76-b5c53692efa1",
       "name": "SMTimeEntry",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        60,
+        -140,
         120
       ]
     },
     {
       "parameters": {
-        "fieldToSplitOut": "items",
-        "options": {}
-      },
-      "id": "1b006d55-7f19-4e70-9850-4da1cdb33e14",
-      "name": "Split Out",
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [
-        320,
-        120
-      ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://app.smartsuite.com/api/v1/applications/66cdd2af45744a6ad9d404c6/records/",
+        "url": "https://connect.mailerlite.com/api/subscribers",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
-            },
-            {
-              "name": "ACCOUNT-ID",
-              "value": "swexdc6g"
+              "value": "Bearer  eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiNzI3NjA3ZDdhOWNlNDBlMThiZjNkYmUwMDc3NDBhZjU0NDAwYTVmZGQwZTM4NTllYzE2YTQ5YmIwMzMwOTAzNDE2NDY4ODE2MTc4NzVkYjYiLCJpYXQiOjE3MjQ4NzAwODguMjcxMjAyLCJuYmYiOjE3MjQ4NzAwODguMjcxMjA1LCJleHAiOjQ4ODA1NDM2ODguMjY4MjE5LCJzdWIiOiIxMDY5MDAzIiwic2NvcGVzIjpbXX0.pYfi7Ik_QX0WCZwcVhqJlG9n_RNc7n0tqxjue40wkLGIPdyGgEV4wkp_3dzlT3v6-N8_he2pNlyXZ0C1ZkL-zy77DfZY8j2UWVPgQuZAvao8q0HFWGjEhbtZ22hYXo3Grc8N0-1_RO5Vxk4mbviyLJyuGkiyHaefVpgSzddCzQHze_nDdvyXCHOkJmIaMmFjsrQwq5X8oYFnKPJmUFjh9Amq3LIbigncTRwlgqXroLrPALZTrJouWTNXI92y3tQt_HXnzHlrmnNKISkBOrPEg7IFPbW4ohNe1DK591usff7ywGNLw7e2YuRqCK9cHJeLLwjTN_307w-SQtfwNNVNq61j3sxoXA8ojr_NKvhu_KSvKG2bFzYFvS0aSfFgu1Jlnpqs-TxOIruE6cc25I8IPwJQGboEBWflRwQCpE27ocKC10x909CYrLzUwDCnYIVuHDLq_JPnGxJrkvTizxstdkxt46SUDR0zdhxfP3Z2mJw0RWEB0Hl-BtrShz_I-6lf-bLn-AwOVcWUM8U1SZ_PaLKe2ldph-2ztFhZN8fMdAcLbE40QD4L-_75BCVTLW4VVl4DIXCIN8mv1_2M1_rbskPXQw1FiC0ie2Lgi5CntzI4HekvmFWOwIuyT7TxsyYwgTNWAQfJUYTq2xUqDpcC-H0SduRG0-VWbyF45SBcyRk"
             }
           ]
         },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"{{ $json.data[0].status }}\"\n  },\n \t \"s83aff2ca3\": \"{{ $json.data[0].id }}\", \n\t \"seef9be73f\": \"{{ $json.data[0].email }}\",\n\t \"s605154076\": \"{{ $json.data[0].status }}\", \n \t \"sa3391023f\": \"{{ $json.data[0].source }}\", \n\t \"sfa773767c\": \"{{ $json.data[0].sent }}\", \n\t \"s42c301ed6\": \"{{ $json.data[0].opens_count }}\", \n \t \"sdf1296650\": \"{{ $json.data[0].clicks_count }}\", \n\t \"s596d03ab3\": \"{{ $json.data[0].open_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].click_rate }}\", \n\t \"s4e93c21d5\": \"{{ $json.data[0].ip_address }}\", \n\t \"s1c6490541\": \"{{ $json.data[0].subscribed_at }}\", \n\t \"s2ce00d764\": \"{{ $json.data[0].unsubscribed_at }}\", \n\t \"s6576bfd42\": \"{{ $json.data[0].created_at }}\",\n\t \"s39bc7a9be\": \"{{ $json.data[0].updated_at }}\", \n\t \"s2463dbdbb\": \"{{ $json.data[0].fields.name }}\",\n\t \"sc600bc4f0\": \"{{ $json.data[0].fields.last_name }}\", \n\t \"sba31ce70d\": \"{{ $json.data[0].fields.company }}\", \n\t \"s291c28451\": \"{{ $json.data[0].fields.country }}\", \n\t \"s8b859eae9\": \"{{ $json.data[0].fields.city }}\",\n\t \"s0fc970993\": \"{{ $json.data[0].fields.phone }}\", \n\t \"sfb8f84267\": \"{{ $json.data[0].fields.state }}\",\n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at }}\", \n\t \"s221bf10d2\": \"{{ $json.data[0].opted_in_at}}\"\n}",
-        "options": {
-          "batching": {
-            "batch": {
-              "batchSize": 1,
-              "batchInterval": 120
-            }
-          }
-        }
+        "options": {}
       },
-      "id": "0d5e2dfc-1fbb-4300-84cc-5450eebda990",
-      "name": "Create Subscriber",
+      "id": "d4b73909-ff8a-4756-9231-436b5cb82555",
+      "name": "HTTP Request",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        780,
-        240
-      ]
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {}
-          ]
-        }
-      },
-      "id": "88178008-f445-4500-a6fa-4ad842dbcb3d",
-      "name": "Schedule Trigger",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        -240,
-        260
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "combineBySql",
-        "query": "SELECT * FROM input2 LEFT JOIN input1 ON input1.seef9be73f <> input2.id"
-      },
-      "id": "d09d99f5-7fb6-4eee-bd8e-e16a61e83a61",
-      "name": "Merge",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        560,
-        240
+        0,
+        320
       ]
     }
   ],
@@ -237,6 +261,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-29T07:21:46.000Z",
-  "versionId": "e863112c-38cc-4f7d-9c31-7882bbf47635"
+  "updatedAt": "2024-08-29T12:49:33.000Z",
+  "versionId": "922e6c6f-a4d1-4ee2-bfd6-b5063f00d498"
 }

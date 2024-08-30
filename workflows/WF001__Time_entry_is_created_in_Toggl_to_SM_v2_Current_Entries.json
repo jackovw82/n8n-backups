@@ -147,12 +147,12 @@
       "main": [
         [
           {
-            "node": "Find Project",
+            "node": "Merge",
             "type": "main",
-            "index": 0
+            "index": 1
           },
           {
-            "node": "Merge",
+            "node": "Find Project",
             "type": "main",
             "index": 0
           }
@@ -330,7 +330,18 @@
           {
             "node": "Merge",
             "type": "main",
-            "index": 1
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Pass  3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -359,7 +370,7 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1026,
+        -986,
         560
       ]
     },
@@ -381,7 +392,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        4240,
+        4020,
         500
       ]
     },
@@ -401,7 +412,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        4240,
+        4020,
         700
       ]
     },
@@ -409,14 +420,14 @@
       "parameters": {
         "content": "## Reference Toggl",
         "height": 737.4059175040908,
-        "width": 2238.7512626898824
+        "width": 2060.5177034209846
       },
       "id": "470fa24f-8684-4bad-a9d2-95cae930c87b",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        653.7856000000011,
+        838.2335592688978,
         340
       ]
     },
@@ -431,7 +442,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3260,
+        3240,
         540
       ]
     },
@@ -445,7 +456,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -820,
+        -780,
         660
       ]
     },
@@ -561,7 +572,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2140,
+        2180,
         500
       ]
     },
@@ -638,7 +649,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -260,
+        -220,
         760
       ]
     },
@@ -676,7 +687,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3540,
+        3320,
         600
       ]
     },
@@ -717,7 +728,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        3760,
+        3540,
         600
       ]
     },
@@ -848,7 +859,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        20,
+        60,
         740
       ]
     },
@@ -933,7 +944,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3980,
+        3760,
         600
       ]
     },
@@ -1064,7 +1075,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        695,
+        720,
         620
       ]
     },
@@ -1077,7 +1088,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        274,
+        314,
         740
       ]
     },
@@ -1097,7 +1108,7 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -1026,
+        -986,
         760
       ]
     },
@@ -1138,7 +1149,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -326,
+        -286,
         560
       ]
     },
@@ -1163,7 +1174,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -740,
+        -700,
         760
       ],
       "credentials": {
@@ -1185,7 +1196,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -20,
+        20,
         560
       ]
     },
@@ -1199,7 +1210,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        3260,
+        3040,
         620
       ]
     },
@@ -1214,8 +1225,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1340,
-        220
+        -1160,
+        380
       ]
     },
     {
@@ -1227,7 +1238,7 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        -520,
+        -480,
         760
       ]
     },
@@ -1244,7 +1255,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        480,
+        520,
         620
       ]
     },
@@ -1369,17 +1380,17 @@
     {
       "parameters": {
         "mode": "combineBySql",
-        "query": "WITH \n  time_entry  AS\n  (\n  select * from input1\n  )\n  ,project as \n  (\n  select * from input2\n  )\nselect \n  project.*,\n  time_entry.*\nfrom time_entry\n  left join project on project.id = time_entry.project_id"
+        "numberInputs": 3,
+        "query": "WITH \n  time_entry  AS\n  (\n  select * from input2\n  )\n  ,project as \n  (\n  select * from input3\n  )\n  ,client AS\n  (\n  select * from input1\n  )\nselect \n  project.sm_id as project_record_id,\n  client.record_id as client_rec_id,\n  client.id,\n  client.name,\n  time_entry.*\nfrom time_entry\n  left join project on project.id = time_entry.project_id\n  left join client on client.id = project.client_id"
       },
       "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        2740,
+        2720,
         620
-      ],
-      "disabled": true
+      ]
     }
   ],
   "pinData": {},
@@ -1395,6 +1406,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-29T13:45:27.000Z",
-  "versionId": "294b61b9-35d5-4169-bcb7-3e70f4f230dc"
+  "updatedAt": "2024-08-30T16:23:57.000Z",
+  "versionId": "283eed65-e4c1-47f9-9f58-4aedadaed2e7"
 }

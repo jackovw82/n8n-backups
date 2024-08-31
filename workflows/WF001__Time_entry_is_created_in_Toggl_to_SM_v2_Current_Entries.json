@@ -392,7 +392,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.2,
       "position": [
-        4020,
+        3840,
         500
       ]
     },
@@ -412,7 +412,7 @@
       "type": "n8n-nodes-base.mattermost",
       "typeVersion": 1,
       "position": [
-        4020,
+        3840,
         700
       ]
     },
@@ -442,7 +442,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3240,
+        3160,
         540
       ]
     },
@@ -676,7 +676,7 @@
         "options": {
           "batching": {
             "batch": {
-              "batchSize": 5,
+              "batchSize": 1,
               "batchInterval": 120
             }
           }
@@ -687,7 +687,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3320,
+        3220,
         600
       ]
     },
@@ -728,7 +728,7 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        3540,
+        3440,
         600
       ]
     },
@@ -944,7 +944,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3760,
+        3640,
         600
       ]
     },
@@ -1210,7 +1210,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        3040,
+        2960,
         620
       ]
     },
@@ -1231,7 +1231,7 @@
     },
     {
       "parameters": {
-        "maxItems": 10
+        "maxItems": 3
       },
       "id": "b181a53a-bfb2-4d3c-b072-9353b49c5c49",
       "name": "Limit",
@@ -1406,6 +1406,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-30T16:23:57.000Z",
-  "versionId": "283eed65-e4c1-47f9-9f58-4aedadaed2e7"
+  "updatedAt": "2024-08-31T11:11:03.000Z",
+  "versionId": "c3d6acb0-8880-483f-b187-427116f553a1"
 }

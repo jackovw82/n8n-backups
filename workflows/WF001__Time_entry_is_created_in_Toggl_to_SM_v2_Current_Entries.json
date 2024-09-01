@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "When clicking ‘Test workflow’": {
       "main": [
@@ -61,28 +61,6 @@
         ]
       ]
     },
-    "CreatetimeEntryinSM": {
-      "main": [
-        [
-          {
-            "node": "Aggregate",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate": {
-      "main": [
-        [
-          {
-            "node": "Message Formatting",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Pass 1": {
       "main": [
         [
@@ -127,34 +105,18 @@
         ]
       ]
     },
-    "Message Formatting": {
-      "main": [
-        [
-          {
-            "node": "Slack",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Mattermost",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Pass ": {
       "main": [
         [
           {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          },
-          {
             "node": "Find Project",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -197,24 +159,6 @@
         ]
       ]
     },
-    "Loop Over Items": {
-      "main": [
-        [
-          {
-            "node": "CreatetimeEntryinSM",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Code1": {
       "main": [
         [
@@ -231,17 +175,6 @@
         [
           {
             "node": "Merge1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge1": {
-      "main": [
-        [
-          {
-            "node": "Pass ",
             "type": "main",
             "index": 0
           }
@@ -339,7 +272,18 @@
       "main": [
         [
           {
-            "node": "Loop Over Items",
+            "node": "CreatetimeEntryinSM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Pass ",
             "type": "main",
             "index": 0
           }
@@ -349,7 +293,9 @@
   },
   "createdAt": "2024-08-22T07:06:59.794Z",
   "id": "ddaJOVYHqXsu5FqE",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "WF001__Time_entry_is_created_in_Toggl_to_SM_v2_Current_Entries",
   "nodes": [
     {
@@ -359,50 +305,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -766,
+        -646,
         560
-      ]
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "select": "channel",
-        "channelId": {
-          "__rl": true,
-          "value": "C07BLFDL917",
-          "mode": "list",
-          "cachedResultName": "toggl-time-captured"
-        },
-        "text": "={{ $json[\"message\"] }}",
-        "otherOptions": {}
-      },
-      "id": "23962f74-eded-4ec7-8f4f-0605ef70b425",
-      "name": "Slack",
-      "type": "n8n-nodes-base.slack",
-      "typeVersion": 2.2,
-      "position": [
-        3840,
-        500
-      ]
-    },
-    {
-      "parameters": {
-        "channelId": "jpqr5pw497dxf8kirt96t4ar5r",
-        "message": "={{ $json[\"message\"] }}",
-        "attachments": [
-          {}
-        ],
-        "otherOptions": {
-          "root_id": ""
-        }
-      },
-      "id": "0dc13040-6845-4b96-a6ec-437e024d2d66",
-      "name": "Mattermost",
-      "type": "n8n-nodes-base.mattermost",
-      "typeVersion": 1,
-      "position": [
-        3840,
-        700
       ]
     },
     {
@@ -431,7 +335,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3160,
+        2940,
         540
       ]
     },
@@ -445,7 +349,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -560,
+        -440,
         660
       ]
     },
@@ -638,7 +542,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -220,
+        -100,
         760
       ]
     },
@@ -666,7 +570,7 @@
           "batching": {
             "batch": {
               "batchSize": 1,
-              "batchInterval": 200
+              "batchInterval": 60000
             }
           }
         }
@@ -676,49 +580,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3220,
-        600
-      ]
-    },
-    {
-      "parameters": {
-        "fieldsToAggregate": {
-          "fieldToAggregate": [
-            {
-              "fieldToAggregate": "title"
-            },
-            {
-              "fieldToAggregate": "sf7335e6da"
-            },
-            {
-              "fieldToAggregate": "status"
-            },
-            {
-              "fieldToAggregate": "s2e7d2b64e"
-            },
-            {
-              "fieldToAggregate": "se6d1375cc"
-            },
-            {
-              "fieldToAggregate": "s6e80240de"
-            },
-            {
-              "fieldToAggregate": "s388b58221"
-            },
-            {
-              "fieldToAggregate": "description.data.content[0].content[0].text"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "2150d77c-4ec0-47ad-971e-dbcaf32fafec",
-      "name": "Aggregate",
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        3440,
-        600
+        3020,
+        620
       ]
     },
     {
@@ -848,7 +711,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        60,
+        120,
         740
       ]
     },
@@ -922,19 +785,6 @@
       "position": [
         875,
         740
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "// Assuming 'AggregatedData' is the name of the node with the aggregated data\nconst aggregatedData = $node[\"Aggregate\"].json;\n\n// Prepare the message\nlet message = 'Hi Team,\\n\\nNew time entries are ready for review. Here are the details:\\n\\n';\n\nconst dates = [...new Set(aggregatedData.s2e7d2b64e)];\n\ndates.forEach(date => {\n  message += `*Date:* ${date}\\n`;\n  message += `*Client:* ${aggregatedData.s388b58221[0]}\\n`;\n   message += '\\n\\n';\n  message += '```\\n';  // Start block quote for grey frame\n  message += 'Title                      | Status               | Worked Hours  | Description\\n';\n  message += '---------------------------|----------------------|---------------|----------------------------------------------\\n';\n  \n  aggregatedData.s2e7d2b64e.forEach((entryDate, index) => {\n    if (entryDate === date) {\n      const title = aggregatedData.title[index].padEnd(27, ' ');\n      const status = aggregatedData.status[index].value.padEnd(20, ' ');\n      const hours = aggregatedData.se6d1375cc[index].toString().padEnd(13, ' ');\n      const description = aggregatedData.text[index];\n      message += `${title}| ${status} | ${hours} | ${description}\\n`;\n    }\n  });\n  message += '```\\n\\n';  // End block quote for grey frame\n});\n\nmessage += '\\nPlease review these entries at your earliest convenience.\\nThank you!\\n';\n\nreturn [\n  {\n    json: {\n      message: message\n    }\n  }\n];"
-      },
-      "id": "7c4121e3-0c53-44d7-b578-6c136b81c833",
-      "name": "Message Formatting",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        3640,
-        600
       ]
     },
     {
@@ -1097,7 +947,7 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -766,
+        -646,
         760
       ]
     },
@@ -1138,7 +988,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -286,
+        -166,
         560
       ]
     },
@@ -1163,7 +1013,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -480,
+        -360,
         760
       ],
       "credentials": {
@@ -1185,22 +1035,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        20,
+        140,
         560
-      ]
-    },
-    {
-      "parameters": {
-        "batchSize": 5,
-        "options": {}
-      },
-      "id": "b8775f5e-8180-45e4-8ad5-b0f5dab5323e",
-      "name": "Loop Over Items",
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        2960,
-        620
       ]
     },
     {
@@ -1216,23 +1052,6 @@
       "position": [
         -1160,
         380
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "combine",
-        "fieldsToMatchString": "items[0].sac94990b3, id",
-        "joinMode": "keepNonMatches",
-        "outputDataFrom": "input2",
-        "options": {}
-      },
-      "id": "01136f52-fd70-4189-a032-023dc2ddcb83",
-      "name": "Merge1",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        520,
-        620
       ]
     },
     {
@@ -1359,12 +1178,26 @@
         "numberInputs": 3,
         "query": "WITH \n  time_entry  AS\n  (\n  select * from input2\n  )\n  ,project as \n  (\n  select * from input3\n  )\n  ,client AS\n  (\n  select * from input1\n  )\nselect \n  project.sm_id as project_sm_rec_id,\n  project.name as proj_name,\n  client.record_id as client_sm_rec_id,\n  client.id as client_id,\n  client.name as client_name,\n  time_entry.id as time_entry_id,\n  time_entry.*\nfrom time_entry\n  left join project on project.id = time_entry.project_id\n  left join client on client.id = project.client_id"
       },
-      "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
+      "id": "99666569-85c6-4010-9aba-34d0ecfc3bd3",
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
         2720,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "query": "SELECT\n  input2.*\nFROM input2\n  INNER JOIN input1 ON input1.sac94990b3 <> input2.id"
+      },
+      "id": "01136f52-fd70-4189-a032-023dc2ddcb83",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        520,
         620
       ]
     }
@@ -1379,9 +1212,15 @@
     "saveManualExecutions": true,
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": [
+        22
+      ]
+    }
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2024-09-01T16:41:53.000Z",
-  "versionId": "d12f4e77-a7dc-4cd9-bb90-fa04e0cfccb1"
+  "triggerCount": 1,
+  "updatedAt": "2024-09-01T18:53:50.000Z",
+  "versionId": "8c1639f9-00f0-4b8d-94f1-71e0b4158ff9"
 }

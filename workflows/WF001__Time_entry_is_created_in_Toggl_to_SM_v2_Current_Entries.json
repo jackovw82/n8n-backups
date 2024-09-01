@@ -190,7 +190,7 @@
       "main": [
         [
           {
-            "node": "Limit",
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -222,17 +222,6 @@
             "node": "Merge1",
             "type": "main",
             "index": 1
-          }
-        ]
-      ]
-    },
-    "Limit": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -313,17 +302,6 @@
         ]
       ]
     },
-    "Merge2": {
-      "main": [
-        [
-          {
-            "node": "Remove Duplicates2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Remove Duplicates2": {
       "main": [
         [
@@ -340,6 +318,17 @@
         [
           {
             "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates2",
             "type": "main",
             "index": 0
           }
@@ -370,7 +359,7 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -986,
+        -766,
         560
       ]
     },
@@ -456,7 +445,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -780,
+        -560,
         660
       ]
     },
@@ -635,7 +624,7 @@
               "rightValue": "",
               "operator": {
                 "type": "dateTime",
-                "operation": "notEmpty",
+                "operation": "exists",
                 "singleValue": true
               }
             }
@@ -672,12 +661,12 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"in_progress\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.proj_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.proj_record_id }}\",\n  \"s4621e0408\": \"{{ $json.client_record_id }}\"\n}",
+        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"in_progress\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.proj_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.project_sm_rec_id }}\",\n  \"s4621e0408\": \"{{ $json.client_sm_rec_id }}\"\n}\n",
         "options": {
           "batching": {
             "batch": {
               "batchSize": 1,
-              "batchInterval": 120
+              "batchInterval": 200
             }
           }
         }
@@ -1108,7 +1097,7 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -986,
+        -766,
         760
       ]
     },
@@ -1174,7 +1163,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -700,
+        -480,
         760
       ],
       "credentials": {
@@ -1227,19 +1216,6 @@
       "position": [
         -1160,
         380
-      ]
-    },
-    {
-      "parameters": {
-        "maxItems": 3
-      },
-      "id": "b181a53a-bfb2-4d3c-b072-9353b49c5c49",
-      "name": "Limit",
-      "type": "n8n-nodes-base.limit",
-      "typeVersion": 1,
-      "position": [
-        -480,
-        760
       ]
     },
     {
@@ -1350,20 +1326,6 @@
     },
     {
       "parameters": {
-        "mode": "combineBySql",
-        "query": " WITH \n  project_det AS (\n    SELECT * \n    FROM input2\n  ),\n  project_ref AS (\n    SELECT *\n    FROM input1\n  )\nSELECT\n  project_ref.*,\n  project_det.*\n\nFROM \n  project_ref\nLEFT JOIN \n  project_det \nON \n  cast(project_det.id as TEXT) = cast(project_ref.sf698fb364 as text);\n"
-      },
-      "id": "85972e67-375d-4d5d-9dde-a2f1e3113f97",
-      "name": "Merge2",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        2320,
-        760
-      ]
-    },
-    {
-      "parameters": {
         "compare": "selectedFields",
         "fieldsToCompare": "id",
         "options": {}
@@ -1380,8 +1342,22 @@
     {
       "parameters": {
         "mode": "combineBySql",
+        "query": " WITH \n  project_det AS (\n    SELECT * \n    FROM input2\n  ),\n  project_ref AS (\n    SELECT *\n    FROM input1\n  )\nSELECT\n  project_ref.*,\n  project_det.*\n\nFROM \n  project_ref\nLEFT JOIN \n  project_det \nON \n  cast(project_det.id as TEXT) = cast(project_ref.sf698fb364 as text);\n"
+      },
+      "id": "85972e67-375d-4d5d-9dde-a2f1e3113f97",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2320,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
         "numberInputs": 3,
-        "query": "WITH \n  time_entry  AS\n  (\n  select * from input2\n  )\n  ,project as \n  (\n  select * from input3\n  )\n  ,client AS\n  (\n  select * from input1\n  )\nselect \n  project.sm_id as project_record_id,\n  client.record_id as client_rec_id,\n  client.id,\n  client.name,\n  time_entry.*\nfrom time_entry\n  left join project on project.id = time_entry.project_id\n  left join client on client.id = project.client_id"
+        "query": "WITH \n  time_entry  AS\n  (\n  select * from input2\n  )\n  ,project as \n  (\n  select * from input3\n  )\n  ,client AS\n  (\n  select * from input1\n  )\nselect \n  project.sm_id as project_sm_rec_id,\n  project.name as proj_name,\n  client.record_id as client_sm_rec_id,\n  client.id as client_id,\n  client.name as client_name,\n  time_entry.id as time_entry_id,\n  time_entry.*\nfrom time_entry\n  left join project on project.id = time_entry.project_id\n  left join client on client.id = project.client_id"
       },
       "id": "1552f04d-b8cf-4027-9c42-1768c7d3b5e1",
       "name": "Merge",
@@ -1406,6 +1382,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-31T11:11:03.000Z",
-  "versionId": "c3d6acb0-8880-483f-b187-427116f553a1"
+  "updatedAt": "2024-09-01T16:41:53.000Z",
+  "versionId": "d12f4e77-a7dc-4cd9-bb90-fa04e0cfccb1"
 }

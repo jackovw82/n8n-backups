@@ -219,17 +219,6 @@
         ]
       ]
     },
-    "Merge1": {
-      "main": [
-        [
-          {
-            "node": "Pass ",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "lookup_toggl_project": {
       "main": [
         [
@@ -322,6 +311,17 @@
         [
           {
             "node": "CreatetimeEntryinSM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Pass ",
             "type": "main",
             "index": 0
           }
@@ -1188,23 +1188,6 @@
     },
     {
       "parameters": {
-        "mode": "combine",
-        "fieldsToMatchString": "items[0].sac94990b3, id",
-        "joinMode": "keepNonMatches",
-        "outputDataFrom": "input2",
-        "options": {}
-      },
-      "id": "b4a95097-e39b-4018-8cfa-a5a13e793fb2",
-      "name": "Merge1",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        520,
-        620
-      ]
-    },
-    {
-      "parameters": {
         "url": "=https://api.track.toggl.com/api/v9/workspaces/{{ $json.workspace_id }}/projects/{{ $json.project_id }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpBasicAuth",
@@ -1335,6 +1318,20 @@
         2720,
         620
       ]
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "query": "SELECT * \nFROM input2\nLEFT JOIN input1 \n  ON trim(input1.sac94990b3) <> trim(input2.id)"
+      },
+      "id": "b4a95097-e39b-4018-8cfa-a5a13e793fb2",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        520,
+        620
+      ]
     }
   ],
   "pinData": {},
@@ -1350,6 +1347,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-09-01T18:32:29.923Z",
-  "versionId": "325c7a69-b683-4041-b7b8-5f8dc13baa06"
+  "updatedAt": "2024-09-04T16:24:45.000Z",
+  "versionId": "b0242e17-1da4-44b7-951c-9baaa66afde1"
 }

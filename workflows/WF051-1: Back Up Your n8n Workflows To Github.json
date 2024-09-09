@@ -379,8 +379,7 @@
         "triggerTimes": {
           "item": [
             {
-              "mode": "everyX",
-              "value": 4
+              "mode": "everyHour"
             }
           ]
         }
@@ -500,6 +499,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-08-24T06:40:57.000Z",
-  "versionId": "d4c4ee41-205c-42ec-aed0-e55db29d9b99"
+  "updatedAt": "2024-09-09T08:40:02.000Z",
+  "versionId": "c394a8c4-31e3-4282-84b4-840cc222103d"
 }

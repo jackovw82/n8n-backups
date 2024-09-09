@@ -1,16 +1,16 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "When clicking ‘Test workflow’": {
       "main": [
         [
           {
-            "node": "SMTimeEntry",
+            "node": "GET TimeEntries - Current",
             "type": "main",
             "index": 0
           },
           {
-            "node": "GET TimeEntries - Current",
+            "node": "SMTimeEntry",
             "type": "main",
             "index": 0
           }
@@ -50,24 +50,13 @@
         ]
       ]
     },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Pass 1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Pass 1": {
       "main": [
         [
           {
-            "node": "Code1",
+            "node": "Merge1",
             "type": "main",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -125,12 +114,12 @@
       "main": [
         [
           {
-            "node": "SMTimeEntry",
+            "node": "GET TimeEntries - Current",
             "type": "main",
             "index": 0
           },
           {
-            "node": "GET TimeEntries - Current",
+            "node": "SMTimeEntry",
             "type": "main",
             "index": 0
           }
@@ -152,20 +141,9 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Filter1",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Code1": {
-      "main": [
-        [
-          {
-            "node": "Merge1",
-            "type": "main",
-            "index": 1
           }
         ]
       ]
@@ -174,7 +152,7 @@
       "main": [
         [
           {
-            "node": "Merge1",
+            "node": "time_entry_id",
             "type": "main",
             "index": 0
           }
@@ -279,6 +257,77 @@
         ]
       ]
     },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Message Formatting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message Formatting": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mattermost",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreatetimeEntryinSM": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Pass 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "time_entry_id": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Merge1": {
       "main": [
         [
@@ -305,52 +354,23 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -646,
-        560
+        846,
+        380
       ]
     },
     {
       "parameters": {
         "content": "## Reference Toggl",
-        "height": 737.4059175040908,
-        "width": 2060.5177034209846
+        "height": 561.3225841707583,
+        "width": 2163.3624873713616
       },
       "id": "470fa24f-8684-4bad-a9d2-95cae930c87b",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        838.2335592688978,
-        340
-      ]
-    },
-    {
-      "parameters": {
-        "content": "## SmartSuite",
-        "height": 263.41928765919954,
-        "width": 228.1849366795202
-      },
-      "id": "a46b55c5-db4e-43f7-b8c9-a9c9634932fe",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        2940,
-        540
-      ]
-    },
-    {
-      "parameters": {
-        "content": "## Toggle Time Entries",
-        "height": 295.13937069118873
-      },
-      "id": "c8b99fc0-0861-4541-a008-5343106e562a",
-      "name": "Sticky Note2",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -440,
-        660
+        2247.792786541684,
+        360
       ]
     },
     {
@@ -360,8 +380,8 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        1135,
-        740
+        2715,
+        654
       ]
     },
     {
@@ -400,8 +420,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1600,
-        840
+        3180,
+        754
       ]
     },
     {
@@ -465,8 +485,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2180,
-        500
+        3760,
+        414
       ]
     },
     {
@@ -509,41 +529,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1880,
-        500
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "d8ce5860-17d2-448b-a7dd-c1e76b7dd5bf",
-              "leftValue": "={{ $json.stop }}",
-              "rightValue": "",
-              "operator": {
-                "type": "dateTime",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "20fa92e4-1f8d-49b8-a911-c90194269df3",
-      "name": "If",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        -100,
-        760
+        3460,
+        414
       ]
     },
     {
@@ -570,7 +557,7 @@
           "batching": {
             "batch": {
               "batchSize": 1,
-              "batchInterval": 60000
+              "batchInterval": 30000
             }
           }
         }
@@ -580,8 +567,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3020,
-        620
+        4540,
+        534
       ]
     },
     {
@@ -592,7 +579,7 @@
               "id": "edac2a69-922b-4ae6-b446-77135538cd30",
               "name": "id",
               "value": "={{ $json.id }}",
-              "type": "string"
+              "type": "number"
             },
             {
               "id": "6a4f893e-935d-40e1-9d47-42f447baf48f",
@@ -711,8 +698,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        120,
-        740
+        1660,
+        560
       ]
     },
     {
@@ -743,8 +730,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        1380,
-        500
+        2960,
+        414
       ]
     },
     {
@@ -754,8 +741,8 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        1620,
-        500
+        3200,
+        414
       ]
     },
     {
@@ -783,8 +770,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        875,
-        740
+        2455,
+        654
       ]
     },
     {
@@ -914,21 +901,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        720,
-        620
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "return items.map(item => {\n  item.json.id = item.json.id.trim();\n  return item;\n});"
-      },
-      "id": "361fcc34-db8b-483f-9fdc-f9655f4f1cbe",
-      "name": "Code1",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        314,
-        740
+        2300,
+        540
       ]
     },
     {
@@ -936,8 +910,7 @@
         "rule": {
           "interval": [
             {
-              "field": "hours",
-              "hoursInterval": 2
+              "triggerAtHour": 17
             }
           ]
         }
@@ -947,8 +920,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -646,
-        760
+        860,
+        560
       ]
     },
     {
@@ -961,10 +934,6 @@
             {
               "name": "offet",
               "value": "0"
-            },
-            {
-              "name": "limit",
-              "value": "25"
             }
           ]
         },
@@ -981,6 +950,9 @@
             }
           ]
         },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"filter\": {\n    \"operator\": \"and\",\n    \"fields\": [\n      {        \n        \"field\": \"first_created\",\n        \"comparison\": \"exact_date\",\n        \"value\": {\n          \"date_mode\": \"is_on_or_after\",\n          \"date_mode_value\": \"{{ $today.set({ day: 1 }).toISODate() }}\"\n        }\n      }        \n    ]\n  }\n}",
         "options": {}
       },
       "id": "3826b588-5d3f-4df5-b223-610b0717f523",
@@ -988,8 +960,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -166,
-        560
+        1160,
+        380
       ]
     },
     {
@@ -1013,8 +985,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -360,
-        760
+        1140,
+        560
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -1035,8 +1007,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        140,
-        560
+        1400,
+        380
       ]
     },
     {
@@ -1050,7 +1022,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1160,
+        -540,
         380
       ]
     },
@@ -1066,8 +1038,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1340,
-        740
+        2920,
+        654
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -1088,8 +1060,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1100,
-        500
+        2680,
+        414
       ],
       "credentials": {
         "httpBasicAuth": {
@@ -1110,8 +1082,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1840,
-        840
+        3420,
+        754
       ]
     },
     {
@@ -1139,8 +1111,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2060,
-        840
+        3640,
+        754
       ]
     },
     {
@@ -1154,8 +1126,8 @@
       "type": "n8n-nodes-base.removeDuplicates",
       "typeVersion": 1.1,
       "position": [
-        2540,
-        760
+        4080,
+        674
       ]
     },
     {
@@ -1168,8 +1140,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        2320,
-        760
+        3900,
+        674
       ]
     },
     {
@@ -1183,22 +1155,214 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        2720,
-        620
+        4280,
+        540
       ]
     },
     {
       "parameters": {
-        "mode": "combineBySql",
-        "query": "SELECT\n  input2.*\nFROM input2\n  INNER JOIN input1 ON input1.sac94990b3 <> input2.id"
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C07BLFDL917",
+          "mode": "list",
+          "cachedResultName": "toggl-time-captured"
+        },
+        "text": "={{ $json[\"message\"] }}",
+        "otherOptions": {}
       },
-      "id": "01136f52-fd70-4189-a032-023dc2ddcb83",
+      "id": "91c78c52-b6c6-41ee-89ec-a016d025cacc",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        5180,
+        434
+      ],
+      "credentials": {
+        "slackApi": {
+          "id": "VZN6V7btkSJjKg6E",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "channelId": "jpqr5pw497dxf8kirt96t4ar5r",
+        "message": "{{ $json[\"message\"] }}",
+        "attachments": [],
+        "otherOptions": {}
+      },
+      "id": "31685469-1032-4e7d-9260-325b6594732d",
+      "name": "Mattermost",
+      "type": "n8n-nodes-base.mattermost",
+      "typeVersion": 1,
+      "position": [
+        5180,
+        634
+      ],
+      "credentials": {
+        "mattermostApi": {
+          "id": "sTFSCmEhTUzl4gvx",
+          "name": "Mattermost account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "title"
+            },
+            {
+              "fieldToAggregate": "sf7335e6da"
+            },
+            {
+              "fieldToAggregate": "status"
+            },
+            {
+              "fieldToAggregate": "s2e7d2b64e"
+            },
+            {
+              "fieldToAggregate": "se6d1375cc"
+            },
+            {
+              "fieldToAggregate": "s6e80240de"
+            },
+            {
+              "fieldToAggregate": "s388b58221"
+            },
+            {
+              "fieldToAggregate": "description.data.content[0].content[0].text"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "218689ee-22cf-4931-a69a-c08d247fd8f0",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        4780,
+        534
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Assuming 'AggregatedData' is the name of the node with the aggregated data\nconst aggregatedData = $node[\"Aggregate\"].json;\n\n// Prepare the message\nlet message = 'Hi Team,\\n\\nNew time entries are ready for review. Here are the details:\\n\\n';\n\nconst dates = [...new Set(aggregatedData.s2e7d2b64e)];\n\ndates.forEach(date => {\n  message += `*Date:* ${date}\\n`;\n  message += `*Client:* ${aggregatedData.s388b58221[0]}\\n`;\n   message += '\\n\\n';\n  message += '```\\n';  // Start block quote for grey frame\n  message += 'Title                      | Status               | Worked Hours  | Description\\n';\n  message += '---------------------------|----------------------|---------------|----------------------------------------------\\n';\n  \n  aggregatedData.s2e7d2b64e.forEach((entryDate, index) => {\n    if (entryDate === date) {\n      const title = aggregatedData.title[index].padEnd(27, ' ');\n      const status = aggregatedData.status[index].value.padEnd(20, ' ');\n      const hours = aggregatedData.se6d1375cc[index].toString().padEnd(13, ' ');\n      const description = aggregatedData.text[index];\n      message += `${title}| ${status} | ${hours} | ${description}\\n`;\n    }\n  });\n  message += '```\\n\\n';  // End block quote for grey frame\n});\n\nmessage += '\\nPlease review these entries at your earliest convenience.\\nThank you!\\n';\n\nreturn [\n  {\n    json: {\n      message: message\n    }\n  }\n];"
+      },
+      "id": "fa3b76b5-e6c6-4e30-b4f8-f813a81e1148",
+      "name": "Message Formatting",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4980,
+        534
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a6672e45-f600-4618-9081-1faefe9e7dd4",
+              "leftValue": "={{ $json.stop }}",
+              "rightValue": "",
+              "operator": {
+                "type": "dateTime",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "938978af-7d54-4171-905d-082de437b5eb",
+              "leftValue": "={{ $json.start }}",
+              "rightValue": "={{ $today.set({ day: 1 }).toISODate() }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b9e0f3c6-d992-46cb-b784-5aa2cb9ed6d5",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop through each item in the array\nconst results = [];\n\nfor (let item of $json.items) {\n  results.push({\n    time_id: item.sac94990b3, // or you can use dynamic access like item[\"sac94990b3\"]\n    // add more fields here if necessary, for example:\n    field2: item.field2,\n    field3: item.field3,\n  });\n}\n\n// Return the modified array\nreturn results;"
+      },
+      "id": "a71006ab-b035-4486-83f8-7092e16b6f18",
+      "name": "time_entry_id",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1680,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3ff8c758-d4e7-4cb6-afa7-11271d44b8b5",
+              "name": "time_id",
+              "value": "={{ $json.time_id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a8561fb1-c2c6-47cd-8937-13dd8697f09d",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1900,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "advanced": true,
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "time_id",
+              "field2": "id"
+            }
+          ]
+        },
+        "joinMode": "keepNonMatches",
+        "outputDataFrom": "input2",
+        "options": {}
+      },
+      "id": "9a0207c8-b499-493d-af21-487097d540d3",
       "name": "Merge1",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        520,
-        620
+        2100,
+        540
       ]
     }
   ],
@@ -1221,6 +1385,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-09-01T18:53:50.000Z",
-  "versionId": "8c1639f9-00f0-4b8d-94f1-71e0b4158ff9"
+  "updatedAt": "2024-09-09T07:06:47.000Z",
+  "versionId": "0cab7db2-cc1e-469a-85b1-34bb62a87c65"
 }

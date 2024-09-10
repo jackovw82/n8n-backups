@@ -1,17 +1,6 @@
 {
   "active": false,
   "connections": {
-    "Categorize": {
-      "main": [
-        [
-          {
-            "node": "If other or ai hallucinates",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Your Projects": {
       "main": [
         [
@@ -66,12 +55,24 @@
           }
         ]
       ]
+    },
+    "Categorize": {
+      "main": [
+        [
+          {
+            "node": "If other or ai hallucinates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-09-10T18:04:51.823Z",
   "id": "4chAz1bzbkPobyjL",
   "meta": {
-    "templateId": "2394"
+    "templateId": "2394",
+    "templateCredsSetupCompleted": true
   },
   "name": "Use AI to organize your Todoist Inbox",
   "nodes": [
@@ -92,7 +93,13 @@
       ],
       "retryOnFail": true,
       "typeVersion": 2,
-      "waitBetweenTries": 5000
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "todoistApi": {
+          "id": "MmsMyUuEi3HmSaUE",
+          "name": "Todoist account"
+        }
+      }
     },
     {
       "parameters": {
@@ -116,7 +123,7 @@
         "operation": "getAll",
         "returnAll": true,
         "filters": {
-          "projectId": "938017196"
+          "projectId": "2321742774"
         }
       },
       "id": "a950e470-6885-42f4-9b17-7b2c2525d3e4",
@@ -128,7 +135,13 @@
       ],
       "retryOnFail": true,
       "typeVersion": 2,
-      "waitBetweenTries": 5000
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "todoistApi": {
+          "id": "MmsMyUuEi3HmSaUE",
+          "name": "Todoist account"
+        }
+      }
     },
     {
       "parameters": {
@@ -231,36 +244,6 @@
     },
     {
       "parameters": {
-        "modelId": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4o-mini",
-          "cachedResultName": "GPT-4O-MINI"
-        },
-        "messages": {
-          "values": [
-            {
-              "content": "=Categorize the user's todo item to a project. Return the project name or just \"other\" if it does not belong to a project.",
-              "role": "system"
-            },
-            {
-              "content": "=Projects:\n{{ $('Your Projects').first().json.projects.keys().join('\\n') }}\n\nTodo item:\n{{ $('Get inbox tasks').item.json.content }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "b5988629-2225-455f-b579-73e60449d2a3",
-      "name": "Categorize",
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "position": [
-        1300,
-        560
-      ],
-      "typeVersion": 1.4
-    },
-    {
-      "parameters": {
         "options": {},
         "conditions": {
           "options": {
@@ -326,6 +309,42 @@
       ],
       "typeVersion": 2.1,
       "credentials": {}
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Categorize the user's todo item to a project. Return the project name or just \"other\" if it does not belong to a project.",
+              "role": "system"
+            },
+            {
+              "content": "=Projects:\n{{ $('Your Projects').first().json.projects.keys().join('\\n') }}\n\nTodo item:\n{{ $('Get inbox tasks').item.json.content }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b5988629-2225-455f-b579-73e60449d2a3",
+      "name": "Categorize",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        1300,
+        560
+      ],
+      "typeVersion": 1.4,
+      "credentials": {
+        "openAiApi": {
+          "id": "OM5epvgepxjhkr39",
+          "name": "OpenAi account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -335,6 +354,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-09-10T18:04:51.823Z",
-  "versionId": "88171a07-717d-4861-a12c-f26e552359c4"
+  "updatedAt": "2024-09-10T19:07:16.000Z",
+  "versionId": "7ceef6a8-9746-4fb1-bfe4-8b0f35c5ff23"
 }

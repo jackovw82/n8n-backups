@@ -60,18 +60,7 @@
       "main": [
         [
           {
-            "node": "Aggregate",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate": {
-      "main": [
-        [
-          {
-            "node": "Message Formatting",
+            "node": "OneAtATime1",
             "type": "main",
             "index": 0
           }
@@ -116,22 +105,6 @@
         [
           {
             "node": "Remove Duplicates",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Message Formatting": {
-      "main": [
-        [
-          {
-            "node": "Slack",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Mattermost",
             "type": "main",
             "index": 0
           }
@@ -440,18 +413,7 @@
       "main": [
         [
           {
-            "node": "Aggregate2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate2": {
-      "main": [
-        [
-          {
-            "node": "Message Formatting2",
+            "node": "OneAtATime1",
             "type": "main",
             "index": 0
           }
@@ -485,22 +447,6 @@
         [
           {
             "node": "Remove Duplicates6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Message Formatting2": {
-      "main": [
-        [
-          {
-            "node": "Slack2",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Mattermost2",
             "type": "main",
             "index": 0
           }
@@ -624,7 +570,9 @@
   },
   "createdAt": "2024-09-01T18:32:29.923Z",
   "id": "2PaB6cw7SpIx2CPM",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "WF001__Time_entry_is_created_in_Toggl_to_SM_v3_Current_Entries",
   "nodes": [
     {
@@ -636,48 +584,6 @@
       "position": [
         -1654,
         540
-      ]
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "select": "channel",
-        "channelId": {
-          "__rl": true,
-          "value": "C07BLFDL917",
-          "mode": "list",
-          "cachedResultName": "toggl-time-captured"
-        },
-        "text": "={{ $json[\"message\"] }}",
-        "otherOptions": {}
-      },
-      "id": "831de830-950d-4b41-abb0-7ff209506e22",
-      "name": "Slack",
-      "type": "n8n-nodes-base.slack",
-      "typeVersion": 2.2,
-      "position": [
-        3902,
-        880
-      ]
-    },
-    {
-      "parameters": {
-        "channelId": "jpqr5pw497dxf8kirt96t4ar5r",
-        "message": "={{ $json[\"message\"] }}",
-        "attachments": [
-          {}
-        ],
-        "otherOptions": {
-          "root_id": ""
-        }
-      },
-      "id": "3bfcf1f5-8d39-4a58-858a-de38f9bc2ff7",
-      "name": "Mattermost",
-      "type": "n8n-nodes-base.mattermost",
-      "typeVersion": 1,
-      "position": [
-        3902,
-        1080
       ]
     },
     {
@@ -957,47 +863,6 @@
     },
     {
       "parameters": {
-        "fieldsToAggregate": {
-          "fieldToAggregate": [
-            {
-              "fieldToAggregate": "title"
-            },
-            {
-              "fieldToAggregate": "sf7335e6da"
-            },
-            {
-              "fieldToAggregate": "status"
-            },
-            {
-              "fieldToAggregate": "s2e7d2b64e"
-            },
-            {
-              "fieldToAggregate": "se6d1375cc"
-            },
-            {
-              "fieldToAggregate": "s6e80240de"
-            },
-            {
-              "fieldToAggregate": "s388b58221"
-            },
-            {
-              "fieldToAggregate": "description.data.content[0].content[0].text"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "10476530-c40c-4f55-8093-f63fb3dacbf7",
-      "name": "Aggregate",
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        3502,
-        980
-      ]
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
@@ -1197,19 +1062,6 @@
       "position": [
         1137,
         1100
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "// Assuming 'AggregatedData' is the name of the node with the aggregated data\nconst aggregatedData = $node[\"Aggregate\"].json;\n\n// Prepare the message\nlet message = 'Hi Team,\\n\\nNew time entries are ready for review. Here are the details:\\n\\n';\n\nconst dates = [...new Set(aggregatedData.s2e7d2b64e)];\n\ndates.forEach(date => {\n  message += `*Date:* ${date}\\n`;\n  message += `*Client:* ${aggregatedData.s388b58221[0]}\\n`;\n   message += '\\n\\n';\n  message += '```\\n';  // Start block quote for grey frame\n  message += 'Title                      | Status               | Worked Hours  | Description\\n';\n  message += '---------------------------|----------------------|---------------|----------------------------------------------\\n';\n  \n  aggregatedData.s2e7d2b64e.forEach((entryDate, index) => {\n    if (entryDate === date) {\n      const title = aggregatedData.title[index].padEnd(27, ' ');\n      const status = aggregatedData.status[index].value.padEnd(20, ' ');\n      const hours = aggregatedData.se6d1375cc[index].toString().padEnd(13, ' ');\n      const description = aggregatedData.text[index];\n      message += `${title}| ${status} | ${hours} | ${description}\\n`;\n    }\n  });\n  message += '```\\n\\n';  // End block quote for grey frame\n});\n\nmessage += '\\nPlease review these entries at your earliest convenience.\\nThank you!\\n';\n\nreturn [\n  {\n    json: {\n      message: message\n    }\n  }\n];"
-      },
-      "id": "b66b1e18-10d2-4ae5-9a4a-9eec3a6169c4",
-      "name": "Message Formatting",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        3702,
-        980
       ]
     },
     {
@@ -1719,48 +1571,6 @@
     },
     {
       "parameters": {
-        "authentication": "oAuth2",
-        "select": "channel",
-        "channelId": {
-          "__rl": true,
-          "value": "C07BLFDL917",
-          "mode": "list",
-          "cachedResultName": "toggl-time-captured"
-        },
-        "text": "={{ $json[\"message\"] }}",
-        "otherOptions": {}
-      },
-      "id": "643a0c76-cbf2-47de-841d-3e00d483728d",
-      "name": "Slack2",
-      "type": "n8n-nodes-base.slack",
-      "typeVersion": 2.2,
-      "position": [
-        3882,
-        60
-      ]
-    },
-    {
-      "parameters": {
-        "channelId": "jpqr5pw497dxf8kirt96t4ar5r",
-        "message": "={{ $json[\"message\"] }}",
-        "attachments": [
-          {}
-        ],
-        "otherOptions": {
-          "root_id": ""
-        }
-      },
-      "id": "ba081782-017d-4228-9df9-5d0d47dc4151",
-      "name": "Mattermost2",
-      "type": "n8n-nodes-base.mattermost",
-      "typeVersion": 1,
-      "position": [
-        3882,
-        260
-      ]
-    },
-    {
-      "parameters": {
         "content": "## Reference Toggl",
         "height": 737.4059175040908,
         "width": 2060.5177034209846
@@ -1989,47 +1799,6 @@
     },
     {
       "parameters": {
-        "fieldsToAggregate": {
-          "fieldToAggregate": [
-            {
-              "fieldToAggregate": "title"
-            },
-            {
-              "fieldToAggregate": "sf7335e6da"
-            },
-            {
-              "fieldToAggregate": "status"
-            },
-            {
-              "fieldToAggregate": "s2e7d2b64e"
-            },
-            {
-              "fieldToAggregate": "se6d1375cc"
-            },
-            {
-              "fieldToAggregate": "s6e80240de"
-            },
-            {
-              "fieldToAggregate": "s388b58221"
-            },
-            {
-              "fieldToAggregate": "description.data.content[0].content[0].text"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "7b6d302e-c992-459e-b377-cf2a5cefbcda",
-      "name": "Aggregate2",
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        3482,
-        160
-      ]
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -2098,19 +1867,6 @@
       "position": [
         1117,
         280
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "// Assuming 'AggregatedData' is the name of the node with the aggregated data\nconst aggregatedData = $node[\"Aggregate2\"].json;\n\n// Prepare the message\nlet message = 'Hi Team,\\n\\nNew time entries are ready for review. Here are the details:\\n\\n';\n\nconst dates = [...new Set(aggregatedData.s2e7d2b64e)];\n\ndates.forEach(date => {\n  message += `*Date:* ${date}\\n`;\n  message += `*Client:* ${aggregatedData.s388b58221[0]}\\n`;\n   message += '\\n\\n';\n  message += '```\\n';  // Start block quote for grey frame\n  message += 'Title                      | Status               | Worked Hours  | Description\\n';\n  message += '---------------------------|----------------------|---------------|----------------------------------------------\\n';\n  \n  aggregatedData.s2e7d2b64e.forEach((entryDate, index) => {\n    if (entryDate === date) {\n      const title = aggregatedData.title[index].padEnd(27, ' ');\n      const status = aggregatedData.status[index].value.padEnd(20, ' ');\n      const hours = aggregatedData.se6d1375cc[index].toString().padEnd(13, ' ');\n      const description = aggregatedData.text[index];\n      message += `${title}| ${status} | ${hours} | ${description}\\n`;\n    }\n  });\n  message += '```\\n\\n';  // End block quote for grey frame\n});\n\nmessage += '\\nPlease review these entries at your earliest convenience.\\nThank you!\\n';\n\nreturn [\n  {\n    json: {\n      message: message\n    }\n  }\n];"
-      },
-      "id": "bcd085ac-ffbc-4ea9-9ffd-b8ed7e0ee2ab",
-      "name": "Message Formatting2",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        3682,
-        160
       ]
     },
     {
@@ -2404,6 +2160,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-09-09T12:29:46.000Z",
-  "versionId": "52d7c17d-c113-44e7-9c98-a440a46824a5"
+  "updatedAt": "2024-09-10T17:28:29.000Z",
+  "versionId": "9c752fc4-6048-4713-b10f-b51131aee191"
 }

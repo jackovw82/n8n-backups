@@ -57,9 +57,11 @@
       ]
     }
   },
-  "createdAt": "2024-08-21T12:50:17.716Z",
-  "id": "fEAqfzQ2sgpumcjW",
-  "meta": null,
+  "createdAt": "2024-09-10T19:29:42.098Z",
+  "id": "OPtM9asXB9j4J17n",
+  "meta": {
+    "templateId": "1466"
+  },
   "name": "Extract expenses from emails and add to Google Sheets 2",
   "nodes": [
     {
@@ -82,7 +84,7 @@
         240
       ],
       "typeVersion": 1,
-      "id": "bc8e0ba3-06c1-493b-b2ee-f344345a4268"
+      "id": "0b7122d5-d9ed-40d9-8048-771e869bca1b"
     },
     {
       "parameters": {
@@ -103,7 +105,7 @@
         240
       ],
       "typeVersion": 1,
-      "id": "40f87ded-3563-4d89-86e9-9b99377b7930"
+      "id": "c099b389-781d-4e1c-872c-92e1a36bc81c"
     },
     {
       "parameters": {
@@ -120,7 +122,7 @@
         240
       ],
       "typeVersion": 1,
-      "id": "5500a7c0-0c22-48b8-8d6b-98e1ac6f6045"
+      "id": "cbe33488-0fb0-4079-a8c4-bf7ce65b1b9a"
     },
     {
       "parameters": {
@@ -133,7 +135,7 @@
         220
       ],
       "typeVersion": 1,
-      "id": "19872045-6a4f-4b24-978b-d76990f883bc"
+      "id": "cb8f918f-1d5c-4401-8372-e55f9e1740bc"
     },
     {
       "parameters": {
@@ -170,7 +172,7 @@
         220
       ],
       "typeVersion": 1,
-      "id": "0d2d61b0-8378-442d-a67a-1404a4885c8e"
+      "id": "721b7fc4-6244-49cf-ad61-4c3bb71634b9"
     },
     {
       "parameters": {
@@ -187,16 +189,16 @@
         220
       ],
       "typeVersion": 1,
-      "id": "3cf77322-65a7-4c64-a448-d81f1e121f8b"
+      "id": "ce905118-67c5-4c0e-a67b-8e9507ad86a2"
     }
   ],
-  "pinData": null,
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-21T12:50:17.716Z",
-  "versionId": "93492c64-e41e-486c-9e9c-4ee46809c260"
+  "updatedAt": "2024-09-10T19:29:42.098Z",
+  "versionId": "2c5b50be-d4b7-4f3e-a1e2-fd1701922208"
 }

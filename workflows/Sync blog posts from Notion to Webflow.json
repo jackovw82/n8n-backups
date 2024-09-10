@@ -460,13 +460,15 @@
     },
     {
       "parameters": {
-        "options": {}
+        "options": {
+          "reset": false
+        }
       },
       "id": "2a9fab27-612e-4eb9-935c-fd802f39c96e",
       "name": "For each blog post1",
       "type": "n8n-nodes-base.splitInBatches",
       "position": [
-        1548.3572519550153,
+        1540,
         1340
       ],
       "typeVersion": 3
@@ -892,6 +894,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-09-10T10:59:22.751Z",
-  "versionId": "cbe93d88-87ae-41e9-b819-174a17ad7679"
+  "updatedAt": "2024-09-10T18:43:59.000Z",
+  "versionId": "3f28ba81-10c1-450a-9a2a-6e6be1578307"
 }

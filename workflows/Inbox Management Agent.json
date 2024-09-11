@@ -1,0 +1,82 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-11T17:38:43.242Z",
+  "id": "IjCDJOzNxew6G2GY",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Inbox Management Agent",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "48e82bad-d836-4ae1-8942-d3c0492d7fa1",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        460,
+        320
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "54802d46-8e3c-4ba4-bb14-3d3dd01e09c0",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        560
+      ],
+      "webhookId": "7a9cb0f0-82cd-45bd-aa5d-3ff8bbca779f"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e4732644-589c-485d-80cb-d8ba89589113",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        840,
+        420
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-09-11T17:43:02.000Z",
+  "versionId": "0968268e-42ec-4d9d-ae2a-78fe90373ded"
+}

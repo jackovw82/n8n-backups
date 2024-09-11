@@ -123,7 +123,7 @@
             "index": 0
           },
           {
-            "node": "Execute Workflow",
+            "node": "Execute Workflow4",
             "type": "main",
             "index": 0
           }
@@ -146,28 +146,6 @@
         [
           {
             "node": "isDiffOrNew",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Execute Workflow": {
-      "main": [
-        [
-          {
-            "node": "Merge1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Execute Workflow1": {
-      "main": [
-        [
-          {
-            "node": "SMTimeEntry",
             "type": "main",
             "index": 0
           }
@@ -212,6 +190,28 @@
         [
           {
             "node": "CreatetimeEntryinSM2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow4": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "SMTimeEntry",
             "type": "main",
             "index": 0
           }
@@ -788,32 +788,6 @@
       ]
     },
     {
-      "parameters": {
-        "options": {}
-      },
-      "id": "567ee472-3e23-4b94-a027-8f8ba3a74c99",
-      "name": "Execute Workflow",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        -600,
-        500
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "a07a628f-614d-4560-ace2-cee4241f40e0",
-      "name": "Execute Workflow1",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        -1680,
-        1160
-      ]
-    },
-    {
       "parameters": {},
       "id": "62a1d674-4865-4684-aede-efb0bc14bb31",
       "name": "No Operation, do nothing",
@@ -849,6 +823,30 @@
         900,
         560
       ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "2ad9a0c0-ffa3-47b8-9421-104fdd0edafb",
+      "name": "Execute Workflow4",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        540
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "78347450-d8a8-4f37-a4a3-0185b1f82b34",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1700,
+        1160
+      ]
     }
   ],
   "pinData": {},
@@ -864,6 +862,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-09-11T19:54:04.000Z",
-  "versionId": "31b54924-ee5d-4d3c-89ba-6ce9611b28c7"
+  "updatedAt": "2024-09-11T20:09:43.000Z",
+  "versionId": "ece980be-9d44-40c5-8aa4-3f868265812d"
 }

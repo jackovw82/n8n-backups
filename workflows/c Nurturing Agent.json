@@ -1,0 +1,60 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-11T17:29:10.828Z",
+  "id": "5doxadtElwGgtdPE",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "c Nurturing Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "7f43be5a-7010-4c3e-8447-d3ac170a63de",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        460
+      ],
+      "webhookId": "293ed5c6-674c-41a5-a294-222bc23ad518"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f94fe7c2-bfb1-4b97-a342-e064dee8dff8",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        680,
+        460
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-09-11T17:48:36.000Z",
+  "versionId": "eca125d1-b2dd-423b-9cb1-059c032d9ff6"
+}

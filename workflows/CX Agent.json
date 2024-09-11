@@ -1,0 +1,82 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-11T17:34:23.154Z",
+  "id": "qHa0CQiQ3Uk4N8Wu",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "CX Agent",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b841ea96-f4f2-472b-875c-88c7d27c24ce",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        720,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "347f65ab-1632-4e28-87ff-1df7900945c7",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        760,
+        620
+      ],
+      "webhookId": "24a48ed7-d7e9-409d-b4e4-5e2d91e99bd0"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "76d3cd2d-16f5-419c-a2c2-0bbc573ed26c",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1020,
+        420
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-09-11T17:43:56.000Z",
+  "versionId": "709dacb8-3b58-4f91-b9bc-bb8cbf4712e2"
+}

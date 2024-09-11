@@ -1,0 +1,60 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-11T17:35:43.433Z",
+  "id": "Iskx6PvtBL88ctMj",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Lead Enrichment Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c29919af-da04-40ae-9bc6-d61b44961766",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        460
+      ],
+      "webhookId": "b23602be-a2c8-4819-b235-522b8422d18e"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "84cfdd55-91f6-4c1b-987b-3326f9ed5145",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        680,
+        460
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-09-11T17:43:18.000Z",
+  "versionId": "dab0dd11-91c5-43d5-a0d5-7f6f804ecc42"
+}

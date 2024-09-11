@@ -1,0 +1,32 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-09-11T17:31:37.371Z",
+  "id": "StCOh9hic1qtfqXr",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Customer Success Agent",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "0da93f49-4900-4be5-a715-c79acd5e3998",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        980,
+        540
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-09-11T17:31:37.371Z",
+  "versionId": "7b4fbaa4-1b9f-4425-9030-c9a3154bcfae"
+}

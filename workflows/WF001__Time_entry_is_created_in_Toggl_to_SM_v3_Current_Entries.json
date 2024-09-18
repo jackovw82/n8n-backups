@@ -289,8 +289,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        982,
-        622
+        840,
+        660
       ]
     },
     {
@@ -420,7 +420,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -580,
+        -620,
         740
       ]
     },
@@ -433,7 +433,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -360,
+        -400,
         740
       ]
     },
@@ -495,7 +495,7 @@
       "typeVersion": 4.2,
       "position": [
         -760,
-        520
+        560
       ]
     },
     {
@@ -542,22 +542,22 @@
       "typeVersion": 1,
       "position": [
         -560,
-        520
+        560
       ]
     },
     {
       "parameters": {
         "content": "## New Time Entry\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/sticky-notes/)",
         "height": 108.79114802564072,
-        "width": 435.36850445970504
+        "width": 256.8638769794504
       },
       "id": "78671800-54bd-4041-879d-c2c271afab4f",
       "name": "Sticky Note6",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1760,
-        340
+        -1720,
+        380
       ]
     },
     {
@@ -566,8 +566,8 @@
       "name": "same",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        500,
-        440
+        460,
+        480
       ],
       "typeVersion": 1
     },
@@ -577,8 +577,8 @@
       "name": "new",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        500,
-        620
+        460,
+        660
       ],
       "typeVersion": 1
     },
@@ -593,13 +593,13 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         -60,
-        360
+        400
       ],
       "typeVersion": 1
     },
     {
       "parameters": {
-        "batchSize": 1,
+        "batchSize": 2,
         "options": {}
       },
       "id": "fc15ee1f-1be1-4b9d-8a49-f296cef79848",
@@ -613,21 +613,21 @@
     },
     {
       "parameters": {
-        "jsCode": "// Assuming there are two JSON inputs from different sources\nconst inputJSON1 = $input.all()[0].json;\nconst inputJSON2 = $input.all()[1].json;\n\n// Function to decode base64 and parse JSON, if applicable\nfunction decodeAndParse(base64Str) {\n  try {\n    const jsonStr = Buffer.from(base64Str, 'base64').toString();\n    return JSON.parse(jsonStr);\n  } catch (error) {\n    console.error(\"Failed to decode and parse:\", error);\n    return null;\n  }\n}\n\n// Decode and parse the original workflow if it has content, otherwise return null\nconst originalData = inputJSON1.content ? decodeAndParse(inputJSON1.content) : null;\nconst currentData = inputJSON2;\n\n// Function to order keys of a JSON object\nfunction orderKeys(obj) {\n  const ordered = {};\n  if (obj) {\n    Object.keys(obj).sort().forEach(key => {\n      ordered[key] = obj[key];\n    });\n  }\n  return ordered;\n}\n\n// Check if original workflow exists and order the keys\nconst orderedOriginal = originalData ? orderKeys(originalData) : null;\nconst orderedActual = orderKeys(currentData);\n\n// Function to check if specified keys exist in the given data\nfunction keysExist(data, keys) {\n  return keys.every(key => key in data);\n}\n\n// Check for the presence of specified keys in both JSON data\nconst keysToCheck = ['sac94990b3', 'id'];\nconst existsInOriginal = orderedOriginal ? keysExist(orderedOriginal, keysToCheck) : false;\nconst existsInActual = orderedActual ? keysExist(orderedActual, keysToCheck) : false;\n\n// Determine the comparison status based on the existence of the keys\nif (existsInOriginal && existsInActual) {\n  inputJSON1.status = \"exist\";\n} else if (existsInOriginal || existsInActual) {\n  inputJSON1.status = \"new\";\n} else {\n  inputJSON1.status = \"does not exist in any\";\n}\n\n// Log for debugging purposes\nconsole.log('Comparison Status:', inputJSON1.github_status);\n\n// Return the modified object\nreturn inputJSON1;\n"
+        "jsCode": "// Assuming there are two JSON inputs from different sources\nconst inputJSON1 = $input.all()[0].json;\nconst inputJSON2 = $input.all()[1].json;\n\n// Function to decode base64 and parse JSON, if applicable\nfunction decodeAndParse(base64Str) {\n  try {\n    const jsonStr = Buffer.from(base64Str, 'base64').toString();\n    return JSON.parse(jsonStr);\n  } catch (error) {\n    console.error(\"Failed to decode and parse:\", error);\n    return null;\n  }\n}\n\n// Decode and parse the original workflow if it has content, otherwise return the raw JSON\nconst parsedData1 = inputJSON1.content ? decodeAndParse(inputJSON1.content) : inputJSON1;\nconst parsedData2 = inputJSON2.content ? decodeAndParse(inputJSON2.content) : inputJSON2;\n\n// Ensure both data sources are arrays; adjust according to the actual data structure\nconst referenceData = Array.isArray(parsedData1) ? parsedData1 : [parsedData1];\nconst currentData = Array.isArray(parsedData2) ? parsedData2 : [parsedData2];\n\n// Helper function to find if an ID from input2 exists in the reference data from input1\nfunction findMatch(reference, current) {\n  const referenceIds = new Set(reference.map(item => item.sac94990b3)); // Assumes each item has 'sac94990b3'\n  return current.filter(item => referenceIds.has(item.id)); // Assumes each item has 'id'\n}\n\n// Find matching and non-matching records from currentData based on referenceData\nconst matchedRecords = findMatch(referenceData, currentData);\nconst unmatchedRecords = currentData.filter(item => !matchedRecords.includes(item));\n\n// Prepare the results\nconst results = {\n  matches: matchedRecords.map(item => ({ id: item.id, status: \"exist\" })),\n  non_matches: unmatchedRecords.map(item => ({ id: item.id, status: \"new\" }))\n};\n\n// Return the results\nreturn results;\n"
       },
       "id": "9d38e6b1-1793-48ec-b6f5-d7caed9d2a43",
       "name": "isDiffOrNew",
       "type": "n8n-nodes-base.code",
       "position": [
         20,
-        540
+        580
       ],
       "typeVersion": 1
     },
     {
       "parameters": {
         "content": "## Lookup SmartSuite Time Entry Records",
-        "height": 257.39274485894987,
+        "height": 227.36392902115014,
         "width": 381.8019106737111
       },
       "id": "42f5aaff-dd04-420c-916a-1e232a9b396c",
@@ -635,8 +635,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -799.9423683244007,
-        440
+        -800,
+        480
       ]
     },
     {
@@ -648,23 +648,23 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1,
       "position": [
-        740,
-        620
+        640,
+        660
       ]
     },
     {
       "parameters": {
         "content": "## Create New Entry in SmartSuite",
         "height": 482.44590191871686,
-        "width": 251.28399403272033
+        "width": 221.25517819492052
       },
       "id": "b59ae320-09ef-4969-b1e2-fc3fea54c204",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        660,
-        320
+        580,
+        340
       ]
     },
     {
@@ -701,8 +701,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        982,
-        442
+        840,
+        480
       ]
     },
     {
@@ -714,8 +714,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1,
       "position": [
-        740,
-        440
+        640,
+        480
       ]
     },
     {
@@ -730,10 +730,6 @@
             {
               "value2": "new",
               "output": 1
-            },
-            {
-              "value2": "does not exist in any",
-              "output": 2
             }
           ]
         }
@@ -743,32 +739,19 @@
       "type": "n8n-nodes-base.switch",
       "position": [
         260,
-        540
+        580
       ],
       "typeVersion": 1
     },
     {
-      "parameters": {
-        "mode": "combine",
-        "advanced": true,
-        "mergeByFields": {
-          "values": [
-            {
-              "field1": "sac94990b3",
-              "field2": "id"
-            }
-          ]
-        },
-        "joinMode": "enrichInput2",
-        "options": {}
-      },
+      "parameters": {},
       "id": "b4a95097-e39b-4018-8cfa-a5a13e793fb2",
       "name": "Merge1",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        -180,
-        540
+        -200,
+        580
       ]
     }
   ],
@@ -785,6 +768,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-09-18T20:59:40.000Z",
-  "versionId": "07449487-1d9a-4f5f-94ff-86b86afe98f6"
+  "updatedAt": "2024-09-18T21:42:13.000Z",
+  "versionId": "f4e888ff-859e-49d0-8e63-00b1fe4dfe32"
 }

@@ -82,7 +82,7 @@
       "main": [
         [
           {
-            "node": "No Operation, do nothing",
+            "node": "Merge1",
             "type": "main",
             "index": 0
           }
@@ -123,7 +123,7 @@
             "index": 0
           },
           {
-            "node": "Execute Workflow4",
+            "node": "SMTimeEntry",
             "type": "main",
             "index": 0
           }
@@ -135,17 +135,6 @@
         [
           {
             "node": "github_status",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge1": {
-      "main": [
-        [
-          {
-            "node": "isDiffOrNew",
             "type": "main",
             "index": 0
           }
@@ -196,22 +185,11 @@
         ]
       ]
     },
-    "Execute Workflow4": {
+    "Merge1": {
       "main": [
         [
           {
-            "node": "Merge1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Execute Workflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "SMTimeEntry",
+            "node": "isDiffOrNew",
             "type": "main",
             "index": 0
           }
@@ -248,8 +226,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1080,
-        684
+        940,
+        644
       ]
     },
     {
@@ -333,8 +311,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1142,
-        762
+        1002,
+        722
       ]
     },
     {
@@ -477,7 +455,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -300,
+        -360,
         740
       ]
     },
@@ -538,8 +516,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1460,
-        1160
+        -760,
+        520
       ]
     },
     {
@@ -585,8 +563,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -1260,
-        1160
+        -560,
+        520
       ]
     },
     {
@@ -628,8 +606,8 @@
       "name": "github_status",
       "type": "n8n-nodes-base.switch",
       "position": [
-        389,
-        580
+        249,
+        540
       ],
       "typeVersion": 1
     },
@@ -639,8 +617,8 @@
       "name": "same",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        629,
-        380
+        489,
+        340
       ],
       "typeVersion": 1
     },
@@ -650,8 +628,8 @@
       "name": "different",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        640,
-        560
+        500,
+        520
       ],
       "typeVersion": 1
     },
@@ -661,23 +639,23 @@
       "name": "new",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        629,
-        760
+        489,
+        720
       ],
       "typeVersion": 1
     },
     {
       "parameters": {
         "content": "## Save the data\nUsing the switch node we work out what to do based on the previous status,  If it is the same we do nothing, If it is different we update the file in Github and if it is new we create a new file. After this is done we loop back to the Split in Batches node (OneAtAtTime) to start the process again.",
-        "height": 715.9660990225568,
+        "height": 663.8398062066074,
         "width": 508.113581683176
       },
       "id": "e1bb71ec-042a-403d-96ff-a1481870e5ee",
       "name": "Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        340,
-        230.28191596109264
+        200,
+        190
       ],
       "typeVersion": 1
     },
@@ -706,8 +684,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1080,
-        440
+        940,
+        400
       ]
     },
     {
@@ -744,8 +722,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1140,
-        522
+        1000,
+        482
       ]
     },
     {
@@ -756,26 +734,15 @@
       "name": "isDiffOrNew",
       "type": "n8n-nodes-base.code",
       "position": [
-        160,
-        580
+        20,
+        540
       ],
       "typeVersion": 1
     },
     {
-      "parameters": {},
-      "id": "b4a95097-e39b-4018-8cfa-a5a13e793fb2",
-      "name": "Merge1",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        -100,
-        580
-      ]
-    },
-    {
       "parameters": {
         "content": "## Lookup SmartSuite Time Entry Records",
-        "height": 295.13937069118873,
+        "height": 257.39274485894987,
         "width": 488.5710336525545
       },
       "id": "42f5aaff-dd04-420c-916a-1e232a9b396c",
@@ -783,19 +750,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1540,
-        1060
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "62a1d674-4865-4684-aede-efb0bc14bb31",
-      "name": "No Operation, do nothing",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        -1020,
-        1160
+        -860,
+        440
       ]
     },
     {
@@ -807,8 +763,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1,
       "position": [
-        900,
-        760
+        760,
+        720
       ]
     },
     {
@@ -820,32 +776,19 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1,
       "position": [
-        900,
-        560
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "2ad9a0c0-ffa3-47b8-9421-104fdd0edafb",
-      "name": "Execute Workflow4",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        -580,
-        540
+        760,
+        520
       ]
     },
     {
       "parameters": {},
-      "id": "78347450-d8a8-4f37-a4a3-0185b1f82b34",
-      "name": "Execute Workflow Trigger",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
+      "id": "b4a95097-e39b-4018-8cfa-a5a13e793fb2",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
       "position": [
-        -1700,
-        1160
+        -180,
+        540
       ]
     }
   ],
@@ -862,6 +805,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-09-18T15:02:42.000Z",
-  "versionId": "89991133-4c08-4b9a-a597-1d0f9c6c5455"
+  "updatedAt": "2024-09-18T17:56:25.000Z",
+  "versionId": "1ea15654-175f-4940-81db-1a4718242eb7"
 }

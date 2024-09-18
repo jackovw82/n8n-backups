@@ -89,31 +89,6 @@
         ]
       ]
     },
-    "github_status": {
-      "main": [
-        [
-          {
-            "node": "same",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "different",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "new",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "OneAtATime1": {
       "main": [
         [
@@ -134,7 +109,7 @@
       "main": [
         [
           {
-            "node": "github_status",
+            "node": "status",
             "type": "main",
             "index": 0
           }
@@ -163,28 +138,6 @@
         ]
       ]
     },
-    "different": {
-      "main": [
-        [
-          {
-            "node": "Execute Workflow3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Execute Workflow3": {
-      "main": [
-        [
-          {
-            "node": "CreatetimeEntryinSM2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Merge1": {
       "main": [
         [
@@ -194,6 +147,47 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "CreatetimeEntryinSM1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "same": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "status": {
+      "main": [
+        [
+          {
+            "node": "same",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "new",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
       ]
     }
   },
@@ -226,8 +220,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        940,
-        644
+        700,
+        584
       ]
     },
     {
@@ -311,8 +305,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1002,
-        722
+        982,
+        662
       ]
     },
     {
@@ -583,53 +577,13 @@
       ]
     },
     {
-      "parameters": {
-        "dataType": "string",
-        "value1": "={{$json[\"github_status\"]}}",
-        "rules": {
-          "rules": [
-            {
-              "value2": "same"
-            },
-            {
-              "value2": "different",
-              "output": 1
-            },
-            {
-              "value2": "new",
-              "output": 2
-            }
-          ]
-        }
-      },
-      "id": "640e4df9-5a9d-41e7-b923-1d413e6bb259",
-      "name": "github_status",
-      "type": "n8n-nodes-base.switch",
-      "position": [
-        249,
-        540
-      ],
-      "typeVersion": 1
-    },
-    {
       "parameters": {},
       "id": "b75222aa-a24c-4d0b-bb4c-2d9e8eba2dec",
       "name": "same",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        489,
-        340
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {},
-      "id": "9e69441a-d42c-4ad2-9699-c68b2a370a61",
-      "name": "different",
-      "type": "n8n-nodes-base.noOp",
-      "position": [
         500,
-        520
+        440
       ],
       "typeVersion": 1
     },
@@ -639,23 +593,23 @@
       "name": "new",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        489,
-        720
+        500,
+        620
       ],
       "typeVersion": 1
     },
     {
       "parameters": {
         "content": "## Save the data\nUsing the switch node we work out what to do based on the previous status,  If it is the same we do nothing, If it is different we update the file in Github and if it is new we create a new file. After this is done we loop back to the Split in Batches node (OneAtAtTime) to start the process again.",
-        "height": 663.8398062066074,
-        "width": 508.113581683176
+        "height": 385.19628074720146,
+        "width": 480.6862011745137
       },
       "id": "e1bb71ec-042a-403d-96ff-a1481870e5ee",
       "name": "Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        200,
-        190
+        -40,
+        380
       ],
       "typeVersion": 1
     },
@@ -675,60 +629,7 @@
     },
     {
       "parameters": {
-        "content": "## Update SmartSuite",
-        "height": 225.8531413274867,
-        "width": 253.0608445983512
-      },
-      "id": "965fa9de-f5a4-42bf-adc0-1ff5245c2b4a",
-      "name": "Sticky Note7",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        940,
-        400
-      ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
-            },
-            {
-              "name": "ACCOUNT-ID",
-              "value": "swexdc6g"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"in_progress\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.proj_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.project_sm_rec_id }}\",\n  \"s4621e0408\": \"{{ $json.client_sm_rec_id }}\"\n}\n",
-        "options": {
-          "batching": {
-            "batch": {
-              "batchSize": 1,
-              "batchInterval": 60000
-            }
-          }
-        }
-      },
-      "id": "0c4a8281-3907-465a-9979-eb2be7f25a7a",
-      "name": "CreatetimeEntryinSM2",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1000,
-        482
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "// File Returned with Content\nif (Object.keys($input.all()[0].json).includes(\"content\")) {\n  // Get JSON Objects\n  var origWorkflow = JSON.parse(Buffer.from($input.all()[0].json.content, 'base64'));\n  var n8nWorkflow = $input.all()[1].json;\n  \n  // Order JSON Objects\n  var orderedOriginal = {}\n  var orderedActual = {}\n  \n  Object.keys(origWorkflow).sort().forEach(function(key) {\n    orderedOriginal[key] = origWorkflow[key];\n  });\n  \n  Object.keys(n8nWorkflow).sort().forEach(function(key) {\n    orderedActual[key] = n8nWorkflow[key];\n  });\n\n  // Determine Difference\n  if ( JSON.stringify(orderedOriginal) === JSON.stringify(orderedActual) ) {\n    $input.all()[0].json.github_status = \"same\";\n    $input.all()[0].json.content_decoded = orderedOriginal;\n  } else {\n    $input.all()[0].json.github_status = \"different\";\n    $input.all()[0].json.content_decoded = orderedOriginal;\n    $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n  }\n// No File Returned / New Workflow\n} else {\n  // Order JSON Object\n  var n8nWorkflow = ($input.all()[1].json);\n  var orderedActual = {}\n  Object.keys(n8nWorkflow).sort().forEach(function(key) {\n    orderedActual[key] = n8nWorkflow[key];\n  });\n  \n  // Proper Formatting\n  $input.all()[0].json.github_status = \"new\";\n  $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n}\n\n// Return Items\nreturn $input.all();"
+        "jsCode": "// Assuming there are two JSON inputs from different sources\nconst inputJSON1 = $input.all()[0].json;\nconst inputJSON2 = $input.all()[1].json;\n\n// Function to decode base64 and parse JSON, if applicable\nfunction decodeAndParse(base64Str) {\n  try {\n    const jsonStr = Buffer.from(base64Str, 'base64').toString();\n    return JSON.parse(jsonStr);\n  } catch (error) {\n    console.error(\"Failed to decode and parse:\", error);\n    return null;\n  }\n}\n\n// Decode and parse the original workflow if it has content, otherwise return null\nconst origWorkflow = inputJSON1.content ? decodeAndParse(inputJSON1.content) : null;\nconst n8nWorkflow = inputJSON2;\n\n// Function to order keys of a JSON object\nfunction orderKeys(obj) {\n  const ordered = {};\n  if (obj) {\n    Object.keys(obj).sort().forEach(key => {\n      ordered[key] = obj[key];\n    });\n  }\n  return ordered;\n}\n\n// Check if original workflow exists and order the keys\nconst orderedOriginal = origWorkflow ? orderKeys(origWorkflow) : null;\nconst orderedActual = orderKeys(n8nWorkflow);\n\n// Function to compare two JSON objects if both are available\nfunction compareJSON(obj1, obj2) {\n  if (!obj1 || !obj2) return false;\n  const str1 = JSON.stringify(obj1);\n  const str2 = JSON.stringify(obj2);\n  return str1 === str2;\n}\n\n// Set comparison status and handle new or same records\nif (orderedOriginal && compareJSON(orderedOriginal, orderedActual)) {\n  inputJSON1.status = \"same\";\n  inputJSON1.content_decoded = orderedOriginal;\n} else if (!orderedOriginal) {\n  // Handle new record scenario\n  inputJSON1.status = \"new\";\n  inputJSON1.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n}\n// Log for debugging purposes\nconsole.log('Comparison Status:', inputJSON1.github_status);\n\n// Return the modified object\nreturn inputJSON1;\n"
       },
       "id": "9d38e6b1-1793-48ec-b6f5-d7caed9d2a43",
       "name": "isDiffOrNew",
@@ -763,21 +664,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1,
       "position": [
-        760,
-        720
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "dc41740a-5b2f-443c-bbaf-fe89d1f7559f",
-      "name": "Execute Workflow3",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        760,
-        520
+        740,
+        660
       ]
     },
     {
@@ -790,6 +678,97 @@
         -180,
         540
       ]
+    },
+    {
+      "parameters": {
+        "content": "## Create New Entry in SmartSuite",
+        "height": 260.56631822830707,
+        "width": 251.28399403272033
+      },
+      "id": "b59ae320-09ef-4969-b1e2-fc3fea54c204",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        700,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.smartsuite.com/api/v1/applications/668ecb995b7d04577b9a4190/records/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Token 1a0df485ce520ec8d8e999727c53c09ef809b097"
+            },
+            {
+              "name": "ACCOUNT-ID",
+              "value": "swexdc6g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"title\": \"{{ $json.start }} - {{ $json.description }}\",\n  \"description\": \"{{ $json.description }}\",\n  \"stoplight_status\": \"1\",\n  \"s88e7dacd4\": {\n    \"value\": \"in_progress\"\n  },\n  \"s7e18ac595\": \"{{ $json.billable }}\", \n  \"s388b58221\": \"{{ $json.client_name }}\",\n  \"sf78e2e067\": \"{{ $json.duration }}\",\n  \"sac94990b3\": \"{{ $json.time_entry_id }}\",\n  \"se64e66b7d\": \"{{ $json.pid }}\",\n  \"s104c552d1\": \"{{ $json.project_id }}\",\n  \"sf7335e6da\": \"{{ $json.proj_name }}\",\n  \"s462427aec\": \"{{ $json.workspace_id }}\",\n  \"sa60c2dda1\": \"{{ $json.start }}\",\n  \"sa7b8b841b\": \"{{ $json.stop }}\",\n  \"sa7a9c2140\": \"{{ $json.tags }}\",\n  \"se2afa90b2\": \"{{ $json.tag_ids }}\",\n  \"s8ce8d1b63\": \"{{ $json.duronly }}\",\n  \"s875daacbd\": \"{{ $json.at }}\",\n  \"s160017cbb\": \"{{ $json.server_deleted_at }}\",\n  \"s93e0bbcaa\": \"{{ $json.user_id }}\",\n  \"s5a8e4c60d\": \"{{ $json.uid }}\",\n  \"s4c2ea1202\": \"{{ $json.wid }}\",\n  \"s8e3e58cad\": \"{{ $json.client_id }}\",\n  \"sbca20347b\": \"{{ $json.project_sm_rec_id }}\",\n  \"s4621e0408\": \"{{ $json.client_sm_rec_id }}\"\n}\n",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 60000
+            }
+          }
+        }
+      },
+      "id": "7855514f-cd95-44db-a5d0-196b31e70455",
+      "name": "CreatetimeEntryinSM1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        982,
+        382
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "3181f5c6-0b80-478d-90ba-375b64b48e96",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        740,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{$json[\"status\"]}}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "same"
+            },
+            {
+              "value2": "new",
+              "output": 1
+            }
+          ]
+        }
+      },
+      "id": "640e4df9-5a9d-41e7-b923-1d413e6bb259",
+      "name": "status",
+      "type": "n8n-nodes-base.switch",
+      "position": [
+        260,
+        540
+      ],
+      "typeVersion": 1
     }
   ],
   "pinData": {},
@@ -805,6 +784,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-09-18T17:56:25.000Z",
-  "versionId": "1ea15654-175f-4940-81db-1a4718242eb7"
+  "updatedAt": "2024-09-18T18:28:50.000Z",
+  "versionId": "2f4fdfd7-1dbb-4f6f-a1f8-0854d2d47554"
 }

@@ -138,17 +138,6 @@
         ]
       ]
     },
-    "Merge1": {
-      "main": [
-        [
-          {
-            "node": "isDiffOrNew",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Execute Workflow": {
       "main": [
         [
@@ -186,8 +175,18 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "isDiffOrNew",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -629,7 +628,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Assuming there are two JSON inputs from different sources\nconst inputJSON1 = $input.all()[0].json;\nconst inputJSON2 = $input.all()[1].json;\n\n// Function to decode base64 and parse JSON, if applicable\nfunction decodeAndParse(base64Str) {\n  try {\n    const jsonStr = Buffer.from(base64Str, 'base64').toString();\n    return JSON.parse(jsonStr);\n  } catch (error) {\n    console.error(\"Failed to decode and parse:\", error);\n    return null;\n  }\n}\n\n// Decode and parse the original workflow if it has content, otherwise return null\nconst origWorkflow = inputJSON1.content ? decodeAndParse(inputJSON1.content) : null;\nconst n8nWorkflow = inputJSON2;\n\n// Function to order keys of a JSON object\nfunction orderKeys(obj) {\n  const ordered = {};\n  if (obj) {\n    Object.keys(obj).sort().forEach(key => {\n      ordered[key] = obj[key];\n    });\n  }\n  return ordered;\n}\n\n// Check if original workflow exists and order the keys\nconst orderedOriginal = origWorkflow ? orderKeys(origWorkflow) : null;\nconst orderedActual = orderKeys(n8nWorkflow);\n\n// Function to compare two JSON objects if both are available\nfunction compareJSON(obj1, obj2) {\n  if (!obj1 || !obj2) return false;\n  const str1 = JSON.stringify(obj1);\n  const str2 = JSON.stringify(obj2);\n  return str1 === str2;\n}\n\n// Set comparison status and handle new or same records\nif (orderedOriginal && compareJSON(orderedOriginal, orderedActual)) {\n  inputJSON1.status = \"same\";\n  inputJSON1.content_decoded = orderedOriginal;\n} else if (!orderedOriginal) {\n  // Handle new record scenario\n  inputJSON1.status = \"new\";\n  inputJSON1.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n}\n// Log for debugging purposes\nconsole.log('Comparison Status:', inputJSON1.github_status);\n\n// Return the modified object\nreturn inputJSON1;\n"
+        "jsCode": "// Assuming there are two JSON inputs from different sources\nconst inputJSON1 = $input.all()[0].json;\nconst inputJSON2 = $input.all()[1].json;\n\n// Function to decode base64 and parse JSON, if applicable\nfunction decodeAndParse(base64Str) {\n  try {\n    const jsonStr = Buffer.from(base64Str, 'base64').toString();\n    return JSON.parse(jsonStr);\n  } catch (error) {\n    console.error(\"Failed to decode and parse:\", error);\n    return null;\n  }\n}\n\n// Decode and parse the original workflow if it has content, otherwise return null\nconst originalData = inputJSON1.content ? decodeAndParse(inputJSON1.content) : null;\nconst currentData = inputJSON2;\n\n// Function to order keys of a JSON object\nfunction orderKeys(obj) {\n  const ordered = {};\n  if (obj) {\n    Object.keys(obj).sort().forEach(key => {\n      ordered[key] = obj[key];\n    });\n  }\n  return ordered;\n}\n\n// Check if original workflow exists and order the keys\nconst orderedOriginal = originalData ? orderKeys(originalData) : null;\nconst orderedActual = orderKeys(currentData);\n\n// Check if specific entries exist\nfunction checkEntryExistence(data, keys) {\n  return keys.every(key => key in data);\n}\n\n// Set comparison status and handle new or same records\nif (orderedOriginal && orderedActual) {\n  // Check for specific keys\n  const keysToCheck = ['sac94990b3', 'id'];\n  const existenceOriginal = checkEntryExistence(orderedOriginal, keysToCheck);\n  const existenceActual = checkEntryExistence(orderedActual, keysToCheck);\n\n  if (existenceOriginal && existenceActual) {\n    inputJSON1.status = \"exists in both\";\n  } else if (existenceOriginal && !existenceActual) {\n    inputJSON1.status = \"missing in current\";\n  } else if (!existenceOriginal && existenceActual) {\n    inputJSON1.status = \"missing in original\";\n  }\n}\n\n// Log for debugging purposes\nconsole.log('Comparison Status:', inputJSON1.github_status);\n\n// Return the modified object\nreturn inputJSON1;\n"
       },
       "id": "9d38e6b1-1793-48ec-b6f5-d7caed9d2a43",
       "name": "isDiffOrNew",
@@ -666,17 +665,6 @@
       "position": [
         740,
         660
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "b4a95097-e39b-4018-8cfa-a5a13e793fb2",
-      "name": "Merge1",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        -180,
-        540
       ]
     },
     {
@@ -769,6 +757,17 @@
         540
       ],
       "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "b4a95097-e39b-4018-8cfa-a5a13e793fb2",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -180,
+        540
+      ]
     }
   ],
   "pinData": {},
@@ -784,6 +783,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-09-18T18:28:50.000Z",
-  "versionId": "2f4fdfd7-1dbb-4f6f-a1f8-0854d2d47554"
+  "updatedAt": "2024-09-18T19:44:18.000Z",
+  "versionId": "9da0b912-4f66-4927-8ec7-551c837c98e4"
 }

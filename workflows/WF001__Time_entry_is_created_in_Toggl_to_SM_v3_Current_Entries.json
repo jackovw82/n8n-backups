@@ -669,7 +669,7 @@
     {
       "parameters": {
         "content": "## Save the data\nUsing the switch node we work out what to do based on the previous status,  If it is the same we do nothing, If it is different we update the file in Github and if it is new we create a new file. After this is done we loop back to the Split in Batches node (OneAtAtTime) to start the process again.",
-        "height": 666.2480149836495,
+        "height": 715.9660990225568,
         "width": 508.113581683176
       },
       "id": "e1bb71ec-042a-403d-96ff-a1481870e5ee",
@@ -677,7 +677,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         340,
-        280
+        230.28191596109264
       ],
       "typeVersion": 1
     },
@@ -862,6 +862,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-09-11T20:09:43.000Z",
-  "versionId": "ece980be-9d44-40c5-8aa4-3f868265812d"
+  "updatedAt": "2024-09-18T15:02:42.000Z",
+  "versionId": "89991133-4c08-4b9a-a597-1d0f9c6c5455"
 }

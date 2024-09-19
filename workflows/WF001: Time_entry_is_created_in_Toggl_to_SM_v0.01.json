@@ -496,8 +496,8 @@
       ]
     }
   },
-  "createdAt": "2024-08-21T12:42:48.261Z",
-  "id": "RnXs0ooSFaHvadtu",
+  "createdAt": "2024-08-21T12:50:19.236Z",
+  "id": "Wf6KaLGEpkYPhE4m",
   "meta": null,
   "name": "WF001: Time_entry_is_created_in_Toggl_to_SM_v0.01",
   "nodes": [
@@ -2083,6 +2083,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-08-21T12:42:48.261Z",
-  "versionId": "84e58417-15be-48ca-8ff6-3d782f109b1f"
+  "updatedAt": "2024-08-21T12:50:19.236Z",
+  "versionId": "4c560c6b-7c49-4cbc-887c-f274440d6ae6"
 }
